@@ -7,16 +7,16 @@
   <style>
     body {
       font-family: Verdana, sans-serif;
-      background: linear-gradient(180deg,#fff6e5 0%,#f3e0b8 100%);
+      background: radial-gradient(circle at top,#fff7ff 0%,#ffe9ff 35%,#d7ecff 100%);
       margin: 0;
-      color: #002b5c;
+      color: #25215a;
       text-align: center;
     }
     header {
-      background: linear-gradient(90deg,#003366,#004b99);
+      background: linear-gradient(90deg,#5a2ea6,#f06292);
       color: white;
       padding: 0.6rem 1rem;
-      border-bottom: 5px solid gold;
+      border-bottom: 5px solid #ffd54f;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -24,27 +24,27 @@
     .logo {
       width: 55px; height: 55px;
       border-radius: 50%;
-      border: 3px solid gold;
+      border: 3px solid #ffd54f;
       object-fit: cover;
       background: white;
     }
-    h2 {color:#003366;}
+    h2 {color:#5a2ea6;}
     section {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.98);
+      border-radius: 18px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.12);
       padding: 15px;
-      max-width: 800px;
+      max-width: 860px;
       margin: 15px auto;
       text-align: left;
       line-height: 1.5;
       font-size: 0.95rem;
     }
     h3 {
-      background: #003366;
+      background: linear-gradient(90deg,#5a2ea6,#f06292);
       color: white;
       padding: 6px 10px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 1rem;
     }
     .btn {
@@ -53,13 +53,13 @@
       padding:8px 14px;
       border:none;
       border-radius:10px;
-      background:#003366;
+      background:#5a2ea6;
       color:white;
       font-weight:bold;
       cursor:pointer;
       font-size:0.9rem;
     }
-    .btn:hover {background:gold; color:#003366;}
+    .btn:hover {background:#ffd54f; color:#45215a;}
     textarea {
       width:100%;
       border-radius:10px;
@@ -82,6 +82,16 @@
       padding:2px 4px;
       font-size:0.9rem;
     }
+    .round-label {
+      display:inline-block;
+      background:#ffd54f;
+      color:#5a2ea6;
+      padding:2px 8px;
+      border-radius:999px;
+      font-size:0.75rem;
+      font-weight:bold;
+      margin-left:6px;
+    }
   </style>
 </head>
 <body>
@@ -90,163 +100,200 @@
     <img src="logo.png" class="logo" alt="AI Bayan logo">
     <div>
       <h1 style="margin:0;font-size:1rem;">Theme 1 — Let’s Have Fun!</h1>
-      <p style="margin:0;color:#ffea99;">English with AI Bayan</p>
+      <p style="margin:0;color:#ffe9c4;">English with AI Bayan — Games and Fun</p>
     </div>
   </div>
 </header>
 
 <main>
   <h2>🎨 Let’s Have Fun!</h2>
-  <p style="font-style:italic;">Games, hobbies and free time activities</p>
+  <p style="font-style:italic;color:#4b2e91;">Children at the park — games and free time</p>
   <p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
 
-  <!-- ========== VOCABULARY ========== -->
+  <!-- ========== VOCABULARY (из парка, как в WB) ========== -->
   <section>
-    <h3>🧠 VOCABULARY — Guess the translation</h3>
+    <h3>🧠 Vocabulary — Games in the park <span class="round-label">Vocabulary</span></h3>
 
-    <p><b>AI Bayan говорит предложение на английском. Ребёнок выбирает правильный перевод на русский.</b></p>
+    <p><b>Listen to AI Bayan and choose the correct translation (на русский).</b></p>
 
     <!-- Q1 -->
-    <p>1) AI Bayan:
-      <button class="btn" onclick="speakVocab('I like playing games.')">▶ Play</button>
+    <p>1) Word: <b>play hide-and-seek</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('To play hide and seek means that one child counts and the others hide.')">▶ Play</button>
       <button class="btn" onclick="stopBayan()">⏹ Stop</button>
     </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v1" value="1"> Я люблю играть в игры.</label><br>
-    <label><input type="radio" name="v1" value="0"> Я люблю смотреть мультфильмы.</label><br>
-    <label><input type="radio" name="v1" value="0"> Я люблю кататься на велосипеде.</label><br>
+    <label><input type="radio" name="v1" value="1"> играть в прятки</label><br>
+    <label><input type="radio" name="v1" value="0"> играть в догонялки</label><br>
+    <label><input type="radio" name="v1" value="0"> играть в шахматы</label><br>
 
     <!-- Q2 -->
-    <p>2) AI Bayan:
-      <button class="btn" onclick="speakVocab('She likes drawing pictures.')">▶ Play</button>
+    <p>2) Word: <b>play tag</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('To play tag means to run and touch other children in a chasing game.')">▶ Play</button>
       <button class="btn" onclick="stopBayan()">⏹ Stop</button>
     </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v2" value="0"> Она любит смотреть телевизор.</label><br>
-    <label><input type="radio" name="v2" value="1"> Она любит рисовать картинки.</label><br>
-    <label><input type="radio" name="v2" value="0"> Она любит слушать музыку.</label><br>
+    <label><input type="radio" name="v2" value="1"> играть в догонялки</label><br>
+    <label><input type="radio" name="v2" value="0"> играть в прятки</label><br>
+    <label><input type="radio" name="v2" value="0"> играть на пианино</label><br>
 
     <!-- Q3 -->
-    <p>3) AI Bayan:
-      <button class="btn" onclick="speakVocab('We don’t like dancing.')">▶ Play</button>
+    <p>3) Word: <b>fly a kite</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('To fly a kite means to play with a kite in the sky on a windy day.')">▶ Play</button>
       <button class="btn" onclick="stopBayan()">⏹ Stop</button>
     </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v3" value="0"> Мы любим танцевать.</label><br>
-    <label><input type="radio" name="v3" value="1"> Мы не любим танцевать.</label><br>
-    <label><input type="radio" name="v3" value="0"> Мы любим играть в футбол.</label><br>
+    <label><input type="radio" name="v3" value="1"> запускать воздушного змея</label><br>
+    <label><input type="radio" name="v3" value="0"> летать на самолёте</label><br>
+    <label><input type="radio" name="v3" value="0"> играть в настольные игры</label><br>
 
-    <button class="btn" onclick="checkVocab()">Check ✅</button>
+    <!-- Q4 -->
+    <p>4) Word: <b>go fishing</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('To go fishing means to catch fish in a river or a lake.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <label><input type="radio" name="v4" value="1"> ходить на рыбалку</label><br>
+    <label><input type="radio" name="v4" value="0"> купаться в бассейне</label><br>
+    <label><input type="radio" name="v4" value="0"> кататься на коньках</label><br>
+
+    <!-- Q5 -->
+    <p>5) Word: <b>ride a bike</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('To ride a bike means to go somewhere on a bicycle.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <label><input type="radio" name="v5" value="1"> ездить на велосипеде</label><br>
+    <label><input type="radio" name="v5" value="0"> ездить на автобусе</label><br>
+    <label><input type="radio" name="v5" value="0"> летать на вертолёте</label><br>
+
+    <!-- Q6 -->
+    <p>6) Word: <b>skip</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('To skip means to jump over a rope again and again.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <label><input type="radio" name="v6" value="1"> прыгать через скакалку</label><br>
+    <label><input type="radio" name="v6" value="0"> спрыгивать с дерева</label><br>
+    <label><input type="radio" name="v6" value="0"> плавать под водой</label><br>
+
+    <button class="btn" onclick="checkVocab()">Check vocabulary ✅</button>
     <div id="vocabStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- ========== GRAMMAR ========== -->
+  <!-- ========== GRAMMAR (Present Continuous + Let's) ========== -->
   <section>
-    <h3>📘 GRAMMAR — I like / I don’t like</h3>
+    <h3>📘 Grammar — What are they doing? <span class="round-label">Grammar</span></h3>
 
-    <p><b>1. Read:</b></p>
+    <p><b>Present Continuous:</b></p>
     <p>
-      We use <b>I like</b> + verb + -ing to talk about what we enjoy.<br>
-      I like playing games. / I don’t like dancing.
+      I’m playing. You’re playing. He / She’s playing. They’re playing.<br>
+      We use it for actions <b>now</b>: “They’re playing hide-and-seek.”
     </p>
 
-    <p><b>2. Choose the correct option:</b></p>
-    <p>1) I ___ playing games.</p>
-    <label><input type="radio" name="q1" value="like"> like</label><br>
-    <label><input type="radio" name="q1" value="likes"> likes</label><br>
-    <label><input type="radio" name="q1" value="dont like"> don’t like</label><br>
+    <p><b>Choose the correct answer:</b></p>
 
-    <p>2) She ___ dancing.</p>
-    <label><input type="radio" name="q2" value="dont like"> don’t like</label><br>
-    <label><input type="radio" name="q2" value="doesnt like"> doesn’t like</label><br>
-    <label><input type="radio" name="q2" value="like"> like</label><br>
+    <p>1) Look! They ___ football in the park.</p>
+    <label><input type="radio" name="g1" value="areplaying"> are playing</label><br>
+    <label><input type="radio" name="g1" value="play"> play</label><br>
 
-    <p>3) They ___ watching cartoons.</p>
-    <label><input type="radio" name="q3" value="likes"> likes</label><br>
-    <label><input type="radio" name="q3" value="like"> like</label><br>
-    <label><input type="radio" name="q3" value="dont like"> don’t like</label><br>
+    <p>2) She ___ a kite now.</p>
+    <label><input type="radio" name="g2" value="isflying"> is flying</label><br>
+    <label><input type="radio" name="g2" value="flies"> flies</label><br>
 
-    <button class="btn" onclick="checkGrammar()">Check ✅</button>
+    <p>3) We ___ in the lake at the moment.</p>
+    <label><input type="radio" name="g3" value="arefishing"> are fishing</label><br>
+    <label><input type="radio" name="g3" value="fish"> fish</label><br>
+
+    <hr>
+
+    <p><b>Let’s + verb:</b> Let’s play tag! Let’s fly a kite!</p>
+
+    <p>4) ___ play hide-and-seek behind the tree!</p>
+    <label><input type="radio" name="g4" value="lets"> Let’s</label><br>
+    <label><input type="radio" name="g4" value="let"> Let</label><br>
+
+    <p><b>Pronouns:</b> they / them, he / him, she / her</p>
+
+    <p>5) Look at Tom and Sue. I can see ___ in the park.</p>
+    <label><input type="radio" name="g5" value="them"> them</label><br>
+    <label><input type="radio" name="g5" value="they"> they</label><br>
+
+    <button class="btn" onclick="checkGrammar()">Check grammar ✅</button>
     <div id="grammarStars" style="font-size:1.1rem;margin-top:8px;"></div>
 
-    <p><b>3. Write your own sentence:</b> (practice)</p>
-    <p>Example: I like listening to music.</p>
+    <p><b>Write your own Present Continuous sentence:</b></p>
+    <p>Example: We are playing tag in the yard.</p>
     <input id="writeGrammar" type="text" placeholder="Type your sentence here...">
   </section>
 
-  <!-- ========== LISTENING ========== -->
+  <!-- ========== LISTENING (парковая сцена из WB) ========== -->
   <section>
-    <h3>🎧 LISTENING — True or False</h3>
+    <h3>🎧 Listening — Children at the park <span class="round-label">Listening</span></h3>
 
     <p><b>1. Listen to AI Bayan:</b></p>
     <button class="btn" onclick="bayanListening()">▶ Play</button>
     <button class="btn" onclick="stopBayan()">⏹ Stop</button>
 
-    <p style="margin-top:8px;font-size:0.9rem;color:#444;">
-      (Teacher text)<br>
-      Tom: Hi! I’m Tom. I like playing football and riding my bike.<br>
-      Anna: Hello! I’m Anna. I like drawing and watching cartoons.<br>
-      Ben: I don’t like dancing, but I like listening to music.
+    <p style="margin-top:8px;font-size:0.9rem;color:#4b2e91;">
+      Listen about the children in the park. Then choose True or False.
     </p>
 
     <p><b>2. True or False?</b></p>
 
-    <p>1) Tom likes riding his bike.
-      <select id="t1">
-        <option>—</option><option>True</option><option>False</option>
-      </select>
-    </p>
+    <p>1) Two boys are playing hide-and-seek behind a big tree.</p>
+    <select id="t1">
+      <option>—</option><option>True</option><option>False</option>
+    </select>
 
-    <p>2) Anna likes playing football.
-      <select id="t2">
-        <option>—</option><option>True</option><option>False</option>
-      </select>
-    </p>
+    <p>2) Anna and her sister are riding their bikes around the park.</p>
+    <select id="t2">
+      <option>—</option><option>True</option><option>False</option>
+    </select>
 
-    <p>3) Ben likes listening to music.
-      <select id="t3">
-        <option>—</option><option>True</option><option>False</option>
-      </select>
-    </p>
+    <p>3) Two children are flying a colourful kite in the sky.</p>
+    <select id="t3">
+      <option>—</option><option>True</option><option>False</option>
+    </select>
 
-    <button class="btn" onclick="checkListening()">Check ✅</button>
+    <button class="btn" onclick="checkListening()">Check listening ✅</button>
     <div id="listenStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- ========== READING ========== -->
+  <!-- ========== READING (короткий текст про Бена) ========== -->
   <section>
-    <h3>📖 READING — After-school fun</h3>
+    <h3>📖 Reading — Ben at the park <span class="round-label">Reading</span></h3>
 
     <p><b>1. Read or listen:</b></p>
     <button class="btn" onclick="bayanReading()">▶ Play</button>
     <button class="btn" onclick="stopBayan()">⏹ Stop</button>
 
-    <div style="margin-top:10px; background:#fff8dc; border-radius:10px; padding:10px;">
+    <div style="margin-top:10px; background:#f5ebff; border-radius:10px; padding:10px;">
       <p>
-        After school, Sam goes home and does his homework.<br>
-        Then he plays games on the computer and listens to music.<br>
-        His sister, Aida, likes drawing pictures and reading comics.<br>
-        In the evening, they watch cartoons together.
+        Hi! I’m Ben. I’m at the park with my friends today.  
+        We’re playing hide-and-seek and flying a kite.  
+        I like playing tag and riding my bike.  
+        I don’t like fishing, but I like skipping with a rope.  
+        We are having a lot of fun in the park.
       </p>
     </div>
 
     <p><b>2. Answer the questions:</b></p>
     <ol>
-      <li>What does Sam do after school?<br>
+      <li>What games does Ben play at the park?<br>
         <input id="r1" type="text" placeholder="Your answer..."></li><br>
-      <li>What does Aida like doing?<br>
+      <li>Does Ben like fishing?<br>
         <input id="r2" type="text" placeholder="Your answer..."></li><br>
-      <li>What do they do in the evening?<br>
+      <li>What does he like doing with a rope?<br>
         <input id="r3" type="text" placeholder="Your answer..."></li>
     </ol>
 
-    <button class="btn" onclick="checkReading()">Check ✅</button>
+    <button class="btn" onclick="checkReading()">Check reading ✅</button>
     <div id="readStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- ========== SPEAKING ========== -->
+  <!-- ========== SPEAKING (про свои игры) ========== -->
   <section>
-    <h3>🗣️ SPEAKING — Talk with AI Bayan</h3>
+    <h3>🗣 Speaking — My fun games <span class="round-label">Speaking</span></h3>
 
     <p><b>1. Listen to questions:</b></p>
     <button class="btn" onclick="bayanSpeaking()">▶ Play</button>
@@ -254,9 +301,9 @@
 
     <p style="margin-top:8px;"><b>Questions:</b></p>
     <ul>
-      <li>What do you like doing?</li>
-      <li>What don’t you like doing?</li>
-      <li>What do you do after school?</li>
+      <li>What is your favourite game in the park?</li>
+      <li>Do you like playing hide-and-seek or tag?</li>
+      <li>What do you do at the weekend for fun?</li>
     </ul>
 
     <p><b>2. Answer into the microphone:</b></p>
@@ -266,40 +313,33 @@
     <div id="speakStars" style="font-size:1.1rem;margin-top:10px;"></div>
   </section>
 
-  <!-- ========== WRITING ========== -->
+  <!-- ========== WRITING (как в WB: My favourite game) ========== -->
   <section>
-    <h3>✍️ WRITING — Translation & Dictation</h3>
+    <h3>✍ Writing — My favourite game <span class="round-label">Writing</span></h3>
 
-    <p><b>A. Translate into English:</b></p>
-    <p>1) Я люблю рисовать картинки.</p>
-    <textarea id="w1" rows="2" placeholder="Your translation..."></textarea>
+    <p><b>A. Short sentences</b></p>
 
-    <p>2) Я не люблю танцевать.</p>
-    <textarea id="w2" rows="2" placeholder="Your translation..."></textarea>
+    <p>1) Write a sentence: “My favourite game is …”</p>
+    <input id="w1" type="text" placeholder="Example: My favourite game is hide-and-seek.">
 
-    <p>3) Мы любим играть в игры после школы.</p>
-    <textarea id="w3" rows="2" placeholder="Your translation..."></textarea>
+    <p>2) Write one sentence in Present Continuous about children in the park.</p>
+    <input id="w2" type="text" placeholder="Example: They are playing tag in the park.">
 
-    <button class="btn" onclick="checkWritingTranslate()">Check translation ✅</button>
-    <div id="writeTransStars" style="font-size:1.1rem;margin-top:6px;"></div>
+    <p>3) Write one sentence with <b>Let’s …</b></p>
+    <input id="w3" type="text" placeholder="Example: Let’s fly a kite!">
+
+    <button class="btn" onclick="checkWritingSentences()">Check sentences ✅</button>
+    <div id="writeSentStars" style="font-size:1.1rem;margin-top:6px;"></div>
 
     <hr>
 
-    <p><b>B. Dictation by AI Bayan:</b></p>
-    <p>Listen and write the text. Pay attention to punctuation.</p>
-    <button class="btn" onclick="bayanWords()">▶ Words</button>
-    <button class="btn" onclick="bayanDictation()">▶ Text</button>
+    <p><b>B. My fun text</b></p>
+    <p>Write 3–5 sentences about your games and free time. Use Present Simple or Present Continuous and <b>Let’s …</b></p>
+    <button class="btn" onclick="bayanDictation()">▶ Example</button>
     <button class="btn" onclick="stopBayan()">⏹ Stop</button>
 
-    <p style="margin-top:6px;font-size:0.85rem;color:#444;">
-      (Teacher text)<br>
-      After school I play games and listen to music.  
-      At the weekend I ride my bike and watch cartoons.  
-      I don’t like dancing but I like drawing pictures.
-    </p>
-
-    <textarea id="writeBox" rows="5" placeholder="Write the text here..."></textarea><br>
-    <button class="btn" onclick="checkDictation()">Check dictation ✅</button>
+    <textarea id="writeBox" rows="5" placeholder="Write about your games here..."></textarea><br>
+    <button class="btn" onclick="checkDictation()">Check my text ✅</button>
     <div id="dictStars" style="font-size:1.1rem;margin-top:6px;"></div>
   </section>
 
@@ -310,7 +350,7 @@
 
     <button class="btn" onclick="finishLesson()">Save & Show Result ✅</button>
 
-    <div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#003366;"></div>
+    <div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#5a2ea6;"></div>
 
     <div style="margin-top:18px;">
       <button class="btn" onclick="goBack()">⬅ Back</button>
@@ -319,13 +359,13 @@
     </div>
   </section>
 
-  <p style="font-size:0.8rem;color:#444;margin-top:10px;text-align:center;">
+  <p style="font-size:0.8rem;color:#eee;margin-top:10px;text-align:center;">
     Created by Bayan team
   </p>
 </main>
 
 <script>
-  // ОБЩИЙ СЧЁТ ЗВЁЗД
+  // ⭐ TOTAL STARS (no limit)
   let totalStars = 0;
   function addStar() {
     totalStars++;
@@ -338,10 +378,10 @@
     if(fs) fs.innerText = totalStars;
   }
 
-  // ФЛАГИ, чтобы не давать за один и тот же ответ бесконечно звёзды
+  // флаги, чтобы не начислять звезду второй раз
   const scored = {
-    v1:false, v2:false, v3:false,
-    g1:false, g2:false, g3:false,
+    v1:false, v2:false, v3:false, v4:false, v5:false, v6:false,
+    g1:false, g2:false, g3:false, g4:false, g5:false,
     l1:false, l2:false, l3:false,
     r1:false, r2:false, r3:false,
     w1:false, w2:false, w3:false,
@@ -351,7 +391,7 @@
   // ---------- TTS (AI Bayan voice) ----------
   function speakBayanText(text){
     if(!('speechSynthesis' in window)){
-      alert("Ваш браузер не поддерживает озвучку 😔");
+      alert("Your browser does not support speech synthesis 😔");
       return;
     }
     const utter = new SpeechSynthesisUtterance(text);
@@ -376,31 +416,29 @@
 
   function checkVocab(){
     let starsHere = 0;
-
     const q1 = document.querySelector('input[name="v1"]:checked');
-    if(q1 && q1.value === "1" && !scored.v1){
-      scored.v1 = true;
-      addStar();
-      starsHere++;
-    }
+    if(q1 && q1.value === "1" && !scored.v1){ scored.v1=true; addStar(); starsHere++; }
+
     const q2 = document.querySelector('input[name="v2"]:checked');
-    if(q2 && q2.value === "1" && !scored.v2){
-      scored.v2 = true;
-      addStar();
-      starsHere++;
-    }
+    if(q2 && q2.value === "1" && !scored.v2){ scored.v2=true; addStar(); starsHere++; }
+
     const q3 = document.querySelector('input[name="v3"]:checked');
-    if(q3 && q3.value === "1" && !scored.v3){
-      scored.v3 = true;
-      addStar();
-      starsHere++;
-    }
+    if(q3 && q3.value === "1" && !scored.v3){ scored.v3=true; addStar(); starsHere++; }
+
+    const q4 = document.querySelector('input[name="v4"]:checked');
+    if(q4 && q4.value === "1" && !scored.v4){ scored.v4=true; addStar(); starsHere++; }
+
+    const q5 = document.querySelector('input[name="v5"]:checked');
+    if(q5 && q5.value === "1" && !scored.v5){ scored.v5=true; addStar(); starsHere++; }
+
+    const q6 = document.querySelector('input[name="v6"]:checked');
+    if(q6 && q6.value === "1" && !scored.v6){ scored.v6=true; addStar(); starsHere++; }
 
     const box = document.getElementById('vocabStars');
     if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " for correct answers!";
+      box.innerHTML = "⭐ +" + starsHere + " vocabulary stars!";
     } else {
-      box.innerHTML = "Check your answers. Correct ones already counted or still wrong.";
+      box.innerHTML = "No new stars. Check answers or you already got them.";
     }
   }
 
@@ -408,26 +446,20 @@
   function checkGrammar(){
     let starsHere = 0;
 
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    if(q1 && q1.value === "like" && !scored.g1){
-      scored.g1 = true;
-      addStar();
-      starsHere++;
-    }
+    const q1 = document.querySelector('input[name="g1"]:checked');
+    if(q1 && q1.value === "areplaying" && !scored.g1){ scored.g1=true; addStar(); starsHere++; }
 
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    if(q2 && q2.value === "doesnt like" && !scored.g2){
-      scored.g2 = true;
-      addStar();
-      starsHere++;
-    }
+    const q2 = document.querySelector('input[name="g2"]:checked');
+    if(q2 && q2.value === "isflying" && !scored.g2){ scored.g2=true; addStar(); starsHere++; }
 
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    if(q3 && q3.value === "like" && !scored.g3){
-      scored.g3 = true;
-      addStar();
-      starsHere++;
-    }
+    const q3 = document.querySelector('input[name="g3"]:checked');
+    if(q3 && q3.value === "arefishing" && !scored.g3){ scored.g3=true; addStar(); starsHere++; }
+
+    const q4 = document.querySelector('input[name="g4"]:checked');
+    if(q4 && q4.value === "lets" && !scored.g4){ scored.g4=true; addStar(); starsHere++; }
+
+    const q5 = document.querySelector('input[name="g5"]:checked');
+    if(q5 && q5.value === "them" && !scored.g5){ scored.g5=true; addStar(); starsHere++; }
 
     const box = document.getElementById('grammarStars');
     if(starsHere > 0){
@@ -439,9 +471,14 @@
 
   // ---------- LISTENING ----------
   function bayanListening(){
-    const t = "Tom: Hi, I am Tom. I like playing football and riding my bike. " +
-              "Anna: Hello, I am Anna. I like drawing and watching cartoons. " +
-              "Ben: I do not like dancing, but I like listening to music.";
+    const t =
+      "Look at the children in the park. " +
+      "Two boys are playing hide and seek behind a big tree. " +
+      "They are laughing and running. " +
+      "Anna and her sister are not riding their bikes. " +
+      "They are skipping with a long rope near the bench. " +
+      "In the middle of the park, two children are flying a colourful kite in the sky. " +
+      "Everyone is having fun.";
     speakBayanText(t);
   }
 
@@ -449,19 +486,13 @@
     let starsHere = 0;
 
     if(document.getElementById('t1').value === 'True' && !scored.l1){
-      scored.l1 = true;
-      addStar();
-      starsHere++;
+      scored.l1 = true; addStar(); starsHere++;
     }
     if(document.getElementById('t2').value === 'False' && !scored.l2){
-      scored.l2 = true;
-      addStar();
-      starsHere++;
+      scored.l2 = true; addStar(); starsHere++;
     }
     if(document.getElementById('t3').value === 'True' && !scored.l3){
-      scored.l3 = true;
-      addStar();
-      starsHere++;
+      scored.l3 = true; addStar(); starsHere++;
     }
 
     const box = document.getElementById('listenStars');
@@ -475,10 +506,11 @@
   // ---------- READING ----------
   function bayanReading(){
     const t =
-      "After school, Sam goes home and does his homework. " +
-      "Then he plays games on the computer and listens to music. " +
-      "His sister, Aida, likes drawing pictures and reading comics. " +
-      "In the evening, they watch cartoons together.";
+      "Hi, I am Ben. I am at the park with my friends today. " +
+      "We are playing hide and seek and flying a kite. " +
+      "I like playing tag and riding my bike. " +
+      "I do not like fishing, but I like skipping with a rope. " +
+      "We are having a lot of fun in the park.";
     speakBayanText(t);
   }
 
@@ -488,20 +520,22 @@
     const a2 = document.getElementById('r2').value.toLowerCase();
     const a3 = document.getElementById('r3').value.toLowerCase();
 
-    if(!scored.r1 && (a1.includes("homework") || a1.includes("play") || a1.includes("games"))){
-      scored.r1 = true;
-      addStar();
-      starsHere++;
+    // games: hide-and-seek, kite, tag, bike
+    if(!scored.r1 &&
+       (a1.includes("hide") || a1.includes("seek") ||
+        a1.includes("kite") || a1.includes("tag") ||
+        a1.includes("bike"))){
+      scored.r1 = true; addStar(); starsHere++;
     }
-    if(!scored.r2 && (a2.includes("drawing") || a2.includes("pictures") || a2.includes("reading"))){
-      scored.r2 = true;
-      addStar();
-      starsHere++;
+    // he doesn't like fishing
+    if(!scored.r2 &&
+       (a2.includes("no") || a2.includes("doesn") || a2.includes("do not") || a2.includes("don't"))){
+      scored.r2 = true; addStar(); starsHere++;
     }
-    if(!scored.r3 && (a3.includes("watch") || a3.includes("cartoon"))){
-      scored.r3 = true;
-      addStar();
-      starsHere++;
+    // he likes skipping with a rope
+    if(!scored.r3 &&
+       (a3.includes("skip") || a3.includes("rope"))){
+      scored.r3 = true; addStar(); starsHere++;
     }
 
     const box = document.getElementById('readStars');
@@ -515,9 +549,11 @@
   // ---------- SPEAKING ----------
   let recognition;
   function bayanSpeaking(){
-    const t = "Now let's talk. What do you like doing? " +
-              "What don't you like doing? " +
-              "What do you do after school?";
+    const t =
+      "Now let us talk about your games. " +
+      "What is your favourite game in the park? " +
+      "Do you like playing hide and seek or tag? " +
+      "What do you do at the weekend for fun?";
     speakBayanText(t);
   }
 
@@ -532,9 +568,13 @@
     recognition.onresult = function(event){
       const speech = event.results[0][0].transcript.toLowerCase();
       let starsHere = 0;
-      // простая логика: если ученик сказал "i like" и какое-то хобби
-      if(speech.includes("i like") || speech.includes("i dont like") || speech.includes("after school")){
-        // за каждое успешное произнесение +1
+      if(
+        speech.includes("hide and seek") || speech.includes("tag") ||
+        speech.includes("kite") || speech.includes("bike") ||
+        speech.includes("fishing") || speech.includes("skip") ||
+        speech.includes("park") || speech.includes("weekend") ||
+        speech.includes("game") || speech.includes("fun")
+      ){
         addStar();
         starsHere++;
       }
@@ -542,7 +582,8 @@
       if(starsHere > 0){
         box.innerHTML = "⭐ +" + starsHere + " speaking star!<br>You said: " + speech;
       } else {
-        box.innerHTML = "You said: " + speech + "<br>Try to say: 'I like ...' or 'I don't like ...'";
+        box.innerHTML = "You said: " + speech +
+          "<br>Try to use words like hide-and-seek, tag, kite, bike, park, weekend.";
       }
     };
     recognition.start();
@@ -552,61 +593,65 @@
     if(recognition) recognition.stop();
   }
 
-  // ---------- WRITING: TRANSLATION ----------
-  function checkWritingTranslate(){
+  // ---------- WRITING: SENTENCES ----------
+  function checkWritingSentences(){
     let starsHere = 0;
-    const a1 = document.getElementById('w1').value.toLowerCase();
-    const a2 = document.getElementById('w2').value.toLowerCase();
-    const a3 = document.getElementById('w3').value.toLowerCase();
+    const s1 = document.getElementById('w1').value.toLowerCase();
+    const s2 = document.getElementById('w2').value.toLowerCase();
+    const s3 = document.getElementById('w3').value.toLowerCase();
 
-    if(!scored.w1 && a1.includes("i like") && (a1.includes("draw") || a1.includes("drawing"))){
-      scored.w1 = true;
-      addStar();
-      starsHere++;
-    }
-    if(!scored.w2 && a2.includes("i don't like") && a2.includes("dancing")){
-      scored.w2 = true;
-      addStar();
-      starsHere++;
-    }
-    if(!scored.w3 && a3.includes("we like") && (a3.includes("play") || a3.includes("games"))){
-      scored.w3 = true;
-      addStar();
-      starsHere++;
+    if(!scored.w1 &&
+       s1.includes("my favourite game is")){
+      scored.w1 = true; addStar(); starsHere++;
     }
 
-    const box = document.getElementById('writeTransStars');
+    if(!scored.w2 &&
+       (s2.includes("are playing") || s2.includes("is playing"))){
+      scored.w2 = true; addStar(); starsHere++;
+    }
+
+    if(!scored.w3 &&
+       s3.includes("let's")){
+      scored.w3 = true; addStar(); starsHere++;
+    }
+
+    const box = document.getElementById('writeSentStars');
     if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " translation stars!";
+      box.innerHTML = "⭐ +" + starsHere + " writing stars!";
     } else {
       box.innerHTML = "No new stars. Check your sentences or you already got them.";
     }
   }
 
-  // ---------- WRITING: DICTATION ----------
-  function bayanWords(){
-    const t = "play games, ride my bike, draw pictures, watch cartoons, listen to music.";
-    speakBayanText(t);
-  }
-
+  // ---------- WRITING: TEXT ----------
   function bayanDictation(){
-    const t = "After school I play games and listen to music. " +
-              "At the weekend I ride my bike and watch cartoons. " +
-              "I do not like dancing, but I like drawing pictures.";
+    const t =
+      "Here is an example. " +
+      "My favourite game is hide and seek. " +
+      "I like playing tag and flying a kite with my friends. " +
+      "At the weekend, we go to the park and ride our bikes. " +
+      "Let us play together and have fun.";
     speakBayanText(t);
   }
 
   function checkDictation(){
     const text = document.getElementById("writeBox").value.toLowerCase();
-    const keywords = ["play","games","listen","music","bike","cartoons","drawing"];
+    const keywords = [
+      "my favourite game",
+      "hide and seek",
+      "tag",
+      "kite",
+      "bike",
+      "park",
+      "let's",
+      "have fun"
+    ];
     let found = 0;
     for(const w of keywords){
       if(text.includes(w)) found++;
     }
-    let punctuationOk = (text.split(".").length - 1) >= 2;
-
     let starsHere = 0;
-    if(!scored.dict && found >= 5 && punctuationOk){
+    if(!scored.dict && found >= 3){
       scored.dict = true;
       addStar();
       starsHere++;
@@ -614,11 +659,9 @@
 
     const box = document.getElementById('dictStars');
     if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " dictation star!";
-    } else if(found >= 4){
-      box.innerHTML = "Good, but check words and punctuation.";
+      box.innerHTML = "⭐ +" + starsHere + " writing star!";
     } else {
-      box.innerHTML = "Listen again and try to write all key words with dots.";
+      box.innerHTML = "Try to write 3–5 sentences with: my favourite game, I like, at the weekend, let’s...";
     }
   }
 
@@ -627,17 +670,16 @@
     document.getElementById("finalStars").innerText = totalStars;
     let msg = "";
     if(totalStars >= 20){
-      msg = "🌟🌟🌟 Amazing! Super star!";
+      msg = "🌟🌟🌟 Great job! You had fun and you know many games!";
     } else if(totalStars >= 12){
-      msg = "🌟🌟 Great job! You worked hard!";
+      msg = "🌟🌟 Very good! You understand this topic well!";
     } else if(totalStars >= 6){
-      msg = "🌟 Good start! Keep practicing!";
+      msg = "🌟 Good start! Keep practising and playing with English!";
     } else {
-      msg = "Keep going! Every star is progress!";
+      msg = "You finished the lesson! Every star is progress!";
     }
     document.getElementById("finalMessage").innerText = msg;
 
-    // запись в журнал
     const studentName = localStorage.getItem("studentName") || "Unknown Student";
     const allResults = JSON.parse(localStorage.getItem("teacherJournal") || "{}");
     allResults[studentName] = allResults[studentName] || {};
@@ -645,7 +687,7 @@
     localStorage.setItem("teacherJournal", JSON.stringify(allResults));
     localStorage.setItem("lesson1Stars", totalStars);
 
-    alert("Lesson saved! " + studentName + " got " + totalStars + "⭐.");
+    alert("Lesson 1 saved! " + studentName + " got " + totalStars + "⭐.");
   }
 
   function goBack(){ window.location.href = "index.html"; }
