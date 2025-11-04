@@ -1,175 +1,676 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Theme 7 — Children’s Rights & Responsibilities</title>
-<style>
-  body {
-    font-family: Verdana, sans-serif;
-    background: linear-gradient(180deg,#fff6e5 0%,#f3e0b8 100%);
-    margin: 0;
-    color: #002b5c;
-    text-align: center;
-  }
-  header {
-    background: linear-gradient(90deg,#003366,#004b99);
-    color: white;
-    padding: 0.6rem 1rem;
-    border-bottom: 5px solid gold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .logo {
-    width: 55px; height: 55px;
-    border-radius: 50%;
-    border: 3px solid gold;
-    object-fit: cover;
-    background: white;
-  }
-  h2 {color:#003366;}
-  section {
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding: 15px;
-    max-width: 800px;
-    margin: 15px auto;
-    text-align: left;
-    line-height: 1.5;
-  }
-  h3 {
-    background: #003366;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 8px;
-  }
-  .btn {
-    display:inline-block;
-    margin:6px;
-    padding:8px 14px;
-    border:none;
-    border-radius:10px;
-    background:#003366;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-  }
-  .btn:hover {background:gold; color:#003366;}
-  #resultBox {
-    background:#fff3cd;
-    border:2px solid gold;
-    border-radius:10px;
-    padding:10px;
-    margin:20px auto;
-    max-width:400px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme 7 — Travelling</title>
+  <style>
+    body {
+      font-family: Verdana, sans-serif;
+      background: linear-gradient(180deg,#e6f7ff 0%,#c7e0ff 100%);
+      margin: 0;
+      color: #003055;
+      text-align: center;
+    }
+    header {
+      background: linear-gradient(90deg,#004080,#1d6bd6);
+      color: white;
+      padding: 0.6rem 1rem;
+      border-bottom: 5px solid #ffcc66;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      width: 55px; height: 55px;
+      border-radius: 50%;
+      border: 3px solid #ffcc66;
+      object-fit: cover;
+      background: white;
+    }
+    h2 {color:#004080;}
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      max-width: 800px;
+      margin: 15px auto;
+      text-align: left;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+    h3 {
+      background: #004080;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .btn {
+      display:inline-block;
+      margin:6px;
+      padding:8px 14px;
+      border:none;
+      border-radius:10px;
+      background:#004080;
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+      font-size:0.9rem;
+    }
+    .btn:hover {background:#ffcc66; color:#004080;}
+    textarea {
+      width:100%;
+      border-radius:10px;
+      border:1px solid #ccc;
+      padding:6px;
+      font-family:inherit;
+      font-size:0.9rem;
+    }
+    input[type="text"] {
+      width:100%;
+      max-width:380px;
+      border-radius:8px;
+      border:1px solid #ccc;
+      padding:4px 6px;
+      font-family:inherit;
+      font-size:0.9rem;
+    }
+    select {
+      border-radius:8px;
+      padding:2px 4px;
+      font-size:0.9rem;
+    }
+  </style>
 </head>
 <body>
 <header>
   <div style="display:flex;align-items:center;gap:10px;">
-    <img src="logo.png" class="logo">
+    <img src="logo.png" class="logo" alt="AI Bayan logo">
     <div>
-      <h1 style="margin:0;font-size:1rem;">Theme 7 — Children’s Rights & Responsibilities</h1>
-      <p style="margin:0;color:#ffea99;">English with AI Bayan</p>
+      <h1 style="margin:0;font-size:1rem;">Theme 7 — Travelling</h1>
+      <p style="margin:0;color:#ffe9b5;">English with AI Bayan</p>
     </div>
   </div>
 </header>
 
 <main>
-  <h2>📜 Children’s Rights & Responsibilities</h2>
-  <p style="font-style:italic;">Let’s learn about our rights and duties!</p>
+  <h2>✈️ Travelling</h2>
+  <p style="font-style:italic;">Transport, places and past trips</p>
+  <p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
 
-  <!-- Vocabulary -->
+  <!-- ========== VOCABULARY (transport & places) ========== -->
   <section>
-    <h3>🧠 Vocabulary</h3>
+    <h3>🧠 VOCABULARY — Transport and places</h3>
+
+    <p><b>Listen to AI Bayan. Choose the correct meaning.</b></p>
+
+    <!-- Q1 -->
+    <p>1) AI Bayan:
+      <button class="btn" onclick="speakVocab('We go to Astana by train.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <p>Choose the correct meaning:</p>
+    <label><input type="radio" name="v1" value="1"> We travel to Astana on a train.</label><br>
+    <label><input type="radio" name="v1" value="0"> We travel to Astana by plane.</label><br>
+    <label><input type="radio" name="v1" value="0"> We walk to Astana.</label><br>
+
+    <!-- Q2 -->
+    <p>2) AI Bayan:
+      <button class="btn" onclick="speakVocab('They go to school on foot.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <p>Choose the correct meaning:</p>
+    <label><input type="radio" name="v2" value="1"> They walk to school.</label><br>
+    <label><input type="radio" name="v2" value="0"> They go to school by bus.</label><br>
+    <label><input type="radio" name="v2" value="0"> They go to school by car.</label><br>
+
+    <!-- Q3 -->
+    <p>3) AI Bayan:
+      <button class="btn" onclick="speakVocab('We stay in a hotel near the park.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <p>Choose the correct meaning:</p>
+    <label><input type="radio" name="v3" value="1"> Our hotel is close to the park.</label><br>
+    <label><input type="radio" name="v3" value="0"> Our hotel is inside the park.</label><br>
+    <label><input type="radio" name="v3" value="0"> Our hotel is in another city.</label><br>
+
+    <!-- Q4 -->
+    <p>4) AI Bayan:
+      <button class="btn" onclick="speakVocab('There are many people at the airport.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <p>Choose the correct meaning:</p>
+    <label><input type="radio" name="v4" value="1"> A lot of people are in the airport.</label><br>
+    <label><input type="radio" name="v4" value="0"> There are no people at the airport.</label><br>
+    <label><input type="radio" name="v4" value="0"> Only one person is at the airport.</label><br>
+
+    <!-- Q5 -->
+    <p>5) AI Bayan:
+      <button class="btn" onclick="speakVocab('We travel by bus to the city.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <p>Choose the correct meaning:</p>
+    <label><input type="radio" name="v5" value="1"> We go to the city on a bus.</label><br>
+    <label><input type="radio" name="v5" value="0"> We go to the city by plane.</label><br>
+    <label><input type="radio" name="v5" value="0"> We go to the city by train.</label><br>
+
+    <!-- Q6 -->
+    <p>6) AI Bayan:
+      <button class="btn" onclick="speakVocab('Last summer, I was in Astana with my family.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <p>Choose the correct meaning:</p>
+    <label><input type="radio" name="v6" value="1"> I visited Astana with my family last summer.</label><br>
+    <label><input type="radio" name="v6" value="0"> I live in Astana now.</label><br>
+    <label><input type="radio" name="v6" value="0"> I was alone in Astana.</label><br>
+
+    <button class="btn" onclick="checkVocab()">Check ✅</button>
+    <div id="vocabStars" style="font-size:1.1rem;margin-top:8px;"></div>
+  </section>
+
+  <!-- ========== GRAMMAR (was/were, there was/were) ========== -->
+  <section>
+    <h3>📘 GRAMMAR — Was / Were & There was / There were</h3>
+
+    <p><b>1. Past of “to be”:</b></p>
+    <p>
+      I / he / she / it <b>was</b> …<br>
+      You / we / they <b>were</b> …
+    </p>
+
+    <p><b>2. There was / There were:</b></p>
+    <p>
+      <b>There was</b> one thing: There was a big hotel. <br>
+      <b>There were</b> many things: There were many people.
+    </p>
+
+    <p><b>Choose the correct form:</b></p>
+
+    <p>1) I ___ in Astana last weekend.</p>
+    <label><input type="radio" name="q1" value="was"> was</label><br>
+    <label><input type="radio" name="q1" value="were"> were</label><br>
+
+    <p>2) They ___ very happy on the trip.</p>
+    <label><input type="radio" name="q2" value="was"> was</label><br>
+    <label><input type="radio" name="q2" value="were"> were</label><br>
+
+    <p>3) There ___ a big park near our hotel.</p>
+    <label><input type="radio" name="q3" value="was"> was</label><br>
+    <label><input type="radio" name="q3" value="were"> were</label><br>
+
+    <p>4) There ___ many cars in the street.</p>
+    <label><input type="radio" name="q4" value="was"> was</label><br>
+    <label><input type="radio" name="q4" value="were"> were</label><br>
+
+    <p>5) We ___ at the station at nine o’clock.</p>
+    <label><input type="radio" name="q5" value="was"> was</label><br>
+    <label><input type="radio" name="q5" value="were"> were</label><br>
+
+    <button class="btn" onclick="checkGrammar()">Check ✅</button>
+    <div id="grammarStars" style="font-size:1.1rem;margin-top:8px;"></div>
+
+    <p><b>Write your own sentence:</b> (practice)</p>
+    <p>Example: I was on holiday in the mountains last year.</p>
+    <input id="writeGrammar" type="text" placeholder="Type your sentence here...">
+  </section>
+
+  <!-- ========== LISTENING (A day in Astana) ========== -->
+  <section>
+    <h3>🎧 LISTENING — A day in Astana</h3>
+
+    <p><b>1. Listen to AI Bayan:</b></p>
+    <button class="btn" onclick="bayanListening()">▶ Play</button>
+    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+    <p style="margin-top:8px;font-size:0.9rem;color:#444;">
+      Listen about a short trip to Astana. Then choose True or False.
+    </p>
+
+    <p><b>2. True or False?</b></p>
+
+    <p>1) The family travelled to Astana by train.</p>
+    <select id="t1">
+      <option>—</option><option>True</option><option>False</option>
+    </select>
+
+    <p>2) They visited Baiterek Tower.</p>
+    <select id="t2">
+      <option>—</option><option>True</option><option>False</option>
+    </select>
+
+    <p>3) They had lunch in a small café in the park.</p>
+    <select id="t3">
+      <option>—</option><option>True</option><option>False</option>
+    </select>
+
+    <button class="btn" onclick="checkListening()">Check ✅</button>
+    <div id="listenStars" style="font-size:1.1rem;margin-top:8px;"></div>
+  </section>
+
+  <!-- ========== READING (My weekend trip) ========== -->
+  <section>
+    <h3>📖 READING — My weekend trip</h3>
+
+    <p><b>1. Read or listen:</b></p>
+    <button class="btn" onclick="bayanReading()">▶ Play</button>
+    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+    <div style="margin-top:10px; background:#f4fbff; border-radius:10px; padding:10px;">
+      <p>
+        Last weekend, I was in a big city with my parents.  
+        We travelled by bus and we stayed in a small hotel near the centre.  
+        On Saturday, we visited a museum and walked in a beautiful park.  
+        There were many people and many cars in the streets.  
+        On Sunday, we went to the river and took photos.  
+        It was a short trip, but it was very interesting.
+      </p>
+    </div>
+
+    <p><b>2. Answer the questions:</b></p>
+    <ol>
+      <li>How did they travel to the city?<br>
+        <input id="r1" type="text" placeholder="Your answer..."></li><br>
+      <li>What did they do on Saturday?<br>
+        <input id="r2" type="text" placeholder="Your answer..."></li><br>
+      <li>Was the trip interesting or boring?<br>
+        <input id="r3" type="text" placeholder="Your answer..."></li>
+    </ol>
+
+    <button class="btn" onclick="checkReading()">Check ✅</button>
+    <div id="readStars" style="font-size:1.1rem;margin-top:8px;"></div>
+  </section>
+
+  <!-- ========== SPEAKING ========== -->
+  <section>
+    <h3>🗣️ SPEAKING — Talk about your trip</h3>
+
+    <p><b>1. Listen to questions:</b></p>
+    <button class="btn" onclick="bayanSpeaking()">▶ Play</button>
+    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+    <p style="margin-top:8px;"><b>Questions:</b></p>
     <ul>
-      <li>right — право</li>
-      <li>responsibility — обязанность</li>
-      <li>education — образование</li>
-      <li>respect — уважать</li>
-      <li>help others — помогать другим</li>
-      <li>follow the rules — соблюдать правила</li>
+      <li>Where were you last weekend or last holiday?</li>
+      <li>How did you travel there?</li>
+      <li>What did you see or do?</li>
     </ul>
-    <p><b>Task:</b> Read and translate each word.</p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
+
+    <p><b>2. Answer into the microphone:</b></p>
+    <button class="btn" onclick="startSpeak()">🎙 Start recording</button>
+    <button class="btn" onclick="stopSpeak()">⏹ Stop</button>
+
+    <div id="speakStars" style="font-size:1.1rem;margin-top:10px;"></div>
   </section>
 
-  <!-- Grammar -->
+  <!-- ========== WRITING (past sentences + My trip) ========== -->
   <section>
-    <h3>📘 Grammar — Must / Mustn’t</h3>
-    <p><b>We use “must” for rules and duties:</b><br>
-       You must go to school. / You must help your parents.  
-       You mustn’t be rude. / You mustn’t fight.</p>
-    <p><b>Task:</b> Complete:<br>
-      1) You ___ respect teachers.<br>
-      2) You ___ be late for class.</p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
+    <h3>✍️ WRITING — My trip</h3>
+
+    <p><b>A. Complete the sentences. Use was / were / there was / there were.</b></p>
+
+    <p>1) Last summer, I ___ in the mountains with my family.</p>
+    <input id="w1" type="text" placeholder="Write the full sentence...">
+
+    <p>2) ___ many people on the beach.</p>
+    <input id="w2" type="text" placeholder="Write the full sentence...">
+
+    <p>3) In the city, there ___ a big hotel and a small park.</p>
+    <input id="w3" type="text" placeholder="Write the full sentence...">
+
+    <button class="btn" onclick="checkWritingSentences()">Check sentences ✅</button>
+    <div id="writeSentStars" style="font-size:1.1rem;margin-top:6px;"></div>
+
+    <hr>
+
+    <p><b>B. Write about your trip.</b></p>
+    <p>Write 3–4 sentences about a real or imaginary trip. Use <b>was / were</b> and words about travelling.</p>
+    <button class="btn" onclick="bayanDictation()">▶ Example</button>
+    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+    <textarea id="writeBox" rows="5" placeholder="Write your text here..."></textarea><br>
+    <button class="btn" onclick="checkDictation()">Check my text ✅</button>
+    <div id="dictStars" style="font-size:1.1rem;margin-top:6px;"></div>
   </section>
 
-  <!-- Listening -->
-  <section>
-    <h3>🎧 Listening</h3>
-    <p>Listen: “Children must go to school.”  
-       What is the main rule? 🏫</p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
+  <!-- ========== LESSON RESULT ========== -->
+  <section style="text-align:center;margin-top:25px;">
+    <h3>🎯 Lesson Complete!</h3>
+    <p>You have earned <b><span id="finalStars">0</span> ⭐</b> in this lesson.</p>
+
+    <button class="btn" onclick="finishLesson()">Save & Show Result ✅</button>
+
+    <div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#004080;"></div>
+
+    <div style="margin-top:18px;">
+      <button class="btn" onclick="goBack()">⬅ Back</button>
+      <button class="btn" onclick="goMenu()">🏠 Main Menu</button>
+      <button class="btn" onclick="goNext()">Next ➡️</button>
+    </div>
   </section>
 
-  <!-- Reading -->
-  <section>
-    <h3>📖 Reading</h3>
-    <p>Every child has the right to education, love and care.  
-       Children must study, respect parents and teachers, and help others.  
-       We all must follow the rules to live in peace and friendship.</p>
-    <p><b>Task:</b> What rights and responsibilities do children have?</p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
-  </section>
-
-  <!-- Speaking -->
-  <section>
-    <h3>🗣️ Speaking</h3>
-    <p>Say: “I must help my parents.” / “I mustn’t fight with friends.” 🎤</p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
-  </section>
-
-  <!-- Writing -->
-  <section>
-    <h3>✍️ Writing</h3>
-    <p>Write 3 sentences about your rights and duties:</p>
-    <p>Example: I have the right to learn. I must help others. I must respect my teachers.</p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
-  </section>
-
-  <!-- Result -->
-  <div id="resultBox">
-    <h3>🎯 Lesson Complete</h3>
-    <p id="starsText">You have 0 ⭐ for this lesson.</p>
-    <button class="btn" onclick="finishLesson()">Finish Lesson</button>
-  </div>
-
-  <div style="margin-top:16px;">
-    <button class="btn" onclick="goBack()">⬅ Back</button>
-    <button class="btn" onclick="goMenu()">🏠 Menu</button>
-    <button class="btn" onclick="goNext()">Next ➡️</button>
-  </div>
-  <p style="font-size:0.8rem;color:#444;margin-top:10px;">Created by Bayan team</p>
+  <p style="font-size:0.8rem;color:#444;margin-top:10px;text-align:center;">
+    Created by Bayan team
+  </p>
 </main>
 
 <script>
-let stars = 0;
-function addStar(){
-  stars++;
-  document.getElementById('starsText').innerText = "You have " + stars + " ⭐ for this lesson.";
-}
-function finishLesson(){
-  alert("🎉 Great job! You got " + stars + "⭐ in this lesson!");
-  localStorage.setItem("lesson7Stars", stars);
-}
-function goBack(){window.location.href="theme6.html";}
-function goMenu(){window.location.href="index.html";}
-function goNext(){window.location.href="theme8.html";}
+  // ОБЩИЙ СЧЁТ ЗВЁЗД (без лимита)
+  let totalStars = 0;
+  function addStar() {
+    totalStars++;
+    updateStarsText();
+  }
+  function updateStarsText(){
+    document.getElementById('lessonStarsLine').innerText =
+      "You have " + totalStars + " ⭐ in this lesson.";
+    const fs = document.getElementById('finalStars');
+    if(fs) fs.innerText = totalStars;
+  }
+
+  // Флаги, чтобы не давать 2 звезды за один и тот же ответ
+  const scored = {
+    v1:false, v2:false, v3:false, v4:false, v5:false, v6:false,
+    g1:false, g2:false, g3:false, g4:false, g5:false,
+    l1:false, l2:false, l3:false,
+    r1:false, r2:false, r3:false,
+    w1:false, w2:false, w3:false,
+    dict:false
+  };
+
+  // ---------- TTS (AI Bayan voice) ----------
+  function speakBayanText(text){
+    if(!('speechSynthesis' in window)){
+      alert("Your browser does not support speech synthesis 😔");
+      return;
+    }
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "en-US";
+    utter.rate = 0.9;
+    utter.pitch = 1.05;
+    utter.volume = 1;
+    const voices = speechSynthesis.getVoices();
+    const femaleEn = voices.find(v => v.lang.includes("en") && v.name.toLowerCase().includes("female"));
+    if(femaleEn) utter.voice = femaleEn;
+    speechSynthesis.speak(utter);
+  }
+
+  function stopBayan(){
+    window.speechSynthesis.cancel();
+  }
+
+  // ---------- VOCABULARY ----------
+  function speakVocab(text){
+    speakBayanText(text);
+  }
+
+  function checkVocab(){
+    let starsHere = 0;
+    const q1 = document.querySelector('input[name="v1"]:checked');
+    if(q1 && q1.value === "1" && !scored.v1){ scored.v1=true; addStar(); starsHere++; }
+    const q2 = document.querySelector('input[name="v2"]:checked');
+    if(q2 && q2.value === "1" && !scored.v2){ scored.v2=true; addStar(); starsHere++; }
+    const q3 = document.querySelector('input[name="v3"]:checked');
+    if(q3 && q3.value === "1" && !scored.v3){ scored.v3=true; addStar(); starsHere++; }
+    const q4 = document.querySelector('input[name="v4"]:checked');
+    if(q4 && q4.value === "1" && !scored.v4){ scored.v4=true; addStar(); starsHere++; }
+    const q5 = document.querySelector('input[name="v5"]:checked');
+    if(q5 && q5.value === "1" && !scored.v5){ scored.v5=true; addStar(); starsHere++; }
+    const q6 = document.querySelector('input[name="v6"]:checked');
+    if(q6 && q6.value === "1" && !scored.v6){ scored.v6=true; addStar(); starsHere++; }
+
+    const box = document.getElementById('vocabStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " vocabulary stars!";
+    } else {
+      box.innerHTML = "No new stars. Check answers or you already got them.";
+    }
+  }
+
+  // ---------- GRAMMAR ----------
+  function checkGrammar(){
+    let starsHere = 0;
+
+    const q1 = document.querySelector('input[name="q1"]:checked');
+    if(q1 && q1.value === "was" && !scored.g1){ scored.g1=true; addStar(); starsHere++; }
+
+    const q2 = document.querySelector('input[name="q2"]:checked');
+    if(q2 && q2.value === "were" && !scored.g2){ scored.g2=true; addStar(); starsHere++; }
+
+    const q3 = document.querySelector('input[name="q3"]:checked');
+    if(q3 && q3.value === "was" && !scored.g3){ scored.g3=true; addStar(); starsHere++; }
+
+    const q4 = document.querySelector('input[name="q4"]:checked');
+    if(q4 && q4.value === "were" && !scored.g4){ scored.g4=true; addStar(); starsHere++; }
+
+    const q5 = document.querySelector('input[name="q5"]:checked');
+    if(q5 && q5.value === "were" && !scored.g5){ scored.g5=true; addStar(); starsHere++; }
+
+    const box = document.getElementById('grammarStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " grammar stars!";
+    } else {
+      box.innerHTML = "No new stars. Check again or you already got them.";
+    }
+  }
+
+  // ---------- LISTENING ----------
+  function bayanListening(){
+    const t =
+      "Last weekend, my family and I were in Astana. " +
+      "We travelled there by train and we stayed in a small hotel near the river. " +
+      "On Saturday morning, we visited Baiterek Tower and took many photos. " +
+      "In the afternoon, we walked in a big park and saw a museum. " +
+      "On Sunday, we had lunch in a small cafe. " +
+      "It was a very exciting trip.";
+    speakBayanText(t);
+  }
+
+  function checkListening(){
+    let starsHere = 0;
+
+    if(document.getElementById('t1').value === 'True' && !scored.l1){
+      scored.l1 = true; addStar(); starsHere++;
+    }
+    if(document.getElementById('t2').value === 'True' && !scored.l2){
+      scored.l2 = true; addStar(); starsHere++;
+    }
+    if(document.getElementById('t3').value === 'True' && !scored.l3){
+      scored.l3 = true; addStar(); starsHere++;
+    }
+
+    const box = document.getElementById('listenStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " listening stars!";
+    } else {
+      box.innerHTML = "No new stars. Check your answers.";
+    }
+  }
+
+  // ---------- READING ----------
+  function bayanReading(){
+    const t =
+      "Last weekend, I was in a big city with my parents. " +
+      "We travelled by bus and we stayed in a small hotel near the centre. " +
+      "On Saturday, we visited a museum and walked in a beautiful park. " +
+      "There were many people and many cars in the streets. " +
+      "On Sunday, we went to the river and took photos. " +
+      "It was a short trip, but it was very interesting.";
+    speakBayanText(t);
+  }
+
+  function checkReading(){
+    let starsHere = 0;
+    const a1 = document.getElementById('r1').value.toLowerCase();
+    const a2 = document.getElementById('r2').value.toLowerCase();
+    const a3 = document.getElementById('r3').value.toLowerCase();
+
+    if(!scored.r1 && (a1.includes("bus") || a1.includes("by bus"))){
+      scored.r1 = true; addStar(); starsHere++;
+    }
+    if(!scored.r2 &&
+       (a2.includes("museum") || a2.includes("park"))){
+      scored.r2 = true; addStar(); starsHere++;
+    }
+    if(!scored.r3 &&
+       (a3.includes("interesting") || a3.includes("it was interesting"))){
+      scored.r3 = true; addStar(); starsHere++;
+    }
+
+    const box = document.getElementById('readStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " reading stars!";
+    } else {
+      box.innerHTML = "No new stars. Check answers or you already got them.";
+    }
+  }
+
+  // ---------- SPEAKING ----------
+  let recognition;
+  function bayanSpeaking(){
+    const t =
+      "Now let's talk about travelling. " +
+      "Where were you last weekend or last holiday? " +
+      "How did you travel there? " +
+      "What did you see or do?";
+    speakBayanText(t);
+  }
+
+  function startSpeak(){
+    if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)){
+      alert("Speech recognition is not supported in this browser.");
+      return;
+    }
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SR();
+    recognition.lang = "en-US";
+    recognition.onresult = function(event){
+      const speech = event.results[0][0].transcript.toLowerCase();
+      let starsHere = 0;
+      if(
+        speech.includes("train") || speech.includes("bus") || speech.includes("plane") ||
+        speech.includes("car") || speech.includes("hotel") || speech.includes("park") ||
+        speech.includes("city") || speech.includes("travel") || speech.includes("trip") ||
+        speech.includes("astana") || speech.includes("almaty")
+      ){
+        addStar();
+        starsHere++;
+      }
+      const box = document.getElementById('speakStars');
+      if(starsHere > 0){
+        box.innerHTML = "⭐ +" + starsHere + " speaking star!<br>You said: " + speech;
+      } else {
+        box.innerHTML = "You said: " + speech +
+          "<br>Try to use words like: train, bus, hotel, park, city, trip, Astana...";
+      }
+    };
+    recognition.start();
+  }
+
+  function stopSpeak(){
+    if(recognition) recognition.stop();
+  }
+
+  // ---------- WRITING: SENTENCES ----------
+  function checkWritingSentences(){
+    let starsHere = 0;
+    const s1 = document.getElementById('w1').value.toLowerCase();
+    const s2 = document.getElementById('w2').value.toLowerCase();
+    const s3 = document.getElementById('w3').value.toLowerCase();
+
+    if(!scored.w1 &&
+       s1.includes("i was") &&
+       (s1.includes("mountain") || s1.includes("sea") || s1.includes("city") || s1.includes("village") || s1.includes("holiday") || s1.includes("trip"))){
+      scored.w1 = true; addStar(); starsHere++;
+    }
+
+    if(!scored.w2 &&
+       (s2.includes("there were") || s2.includes("there was")) &&
+       (s2.includes("people") || s2.includes("tourists") || s2.includes("children"))){
+      scored.w2 = true; addStar(); starsHere++;
+    }
+
+    if(!scored.w3 &&
+       s3.includes("there was") &&
+       (s3.includes("hotel") || s3.includes("park") || s3.includes("museum"))){
+      scored.w3 = true; addStar(); starsHere++;
+    }
+
+    const box = document.getElementById('writeSentStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " writing stars!";
+    } else {
+      box.innerHTML = "No new stars. Check your sentences or you already got them.";
+    }
+  }
+
+  // ---------- WRITING: MY TRIP ----------
+  function bayanDictation(){
+    const t =
+      "Last year, I was on holiday in the mountains. " +
+      "We travelled by car and stayed in a small hotel. " +
+      "We walked in the forest and took many photos. " +
+      "It was a beautiful trip.";
+    speakBayanText(t);
+  }
+
+  function checkDictation(){
+    const text = document.getElementById("writeBox").value.toLowerCase();
+    const keywords = [
+      "was","were","travel","trip","holiday","train","bus","plane",
+      "car","hotel","city","village","park","mountain"
+    ];
+    let found = 0;
+    for(const w of keywords){
+      if(text.includes(w)) found++;
+    }
+    let starsHere = 0;
+    if(!scored.dict && found >= 3){
+      scored.dict = true;
+      addStar();
+      starsHere++;
+    }
+
+    const box = document.getElementById('dictStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " writing star!";
+    } else {
+      box.innerHTML = "Try to write 3–4 sentences and use words like was, were, train, bus, hotel, trip.";
+    }
+  }
+
+  // ---------- FINISH + NAVIGATION ----------
+  function finishLesson(){
+    document.getElementById("finalStars").innerText = totalStars;
+    let msg = "";
+    if(totalStars >= 20){
+      msg = "🌟🌟🌟 Amazing! Travel expert!";
+    } else if(totalStars >= 12){
+      msg = "🌟🌟 Great job! You travel well in English!";
+    } else if(totalStars >= 6){
+      msg = "🌟 Good start! Keep practising!";
+    } else {
+      msg = "Keep going! Every star is progress!";
+    }
+    document.getElementById("finalMessage").innerText = msg;
+
+    const studentName = localStorage.getItem("studentName") || "Unknown Student";
+    const allResults = JSON.parse(localStorage.getItem("teacherJournal") || "{}");
+    allResults[studentName] = allResults[studentName] || {};
+    allResults[studentName]["Lesson 7"] = totalStars;
+    localStorage.setItem("teacherJournal", JSON.stringify(allResults));
+    localStorage.setItem("lesson7Stars", totalStars);
+
+    alert("Lesson 7 saved! " + studentName + " got " + totalStars + "⭐.");
+  }
+
+  function goBack(){ window.location.href = "theme6.html"; }
+  function goMenu(){ window.location.href = "index.html"; }
+  function goNext(){ window.location.href = "theme8.html"; }
+
+  // init
+  updateStarsText();
 </script>
 </body>
 </html>
