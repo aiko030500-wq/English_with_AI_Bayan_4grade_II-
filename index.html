@@ -322,5 +322,19 @@
 </main>
 
 <script src="script.js"></script>
+  <script>
+function openTheme(themeNumber) {
+  // скрываем все темы
+  document.querySelectorAll('.theme').forEach(t => t.style.display = 'none');
+
+  // показываем выбранную
+  const chosen = document.getElementById('theme' + themeNumber);
+  if (chosen) {
+    chosen.style.display = 'block';
+  } else {
+    alert("Тема " + themeNumber + " пока не добавлена 💡");
+  }
+}
+</script>
 </body>
 </html>
