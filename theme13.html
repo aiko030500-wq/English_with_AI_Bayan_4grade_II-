@@ -1,175 +1,680 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Theme 13 — Final Challenge</title>
-<style>
-  body {
-    font-family: Verdana, sans-serif;
-    background: linear-gradient(180deg,#fff6e5 0%,#f3e0b8 100%);
-    margin: 0;
-    color: #002b5c;
-    text-align: center;
-  }
-  header {
-    background: linear-gradient(90deg,#003366,#004b99);
-    color: white;
-    padding: 0.6rem 1rem;
-    border-bottom: 5px solid gold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .logo {
-    width: 55px; height: 55px;
-    border-radius: 50%;
-    border: 3px solid gold;
-    object-fit: cover;
-    background: white;
-  }
-  h2 {color:#003366;}
-  section {
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding: 15px;
-    max-width: 800px;
-    margin: 15px auto;
-    text-align: left;
-    line-height: 1.5;
-  }
-  h3 {
-    background: #003366;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 8px;
-  }
-  .btn {
-    display:inline-block;
-    margin:6px;
-    padding:8px 14px;
-    border:none;
-    border-radius:10px;
-    background:#003366;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-  }
-  .btn:hover {background:gold; color:#003366;}
-  #resultBox {
-    background:#fff3cd;
-    border:2px solid gold;
-    border-radius:10px;
-    padding:10px;
-    margin:20px auto;
-    max-width:400px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme 13 — Final Challenge (All Skills Test)</title>
+  <style>
+    body {
+      font-family: Verdana, sans-serif;
+      background: radial-gradient(circle at top,#f7f0ff 0%,#e0d4ff 30%,#15063b 100%);
+      margin: 0;
+      color: #1b0b3f;
+      text-align: center;
+    }
+    header {
+      background: linear-gradient(90deg,#3b0b75,#6d27b0);
+      color: white;
+      padding: 0.6rem 1rem;
+      border-bottom: 5px solid #ffdd55;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      width: 55px; height: 55px;
+      border-radius: 50%;
+      border: 3px solid #ffdd55;
+      object-fit: cover;
+      background: white;
+    }
+    h2 {color:#3b0b75;}
+    section {
+      background: rgba(255,255,255,0.98);
+      border-radius: 18px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+      padding: 15px;
+      max-width: 860px;
+      margin: 15px auto;
+      text-align: left;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+    h3 {
+      background: linear-gradient(90deg,#3b0b75,#6d27b0);
+      color: white;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    .btn {
+      display:inline-block;
+      margin:6px;
+      padding:8px 14px;
+      border:none;
+      border-radius:10px;
+      background:#3b0b75;
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+      font-size:0.9rem;
+    }
+    .btn:hover {background:#ffdd55; color:#3b0b75;}
+    textarea {
+      width:100%;
+      border-radius:10px;
+      border:1px solid #ccc;
+      padding:6px;
+      font-family:inherit;
+      font-size:0.9rem;
+    }
+    input[type="text"] {
+      width:100%;
+      max-width:380px;
+      border-radius:8px;
+      border:1px solid #ccc;
+      padding:4px 6px;
+      font-family:inherit;
+      font-size:0.9rem;
+    }
+    select {
+      border-radius:8px;
+      padding:2px 4px;
+      font-size:0.9rem;
+    }
+    .round-label {
+      display:inline-block;
+      background:#ffdd55;
+      color:#3b0b75;
+      padding:2px 8px;
+      border-radius:999px;
+      font-size:0.75rem;
+      font-weight:bold;
+      margin-left:6px;
+    }
+  </style>
 </head>
 <body>
 <header>
   <div style="display:flex;align-items:center;gap:10px;">
-    <img src="logo.png" class="logo">
+    <img src="logo.png" class="logo" alt="AI Bayan logo">
     <div>
       <h1 style="margin:0;font-size:1rem;">Theme 13 — Final Challenge</h1>
-      <p style="margin:0;color:#ffea99;">English with AI Bayan</p>
+      <p style="margin:0;color:#ffeec0;">All Skills Test — English with AI Bayan</p>
     </div>
   </div>
 </header>
 
 <main>
-  <h2>🎯 Final Challenge</h2>
-  <p style="font-style:italic;">Test your English skills in 6 rounds!</p>
+  <h2>🎯 Final Challenge — All Skills Test</h2>
+  <p style="font-style:italic;color:#2f155e;">Vocabulary • Grammar • Listening • Reading • Writing • Speaking</p>
+  <p id="lessonStarsLine"><b>You have 0 ⭐ in this Final Challenge.</b></p>
 
-  <!-- Round 1 -->
+  <!-- ========== ROUND 1: VOCABULARY ========== -->
   <section>
-    <h3>🧠 Round 1 — Vocabulary Sprint</h3>
-    <p>Translate the words as fast as you can!</p>
-    <ul>
-      <li>friend — _______</li>
-      <li>school — _______</li>
-      <li>play — _______</li>
-      <li>happy — _______</li>
-      <li>family — _______</li>
-    </ul>
-    <button class="btn" onclick="addStar()">✅ Done</button>
-  </section>
+    <h3>🧠 Round 1 — Vocabulary Sprint <span class="round-label">Round 1</span></h3>
+    <p><b>Listen and choose the correct translation (на русский). One star for each correct answer.</b></p>
 
-  <!-- Round 2 -->
-  <section>
-    <h3>📘 Round 2 — Grammar Mix</h3>
-    <p>Choose the correct form:</p>
-    <p>
-      1) She ___ playing football now.  
-      <br>a) is  b) are  c) am  
-      <br>2) They ___ to school every day.  
-      <br>a) goes  b) go  c) going
+    <!-- Q1 -->
+    <p>1) Word: <b>recycle</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('To recycle means to use bottles, paper and plastic again.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
     </p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
+    <label><input type="radio" name="v1" value="1"> перерабатывать отходы</label><br>
+    <label><input type="radio" name="v1" value="0"> выбрасывать мусор</label><br>
+    <label><input type="radio" name="v1" value="0"> покупать новые вещи</label><br>
+
+    <!-- Q2 -->
+    <p>2) Word: <b>firefighter</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('A firefighter puts out fires and saves people.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <label><input type="radio" name="v2" value="1"> пожарный</label><br>
+    <label><input type="radio" name="v2" value="0"> полицейский</label><br>
+    <label><input type="radio" name="v2" value="0"> футболист</label><br>
+
+    <!-- Q3 -->
+    <p>3) Word: <b>volunteer</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('A volunteer is a person who helps other people for free.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <label><input type="radio" name="v3" value="1"> волонтёр, доброволец</label><br>
+    <label><input type="radio" name="v3" value="0"> продавец</label><br>
+    <label><input type="radio" name="v3" value="0"> турист</label><br>
+
+    <!-- Q4 -->
+    <p>4) Word: <b>ride a bike</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('To ride a bike means to go somewhere on a bicycle.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <label><input type="radio" name="v4" value="1"> ездить на велосипеде</label><br>
+    <label><input type="radio" name="v4" value="0"> кататься на лошади</label><br>
+    <label><input type="radio" name="v4" value="0"> летать на самолёте</label><br>
+
+    <!-- Q5 -->
+    <p>5) Word: <b>elephant</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('An elephant is a very big grey animal with a long trunk.')">▶ Play</button>
+      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+    </p>
+    <label><input type="radio" name="v5" value="1"> слон</label><br>
+    <label><input type="radio" name="v5" value="0"> тигр</label><br>
+    <label><input type="radio" name="v5" value="0"> акула</label><br>
+
+    <button class="btn" onclick="checkVocab()">Check vocabulary ✅</button>
+    <div id="vocabStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- Round 3 -->
+  <!-- ========== ROUND 2: GRAMMAR MIX ========== -->
   <section>
-    <h3>🎧 Round 3 — Listening Mystery</h3>
-    <p>Listen: “The boy is reading a book.”  
-       What is he doing? 📖</p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
+    <h3>📘 Round 2 — Grammar Mix <span class="round-label">Round 2</span></h3>
+
+    <p><b>Choose the correct answer.</b></p>
+
+    <p>1) She ___ in a hospital. She’s a doctor.</p>
+    <label><input type="radio" name="g1" value="work"> work</label><br>
+    <label><input type="radio" name="g1" value="works"> works</label><br>
+
+    <p>2) They ___ play football today. It’s raining.</p>
+    <label><input type="radio" name="g2" value="can"> can</label><br>
+    <label><input type="radio" name="g2" value="cant"> can’t</label><br>
+
+    <p>3) There ___ three cats and one dog in the garden.</p>
+    <label><input type="radio" name="g3" value="is"> is</label><br>
+    <label><input type="radio" name="g3" value="are"> are</label><br>
+
+    <p>4) This bag is my sister’s. It is ___ bag.</p>
+    <label><input type="radio" name="g4" value="her"> her</label><br>
+    <label><input type="radio" name="g4" value="hers"> hers</label><br>
+
+    <p>5) My house is ___ than your house.</p>
+    <label><input type="radio" name="g5" value="big"> big</label><br>
+    <label><input type="radio" name="g5" value="bigger"> bigger</label><br>
+
+    <p>6) Choose the best imperative.</p>
+    <label><input type="radio" name="g6" value="dontwaste"> Don’t waste water!</label><br>
+    <label><input type="radio" name="g6" value="throwrubbish"> Throw rubbish on the ground!</label><br>
+
+    <button class="btn" onclick="checkGrammar()">Check grammar ✅</button>
+    <div id="grammarStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- Round 4 -->
+  <!-- ========== ROUND 3: LISTENING MYSTERY ========== -->
   <section>
-    <h3>📖 Round 4 — Reading Text</h3>
-    <p>Tom wakes up early. He goes to school and studies English.  
-       After school, he plays football with friends and does homework.</p>
-    <p><b>Task:</b> What does Tom do after school?</p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
+    <h3>🎧 Round 3 — Listening Mystery <span class="round-label">Round 3</span></h3>
+
+    <p><b>1. Listen to AI Bayan:</b></p>
+    <button class="btn" onclick="bayanListening()">▶ Play</button>
+    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+    <p style="margin-top:8px;font-size:0.9rem;color:#3b365c;">
+      Listen to three sentences. Then choose True or False.
+    </p>
+
+    <p><b>2. True or False?</b></p>
+
+    <p>1) The boy is feeding the animals on the farm.</p>
+    <select id="t1">
+      <option>—</option><option>True</option><option>False</option>
+    </select>
+
+    <p>2) The children can’t play football today because it is snowing.</p>
+    <select id="t2">
+      <option>—</option><option>True</option><option>False</option>
+    </select>
+
+    <p>3) They must recycle bottles and paper after the picnic.</p>
+    <select id="t3">
+      <option>—</option><option>True</option><option>False</option>
+    </select>
+
+    <button class="btn" onclick="checkListening()">Check listening ✅</button>
+    <div id="listenStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- Round 5 -->
+  <!-- ========== ROUND 4: READING TEXT ========== -->
   <section>
-    <h3>✍️ Round 5 — Dictation</h3>
-    <p>Write what you hear:</p>
-    <p>“My name is Ali. I like English and I study every day.”</p>
-    <p><b>Task:</b> Listen carefully and write the sentence correctly.</p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
+    <h3>📖 Round 4 — Reading Challenge <span class="round-label">Round 4</span></h3>
+
+    <p><b>1. Read or listen:</b></p>
+    <button class="btn" onclick="bayanReading()">▶ Play</button>
+    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+    <div style="margin-top:10px; background:#f3ecff; border-radius:10px; padding:10px;">
+      <p>
+        Tom and his friends are at the park.  
+        They are playing basketball on the sports court.  
+        After the game, they see rubbish on the ground.  
+        They decide to clean the playground and recycle the bottles.  
+        They can help their community and make the park clean and safe.
+      </p>
+    </div>
+
+    <p><b>2. Answer the questions:</b></p>
+    <ol>
+      <li>Where are Tom and his friends?<br>
+        <input id="r1" type="text" placeholder="Your answer..."></li><br>
+      <li>What are they doing at the park?<br>
+        <input id="r2" type="text" placeholder="Your answer..."></li><br>
+      <li>What do they do after the game?<br>
+        <input id="r3" type="text" placeholder="Your answer..."></li>
+    </ol>
+
+    <button class="btn" onclick="checkReading()">Check reading ✅</button>
+    <div id="readStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- Round 6 -->
+  <!-- ========== ROUND 5: WRITING CHALLENGE ========== -->
   <section>
-    <h3>🗣️ Round 6 — Speaking Challenge</h3>
-    <p>Answer aloud:  
-       “What is your favorite subject?”  
-       “Why do you like English?” 🎤</p>
-    <button class="btn" onclick="addStar()">✅ Done</button>
+    <h3>✍️ Round 5 — Writing Challenge <span class="round-label">Round 5</span></h3>
+
+    <p><b>A. Dictation — words</b></p>
+    <p>Listen to AI Bayan and write the three words.</p>
+    <button class="btn" onclick="bayanWordDictation()">▶ Dictation: words</button>
+    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+    <p>1) Word 1</p>
+    <input id="wWord1" type="text" placeholder="Type the word...">
+    <p>2) Word 2</p>
+    <input id="wWord2" type="text" placeholder="Type the word...">
+    <p>3) Word 3</p>
+    <input id="wWord3" type="text" placeholder="Type the word...">
+
+    <button class="btn" onclick="checkWordDictation()">Check words ✅</button>
+    <div id="writeWordStars" style="font-size:1.1rem;margin-top:6px;"></div>
+
+    <hr>
+
+    <p><b>B. Dictation — short text</b></p>
+    <p>Listen to AI Bayan and write the text (3–4 sentences).</p>
+    <button class="btn" onclick="bayanTextDictation()">▶ Dictation: text</button>
+    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+    <textarea id="writeBox" rows="5" placeholder="Write the text here..."></textarea><br>
+    <button class="btn" onclick="checkTextDictation()">Check text ✅</button>
+    <div id="dictStars" style="font-size:1.1rem;margin-top:6px;"></div>
   </section>
 
-  <!-- Result -->
-  <div id="resultBox">
+  <!-- ========== ROUND 6: SPEAKING ROUND ========== -->
+  <section>
+    <h3>🗣️ Round 6 — Speaking Round <span class="round-label">Round 6</span></h3>
+
+    <p><b>1. Listen to questions:</b></p>
+    <button class="btn" onclick="bayanSpeaking()">▶ Play</button>
+    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
+    <p style="margin-top:8px;"><b>Questions:</b></p>
+    <ul>
+      <li>What sports do you like?</li>
+      <li>What can you do to help your family or your school?</li>
+      <li>What is your favourite animal? Why?</li>
+    </ul>
+
+    <p><b>2. Answer into the microphone:</b></p>
+    <button class="btn" onclick="startSpeak()">🎙 Start recording</button>
+    <button class="btn" onclick="stopSpeak()">⏹ Stop</button>
+
+    <div id="speakStars" style="font-size:1.1rem;margin-top:10px;"></div>
+  </section>
+
+  <!-- ========== FINAL RESULT ========== -->
+  <section style="text-align:center;margin-top:25px;">
     <h3>🏆 Final Result</h3>
-    <p id="starsText">You earned 0 ⭐ in this Final Challenge.</p>
-    <button class="btn" onclick="finishLesson()">Finish Challenge</button>
-  </div>
+    <p>You have earned <b><span id="finalStars">0</span> ⭐</b> in this Final Challenge.</p>
 
-  <div style="margin-top:16px;">
-    <button class="btn" onclick="goBack()">⬅ Back</button>
-    <button class="btn" onclick="goMenu()">🏠 Menu</button>
-  </div>
-  <p style="font-size:0.8rem;color:#444;margin-top:10px;">Created by Bayan team</p>
+    <button class="btn" onclick="finishLesson()">Save & Show Result ✅</button>
+
+    <div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#3b0b75;"></div>
+
+    <div style="margin-top:18px;">
+      <button class="btn" onclick="goBack()">⬅ Back</button>
+      <button class="btn" onclick="goMenu()">🏠 Main Menu</button>
+      <button class="btn" onclick="goNext()">Next ➡️</button>
+    </div>
+  </section>
+
+  <p style="font-size:0.8rem;color:#eee;margin-top:10px;text-align:center;">
+    Created by Bayan team — Final Challenge
+  </p>
 </main>
 
 <script>
-let stars = 0;
-function addStar(){
-  stars++;
-  document.getElementById('starsText').innerText = "You earned " + stars + " ⭐ in this Final Challenge.";
-}
-function finishLesson(){
-  alert("🎉 Excellent work! You completed all 6 rounds and got " + stars + "⭐!");
-  localStorage.setItem("lesson13Stars", stars);
-}
-function goBack(){window.location.href="theme12.html";}
-function goMenu(){window.location.href="index.html";}
+  // ⭐ TOTAL STARS (no limit)
+  let totalStars = 0;
+  function addStar() {
+    totalStars++;
+    updateStarsText();
+  }
+  function updateStarsText(){
+    document.getElementById('lessonStarsLine').innerText =
+      "You have " + totalStars + " ⭐ in this Final Challenge.";
+    const fs = document.getElementById('finalStars');
+    if(fs) fs.innerText = totalStars;
+  }
+
+  // флаги (чтобы не давать звезду дважды за одно и то же)
+  const scored = {
+    v1:false, v2:false, v3:false, v4:false, v5:false,
+    g1:false, g2:false, g3:false, g4:false, g5:false, g6:false,
+    l1:false, l2:false, l3:false,
+    r1:false, r2:false, r3:false,
+    ww1:false, ww2:false, ww3:false,
+    dictText:false
+  };
+
+  // ---------- TTS (AI Bayan voice) ----------
+  function speakBayanText(text){
+    if(!('speechSynthesis' in window)){
+      alert("Your browser does not support speech synthesis 😔");
+      return;
+    }
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "en-US";
+    utter.rate = 0.9;
+    utter.pitch = 1.05;
+    utter.volume = 1;
+    const voices = speechSynthesis.getVoices();
+    const femaleEn = voices.find(v => v.lang.includes("en") && v.name.toLowerCase().includes("female"));
+    if(femaleEn) utter.voice = femaleEn;
+    speechSynthesis.speak(utter);
+  }
+
+  function stopBayan(){
+    window.speechSynthesis.cancel();
+  }
+
+  // ---------- ROUND 1: VOCABULARY ----------
+  function speakVocab(text){
+    speakBayanText(text);
+  }
+
+  function checkVocab(){
+    let starsHere = 0;
+    const q1 = document.querySelector('input[name="v1"]:checked');
+    if(q1 && q1.value === "1" && !scored.v1){ scored.v1=true; addStar(); starsHere++; }
+
+    const q2 = document.querySelector('input[name="v2"]:checked');
+    if(q2 && q2.value === "1" && !scored.v2){ scored.v2=true; addStar(); starsHere++; }
+
+    const q3 = document.querySelector('input[name="v3"]:checked');
+    if(q3 && q3.value === "1" && !scored.v3){ scored.v3=true; addStar(); starsHere++; }
+
+    const q4 = document.querySelector('input[name="v4"]:checked');
+    if(q4 && q4.value === "1" && !scored.v4){ scored.v4=true; addStar(); starsHere++; }
+
+    const q5 = document.querySelector('input[name="v5"]:checked');
+    if(q5 && q5.value === "1" && !scored.v5){ scored.v5=true; addStar(); starsHere++; }
+
+    const box = document.getElementById('vocabStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " vocabulary stars!";
+    } else {
+      box.innerHTML = "No new stars. Check answers or you already got them.";
+    }
+  }
+
+  // ---------- ROUND 2: GRAMMAR ----------
+  function checkGrammar(){
+    let starsHere = 0;
+
+    const q1 = document.querySelector('input[name="g1"]:checked');
+    if(q1 && q1.value === "works" && !scored.g1){ scored.g1=true; addStar(); starsHere++; }
+
+    const q2 = document.querySelector('input[name="g2"]:checked');
+    if(q2 && q2.value === "cant" && !scored.g2){ scored.g2=true; addStar(); starsHere++; }
+
+    const q3 = document.querySelector('input[name="g3"]:checked');
+    if(q3 && q3.value === "are" && !scored.g3){ scored.g3=true; addStar(); starsHere++; }
+
+    const q4 = document.querySelector('input[name="g4"]:checked');
+    if(q4 && q4.value === "her" && !scored.g4){ scored.g4=true; addStar(); starsHere++; }
+
+    const q5 = document.querySelector('input[name="g5"]:checked');
+    if(q5 && q5.value === "bigger" && !scored.g5){ scored.g5=true; addStar(); starsHere++; }
+
+    const q6 = document.querySelector('input[name="g6"]:checked');
+    if(q6 && q6.value === "dontwaste" && !scored.g6){ scored.g6=true; addStar(); starsHere++; }
+
+    const box = document.getElementById('grammarStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " grammar stars!";
+    } else {
+      box.innerHTML = "No new stars. Check again or you already got them.";
+    }
+  }
+
+  // ---------- ROUND 3: LISTENING ----------
+  function bayanListening(){
+    const t =
+      "First, listen to the first sentence. " +
+      "The boy is feeding the animals on the farm. " +
+      "Next, listen to the second sentence. " +
+      "The children cannot play football today, because it is raining, not snowing. " +
+      "Finally, listen to the third sentence. " +
+      "After the picnic, they must recycle bottles and paper.";
+    speakBayanText(t);
+  }
+
+  function checkListening(){
+    let starsHere = 0;
+
+    if(document.getElementById('t1').value === 'True' && !scored.l1){
+      scored.l1 = true; addStar(); starsHere++;
+    }
+    if(document.getElementById('t2').value === 'False' && !scored.l2){
+      scored.l2 = true; addStar(); starsHere++;
+    }
+    if(document.getElementById('t3').value === 'True' && !scored.l3){
+      scored.l3 = true; addStar(); starsHere++;
+    }
+
+    const box = document.getElementById('listenStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " listening stars!";
+    } else {
+      box.innerHTML = "No new stars. Check your answers.";
+    }
+  }
+
+  // ---------- ROUND 4: READING ----------
+  function bayanReading(){
+    const t =
+      "Tom and his friends are at the park. " +
+      "They are playing basketball on the sports court. " +
+      "After the game, they see rubbish on the ground. " +
+      "They decide to clean the playground and recycle the bottles. " +
+      "They can help their community and make the park clean and safe.";
+    speakBayanText(t);
+  }
+
+  function checkReading(){
+    let starsHere = 0;
+    const a1 = document.getElementById('r1').value.toLowerCase();
+    const a2 = document.getElementById('r2').value.toLowerCase();
+    const a3 = document.getElementById('r3').value.toLowerCase();
+
+    // 1) where? at the park
+    if(!scored.r1 && (a1.includes("park"))){
+      scored.r1 = true; addStar(); starsHere++;
+    }
+    // 2) playing basketball
+    if(!scored.r2 && (a2.includes("basketball") || (a2.includes("play") && a2.includes("basketball")))){
+      scored.r2 = true; addStar(); starsHere++;
+    }
+    // 3) clean / recycle
+    if(!scored.r3 &&
+       (a3.includes("clean") || a3.includes("rubbish") || a3.includes("recycle") || a3.includes("bottles"))){
+      scored.r3 = true; addStar(); starsHere++;
+    }
+
+    const box = document.getElementById('readStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " reading stars!";
+    } else {
+      box.innerHTML = "No new stars. Check answers or you already got them.";
+    }
+  }
+
+  // ---------- ROUND 5: WRITING — WORDS ----------
+  function bayanWordDictation(){
+    const t =
+      "Now listen to three words for dictation. " +
+      "Number one: recycle. " +
+      "Number two: firefighter. " +
+      "Number three: planet.";
+    speakBayanText(t);
+  }
+
+  function checkWordDictation(){
+    let starsHere = 0;
+    const w1 = document.getElementById('wWord1').value.trim().toLowerCase();
+    const w2 = document.getElementById('wWord2').value.trim().toLowerCase();
+    const w3 = document.getElementById('wWord3').value.trim().toLowerCase();
+
+    if(!scored.ww1 && w1 === "recycle"){
+      scored.ww1 = true; addStar(); starsHere++;
+    }
+    if(!scored.ww2 && w2 === "firefighter"){
+      scored.ww2 = true; addStar(); starsHere++;
+    }
+    if(!scored.ww3 && w3 === "planet"){
+      scored.ww3 = true; addStar(); starsHere++;
+    }
+
+    const box = document.getElementById('writeWordStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " dictation word stars!";
+    } else {
+      box.innerHTML = "No new stars. Check spelling or you already got them.";
+    }
+  }
+
+  // ---------- ROUND 5: WRITING — TEXT ----------
+  function bayanTextDictation(){
+    const t =
+      "Now listen to a short text. " +
+      "We can help our planet. " +
+      "We do not waste water. " +
+      "We recycle bottles and paper. " +
+      "We keep our town clean.";
+    speakBayanText(t);
+  }
+
+  function checkTextDictation(){
+    const text = document.getElementById("writeBox").value.toLowerCase();
+    const keywords = [
+      "help our planet",
+      "do not waste water",
+      "don't waste water",
+      "recycle bottles",
+      "recycle paper",
+      "keep our town clean"
+    ];
+    let found = 0;
+    for(const w of keywords){
+      if(text.includes(w)) found++;
+    }
+    let starsHere = 0;
+    if(!scored.dictText && found >= 3){
+      scored.dictText = true;
+      addStar();
+      starsHere++;
+    }
+
+    const box = document.getElementById('dictStars');
+    if(starsHere > 0){
+      box.innerHTML = "⭐ +" + starsHere + " writing star!";
+    } else {
+      box.innerHTML = "Try to use sentences like: We can help our planet. We do not waste water. We recycle bottles and paper. We keep our town clean.";
+    }
+  }
+
+  // ---------- ROUND 6: SPEAKING ----------
+  let recognition;
+  function bayanSpeaking(){
+    const t =
+      "Now it is the speaking round. " +
+      "Answer the questions. " +
+      "What sports do you like? " +
+      "What can you do to help your family or your school? " +
+      "What is your favourite animal, and why do you like it?";
+    speakBayanText(t);
+  }
+
+  function startSpeak(){
+    if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)){
+      alert("Speech recognition is not supported in this browser.");
+      return;
+    }
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SR();
+    recognition.lang = "en-US";
+    recognition.onresult = function(event){
+      const speech = event.results[0][0].transcript.toLowerCase();
+      let starsHere = 0;
+      if(
+        speech.includes("football") || speech.includes("basketball") ||
+        speech.includes("volleyball") || speech.includes("swimming") ||
+        speech.includes("recycle") || speech.includes("help") ||
+        speech.includes("clean") || speech.includes("planet") ||
+        speech.includes("dog") || speech.includes("cat") ||
+        speech.includes("horse") || speech.includes("elephant") ||
+        speech.includes("favourite") || speech.includes("favorite")
+      ){
+        // 1 звезда за содержательный ответ
+        addStar();
+        starsHere++;
+      }
+      const box = document.getElementById('speakStars');
+      if(starsHere > 0){
+        box.innerHTML = "⭐ +" + starsHere + " speaking star!<br>You said: " + speech;
+      } else {
+        box.innerHTML = "You said: " + speech +
+          "<br>Try to use words about sports, helping, or animals.";
+      }
+    };
+    recognition.start();
+  }
+
+  function stopSpeak(){
+    if(recognition) recognition.stop();
+  }
+
+  // ---------- FINISH + NAVIGATION ----------
+  function finishLesson(){
+    document.getElementById("finalStars").innerText = totalStars;
+    let msg = "";
+    if(totalStars >= 25){
+      msg = "🌟🌟🌟 TOP STAR! Amazing Final Challenge result!";
+    } else if(totalStars >= 15){
+      msg = "🌟🌟 Great work! You are a strong English user!";
+    } else if(totalStars >= 8){
+      msg = "🌟 Good job! Keep practising and you will be a Top Star!";
+    } else {
+      msg = "You finished the Final Challenge! Every star is progress!";
+    }
+    document.getElementById("finalMessage").innerText = msg;
+
+    const studentName = localStorage.getItem("studentName") || "Unknown Student";
+    const allResults = JSON.parse(localStorage.getItem("teacherJournal") || "{}");
+    allResults[studentName] = allResults[studentName] || {};
+    allResults[studentName]["Lesson 13"] = totalStars;
+    localStorage.setItem("teacherJournal", JSON.stringify(allResults));
+    localStorage.setItem("lesson13Stars", totalStars);
+
+    alert("Final Challenge saved! " + studentName + " got " + totalStars + "⭐.");
+  }
+
+  function goBack(){ window.location.href = "theme12.html"; }
+  function goMenu(){ window.location.href = "index.html"; }
+  function goNext(){ window.location.href = "index.html"; }
+
+  // init
+  updateStarsText();
 </script>
 </body>
 </html>
