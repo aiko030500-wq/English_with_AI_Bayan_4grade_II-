@@ -1,173 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theme 8 — Different Jobs</title>
-  <style>
-    body {
-      font-family: Verdana, sans-serif;
-      background: linear-gradient(180deg,#fff6e5 0%,#f3e0b8 100%);
-      margin: 0;
-      color: #002b5c;
-      text-align: center;
-    }
-    header {
-      background: linear-gradient(90deg,#003366,#004b99);
-      color: white;
-      padding: 0.6rem 1rem;
-      border-bottom: 5px solid gold;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .logo {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      border: 3px solid gold;
-      background: white;
-      object-fit: cover;
-    }
-    .header-text h1 { margin: 0; font-size: 1rem; }
-    .header-text p { margin: 0; font-size: 0.8rem; color: #ffea99; }
-    main { padding: 1rem; }
-    .section-nav { text-align: center; margin-bottom: 10px; }
-    .sub-btn {
-      display: inline-block;
-      margin: 4px;
-      padding: 6px 10px;
-      border-radius: 10px;
-      border: 1px solid #003366;
-      background: #ffffff;
-      color: #003366;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-    .sub-btn.active { background: #003366; color: white; }
-    .sub-btn:hover { background: gold; color: #003366; }
-    #contentBox {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      padding: 15px;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: left;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-    .nav-row { margin-top: 16px; text-align: center; }
-    .btn {
-      display: inline-block;
-      margin: 6px;
-      padding: 8px 14px;
-      border-radius: 10px;
-      border: none;
-      background: #003366;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-    .btn:hover { background: gold; color: #003366; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme 8 — Different Jobs</title>
+<style>
+  body {
+    font-family: Verdana, sans-serif;
+    background: linear-gradient(180deg,#fff6e5 0%,#f3e0b8 100%);
+    margin: 0;
+    color: #002b5c;
+    text-align: center;
+  }
+  header {
+    background: linear-gradient(90deg,#003366,#004b99);
+    color: white;
+    padding: 0.6rem 1rem;
+    border-bottom: 5px solid gold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    width: 55px; height: 55px;
+    border-radius: 50%;
+    border: 3px solid gold;
+    object-fit: cover;
+    background: white;
+  }
+  h2 {color:#003366;}
+  section {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    max-width: 800px;
+    margin: 15px auto;
+    text-align: left;
+    line-height: 1.5;
+  }
+  h3 {
+    background: #003366;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+  .btn {
+    display:inline-block;
+    margin:6px;
+    padding:8px 14px;
+    border:none;
+    border-radius:10px;
+    background:#003366;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+  }
+  .btn:hover {background:gold; color:#003366;}
+  #resultBox {
+    background:#fff3cd;
+    border:2px solid gold;
+    border-radius:10px;
+    padding:10px;
+    margin:20px auto;
+    max-width:400px;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div class="header-left">
-      <img src="logo.png" alt="AI Bayan Logo" class="logo">
-      <div class="header-text">
-        <h1>Theme 8 — Different Jobs</h1>
-        <p>English with AI Bayan</p>
-      </div>
+<header>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img src="logo.png" class="logo">
+    <div>
+      <h1 style="margin:0;font-size:1rem;">Theme 8 — Different Jobs</h1>
+      <p style="margin:0;color:#ffea99;">English with AI Bayan</p>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <div class="section-nav">
-      <button class="sub-btn active" onclick="show('vocab')">Vocabulary</button>
-      <button class="sub-btn" onclick="show('grammar')">Grammar</button>
-      <button class="sub-btn" onclick="show('listening')">Listening</button>
-      <button class="sub-btn" onclick="show('reading')">Reading</button>
-      <button class="sub-btn" onclick="show('speaking')">Speaking</button>
-      <button class="sub-btn" onclick="show('writing')">Writing</button>
-      <button class="sub-btn" onclick="show('chat')">AI Bayan Chat</button>
-    </div>
+<main>
+  <h2>🧰 Different Jobs</h2>
+  <p style="font-style:italic;">Learn about everyday jobs and workers!</p>
 
-    <div id="contentBox">
-      <div id="vocab" class="sub-content">
-        <h3>🧠 Vocabulary — Jobs</h3>
-        <ul>
-          <li>👨‍🏫 teacher — учитель</li>
-          <li>👩‍⚕️ doctor — врач</li>
-          <li>👨‍🍳 cook — повар</li>
-          <li>👮 police officer — полицейский</li>
-          <li>👷 builder — строитель</li>
-        </ul>
-        <p><i>Task:</i> Match each job with its workplace.</p>
-      </div>
+  <!-- Vocabulary -->
+  <section>
+    <h3>🧠 Vocabulary</h3>
+    <ul>
+      <li>doctor — врач</li>
+      <li>teacher — учитель</li>
+      <li>driver — водитель</li>
+      <li>cook — повар</li>
+      <li>builder — строитель</li>
+      <li>policeman — полицейский</li>
+    </ul>
+    <p><b>Task:</b> Read each word and say what they do.</p>
+    <button class="btn" onclick="addStar()">✅ Done</button>
+  </section>
 
-      <div id="grammar" class="sub-content" style="display:none;">
-        <h3>📘 Grammar — He / She is a ...</h3>
-        <p><b>He is a doctor.</b><br><b>She is a teacher.</b></p>
-        <p><i>Task:</i> Complete:<br>
-        1) He is a ___ .<br>
-        2) She is a ___ .</p>
-      </div>
+  <!-- Grammar -->
+  <section>
+    <h3>📘 Grammar — He/She is a ...</h3>
+    <p><b>We use “He is / She is a ...” to say what job a person has:</b><br>
+       He is a doctor. / She is a teacher.</p>
+    <p><b>Task:</b> Complete:<br>
+      1) My father is a ___.<br>
+      2) She is a ___ in a restaurant.</p>
+    <button class="btn" onclick="addStar()">✅ Done</button>
+  </section>
 
-      <div id="listening" class="sub-content" style="display:none;">
-        <h3>🎧 Listening — Who Am I?</h3>
-        <p>Listen and guess: “I work in a hospital. I help sick people.” (audio coming soon 🎧)</p>
-      </div>
+  <!-- Listening -->
+  <section>
+    <h3>🎧 Listening</h3>
+    <p>Listen: “My mother is a doctor. She helps sick people.”  
+       What job does she have? 👩‍⚕️</p>
+    <button class="btn" onclick="addStar()">✅ Done</button>
+  </section>
 
-      <div id="reading" class="sub-content" style="display:none;">
-        <h3>📖 Reading — Jobs Around Us</h3>
-        <p>People have different jobs. Teachers work at schools. Doctors help people in hospitals. Cooks make tasty food in cafés.</p>
-        <p><i>Task:</i> What do cooks and teachers do?</p>
-      </div>
+  <!-- Reading -->
+  <section>
+    <h3>📖 Reading</h3>
+    <p>People have different jobs.  
+       A doctor helps sick people.  
+       A teacher works at school.  
+       A driver drives a car or bus.  
+       A cook makes tasty food in a café.</p>
+    <p><b>Task:</b> Who works at school? Who drives a car?</p>
+    <button class="btn" onclick="addStar()">✅ Done</button>
+  </section>
 
-      <div id="speaking" class="sub-content" style="display:none;">
-        <h3>🗣️ Speaking</h3>
-        <p>Say: “He is a builder.” / “She is a doctor.” 🎤</p>
-      </div>
+  <!-- Speaking -->
+  <section>
+    <h3>🗣️ Speaking</h3>
+    <p>Say: “My mother is a teacher.” / “My uncle is a driver.” 🎤</p>
+    <button class="btn" onclick="addStar()">✅ Done</button>
+  </section>
 
-      <div id="writing" class="sub-content" style="display:none;">
-        <h3>✍️ Writing</h3>
-        <p>Write 3 sentences:<br>
-        1) My father is a …<br>
-        2) My mother is a …<br>
-        3) I want to be a …</p>
-      </div>
+  <!-- Writing -->
+  <section>
+    <h3>✍️ Writing</h3>
+    <p>Write 3 sentences about jobs in your family:</p>
+    <p>Example: My mother is a doctor. My father is a driver. My sister is a student.</p>
+    <button class="btn" onclick="addStar()">✅ Done</button>
+  </section>
 
-      <div id="chat" class="sub-content" style="display:none;">
-        <h3>💬 AI Bayan Chat</h3>
-        <p>Ask Bayan: “How do you say ‘моя мама — врач’ in English?”</p>
-      </div>
-    </div>
+  <!-- Result -->
+  <div id="resultBox">
+    <h3>🎯 Lesson Complete</h3>
+    <p id="starsText">You have 0 ⭐ for this lesson.</p>
+    <button class="btn" onclick="finishLesson()">Finish Lesson</button>
+  </div>
 
-    <div class="nav-row">
-      <button class="btn" onclick="goBack()">⬅ Back</button>
-      <button class="btn" onclick="goMenu()">🏠 Menu</button>
-      <button class="btn" onclick="goNext()">Next ➡️</button>
-    </div>
-  </main>
+  <div style="margin-top:16px;">
+    <button class="btn" onclick="goBack()">⬅ Back</button>
+    <button class="btn" onclick="goMenu()">🏠 Menu</button>
+    <button class="btn" onclick="goNext()">Next ➡️</button>
+  </div>
+  <p style="font-size:0.8rem;color:#444;margin-top:10px;">Created by Bayan team</p>
+</main>
 
-  <script>
-    function show(tab) {
-      document.querySelectorAll('.sub-content').forEach(e=>e.style.display='none');
-      document.getElementById(tab).style.display='block';
-      document.querySelectorAll('.sub-btn').forEach(b=>b.classList.remove('active'));
-      event.target.classList.add('active');
-    }
-    function goBack() { window.location.href = "theme7.html"; }
-    function goMenu() { window.location.href = "index.html"; }
-    function goNext() { window.location.href = "theme9.html"; }
-  </script>
+<script>
+let stars = 0;
+function addStar(){
+  stars++;
+  document.getElementById('starsText').innerText = "You have " + stars + " ⭐ for this lesson.";
+}
+function finishLesson(){
+  alert("🎉 Great job! You got " + stars + "⭐ in this lesson!");
+  localStorage.setItem("lesson8Stars", stars);
+}
+function goBack(){window.location.href="theme7.html";}
+function goMenu(){window.location.href="index.html";}
+function goNext(){window.location.href="theme9.html";}
+</script>
 </body>
 </html>
