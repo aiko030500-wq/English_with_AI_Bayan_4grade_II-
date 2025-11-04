@@ -211,5 +211,52 @@ function showJournal(){
   document.getElementById('teacherTotal').innerText=total;
 }
 </script>
+  <script>
+function openChatSection(){
+  document.querySelectorAll('.section').forEach(s=>s.style.display='none');
+  document.getElementById('chatSection').style.display='block';
+}
+
+// ===== AI BAYAN CHAT FUNCTION =====
+async function askBayan(){
+  const q=document.getElementById('chatInput').value.trim();
+  if(!q){ alert("Type your question first."); return; }
+
+  const box=document.getElementById('chatBox');
+  box.innerHTML+=`<p><b>You:</b> ${q}</p>`;
+  box.innerHTML+=`<p><i>AI Bayan is thinking...</i></p>`;
+
+  let answer="";
+
+  // Simple smart replies
+  if(q.toLowerCase().includes("is playing")){
+    answer="We say 'is playing' because the action is happening now — Present Continuous tense. (Мы используем 'is playing', когда действие происходит прямо сейчас.)";
+  } else if(q.toLowerCase().includes("fun")){
+    answer="'Fun' means enjoyment. Example: 'Let’s have fun!' — Давай веселиться!";
+  } else if(q.toLowerCase().includes("can") && q.toLowerCase().includes("may")){
+    answer="'Can' is used for ability. 'May' is for permission or possibility. Example: I can swim. / May I go out?";
+  } else if(q.toLowerCase().includes("thank you")){
+    answer="You're welcome! 😊 Keep learning with AI Bayan!";
+  } else {
+    answer="Interesting question! Try to give me the full sentence — I’ll explain it in simple English 💬";
+  }
+
+  // Replace "thinking..."
+  box.innerHTML=box.innerHTML.replace(`<p><i>AI Bayan is thinking...</i></p>`,"");
+  box.innerHTML+=`<p><b>AI Bayan:</b> ${answer}</p>`;
+
+  // Voice
+  const utter=new SpeechSynthesisUtterance(answer);
+  utter.lang="en-US"; utter.rate=0.9; utter.pitch=1.05;
+  speechSynthesis.speak(utter);
+
+  document.getElementById('chatInput').value="";
+  box.scrollTop=box.scrollHeight;
+}
+
+function clearChat(){
+  document.getElementById('chatBox').innerHTML="";
+}
+</script>
 </body>
 </html>
