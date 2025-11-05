@@ -728,6 +728,37 @@ function bayanSpeak(text){
   speechSynthesis.speak(utter);
 }
 </script>
+  <script>
+// === 🎨 Тема 6: Kazakh Harmony (Museum of Kazakh Musical Instruments) ===
+function setCustomColors() {
+  const root = document.documentElement;
+
+  // 🇰🇿 Тёплая этническая палитра
+  root.style.setProperty("--main-bg", "linear-gradient(180deg, #fff8e1 0%, #ffecb3 50%, #ffe082 100%)");
+  root.style.setProperty("--header-bg", "#795548");
+  root.style.setProperty("--header-text", "#fff8e1");
+  root.style.setProperty("--btn-bg", "#a1887f");
+  root.style.setProperty("--btn-hover", "#d7ccc8");
+  root.style.setProperty("--text-color", "#4e342e");
+  root.style.setProperty("--border-color", "#ffca28");
+  root.style.setProperty("--accent", "#ffb300");
+
+  // применяем цвета
+  document.body.style.background = getComputedStyle(root).getPropertyValue("--main-bg");
+  document.body.style.color = getComputedStyle(root).getPropertyValue("--text-color");
+  document.querySelectorAll("header").forEach(h=>{
+    h.style.background = getComputedStyle(root).getPropertyValue("--header-bg");
+    h.style.color = getComputedStyle(root).getPropertyValue("--header-text");
+  });
+  document.querySelectorAll(".btn").forEach(btn=>{
+    btn.style.background = getComputedStyle(root).getPropertyValue("--btn-bg");
+    btn.onmouseenter = ()=>btn.style.background = getComputedStyle(root).getPropertyValue("--btn-hover");
+    btn.onmouseleave = ()=>btn.style.background = getComputedStyle(root).getPropertyValue("--btn-bg");
+  });
+}
+
+window.addEventListener("DOMContentLoaded", setCustomColors);
+</script>
 </body>
 </html>
 
