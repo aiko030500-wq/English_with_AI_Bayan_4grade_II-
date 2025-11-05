@@ -92,6 +92,32 @@
       font-weight:bold;
       margin-left:6px;
     }
+
+    /* 🌟 Центральная анимация ✔ ✖ */
+    .result-icon {
+      font-size: 3rem;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      position: fixed;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      z-index: 9999;
+      pointer-events: none;
+    }
+    .result-icon.show {
+      opacity:1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .correct {
+      color:#00c853;
+      text-shadow:0 0 15px #7fff8c;
+    }
+    .wrong {
+      color:#ff1744;
+      text-shadow:0 0 15px #ff7f7f;
+    }
   </style>
 </head>
 <body>
@@ -110,7 +136,7 @@
   <p style="font-style:italic;color:#4b2e91;">Children at the park — games and free time</p>
   <p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
 
-  <!-- ========== VOCABULARY (из парка, как в WB) ========== -->
+  <!-- ========== VOCABULARY ========== -->
   <section>
     <h3>🧠 Vocabulary — Games in the park <span class="round-label">Vocabulary</span></h3>
 
@@ -180,7 +206,7 @@
     <div id="vocabStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- ========== GRAMMAR (Present Continuous + Let's) ========== -->
+  <!-- ========== GRAMMAR ========== -->
   <section>
     <h3>📘 Grammar — What are they doing? <span class="round-label">Grammar</span></h3>
 
@@ -226,7 +252,7 @@
     <input id="writeGrammar" type="text" placeholder="Type your sentence here...">
   </section>
 
-  <!-- ========== LISTENING (парковая сцена из WB) ========== -->
+  <!-- ========== LISTENING ========== -->
   <section>
     <h3>🎧 Listening — Children at the park <span class="round-label">Listening</span></h3>
 
@@ -259,7 +285,7 @@
     <div id="listenStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- ========== READING (короткий текст про Бена) ========== -->
+  <!-- ========== READING ========== -->
   <section>
     <h3>📖 Reading — Ben at the park <span class="round-label">Reading</span></h3>
 
@@ -291,7 +317,7 @@
     <div id="readStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- ========== SPEAKING (про свои игры) ========== -->
+  <!-- ========== SPEAKING ========== -->
   <section>
     <h3>🗣 Speaking — My fun games <span class="round-label">Speaking</span></h3>
 
@@ -313,7 +339,7 @@
     <div id="speakStars" style="font-size:1.1rem;margin-top:10px;"></div>
   </section>
 
-  <!-- ========== WRITING (как в WB: My favourite game) ========== -->
+  <!-- ========== WRITING ========== -->
   <section>
     <h3>✍ Writing — My favourite game <span class="round-label">Writing</span></h3>
 
@@ -364,6 +390,9 @@
   </p>
 </main>
 
+<!-- центральная галочка/крестик -->
+<div id="feedbackIcon" class="result-icon"></div>
+
 <script>
   // ⭐ TOTAL STARS (no limit)
   let totalStars = 0;
@@ -388,10 +417,47 @@
     dict:false
   };
 
+  // 🌟 центральная анимация ✔ ✖ + голос
+  function showResult(isCorrect){
+    const icon = document.getElementById("feedbackIcon");
+    if(!icon) return;
+    if(isCorrect){
+      icon.textContent = "✔";
+      icon.className = "result-icon correct show";
+      speakBayanText("Good job!");
+    } else {
+      icon.textContent = "✖";
+      icon.className = "result-icon wrong show";
+      speakBayanText("Try again!");
+    }
+    setTimeout(()=>icon.classList.remove("show"),900);
+  }
+
+  // 💬 локальная подсказка под блоком
+  function showResultAnimation(isCorrect, elementId){
+    const el = document.getElementById(elementId);
+    if(!el) return;
+    if(isCorrect){
+      el.innerHTML = "✅ Correct! ⭐";
+      el.style.background = "rgba(144,238,144,0.6)";
+      el.style.border = "2px solid green";
+    } else {
+      el.innerHTML = "❌ Try again!";
+      el.style.background = "rgba(255,182,193,0.6)";
+      el.style.border = "2px solid red";
+      navigator.vibrate?.(150);
+    }
+    el.style.transition = "0.4s";
+    setTimeout(()=>{
+      el.innerHTML = "";
+      el.style.background = "";
+      el.style.border = "";
+    },1300);
+  }
+
   // ---------- TTS (AI Bayan voice) ----------
   function speakBayanText(text){
     if(!('speechSynthesis' in window)){
-      alert("Your browser does not support speech synthesis 😔");
       return;
     }
     const utter = new SpeechSynthesisUtterance(text);
@@ -437,8 +503,12 @@
     const box = document.getElementById('vocabStars');
     if(starsHere > 0){
       box.innerHTML = "⭐ +" + starsHere + " vocabulary stars!";
+      showResult(true);
+      showResultAnimation(true,"vocabStars");
     } else {
       box.innerHTML = "No new stars. Check answers or you already got them.";
+      showResult(false);
+      showResultAnimation(false,"vocabStars");
     }
   }
 
@@ -464,8 +534,12 @@
     const box = document.getElementById('grammarStars');
     if(starsHere > 0){
       box.innerHTML = "⭐ +" + starsHere + " grammar stars!";
+      showResult(true);
+      showResultAnimation(true,"grammarStars");
     } else {
       box.innerHTML = "No new stars. Check again or you already got them.";
+      showResult(false);
+      showResultAnimation(false,"grammarStars");
     }
   }
 
@@ -498,8 +572,12 @@
     const box = document.getElementById('listenStars');
     if(starsHere > 0){
       box.innerHTML = "⭐ +" + starsHere + " listening stars!";
+      showResult(true);
+      showResultAnimation(true,"listenStars");
     } else {
       box.innerHTML = "No new stars. Check your answers.";
+      showResult(false);
+      showResultAnimation(false,"listenStars");
     }
   }
 
@@ -520,19 +598,16 @@
     const a2 = document.getElementById('r2').value.toLowerCase();
     const a3 = document.getElementById('r3').value.toLowerCase();
 
-    // games: hide-and-seek, kite, tag, bike
     if(!scored.r1 &&
        (a1.includes("hide") || a1.includes("seek") ||
         a1.includes("kite") || a1.includes("tag") ||
         a1.includes("bike"))){
       scored.r1 = true; addStar(); starsHere++;
     }
-    // he doesn't like fishing
     if(!scored.r2 &&
        (a2.includes("no") || a2.includes("doesn") || a2.includes("do not") || a2.includes("don't"))){
       scored.r2 = true; addStar(); starsHere++;
     }
-    // he likes skipping with a rope
     if(!scored.r3 &&
        (a3.includes("skip") || a3.includes("rope"))){
       scored.r3 = true; addStar(); starsHere++;
@@ -541,8 +616,12 @@
     const box = document.getElementById('readStars');
     if(starsHere > 0){
       box.innerHTML = "⭐ +" + starsHere + " reading stars!";
+      showResult(true);
+      showResultAnimation(true,"readStars");
     } else {
       box.innerHTML = "No new stars. Check answers or you already got them.";
+      showResult(false);
+      showResultAnimation(false,"readStars");
     }
   }
 
@@ -581,9 +660,13 @@
       const box = document.getElementById('speakStars');
       if(starsHere > 0){
         box.innerHTML = "⭐ +" + starsHere + " speaking star!<br>You said: " + speech;
+        showResult(true);
+        showResultAnimation(true,"speakStars");
       } else {
         box.innerHTML = "You said: " + speech +
           "<br>Try to use words like hide-and-seek, tag, kite, bike, park, weekend.";
+        showResult(false);
+        showResultAnimation(false,"speakStars");
       }
     };
     recognition.start();
@@ -618,8 +701,12 @@
     const box = document.getElementById('writeSentStars');
     if(starsHere > 0){
       box.innerHTML = "⭐ +" + starsHere + " writing stars!";
+      showResult(true);
+      showResultAnimation(true,"writeSentStars");
     } else {
       box.innerHTML = "No new stars. Check your sentences or you already got them.";
+      showResult(false);
+      showResultAnimation(false,"writeSentStars");
     }
   }
 
@@ -660,8 +747,12 @@
     const box = document.getElementById('dictStars');
     if(starsHere > 0){
       box.innerHTML = "⭐ +" + starsHere + " writing star!";
+      showResult(true);
+      showResultAnimation(true,"dictStars");
     } else {
       box.innerHTML = "Try to write 3–5 sentences with: my favourite game, I like, at the weekend, let’s...";
+      showResult(false);
+      showResultAnimation(false,"dictStars");
     }
   }
 
@@ -697,41 +788,5 @@
   // init
   updateStarsText();
 </script>
- <!-- === Animation & Voice System === -->
-<script>
-// ====== ✅ CORRECT / ❌ WRONG ANIMATION ======
-function showResultAnimation(isCorrect, elementId){
-  const el=document.getElementById(elementId);
-  if(isCorrect){
-    el.innerHTML="✅ Correct! ⭐";
-    el.style.background="rgba(144,238,144,0.6)";
-    el.style.border="2px solid green";
-    el.style.transition="0.4s";
-    setTimeout(()=>{ el.style.background=""; el.style.border=""; el.innerHTML=""; },1500);
-  } else {
-    el.innerHTML="❌ Try again!";
-    el.style.background="rgba(255,182,193,0.6)";
-    el.style.border="2px solid red";
-    el.style.transition="0.4s";
-    navigator.vibrate?.(250);
-    setTimeout(()=>{ el.style.background=""; el.style.border=""; el.innerHTML=""; },1500);
-  }
-}
-
-// ====== 🗣️ AI Bayan Adaptive Voice ======
-function bayanSpeak(text){
-  const voices=speechSynthesis.getVoices();
-  let voice=voices.find(v=>v.lang.includes("en-GB")||v.name.includes("Google UK English Female"));
-  if(!voice){ voice=voices[0]; }
-  const utter=new SpeechSynthesisUtterance(text);
-  utter.voice=voice;
-  utter.lang="en-GB";
-  utter.rate=0.88;
-  utter.pitch=1.0;
-  speechSynthesis.speak(utter);
-}
-</script>
-  <script src="animations.js"></script>
 </body>
 </html>
- 
