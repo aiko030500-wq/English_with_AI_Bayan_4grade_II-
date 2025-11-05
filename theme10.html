@@ -713,6 +713,37 @@ function bayanSpeak(text){
   speechSynthesis.speak(utter);
 }
 </script>
+  <script>
+// === 🎨 Тема 9: Modern Skills (Professions) ===
+function setCustomColors() {
+  const root = document.documentElement;
+
+  // 💼 Современная холодная палитра
+  root.style.setProperty("--main-bg", "linear-gradient(180deg, #f0f4ff 0%, #dfe9f3 50%, #c8e0f4 100%)");
+  root.style.setProperty("--header-bg", "#37474f");
+  root.style.setProperty("--header-text", "#ffffff");
+  root.style.setProperty("--btn-bg", "#546e7a");
+  root.style.setProperty("--btn-hover", "#90a4ae");
+  root.style.setProperty("--text-color", "#263238");
+  root.style.setProperty("--border-color", "#b0bec5");
+  root.style.setProperty("--accent", "#4fc3f7");
+
+  // применяем цвета
+  document.body.style.background = getComputedStyle(root).getPropertyValue("--main-bg");
+  document.body.style.color = getComputedStyle(root).getPropertyValue("--text-color");
+  document.querySelectorAll("header").forEach(h=>{
+    h.style.background = getComputedStyle(root).getPropertyValue("--header-bg");
+    h.style.color = getComputedStyle(root).getPropertyValue("--header-text");
+  });
+  document.querySelectorAll(".btn").forEach(btn=>{
+    btn.style.background = getComputedStyle(root).getPropertyValue("--btn-bg");
+    btn.onmouseenter = ()=>btn.style.background = getComputedStyle(root).getPropertyValue("--btn-hover");
+    btn.onmouseleave = ()=>btn.style.background = getComputedStyle(root).getPropertyValue("--btn-bg");
+  });
+}
+
+window.addEventListener("DOMContentLoaded", setCustomColors);
+</script>
 </body>
 </html>
 
