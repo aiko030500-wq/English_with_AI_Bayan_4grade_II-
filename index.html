@@ -190,21 +190,6 @@
       display:block;
       margin-bottom:4px;
     }
-
-    /* Footer (main page only) */
-    #studentFooter {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #f7e8b8, #e7d29e);
-      color: #003366;
-      text-align: center;
-      padding: 8px 0;
-      font-family: Verdana, sans-serif;
-      font-size: 15px;
-      border-top: 3px solid gold;
-    }
-    #studentFooter p { margin: 0; }
   </style>
 </head>
 <body>
@@ -240,26 +225,66 @@
 
   <p>Choose a topic:</p>
 
-  <!-- TOPICS GRID -->
+  <!-- TOPICS GRID (13 topics) -->
   <div class="topics-grid">
-    <div class="topic-card" onclick="openTopic(1)"><div class="topic-title">🎨 Let’s Have Fun!</div></div>
-    <div class="topic-card" onclick="openTopic(2)"><div class="topic-title">🏃 Sports and Exercises</div></div>
-    <div class="topic-card" onclick="openTopic(3)"><div class="topic-title">🌍 Sports Around the World</div></div>
-    <div class="topic-card" onclick="openTopic(4)"><div class="topic-title">🎵 Arts and Music</div></div>
-    <div class="topic-card" onclick="openTopic(5)"><div class="topic-title">⚽ Popular Team Sports</div></div>
-    <div class="topic-card" onclick="openTopic(6)"><div class="topic-title">🎻 Museum of Kazakh Musical Instruments</div></div>
-    <div class="topic-card" onclick="openTopic(7)"><div class="topic-title">📜 Children’s Rights & Responsibilities</div></div>
-    <div class="topic-card" onclick="openTopic(8)"><div class="topic-title">🧰 Different Jobs</div></div>
-    <div class="topic-card" onclick="openTopic(9)"><div class="topic-title">👩‍⚕️ Professions</div></div>
-    <div class="topic-card" onclick="openTopic(10)"><div class="topic-title">🏢 People at Work</div></div>
-    <div class="topic-card" onclick="openTopic(11)"><div class="topic-title">💬 What Do You Do?</div></div>
-    <div class="topic-card" onclick="openTopic(12)"><div class="topic-title">❤️ You Can Help!</div></div>
-    <div class="topic-card" onclick="openTopic(13)"><div class="topic-title">🎯 Final Challenge</div></div>
+    <div class="topic-card" onclick="openTopic(1)">
+      <div class="topic-title">1. Let’s Have Fun!</div>
+      <div class="topic-emoji">🎨</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(2)">
+      <div class="topic-title">2. Sports and Exercises</div>
+      <div class="topic-emoji">🏃‍♀️</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(3)">
+      <div class="topic-title">3. Sports Around the World</div>
+      <div class="topic-emoji">🌍</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(4)">
+      <div class="topic-title">4. Arts and Music</div>
+      <div class="topic-emoji">🎵</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(5)">
+      <div class="topic-title">5. Popular Team Sports</div>
+      <div class="topic-emoji">⚽</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(6)">
+      <div class="topic-title">6. Museum of Kazakh Musical Instruments</div>
+      <div class="topic-emoji">🎻</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(7)">
+      <div class="topic-title">7. Children’s Rights & Responsibilities</div>
+      <div class="topic-emoji">📜</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(8)">
+      <div class="topic-title">8. Different Jobs</div>
+      <div class="topic-emoji">🧰</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(9)">
+      <div class="topic-title">9. Professions</div>
+      <div class="topic-emoji">👩‍⚕️</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(10)">
+      <div class="topic-title">10. People at Work</div>
+      <div class="topic-emoji">🏢</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(11)">
+      <div class="topic-title">11. What Do You Do?</div>
+      <div class="topic-emoji">💬</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(12)">
+      <div class="topic-title">12. You Can Help!</div>
+      <div class="topic-emoji">❤️</div>
+    </div>
+    <div class="topic-card" onclick="openTopic(13)">
+      <div class="topic-title">13. Final Challenge</div>
+      <div class="topic-emoji">🎯</div>
+    </div>
   </div>
 
   <!-- TOPIC SECTION -->
   <div id="topicSection" class="section">
     <h2 id="topicTitle">Topic</h2>
+    <!-- normal subnav for topics 1–12 -->
     <div id="topicSubnav" class="section-nav" style="text-align:center;margin-bottom:8px;">
       <button class="btn" onclick="setTopicSubsection('vocabulary')">Vocabulary</button>
       <button class="btn" onclick="setTopicSubsection('grammar')">Grammar</button>
@@ -274,13 +299,15 @@
   <!-- AI BAYAN CHAT -->
   <div id="chatSection" class="section">
     <h2>🤖 AI Bayan Chat</h2>
-    <p>Ask me about words, grammar or why something is wrong.</p>
+    <p>Ask me about words, grammar or why something is wrong. I will answer in simple English (and sometimes with Russian help).</p>
     <div id="aiChatLog"></div>
-    <textarea id="aiChatInput" placeholder="Type your question here..."></textarea><br>
+    <textarea id="aiChatInput"
+              placeholder="Type your question here... (e.g. 'How do you say корова in English?')"></textarea>
+    <br>
     <button class="btn" onclick="sendAiChat()">Ask AI Bayan</button>
   </div>
 
-  <!-- UNIT TESTS -->
+  <!-- UNIT TESTS SECTION -->
   <div id="unitTestsSection" class="section">
     <h2>📘 Unit Tests</h2>
     <div id="unitTestsMenu"></div>
@@ -292,23 +319,8 @@
     <button class="btn" onclick="openUnitTests()">📘 Unit Tests</button>
     <button class="btn" onclick="goToTeacher()">🏫 Teacher Journal</button>
   </div>
-
 </main>
 
-<!-- FOOTER (only main page) -->
-<footer id="studentFooter">
-  <p>
-    👤 <span id="footerName">Student</span> |
-    ⭐ <span id="footerStars">0</span> Stars |
-    🗓️ <span id="footerDate">-</span>
-  </p>
-</footer>
-
 <script src="script.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
-}
-</script>
 </body>
 </html>
