@@ -400,5 +400,46 @@ function bayanSpeak(text){
 }
 </script>...
 <script src="animations.js"></script>
+  <style>
+  .result-icon {
+    font-size: 2.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: scale(0.5);
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    z-index: 9999;
+  }
+  .result-icon.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .correct {
+    color: #4CAF50; /* зелёная галочка */
+  }
+  .wrong {
+    color: #e53935; /* красный крестик */
+  }
+</style>
+
+<div id="feedbackIcon" class="result-icon"></div>
+
+<script>
+function showResult(isCorrect) {
+  const icon = document.getElementById("feedbackIcon");
+  if (isCorrect) {
+    icon.textContent = "✔";
+    icon.className = "result-icon correct show";
+  } else {
+    icon.textContent = "✖";
+    icon.className = "result-icon wrong show";
+  }
+  setTimeout(() => {
+    icon.classList.remove("show");
+  }, 800);
+}
+</script>
 </body>
 </html>
