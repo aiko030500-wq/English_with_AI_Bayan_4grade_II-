@@ -731,6 +731,37 @@ function setCustomColors() {
 
 window.addEventListener("DOMContentLoaded", setCustomColors);
 </script>
+  <script>
+// === 🎨 Тема 5: Green Energy (Popular Team Sports) ===
+function setCustomColors() {
+  const root = document.documentElement;
+
+  // 🟢 Спортивная зелёная палитра
+  root.style.setProperty("--main-bg", "linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 50%, #a5d6a7 100%)");
+  root.style.setProperty("--header-bg", "#2e7d32");
+  root.style.setProperty("--header-text", "#ffffff");
+  root.style.setProperty("--btn-bg", "#388e3c");
+  root.style.setProperty("--btn-hover", "#66bb6a");
+  root.style.setProperty("--text-color", "#1b5e20");
+  root.style.setProperty("--border-color", "#81c784");
+  root.style.setProperty("--accent", "#ffd54f");
+
+  // применяем цвета
+  document.body.style.background = getComputedStyle(root).getPropertyValue("--main-bg");
+  document.body.style.color = getComputedStyle(root).getPropertyValue("--text-color");
+  document.querySelectorAll("header").forEach(h=>{
+    h.style.background = getComputedStyle(root).getPropertyValue("--header-bg");
+    h.style.color = getComputedStyle(root).getPropertyValue("--header-text");
+  });
+  document.querySelectorAll(".btn").forEach(btn=>{
+    btn.style.background = getComputedStyle(root).getPropertyValue("--btn-bg");
+    btn.onmouseenter = ()=>btn.style.background = getComputedStyle(root).getPropertyValue("--btn-hover");
+    btn.onmouseleave = ()=>btn.style.background = getComputedStyle(root).getPropertyValue("--btn-bg");
+  });
+}
+
+window.addEventListener("DOMContentLoaded", setCustomColors);
+</script>
 </body>
 </html>
 
