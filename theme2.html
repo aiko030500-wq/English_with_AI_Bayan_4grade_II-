@@ -838,8 +838,42 @@ function bayanSpeak(text){
   speechSynthesis.speak(utter);
 }
 </script>
+  <script>
+// === 🎨 Тема 2: Tropical Sea (Sports and Exercises) ===
+function setCustomColors() {
+  const root = document.documentElement;
+
+  // 🌴 Тропическая палитра
+  root.style.setProperty("--main-bg", "linear-gradient(180deg, #e0fff9 0%, #b2f0e3 100%)");
+  root.style.setProperty("--header-bg", "#009688");
+  root.style.setProperty("--header-text", "#ffffff");
+  root.style.setProperty("--btn-bg", "#00796b");
+  root.style.setProperty("--btn-hover", "#26a69a");
+  root.style.setProperty("--text-color", "#00332d");
+  root.style.setProperty("--border-color", "#4db6ac");
+  root.style.setProperty("--accent", "#00bfa5");
+
+  // применяем ко всем элементам
+  document.body.style.background = getComputedStyle(root).getPropertyValue("--main-bg");
+  document.body.style.color = getComputedStyle(root).getPropertyValue("--text-color");
+  document.querySelectorAll("header").forEach(h=>{
+    h.style.background = getComputedStyle(root).getPropertyValue("--header-bg");
+    h.style.color = getComputedStyle(root).getPropertyValue("--header-text");
+  });
+  document.querySelectorAll(".btn").forEach(btn=>{
+    btn.style.background = getComputedStyle(root).getPropertyValue("--btn-bg");
+    btn.onmouseenter = ()=>btn.style.background = getComputedStyle(root).getPropertyValue("--btn-hover");
+    btn.onmouseleave = ()=>btn.style.background = getComputedStyle(root).getPropertyValue("--btn-bg");
+  });
+}
+
+// применяем при загрузке
+window.addEventListener("DOMContentLoaded", setCustomColors);
+</script>
 </body>
 </html>
+
+
 
 
 
