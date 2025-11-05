@@ -140,7 +140,7 @@
       font-size: 1.3rem;
     }
 
-    /* Section inside topic / chat */
+    /* Section inside topic / chat / unit tests */
     .section {
       display: none;
       max-width: 900px;
@@ -178,6 +178,17 @@
       border:1px solid #ccc;
       padding:6px;
       font-family:inherit;
+    }
+
+    .unit-test-question {
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 8px;
+      background: #f7f7ff;
+    }
+    .unit-test-question b {
+      display:block;
+      margin-bottom:4px;
     }
   </style>
 </head>
@@ -296,12 +307,20 @@
     <button class="btn" onclick="sendAiChat()">Ask AI Bayan</button>
   </div>
 
+  <!-- UNIT TESTS SECTION -->
+  <div id="unitTestsSection" class="section">
+    <h2>📘 Unit Tests</h2>
+    <div id="unitTestsMenu"></div>
+    <div id="unitTestsContent" style="margin-top:10px;"></div>
+  </div>
+
   <div style="margin-top:16px;">
     <button class="btn" onclick="openChat()">💬 Open AI Bayan Chat</button>
+    <button class="btn" onclick="openUnitTests()">📘 Unit Tests</button>
     <button class="btn" onclick="goToTeacher()">🏫 Teacher Journal</button>
   </div>
 </main>
 
 <script src="script.js"></script>
 </body>
-</html>
+</html>.
