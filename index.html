@@ -162,6 +162,7 @@
     <button class="btn" onclick="logout()">Logout</button>
   </div>
 
+  <!-- 💬 CHAT SECTION -->
   <section id="chatSection" class="section" style="max-width:900px;margin:0 auto;">
     <h2>💬 AI Bayan — Online Teacher Chat</h2>
     <p>Ask about <b>grammar, vocabulary, translation or homework</b>.<br>You can write in English or Russian.</p>
@@ -174,14 +175,15 @@
     <button class="btn" onclick="clearChat()">Clear</button>
     <button class="btn" onclick="goMenu()">🏠 Back to Menu</button>
   </section>
+</main>
+
 <script>
-/* === LOGIN + CHAT WITH OPENAI API === */
+/* ==== LOGIN / MENU / JOURNAL ==== */
 const allowedNames = ["Aylin2","Aitach2","Zhakhangir2","Alvi2","Narmin2","Balman2","Dima2","Ilyas2","Kirill2","Irada2","Shyngys2","Sultan2","Kira2","Damir2","Arai2","Bayan2","Jury2","Jury3"];
 
 function checkLogin(){
   const name = document.getElementById("nameInput").value.trim();
   const pin  = document.getElementById("pinInput").value.trim();
-
   if(allowedNames.includes(name) && pin === "6856"){
     localStorage.setItem("currentStudent", name);
     document.getElementById("loginOverlay").style.display = "none";
@@ -194,7 +196,7 @@ function checkLogin(){
     document.getElementById("teacherJournal").style.display = "block";
     buildJournal();
   } else {
-    alert("❌ Wrong name or PIN.");
+    alert("❌ Access denied. Check your name or PIN.");
   }
 }
 
@@ -248,7 +250,7 @@ function logout(){
   window.location.href = "index.html";
 }
 
-/* === CHAT USING OPENAI API === */
+/* ==== ONLINE CHAT WITH OPENAI ==== */
 async function askBayan(){
   const input = document.getElementById('chatInput');
   const box   = document.getElementById('chatBox');
@@ -259,7 +261,7 @@ async function askBayan(){
     return;
   }
 
-  box.innerHTML += `<p><b>You:</b> ${question}</p>`;
+  box.innerHTML += `<p><b>You:</b> ${escapeHtml(question)}</p>`;
   box.innerHTML += `<p id="thinking"><i>AI Bayan is thinking...</i></p>`;
   box.scrollTop = box.scrollHeight;
   input.value = "";
@@ -269,30 +271,30 @@ async function askBayan(){
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-      "Authorization": "Bearer "Authorization": "Bearer sk-proj-UT95Fy"
-"
+        /* ⚠️ ВСТАВЬ СВОЙ КЛЮЧ ВМЕСТО sk-XXXX */
+        "Authorization": "Bearer sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
       },
       body: JSON.stringify({
-        model: "gpt-4-turbo",
+        model: "gpt-4o-mini",
         messages: [
-          { role: "system", content: "You are AI Bayan, a friendly English teacher for 4th-6th grade students. Answer clearly and simply, sometimes with emojis." },
+          { role: "system", content: "You are AI Bayan, a friendly English teacher for 4th–6th graders. Answer simply, clearly, kindly, with short examples and emojis." },
           { role: "user", content: question }
         ],
-        max_tokens: 250,
+        max_tokens: 300,
         temperature: 0.8
       })
     });
 
     const data = await response.json();
-    document.getElementById("thinking").remove();
+    const thinking = document.getElementById("thinking");
+    if(thinking) thinking.remove();
 
     if(data.error){
-      box.innerHTML += `<p><b>AI Bayan:</b> ⚠️ ${data.error.message}</p>`;
+      box.innerHTML += `<p><b>AI Bayan:</b> ⚠️ ${escapeHtml(data.error.message || String(data.error))}</p>`;
     } else {
       const answer = data.choices[0].message.content;
       box.innerHTML += `<p><b>AI Bayan:</b> ${answer}</p>`;
       box.scrollTop = box.scrollHeight;
-      bayanSpeak(answer);
 
       const name = localStorage.getItem("currentStudent");
       if(name){
@@ -302,35 +304,23 @@ async function askBayan(){
         updateStars();
       }
     }
-  } catch (err) {
+  } catch(err){
     const thinking = document.getElementById("thinking");
     if(thinking) thinking.remove();
-    box.innerHTML += `<p><b>AI Bayan:</b> ❌ Connection error. Check your internet or API key.</p>`;
+    box.innerHTML += `<p><b>AI Bayan:</b> ❌ Connection error. Check internet or API key.</p>`;
     console.error(err);
   }
 }
 
-function clearChat(){
-  document.getElementById('chatBox').innerHTML = "";
-}
+function clearChat(){ document.getElementById('chatBox').innerHTML = ""; }
 
-function bayanSpeak(text){
-  const speakNow = () => {
-    const voices = speechSynthesis.getVoices();
-    let voice = voices.find(v => v.lang === "en-GB" || v.name.includes("Google UK English Female"));
-    if(!voice) voice = voices[0];
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.voice = voice;
-    utter.lang = "en-GB";
-    utter.rate = 0.9;
-    utter.pitch = 1.0;
-    utter.volume = 1.0;
-    speechSynthesis.speak(utter);
-  };
-  if(speechSynthesis.getVoices().length === 0){
-    speechSynthesis.onvoiceschanged = speakNow;
-  } else {
-    speakNow();
-  }
+function escapeHtml(str){
+  return str
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;");
 }
 </script>
+</body>
+</html>
