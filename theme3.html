@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theme 3 — Sports Around the World</title>
+  <title>Theme 3 — Food and Drinks</title>
   <style>
     body {
       font-family: Verdana, sans-serif;
-      background: linear-gradient(180deg,#e7f4ff 0%,#c9e0ff 100%);
+      background: radial-gradient(circle at top,#fff7ff 0%,#ffe9ff 35%,#d7ecff 100%);
       margin: 0;
-      color: #002b5c;
+      color: #25215a;
       text-align: center;
     }
     header {
-      background: linear-gradient(90deg,#003366,#0055aa);
+      background: linear-gradient(90deg,#5a2ea6,#f06292);
       color: white;
       padding: 0.6rem 1rem;
-      border-bottom: 5px solid #7ad0ff;
+      border-bottom: 5px solid #ffd54f;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -24,27 +24,27 @@
     .logo {
       width: 55px; height: 55px;
       border-radius: 50%;
-      border: 3px solid #7ad0ff;
+      border: 3px solid #ffd54f;
       object-fit: cover;
       background: white;
     }
-    h2 {color:#003366;}
+    h2 {color:#5a2ea6;}
     section {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.98);
+      border-radius: 18px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.12);
       padding: 15px;
-      max-width: 800px;
+      max-width: 860px;
       margin: 15px auto;
       text-align: left;
       line-height: 1.5;
       font-size: 0.95rem;
     }
     h3 {
-      background: #003366;
+      background: linear-gradient(90deg,#5a2ea6,#f06292);
       color: white;
       padding: 6px 10px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 1rem;
     }
     .btn {
@@ -53,13 +53,13 @@
       padding:8px 14px;
       border:none;
       border-radius:10px;
-      background:#003366;
+      background:#5a2ea6;
       color:white;
       font-weight:bold;
       cursor:pointer;
       font-size:0.9rem;
     }
-    .btn:hover {background:#7ad0ff; color:#003366;}
+    .btn:hover {background:#ffd54f; color:#45215a;}
     textarea {
       width:100%;
       border-radius:10px;
@@ -82,6 +82,50 @@
       padding:2px 4px;
       font-size:0.9rem;
     }
+    .round-label {
+      display:inline-block;
+      background:#ffd54f;
+      color:#5a2ea6;
+      padding:2px 8px;
+      border-radius:999px;
+      font-size:0.75rem;
+      font-weight:bold;
+      margin-left:6px;
+    }
+
+    .result-icon {
+      font-size: 3rem;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      position: fixed;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      z-index: 9999;
+      pointer-events: none;
+    }
+    .result-icon.show {
+      opacity:1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .correct {
+      color:#00c853;
+      text-shadow:0 0 15px #7fff8c;
+    }
+    .wrong {
+      color:#ff1744;
+      text-shadow:0 0 15px #ff7f7f;
+    }
+
+    /* ✅ / ❌ возле ответа */
+    .mark-icon {
+      margin-left: 8px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .correctMark { color:#00c853; }
+    .wrongMark { color:#ff1744; }
   </style>
 </head>
 <body>
@@ -89,202 +133,192 @@
   <div style="display:flex;align-items:center;gap:10px;">
     <img src="logo.png" class="logo" alt="AI Bayan logo">
     <div>
-      <h1 style="margin:0;font-size:1rem;">Theme 3 — Sports Around the World</h1>
-      <p style="margin:0;color:#d9f4ff;">English with AI Bayan</p>
+      <h1 style="margin:0;font-size:1rem;">Theme 3 — Food and Drinks</h1>
+      <p style="margin:0;color:#ffe9c4;">English with AI Bayan — Food and Drinks</p>
     </div>
   </div>
 </header>
 
 <main>
-  <h2>🌍 Sports Around the World</h2>
-  <p style="font-style:italic;">Ice hockey, table tennis, ice skating and more</p>
+  <h2>🍎 Food and Drinks</h2>
+  <p style="font-style:italic;color:#4b2e91;">Talking about what we eat and drink</p>
   <p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
 
-  <!-- ========== VOCABULARY (sports & equipment) ========== -->
+  <!-- ========== VOCABULARY ========== -->
   <section>
-    <h3>🧠 VOCABULARY — Sports and equipment</h3>
+    <h3>🧠 Vocabulary — Food words <span class="round-label">Vocabulary</span></h3>
 
-    <p><b>AI Bayan говорит предложение. Ребёнок выбирает правильный перевод на русский.</b></p>
+    <p><b>Listen to AI Bayan and choose the correct translation (на русский).</b></p>
 
     <!-- Q1 -->
-    <p>1) AI Bayan:
-      <button class="btn" onclick="speakVocab('Alex plays ice hockey in Canada.')">▶ Play</button>
+    <p>1) Word: <b>apple</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('Apple is a round fruit. It can be red, green or yellow.')">▶ Play</button>
       <button class="btn" onclick="stopBayan()">⏹ Stop</button>
     </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v1" value="1"> Алекс играет в хоккей с шайбой в Канаде.</label><br>
-    <label><input type="radio" name="v1" value="0"> Алекс играет в теннис в Канаде.</label><br>
-    <label><input type="radio" name="v1" value="0"> Алекс играет в футбол в Казахстане.</label><br>
+    <label><input type="radio" name="v1" value="1"> яблоко</label><br>
+    <label><input type="radio" name="v1" value="0"> апельсин</label><br>
+    <label><input type="radio" name="v1" value="0"> банан</label><br>
 
     <!-- Q2 -->
-    <p>2) AI Bayan:
-      <button class="btn" onclick="speakVocab('Lee plays table tennis with his friends.')">▶ Play</button>
+    <p>2) Word: <b>sandwich</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('A sandwich is bread with cheese, meat or vegetables inside.')">▶ Play</button>
       <button class="btn" onclick="stopBayan()">⏹ Stop</button>
     </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v2" value="0"> Ли катается на коньках со своими друзьями.</label><br>
-    <label><input type="radio" name="v2" value="1"> Ли играет в настольный теннис со своими друзьями.</label><br>
-    <label><input type="radio" name="v2" value="0"> Ли бегает с друзьями по утрам.</label><br>
+    <label><input type="radio" name="v2" value="1"> бутерброд</label><br>
+    <label><input type="radio" name="v2" value="0"> суп</label><br>
+    <label><input type="radio" name="v2" value="0"> салат</label><br>
 
     <!-- Q3 -->
-    <p>3) AI Bayan:
-      <button class="btn" onclick="speakVocab('Oraz goes ice skating at Medeu Ice Rink.')">▶ Play</button>
+    <p>3) Word: <b>soup</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('Soup is hot food in a bowl. You eat it with a spoon.')">▶ Play</button>
       <button class="btn" onclick="stopBayan()">⏹ Stop</button>
     </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v3" value="0"> Ораз играет в баскетбол на Медеу.</label><br>
-    <label><input type="radio" name="v3" value="1"> Ораз катается на коньках на катке Медеу.</label><br>
-    <label><input type="radio" name="v3" value="0"> Ораз плавает в бассейне Медеу.</label><br>
+    <label><input type="radio" name="v3" value="1"> суп</label><br>
+    <label><input type="radio" name="v3" value="0"> чай</label><br>
+    <label><input type="radio" name="v3" value="0"> хлеб</label><br>
 
     <!-- Q4 -->
-    <p>4) AI Bayan:
-      <button class="btn" onclick="speakVocab('They play basketball at the weekend.')">▶ Play</button>
+    <p>4) Word: <b>juice</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('Juice is a drink from fruit, like orange juice or apple juice.')">▶ Play</button>
       <button class="btn" onclick="stopBayan()">⏹ Stop</button>
     </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v4" value="1"> Они играют в баскетбол по выходным.</label><br>
-    <label><input type="radio" name="v4" value="0"> Они плавают по выходным.</label><br>
-    <label><input type="radio" name="v4" value="0"> Они бегают по выходным.</label><br>
+    <label><input type="radio" name="v4" value="1"> сок</label><br>
+    <label><input type="radio" name="v4" value="0"> вода</label><br>
+    <label><input type="radio" name="v4" value="0"> молоко</label><br>
 
     <!-- Q5 -->
-    <p>5) AI Bayan:
-      <button class="btn" onclick="speakVocab('Ice hockey players wear helmets and gloves.')">▶ Play</button>
+    <p>5) Word: <b>salad</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('Salad is food with vegetables, like tomato, cucumber and lettuce.')">▶ Play</button>
       <button class="btn" onclick="stopBayan()">⏹ Stop</button>
     </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v5" value="1"> Игроки в хоккей носят шлемы и перчатки.</label><br>
-    <label><input type="radio" name="v5" value="0"> Игроки в хоккей носят кепки и очки.</label><br>
-    <label><input type="radio" name="v5" value="0"> Игроки в хоккей носят плавки и очки.</label><br>
+    <label><input type="radio" name="v5" value="1"> салат</label><br>
+    <label><input type="radio" name="v5" value="0"> бутерброд</label><br>
+    <label><input type="radio" name="v5" value="0"> торт</label><br>
 
     <!-- Q6 -->
-    <p>6) AI Bayan:
-      <button class="btn" onclick="speakVocab('She has a gold medal from the race.')">▶ Play</button>
+    <p>6) Word: <b>chicken</b>  
+      AI Bayan:
+      <button class="btn" onclick="speakVocab('Chicken is meat from a bird that many people eat for lunch or dinner.')">▶ Play</button>
       <button class="btn" onclick="stopBayan()">⏹ Stop</button>
     </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v6" value="0"> У неё есть золотой мяч с соревнований.</label><br>
-    <label><input type="radio" name="v6" value="1"> У неё есть золотая медаль с забега.</label><br>
-    <label><input type="radio" name="v6" value="0"> У неё есть серебряный шлем с забега.</label><br>
+    <label><input type="radio" name="v6" value="1"> курица</label><br>
+    <label><input type="radio" name="v6" value="0"> рыба</label><br>
+    <label><input type="radio" name="v6" value="0"> сыр</label><br>
 
-    <button class="btn" onclick="checkVocab()">Check ✅</button>
+    <button class="btn" onclick="checkVocab()">Check vocabulary ✅</button>
     <div id="vocabStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- ========== GRAMMAR (Present Simple, negatives, Let's, enjoy) ========== -->
+  <!-- ========== GRAMMAR ========== -->
   <section>
-    <h3>📘 GRAMMAR — Present Simple & Let’s</h3>
+    <h3>📘 Grammar — I like / I don’t like <span class="round-label">Grammar</span></h3>
 
-    <p><b>1. Present Simple (habits):</b></p>
+    <p><b>Like / Don’t like / Likes / Doesn’t like:</b></p>
     <p>
-      We use <b>Present Simple</b> to talk about habits and things we do regularly.<br>
-      I play table tennis. / He plays ice hockey. / They don’t go ice skating.
+      I like apples. I don’t like soup.<br>
+      He likes juice. He doesn’t like milk.<br>
+      We use it to talk about our favourite food and drinks.
     </p>
 
-    <p><b>Choose the correct form:</b></p>
+    <p><b>Choose the correct answer:</b></p>
 
-    <p>1) I ___ play basketball every day.</p>
-    <label><input type="radio" name="q1" value="dont"> don’t</label><br>
-    <label><input type="radio" name="q1" value="doesnt"> doesn’t</label><br>
+    <p>1) I ___ pizza.</p>
+    <label><input type="radio" name="g1" value="like"> like</label><br>
+    <label><input type="radio" name="g1" value="likes"> likes</label><br>
 
-    <p>2) He ___ play table tennis on Mondays.</p>
-    <label><input type="radio" name="q2" value="dont"> don’t</label><br>
-    <label><input type="radio" name="q2" value="doesnt"> doesn’t</label><br>
+    <p>2) She ___ salad. She doesn’t like cake.</p>
+    <label><input type="radio" name="g2" value="likes"> likes</label><br>
+    <label><input type="radio" name="g2" value="like"> like</label><br>
 
-    <p>3) They ___ like playing ice hockey.</p>
-    <label><input type="radio" name="q3" value="dont"> don’t</label><br>
-    <label><input type="radio" name="q3" value="doesnt"> doesn’t</label><br>
+    <p>3) They ___ milk. They drink juice.</p>
+    <label><input type="radio" name="g3" value="dontlike"> don’t like</label><br>
+    <label><input type="radio" name="g3" value="like"> like</label><br>
 
-    <hr>
+    <p>4) He ___ orange juice every morning.</p>
+    <label><input type="radio" name="g4" value="drinks"> drinks</label><br>
+    <label><input type="radio" name="g4" value="drink"> drink</label><br>
 
-    <p><b>2. Let’s + verb (suggestions):</b></p>
-    <p>We say <b>Let’s + verb</b> to make a suggestion.</p>
-    <p>4) “___ go ice skating at the weekend!”</p>
-    <label><input type="radio" name="q4" value="lets"> Let’s</label><br>
-    <label><input type="radio" name="q4" value="we"> We</label><br>
+    <p>5) Do you ___ tea?</p>
+    <label><input type="radio" name="g5" value="like"> like</label><br>
+    <label><input type="radio" name="g5" value="likes"> likes</label><br>
 
-    <hr>
-
-    <p><b>3. enjoy / don’t like + verb-ing:</b></p>
-    <p>5) “I ___ playing table tennis with my friends.”</p>
-    <label><input type="radio" name="q5" value="enjoy"> enjoy</label><br>
-    <label><input type="radio" name="q5" value="dont like"> don’t like</label><br>
-
-    <button class="btn" onclick="checkGrammar()">Check ✅</button>
+    <button class="btn" onclick="checkGrammar()">Check grammar ✅</button>
     <div id="grammarStars" style="font-size:1.1rem;margin-top:8px;"></div>
-
-    <p><b>4. Write your own sentence:</b> (practice)</p>
-    <p>Example: I don’t play ice hockey, but I enjoy playing basketball.</p>
-    <input id="writeGrammar" type="text" placeholder="Type your sentence here...">
   </section>
 
-  <!-- ========== LISTENING (Alex, Jim, Oraz, Lee) ========== -->
+  <!-- ========== LISTENING ========== -->
   <section>
-    <h3>🎧 LISTENING — Friends around the world</h3>
+    <h3>🎧 Listening — Anna’s meals <span class="round-label">Listening</span></h3>
 
     <p><b>1. Listen to AI Bayan:</b></p>
     <button class="btn" onclick="bayanListening()">▶ Play</button>
     <button class="btn" onclick="stopBayan()">⏹ Stop</button>
 
-    <p style="margin-top:8px;font-size:0.9rem;color:#444;">
-      (Teacher note: по мотивам SB — Alex, Jim, Oraz, Lee и их виды спорта.)
+    <p style="margin-top:8px;font-size:0.9rem;color:#4b2e91;">
+      Listen about Anna’s food and drinks. Then choose True or False.
     </p>
 
     <p><b>2. True or False?</b></p>
 
-    <p>1) Alex plays ice hockey.</p>
+    <p>1) Anna drinks milk for breakfast.</p>
     <select id="t1">
       <option>—</option><option>True</option><option>False</option>
     </select>
 
-    <p>2) Lee plays ice hockey.</p>
+    <p>2) She likes tea in the morning.</p>
     <select id="t2">
       <option>—</option><option>True</option><option>False</option>
     </select>
 
-    <p>3) Oraz goes ice skating at the weekend.</p>
+    <p>3) In the evening Anna’s family eats soup together.</p>
     <select id="t3">
       <option>—</option><option>True</option><option>False</option>
     </select>
 
-    <button class="btn" onclick="checkListening()">Check ✅</button>
+    <button class="btn" onclick="checkListening()">Check listening ✅</button>
     <div id="listenStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- ========== READING (short text about sports around the world) ========== -->
+  <!-- ========== READING ========== -->
   <section>
-    <h3>📖 READING — Sports in different countries</h3>
+    <h3>📖 Reading — Mark’s favourite food <span class="round-label">Reading</span></h3>
 
     <p><b>1. Read or listen:</b></p>
     <button class="btn" onclick="bayanReading()">▶ Play</button>
     <button class="btn" onclick="stopBayan()">⏹ Stop</button>
 
-    <div style="margin-top:10px; background:#e9fff4; border-radius:10px; padding:10px;">
+    <div style="margin-top:10px; background:#f5ebff; border-radius:10px; padding:10px;">
       <p>
-        People around the world love different sports.  
-        In Canada, many children play ice hockey and go ice skating.  
-        In Kazakhstan, children like going to Medeu Ice Rink and playing basketball at school.  
-        In some countries, children enjoy playing table tennis and football after school.  
-        Sports help us make friends and stay healthy.
+        Hi! I’m Mark. I love food.  
+        For breakfast I eat a sandwich and an apple, and I drink milk.  
+        For lunch I have soup and salad at school.  
+        In the evening my family eats chicken and rice together.  
+        I don’t like fizzy drinks. I usually drink water or orange juice.
       </p>
     </div>
 
     <p><b>2. Answer the questions:</b></p>
     <ol>
-      <li>What sport do many children play in Canada?<br>
+      <li>What does Mark eat for breakfast?<br>
         <input id="r1" type="text" placeholder="Your answer..."></li><br>
-      <li>What do children in Kazakhstan like doing?<br>
+      <li>Does Mark like fizzy drinks?<br>
         <input id="r2" type="text" placeholder="Your answer..."></li><br>
-      <li>Why are sports good for us?<br>
+      <li>What does his family eat in the evening?<br>
         <input id="r3" type="text" placeholder="Your answer..."></li>
     </ol>
 
-    <button class="btn" onclick="checkReading()">Check ✅</button>
+    <button class="btn" onclick="checkReading()">Check reading ✅</button>
     <div id="readStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
   <!-- ========== SPEAKING ========== -->
   <section>
-    <h3>🗣️ SPEAKING — Talk about sports around the world</h3>
+    <h3>🗣 Speaking — My food <span class="round-label">Speaking</span></h3>
 
     <p><b>1. Listen to questions:</b></p>
     <button class="btn" onclick="bayanSpeaking()">▶ Play</button>
@@ -292,9 +326,9 @@
 
     <p style="margin-top:8px;"><b>Questions:</b></p>
     <ul>
-      <li>What sports do you like playing?</li>
-      <li>Do you know any sports from other countries?</li>
-      <li>Would you like to go ice skating at Medeu?</li>
+      <li>What is your favourite food?</li>
+      <li>What do you drink for breakfast?</li>
+      <li>What do you eat with your family in the evening?</li>
     </ul>
 
     <p><b>2. Answer into the microphone:</b></p>
@@ -304,37 +338,33 @@
     <div id="speakStars" style="font-size:1.1rem;margin-top:10px;"></div>
   </section>
 
-  <!-- ========== WRITING (перевод + диктант) ========== -->
+  <!-- ========== WRITING ========== -->
   <section>
-    <h3>✍️ WRITING — Translation & Dictation</h3>
+    <h3>✍ Writing — My favourite food <span class="round-label">Writing</span></h3>
 
-    <p><b>A. Translate into English:</b></p>
-    <p>1) Я не играю в хоккей с шайбой каждый день.</p>
-    <textarea id="w1" rows="2" placeholder="Your translation..."></textarea>
+    <p><b>A. Short sentences</b></p>
 
-    <p>2) Он не играет в настольный теннис по понедельникам.</p>
-    <textarea id="w2" rows="2" placeholder="Your translation..."></textarea>
+    <p>1) Write a sentence: “My favourite food is …”</p>
+    <input id="w1" type="text" placeholder="Example: My favourite food is pizza.">
 
-    <p>3) Давай пойдём кататься на коньках в эти выходные!</p>
-    <textarea id="w3" rows="2" placeholder="Your translation..."></textarea>
+    <p>2) Write one sentence with “I like …” about food or drinks.</p>
+    <input id="w2" type="text" placeholder="Example: I like orange juice.">
 
-    <button class="btn" onclick="checkWritingTranslate()">Check translation ✅</button>
-    <div id="writeTransStars" style="font-size:1.1rem;margin-top:6px;"></div>
+    <p>3) Write one sentence with “I don’t like …”.</p>
+    <input id="w3" type="text" placeholder="Example: I don’t like soup.">
+
+    <button class="btn" onclick="checkWritingSentences()">Check sentences ✅</button>
+    <div id="writeSentStars" style="font-size:1.1rem;margin-top:6px;"></div>
 
     <hr>
 
-    <p><b>B. Dictation by AI Bayan:</b></p>
-    <p>Listen and write the text. Pay attention to punctuation.</p>
-    <button class="btn" onclick="bayanWords()">▶ Words</button>
-    <button class="btn" onclick="bayanDictation()">▶ Text</button>
+    <p><b>B. My food text</b></p>
+    <p>Write 3–5 sentences about your food and drinks. Use “I like…”, “I don’t like…” and “for breakfast / for lunch / for dinner”.</p>
+    <button class="btn" onclick="bayanDictation()">▶ Example</button>
     <button class="btn" onclick="stopBayan()">⏹ Stop</button>
 
-    <p style="margin-top:6px;font-size:0.85rem;color:#444;">
-      (Short dictation about sports around the world.)
-    </p>
-
-    <textarea id="writeBox" rows="5" placeholder="Write the text here..."></textarea><br>
-    <button class="btn" onclick="checkDictation()">Check dictation ✅</button>
+    <textarea id="writeBox" rows="5" placeholder="Write about your food here..."></textarea><br>
+    <button class="btn" onclick="checkDictation()">Check my text ✅</button>
     <div id="dictStars" style="font-size:1.1rem;margin-top:6px;"></div>
   </section>
 
@@ -342,10 +372,13 @@
   <section style="text-align:center;margin-top:25px;">
     <h3>🎯 Lesson Complete!</h3>
     <p>You have earned <b><span id="finalStars">0</span> ⭐</b> in this lesson.</p>
+    <p id="finalTotalText" style="margin-top:6px;color:#5a2ea6;font-weight:bold;">
+      🌟 You earned a total of 0 stars in this lesson!
+    </p>
 
     <button class="btn" onclick="finishLesson()">Save & Show Result ✅</button>
 
-    <div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#003366;"></div>
+    <div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#5a2ea6;"></div>
 
     <div style="margin-top:18px;">
       <button class="btn" onclick="goBack()">⬅ Back</button>
@@ -354,13 +387,15 @@
     </div>
   </section>
 
-  <p style="font-size:0.8rem;color:#444;margin-top:10px;text-align:center;">
+  <p style="font-size:0.8rem;color:#eee;margin-top:10px;text-align:center;">
     Created by Bayan team
   </p>
 </main>
 
+<div id="feedbackIcon" class="result-icon"></div>
+
 <script>
-  // ОБЩИЙ СЧЁТ ЗВЁЗД (без лимита)
+  // ⭐ TOTAL STARS
   let totalStars = 0;
   function addStar() {
     totalStars++;
@@ -370,10 +405,12 @@
     document.getElementById('lessonStarsLine').innerText =
       "You have " + totalStars + " ⭐ in this lesson.";
     const fs = document.getElementById('finalStars');
+    const ft = document.getElementById('finalTotalText');
     if(fs) fs.innerText = totalStars;
+    if(ft) ft.textContent = "🌟 You earned a total of " + totalStars + " stars in this lesson!";
   }
 
-  // Флаги — чтобы за один и тот же ответ не начислять звезду повторно
+  // флаги, чтобы не начислять звезду второй раз
   const scored = {
     v1:false, v2:false, v3:false, v4:false, v5:false, v6:false,
     g1:false, g2:false, g3:false, g4:false, g5:false,
@@ -383,12 +420,41 @@
     dict:false
   };
 
-  // ---------- TTS (AI Bayan voice) ----------
-  function speakBayanText(text){
-    if(!('speechSynthesis' in window)){
-      alert("Ваш браузер не поддерживает озвучку 😔");
-      return;
+  function showResult(isCorrect){
+    const icon = document.getElementById("feedbackIcon");
+    if(!icon) return;
+    if(isCorrect){
+      icon.textContent = "✔";
+      icon.className = "result-icon correct show";
+    } else {
+      icon.textContent = "✖";
+      icon.className = "result-icon wrong show";
     }
+    setTimeout(()=>icon.classList.remove("show"),900);
+  }
+
+  // ✅ / ❌ возле ответа
+  function markAnswer(element, isCorrect){
+    if(!element) return;
+    const parent = element.closest('label') || element.parentElement || element;
+    let mark = parent.querySelector('.mark-icon');
+    if(!mark){
+      mark = document.createElement('span');
+      mark.className = 'mark-icon';
+      parent.appendChild(mark);
+    }
+    if(isCorrect){
+      mark.textContent = ' ✅';
+      mark.className = 'mark-icon correctMark';
+    } else {
+      mark.textContent = ' ❌';
+      mark.className = 'mark-icon wrongMark';
+    }
+  }
+
+  // ---------- TTS ----------
+  function speakBayanText(text){
+    if(!('speechSynthesis' in window)) return;
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = "en-US";
     utter.rate = 0.9;
@@ -399,139 +465,238 @@
     if(femaleEn) utter.voice = femaleEn;
     speechSynthesis.speak(utter);
   }
-
-  function stopBayan(){
-    window.speechSynthesis.cancel();
-  }
+  function stopBayan(){ window.speechSynthesis.cancel(); }
 
   // ---------- VOCABULARY ----------
-  function speakVocab(text){
-    speakBayanText(text);
-  }
+  function speakVocab(text){ speakBayanText(text); }
 
   function checkVocab(){
-    let starsHere = 0;
+    let correctCount = 0;
 
     const q1 = document.querySelector('input[name="v1"]:checked');
-    if(q1 && q1.value === "1" && !scored.v1){ scored.v1=true; addStar(); starsHere++; }
+    if(q1){
+      const correct = q1.value === "1";
+      markAnswer(q1, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.v1){ scored.v1=true; addStar(); }
+    }
+
     const q2 = document.querySelector('input[name="v2"]:checked');
-    if(q2 && q2.value === "1" && !scored.v2){ scored.v2=true; addStar(); starsHere++; }
+    if(q2){
+      const correct = q2.value === "1";
+      markAnswer(q2, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.v2){ scored.v2=true; addStar(); }
+    }
+
     const q3 = document.querySelector('input[name="v3"]:checked');
-    if(q3 && q3.value === "1" && !scored.v3){ scored.v3=true; addStar(); starsHere++; }
+    if(q3){
+      const correct = q3.value === "1";
+      markAnswer(q3, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.v3){ scored.v3=true; addStar(); }
+    }
+
     const q4 = document.querySelector('input[name="v4"]:checked');
-    if(q4 && q4.value === "1" && !scored.v4){ scored.v4=true; addStar(); starsHere++; }
+    if(q4){
+      const correct = q4.value === "1";
+      markAnswer(q4, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.v4){ scored.v4=true; addStar(); }
+    }
+
     const q5 = document.querySelector('input[name="v5"]:checked');
-    if(q5 && q5.value === "1" && !scored.v5){ scored.v5=true; addStar(); starsHere++; }
+    if(q5){
+      const correct = q5.value === "1";
+      markAnswer(q5, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.v5){ scored.v5=true; addStar(); }
+    }
+
     const q6 = document.querySelector('input[name="v6"]:checked');
-    if(q6 && q6.value === "1" && !scored.v6){ scored.v6=true; addStar(); starsHere++; }
+    if(q6){
+      const correct = q6.value === "1";
+      markAnswer(q6, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.v6){ scored.v6=true; addStar(); }
+    }
 
     const box = document.getElementById('vocabStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " vocabulary stars!";
+    if(correctCount > 0){
+      box.innerHTML = "⭐".repeat(correctCount) + " You got " + correctCount + " correct answers in Vocabulary.";
+      showResult(true);
     } else {
-      box.innerHTML = "No new stars. Check answers or you already got them.";
+      box.innerHTML = "No correct answers yet. Try again!";
+      showResult(false);
     }
   }
 
   // ---------- GRAMMAR ----------
   function checkGrammar(){
-    let starsHere = 0;
+    let correctCount = 0;
 
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    if(q1 && q1.value === "dont" && !scored.g1){ scored.g1=true; addStar(); starsHere++; }
+    const g1 = document.querySelector('input[name="g1"]:checked');
+    if(g1){
+      const correct = g1.value === "like";
+      markAnswer(g1, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.g1){ scored.g1 = true; addStar(); }
+    }
 
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    if(q2 && q2.value === "doesnt" && !scored.g2){ scored.g2=true; addStar(); starsHere++; }
+    const g2 = document.querySelector('input[name="g2"]:checked');
+    if(g2){
+      const correct = g2.value === "likes";
+      markAnswer(g2, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.g2){ scored.g2 = true; addStar(); }
+    }
 
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    if(q3 && q3.value === "dont" && !scored.g3){ scored.g3=true; addStar(); starsHere++; }
+    const g3 = document.querySelector('input[name="g3"]:checked');
+    if(g3){
+      const correct = g3.value === "dontlike";
+      markAnswer(g3, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.g3){ scored.g3 = true; addStar(); }
+    }
 
-    const q4 = document.querySelector('input[name="q4"]:checked');
-    if(q4 && q4.value === "lets" && !scored.g4){ scored.g4=true; addStar(); starsHere++; }
+    const g4 = document.querySelector('input[name="g4"]:checked');
+    if(g4){
+      const correct = g4.value === "drinks";
+      markAnswer(g4, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.g4){ scored.g4 = true; addStar(); }
+    }
 
-    const q5 = document.querySelector('input[name="q5"]:checked');
-    if(q5 && q5.value === "enjoy" && !scored.g5){ scored.g5=true; addStar(); starsHere++; }
+    const g5 = document.querySelector('input[name="g5"]:checked');
+    if(g5){
+      const correct = g5.value === "like";
+      markAnswer(g5, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.g5){ scored.g5 = true; addStar(); }
+    }
 
     const box = document.getElementById('grammarStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " grammar stars!";
+    if(correctCount > 0){
+      box.innerHTML = "⭐".repeat(correctCount) + " You got " + correctCount + " correct answers in Grammar.";
+      showResult(true);
     } else {
-      box.innerHTML = "No new stars. Check again or you already got them.";
+      box.innerHTML = "No correct answers yet. Try again!";
+      showResult(false);
     }
   }
 
   // ---------- LISTENING ----------
   function bayanListening(){
-    const t = "Hello, I am Alex. I play ice hockey in Canada. " +
-              "My friend Jim plays ice hockey too. We wear helmets, gloves and ice skates. " +
-              "Lee plays table tennis with his friends. " +
-              "Oraz goes ice skating at the weekend at Medeu Ice Rink in Kazakhstan.";
+    const t =
+      "This is Anna's day. In the morning she drinks a glass of milk and eats bread with cheese. " +
+      "She does not like tea in the morning. " +
+      "At school she eats an apple and drinks water. " +
+      "In the evening her family eats soup and salad together. " +
+      "They like eating and talking at the table.";
     speakBayanText(t);
   }
 
   function checkListening(){
-    let starsHere = 0;
+    let correctCount = 0;
 
-    if(document.getElementById('t1').value === 'True' && !scored.l1){
-      scored.l1 = true; addStar(); starsHere++;
+    const t1 = document.getElementById('t1');
+    if(t1.value !== '—'){
+      const correct = t1.value === 'True';
+      markAnswer(t1, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.l1){ scored.l1 = true; addStar(); }
     }
-    if(document.getElementById('t2').value === 'False' && !scored.l2){
-      scored.l2 = true; addStar(); starsHere++;
+
+    const t2 = document.getElementById('t2');
+    if(t2.value !== '—'){
+      const correct = t2.value === 'False';
+      markAnswer(t2, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.l2){ scored.l2 = true; addStar(); }
     }
-    if(document.getElementById('t3').value === 'True' && !scored.l3){
-      scored.l3 = true; addStar(); starsHere++;
+
+    const t3 = document.getElementById('t3');
+    if(t3.value !== '—'){
+      const correct = t3.value === 'True';
+      markAnswer(t3, correct);
+      if(correct) correctCount++;
+      if(correct && !scored.l3){ scored.l3 = true; addStar(); }
     }
 
     const box = document.getElementById('listenStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " listening stars!";
+    if(correctCount > 0){
+      box.innerHTML = "⭐".repeat(correctCount) + " You got " + correctCount + " correct answers in Listening.";
+      showResult(true);
     } else {
-      box.innerHTML = "No new stars. Check your answers.";
+      box.innerHTML = "No correct answers yet. Try again!";
+      showResult(false);
     }
   }
 
   // ---------- READING ----------
   function bayanReading(){
     const t =
-      "People around the world love different sports. " +
-      "In Canada, many children play ice hockey and go ice skating. " +
-      "In Kazakhstan, children like going to Medeu Ice Rink and playing basketball at school. " +
-      "In some countries, children enjoy playing table tennis and football after school. " +
-      "Sports help us make friends and stay healthy.";
+      "Hi, I am Mark. I love food. " +
+      "For breakfast I eat a sandwich and an apple, and I drink milk. " +
+      "For lunch I have soup and salad at school. " +
+      "In the evening my family eats chicken and rice together. " +
+      "I do not like fizzy drinks. I usually drink water or orange juice.";
     speakBayanText(t);
   }
 
   function checkReading(){
-    let starsHere = 0;
-    const a1 = document.getElementById('r1').value.toLowerCase();
-    const a2 = document.getElementById('r2').value.toLowerCase();
-    const a3 = document.getElementById('r3').value.toLowerCase();
+    let correctCount = 0;
 
-    if(!scored.r1 && (a1.includes("ice hockey") || a1.includes("hockey"))){
-      scored.r1 = true; addStar(); starsHere++;
+    const r1El = document.getElementById('r1');
+    const r2El = document.getElementById('r2');
+    const r3El = document.getElementById('r3');
+
+    const a1 = r1El.value.toLowerCase();
+    const a2 = r2El.value.toLowerCase();
+    const a3 = r3El.value.toLowerCase();
+
+    let c1 = false, c2 = false, c3 = false;
+
+    if(a1.includes("sandwich") || a1.includes("apple") || a1.includes("milk") || a1.includes("breakfast")){
+      c1 = true;
+      correctCount++;
+      if(!scored.r1){ scored.r1 = true; addStar(); }
     }
-    if(!scored.r2 && (a2.includes("medeu") || a2.includes("ice rink") || a2.includes("basketball"))){
-      scored.r2 = true; addStar(); starsHere++;
+
+    if(a2.includes("no") || a2.includes("doesn") || a2.includes("don") || a2.includes("does not") || a2.includes("do not")){
+      c2 = true;
+      correctCount++;
+      if(!scored.r2){ scored.r2 = true; addStar(); }
     }
-    if(!scored.r3 && (a3.includes("friends") || a3.includes("healthy") || a3.includes("health"))){
-      scored.r3 = true; addStar(); starsHere++;
+
+    if(a3.includes("chicken") || a3.includes("rice") || a3.includes("evening") || a3.includes("dinner")){
+      c3 = true;
+      correctCount++;
+      if(!scored.r3){ scored.r3 = true; addStar(); }
     }
+
+    markAnswer(r1El, c1);
+    markAnswer(r2El, c2);
+    markAnswer(r3El, c3);
 
     const box = document.getElementById('readStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " reading stars!";
+    if(correctCount > 0){
+      box.innerHTML = "⭐".repeat(correctCount) + " You got " + correctCount + " correct answers in Reading.";
+      showResult(true);
     } else {
-      box.innerHTML = "No new stars. Check answers or you already got them.";
+      box.innerHTML = "No correct answers yet. Try again!";
+      showResult(false);
     }
   }
 
   // ---------- SPEAKING ----------
   let recognition;
   function bayanSpeaking(){
-    const t = "Now let's talk about sports around the world. " +
-              "What sports do you like playing? " +
-              "Do you know any sports from other countries? " +
-              "Would you like to go ice skating at Medeu?";
+    const t =
+      "Now let us talk about your food. " +
+      "What is your favourite food? " +
+      "What do you drink for breakfast? " +
+      "What do you eat with your family in the evening?";
     speakBayanText(t);
   }
 
@@ -545,114 +710,142 @@
     recognition.lang = "en-US";
     recognition.onresult = function(event){
       const speech = event.results[0][0].transcript.toLowerCase();
-      let starsHere = 0;
+      let correctCount = 0;
       if(
-        speech.includes("football") || speech.includes("volleyball") ||
-        speech.includes("basketball") || speech.includes("ice hockey") ||
-        speech.includes("hockey") || speech.includes("table tennis") ||
-        speech.includes("ice skating") || speech.includes("medeu") ||
-        speech.includes("canada") || speech.includes("kazakhstan")
+        speech.includes("food") || speech.includes("eat") || speech.includes("drink") ||
+        speech.includes("breakfast") || speech.includes("lunch") || speech.includes("dinner") ||
+        speech.includes("pizza") || speech.includes("soup") || speech.includes("salad") ||
+        speech.includes("juice") || speech.includes("water") || speech.includes("milk")
       ){
+        correctCount = 1;
         addStar();
-        starsHere++;
       }
       const box = document.getElementById('speakStars');
-      if(starsHere > 0){
-        box.innerHTML = "⭐ +" + starsHere + " speaking star!<br>You said: " + speech;
+      if(correctCount > 0){
+        box.innerHTML = "⭐ You got 1 speaking star!<br>You said: " + speech;
+        showResult(true);
       } else {
-        box.innerHTML = "You said: " + speech + "<br>Try to use words like: ice hockey, table tennis, ice skating, Medeu...";
+        box.innerHTML = "You said: " + speech +
+          "<br>Try to use words like food, eat, drink, breakfast, lunch, dinner, pizza, soup, salad.";
+        showResult(false);
       }
     };
     recognition.start();
   }
-
   function stopSpeak(){
     if(recognition) recognition.stop();
   }
 
-  // ---------- WRITING: TRANSLATION ----------
-  function checkWritingTranslate(){
-    let starsHere = 0;
-    const a1 = document.getElementById('w1').value.toLowerCase();
-    const a2 = document.getElementById('w2').value.toLowerCase();
-    const a3 = document.getElementById('w3').value.toLowerCase();
+  // ---------- WRITING: SENTENCES ----------
+  function checkWritingSentences(){
+    let correctCount = 0;
 
-    if(!scored.w1 && a1.includes("i") && a1.includes("don't") && a1.includes("play") &&
-       (a1.includes("ice hockey") || a1.includes("hockey")) && a1.includes("every day")){
-      scored.w1 = true; addStar(); starsHere++;
-    }
-    if(!scored.w2 && (a2.includes("he") || a2.includes("he does not") || a2.includes("he doesn't")) &&
-       a2.includes("doesn't") && a2.includes("play") &&
-       (a2.includes("table tennis") || a2.includes("table-tennis")) &&
-       a2.includes("on mondays")){
-      scored.w2 = true; addStar(); starsHere++;
-    }
-    if(!scored.w3 && (a3.includes("let's") || a3.includes("lets")) &&
-       (a3.includes("go") && (a3.includes("ice skating") || a3.includes("skating"))) &&
-       (a3.includes("this weekend") || a3.includes("at the weekend"))){
-      scored.w3 = true; addStar(); starsHere++;
+    const w1El = document.getElementById('w1');
+    const w2El = document.getElementById('w2');
+    const w3El = document.getElementById('w3');
+
+    const s1 = w1El.value.toLowerCase();
+    const s2 = w2El.value.toLowerCase();
+    const s3 = w3El.value.toLowerCase();
+
+    let c1 = false, c2 = false, c3 = false;
+
+    if(s1.includes("my favourite food is")){
+      c1 = true;
+      correctCount++;
+      if(!scored.w1){ scored.w1 = true; addStar(); }
     }
 
-    const box = document.getElementById('writeTransStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " translation stars!";
+    if(s2.includes("i like")){
+      c2 = true;
+      correctCount++;
+      if(!scored.w2){ scored.w2 = true; addStar(); }
+    }
+
+    if(s3.includes("i don't like") || s3.includes("i do not like")){
+      c3 = true;
+      correctCount++;
+      if(!scored.w3){ scored.w3 = true; addStar(); }
+    }
+
+    markAnswer(w1El, c1);
+    markAnswer(w2El, c2);
+    markAnswer(w3El, c3);
+
+    const box = document.getElementById('writeSentStars');
+    if(correctCount > 0){
+      box.innerHTML = "⭐".repeat(correctCount) + " You got " + correctCount + " correct sentences.";
+      showResult(true);
     } else {
-      box.innerHTML = "No new stars. Check your sentences or you already got them.";
+      box.innerHTML = "No correct sentences yet. Try again!";
+      showResult(false);
     }
   }
 
-  // ---------- WRITING: DICTATION ----------
-  function bayanWords(){
-    const t = "ice hockey, table tennis, ice skating, basketball, medal, helmet, gloves.";
-    speakBayanText(t);
-  }
-
+  // ---------- WRITING: TEXT ----------
   function bayanDictation(){
-    const t = "Around the world, children play many sports. " +
-              "Some children play ice hockey and wear helmets and gloves. " +
-              "Others enjoy playing table tennis, basketball and football. " +
-              "Sports are fun and they help us stay healthy.";
+    const t =
+      "Here is an example. " +
+      "My favourite food is pizza. " +
+      "I like drinking milk for breakfast. " +
+      "For lunch I eat soup and salad. " +
+      "For dinner I eat with my family. " +
+      "I do not like fizzy drinks. I drink water or juice.";
     speakBayanText(t);
   }
 
   function checkDictation(){
-    const text = document.getElementById("writeBox").value.toLowerCase();
-    const keywords = ["ice hockey","table tennis","basketball","helmet","gloves","healthy","sports"];
+    const boxEl = document.getElementById("writeBox");
+    const text = boxEl.value.toLowerCase();
+    const keywords = [
+      "my favourite food",
+      "i like",
+      "i don't like",
+      "i do not like",
+      "for breakfast",
+      "for lunch",
+      "for dinner"
+    ];
     let found = 0;
     for(const w of keywords){
       if(text.includes(w)) found++;
     }
-    let punctuationOk = (text.split(".").length - 1) >= 2;
-
-    let starsHere = 0;
-    if(!scored.dict && found >= 5 && punctuationOk){
-      scored.dict = true;
-      addStar();
-      starsHere++;
+    let correct = false;
+    if(found >= 3){
+      correct = true;
+      if(!scored.dict){
+        scored.dict = true;
+        addStar();
+      }
     }
 
+    markAnswer(boxEl, correct);
+
     const box = document.getElementById('dictStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " dictation star!";
-    } else if(found >= 4){
-      box.innerHTML = "Good, but check words and punctuation.";
+    if(correct){
+      box.innerHTML = "⭐ You wrote a good food text!";
+      showResult(true);
     } else {
-      box.innerHTML = "Listen again and try to write all key words with dots.";
+      box.innerHTML = "Try to write 3–5 sentences with: my favourite food, I like, I don’t like, for breakfast / lunch / dinner.";
+      showResult(false);
     }
   }
 
   // ---------- FINISH + NAVIGATION ----------
   function finishLesson(){
     document.getElementById("finalStars").innerText = totalStars;
+    document.getElementById("finalTotalText").textContent =
+      "🌟 You earned a total of " + totalStars + " stars in this lesson!";
+
     let msg = "";
     if(totalStars >= 20){
-      msg = "🌟🌟🌟 Amazing! World sport star!";
+      msg = "🌟🌟🌟 Great job! You can talk about food and drinks!";
     } else if(totalStars >= 12){
-      msg = "🌟🌟 Great job! Very active!";
+      msg = "🌟🌟 Very good! You understand this topic well!";
     } else if(totalStars >= 6){
-      msg = "🌟 Good start! Keep practicing!";
+      msg = "🌟 Good start! Keep practising your food words!";
     } else {
-      msg = "Keep going! Every star is progress!";
+      msg = "You finished the lesson! Every star is progress!";
     }
     document.getElementById("finalMessage").innerText = msg;
 
@@ -666,82 +859,31 @@
     alert("Lesson 3 saved! " + studentName + " got " + totalStars + "⭐.");
   }
 
-  function goBack(){ window.location.href = "index.html"; }
+  function goBack(){ window.location.href = "theme2.html"; }
   function goMenu(){ window.location.href = "index.html"; }
   function goNext(){ window.location.href = "theme4.html"; }
 
   // init
   updateStarsText();
 </script>
-  <!-- === Animation & Voice System === -->
-<script>
-// ====== ✅ CORRECT / ❌ WRONG ANIMATION ======
-function showResultAnimation(isCorrect, elementId){
-  const el=document.getElementById(elementId);
-  if(isCorrect){
-    el.innerHTML="✅ Correct! ⭐";
-    el.style.background="rgba(144,238,144,0.6)";
-    el.style.border="2px solid green";
-    el.style.transition="0.4s";
-    setTimeout(()=>{ el.style.background=""; el.style.border=""; el.innerHTML=""; },1500);
-  } else {
-    el.innerHTML="❌ Try again!";
-    el.style.background="rgba(255,182,193,0.6)";
-    el.style.border="2px solid red";
-    el.style.transition="0.4s";
-    navigator.vibrate?.(250);
-    setTimeout(()=>{ el.style.background=""; el.style.border=""; el.innerHTML=""; },1500);
-  }
-}
-
-// ====== 🗣️ AI Bayan Adaptive Voice ======
-function bayanSpeak(text){
-  const voices=speechSynthesis.getVoices();
-  let voice=voices.find(v=>v.lang.includes("en-GB")||v.name.includes("Google UK English Female"));
-  if(!voice){ voice=voices[0]; }
-  const utter=new SpeechSynthesisUtterance(text);
-  utter.voice=voice;
-  utter.lang="en-GB";
-  utter.rate=0.88;
-  utter.pitch=1.0;
-  speechSynthesis.speak(utter);
-}
-</script>
-  <script>
-// === 🎨 Тема 3: Blue Ocean (Sports Around the World) ===
-function setCustomColors() {
-  const root = document.documentElement;
-
-  // 🌊 Океанская палитра
-  root.style.setProperty("--main-bg", "linear-gradient(180deg, #e3f2fd 0%, #bbdefb 100%)");
-  root.style.setProperty("--header-bg", "#0d47a1");
-  root.style.setProperty("--header-text", "#ffffff");
-  root.style.setProperty("--btn-bg", "#1565c0");
-  root.style.setProperty("--btn-hover", "#42a5f5");
-  root.style.setProperty("--text-color", "#0a2440");
-  root.style.setProperty("--border-color", "#90caf9");
-  root.style.setProperty("--accent", "#ffca28");
-
-  // применяем цвета
-  document.body.style.background = getComputedStyle(root).getPropertyValue("--main-bg");
-  document.body.style.color = getComputedStyle(root).getPropertyValue("--text-color");
-  document.querySelectorAll("header").forEach(h=>{
-    h.style.background = getComputedStyle(root).getPropertyValue("--header-bg");
-    h.style.color = getComputedStyle(root).getPropertyValue("--header-text");
-  });
-  document.querySelectorAll(".btn").forEach(btn=>{
-    btn.style.background = getComputedStyle(root).getPropertyValue("--btn-bg");
-    btn.onmouseenter = ()=>btn.style.background = getComputedStyle(root).getPropertyValue("--btn-hover");
-    btn.onmouseleave = ()=>btn.style.background = getComputedStyle(root).getPropertyValue("--btn-bg");
-  });
-}
-
-window.addEventListener("DOMContentLoaded", setCustomColors);
-</script>
-  <script src="animations.js"></script>
 </body>
 </html>
 
+     
+  
+   
+    
+   
+     
 
+  
+  
+ 
+    
+    
 
+    
+      
+  
+ 
 
