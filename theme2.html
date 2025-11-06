@@ -7,32 +7,36 @@
 <style>
 body{
   font-family:Verdana,sans-serif;
-  background:radial-gradient(circle at top,#fff8e1 0%,#ffecb3 40%,#ffe082 100%);
+  background:radial-gradient(circle at top,#fffaf0 0%,#fae5b3 40%,#f5deb3 100%);
   margin:0;color:#5d4037;text-align:center;
 }
 header{
-  background:linear-gradient(90deg,#ffb300,#f57c00);
+  background:linear-gradient(90deg,#a67c52,#d4a373);
   color:white;padding:0.6rem 1rem;
-  border-bottom:5px solid #ffe082;
+  border-bottom:5px solid #f5deb3;
   display:flex;align-items:center;justify-content:space-between;
 }
-.logo{width:55px;height:55px;border-radius:50%;border:3px solid #ffe082;background:white;}
-h2{color:#e65100;}
+.logo{
+  width:55px;height:55px;border-radius:50%;
+  border:3px solid #f5deb3;background:white;object-fit:cover;
+}
+h2{color:#8b5e3c;}
 section{
   background:rgba(255,255,255,0.98);border-radius:18px;
   box-shadow:0 0 12px rgba(0,0,0,0.12);
-  padding:15px;max-width:860px;margin:15px auto;text-align:left;line-height:1.5;font-size:0.95rem;
+  padding:15px;max-width:860px;margin:15px auto;text-align:left;
+  line-height:1.5;font-size:0.95rem;
 }
 h3{
-  background:linear-gradient(90deg,#ffb300,#f57c00);
+  background:linear-gradient(90deg,#d4a373,#a67c52);
   color:white;padding:6px 10px;border-radius:10px;font-size:1rem;
 }
 .btn{
   display:inline-block;margin:6px;padding:8px 14px;
-  border:none;border-radius:10px;background:#f57c00;
+  border:none;border-radius:10px;background:#a67c52;
   color:white;font-weight:bold;cursor:pointer;font-size:0.9rem;
 }
-.btn:hover{background:#ffe082;color:#5d4037;}
+.btn:hover{background:#f5deb3;color:#5d4037;}
 input[type="text"],textarea,select{
   border-radius:8px;border:1px solid #ccc;padding:6px;
   font-family:inherit;font-size:0.9rem;
@@ -40,8 +44,9 @@ input[type="text"],textarea,select{
 input[type="text"]{width:100%;max-width:380px;}
 textarea{width:100%;}
 .round-label{
-  display:inline-block;background:#ffe082;color:#e65100;
-  padding:2px 8px;border-radius:999px;font-size:0.75rem;font-weight:bold;margin-left:6px;
+  display:inline-block;background:#f5deb3;color:#8b5e3c;
+  padding:2px 8px;border-radius:999px;font-size:0.75rem;
+  font-weight:bold;margin-left:6px;
 }
 .mark-icon{margin-left:8px;font-size:1.2rem;font-weight:bold;}
 .correctMark{color:#00c853;}
@@ -54,14 +59,14 @@ textarea{width:100%;}
     <img src="logo.png" class="logo" alt="AI Bayan logo">
     <div>
       <h1 style="margin:0;font-size:1rem;">Theme 2 — Sports and Exercises</h1>
-      <p style="margin:0;color:#fff3e0;">English with AI Bayan — Be active and healthy!</p>
+      <p style="margin:0;color:#fffaf0;">English with AI Bayan — Be active and healthy!</p>
     </div>
   </div>
 </header>
 
 <main>
 <h2>🏃‍♀️ Sports and Exercises</h2>
-<p style="font-style:italic;color:#e65100;">Let's talk about movement, energy and fun!</p>
+<p style="font-style:italic;color:#8b5e3c;">Let's talk about movement, energy and fun!</p>
 <p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
 
 <section>
@@ -126,7 +131,7 @@ textarea{width:100%;}
 <p><b>Read or listen:</b></p>
 <button class="btn" onclick="bayanReading()">▶ Play</button>
 <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-<div style="margin-top:10px;background:#fff3e0;border-radius:10px;padding:10px;">
+<div style="margin-top:10px;background:#fae5b3;border-radius:10px;padding:10px;">
 <p>
 It is Sports Day at school.  
 The students are running and jumping.  
@@ -158,7 +163,7 @@ Everyone is happy and active!
 <h3>🎯 Lesson Complete!</h3>
 <p>You have earned <b><span id="finalStars">0</span> ⭐</b> in this lesson.</p>
 <button class="btn" onclick="finishLesson()">Save & Show Result ✅</button>
-<div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#e65100;"></div>
+<div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#8b5e3c;"></div>
 </section>
 </main>
 
@@ -169,7 +174,7 @@ function speak(t){const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=
 function stopBayan(){speechSynthesis.cancel();}
 function mark(el,ok){let m=el.parentElement.querySelector('.mark-icon');if(!m){m=document.createElement('span');el.parentElement.appendChild(m);}m.textContent=ok?'✅':'❌';m.className='mark-icon '+(ok?'correctMark':'wrongMark');}
 function checkVocab(){let c=0;['v1','v2','v3'].forEach(id=>{const q=document.querySelector('input[name="'+id+'"]:checked');if(q){const ok=q.value==='1';mark(q,ok);if(ok)c++;}});if(c>0){addStar();vocabStars.innerText='⭐ '+c+' correct!';}}
-function checkGrammar(){let c=0;[['g1','can'],['g2','can'],['g3','can\'t']].forEach(([id,a])=>{const q=document.querySelector('input[name="'+id+'"]:checked');if(q){const ok=q.value===a;mark(q,ok);if(ok)c++;}});if(c>0){addStar();grammarStars.innerText='⭐ '+c+' correct!';}}
+function checkGrammar(){let c=0;[['g1','can'],['g2','can'],['g3',"can't"]].forEach(([id,a])=>{const q=document.querySelector('input[name="'+id+'"]:checked');if(q){const ok=q.value===a;mark(q,ok);if(ok)c++;}});if(c>0){addStar();grammarStars.innerText='⭐ '+c+' correct!';}}
 function bayanListening(){speak('The boys are running in the park. The girls are swimming in the pool. They are happy and healthy.');}
 function checkListening(){let c=0;if(t1.value==='True')c++;if(t2.value==='True')c++;if(t3.value==='False')c++;if(c>0){addStar();listenStars.innerText='⭐ '+c+' correct!';}}
 function bayanReading(){speak('It is Sports Day at school. The students are running and jumping. Some are playing football. Others are swimming in the pool. Everyone is happy.');}
@@ -180,7 +185,11 @@ function finishLesson(){finalStars.innerText=totalStars;const msg=totalStars>=10
 </body>
 </html>
 
- 
+
+
+
+
+
     
     
   
