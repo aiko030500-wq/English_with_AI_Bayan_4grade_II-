@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theme 4 — Seasons and Weather</title>
+  <title>Theme 5 — Animals and Nature</title>
   <style>
     body {
       font-family: Verdana, sans-serif;
-      background: radial-gradient(circle at top, #e0f7fa 0%, #b2ebf2 40%, #80deea 100%);
+      background: radial-gradient(circle at top, #e8f5e9 0%, #c8e6c9 35%, #a5d6a7 100%);
       margin: 0;
-      color: #25215a;
+      color: #1b5e20;
       text-align: center;
     }
     header {
-      background: linear-gradient(90deg,#0288d1,#26c6da);
+      background: linear-gradient(90deg,#2e7d32,#66bb6a);
       color: white;
       padding: 0.6rem 1rem;
       border-bottom: 5px solid #ffd54f;
@@ -28,11 +28,11 @@
       object-fit: cover;
       background: white;
     }
-    h2 {color:#01579b;}
+    h2 {color:#1b5e20;}
     section {
-      background: rgba(255,255,255,0.98);
+      background: rgba(255,255,255,0.97);
       border-radius: 18px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.12);
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
       padding: 15px;
       max-width: 860px;
       margin: 15px auto;
@@ -41,7 +41,7 @@
       font-size: 0.95rem;
     }
     h3 {
-      background: linear-gradient(90deg,#0288d1,#26c6da);
+      background: linear-gradient(90deg,#388e3c,#81c784);
       color: white;
       padding: 6px 10px;
       border-radius: 10px;
@@ -53,13 +53,13 @@
       padding:8px 14px;
       border:none;
       border-radius:10px;
-      background:#0288d1;
+      background:#388e3c;
       color:white;
       font-weight:bold;
       cursor:pointer;
       font-size:0.9rem;
     }
-    .btn:hover {background:#ffd54f; color:#004d40;}
+    .btn:hover {background:#ffd54f; color:#1b5e20;}
     textarea, input[type="text"] {
       width:100%;
       border-radius:10px;
@@ -76,7 +76,7 @@
     .round-label {
       display:inline-block;
       background:#ffd54f;
-      color:#004d40;
+      color:#2e7d32;
       padding:2px 8px;
       border-radius:999px;
       font-size:0.75rem;
@@ -93,57 +93,60 @@
   <div style="display:flex;align-items:center;gap:10px;">
     <img src="logo.png" class="logo" alt="AI Bayan logo">
     <div>
-      <h1 style="margin:0;font-size:1rem;">Theme 4 — Seasons and Weather</h1>
-      <p style="margin:0;color:#e0f2f1;">English with AI Bayan — Seasons and Weather</p>
+      <h1 style="margin:0;font-size:1rem;">Theme 5 — Animals and Nature</h1>
+      <p style="margin:0;color:#e8f5e9;">English with AI Bayan — Animals and Nature</p>
     </div>
   </div>
 </header>
 
 <main>
-  <h2>🌊 Seasons and Weather</h2>
-  <p style="font-style:italic;color:#004d40;">Talking about the four seasons and the weather</p>
+  <h2>🐻 Animals and Nature</h2>
+  <p style="font-style:italic;color:#2e7d32;">Talking about animals, wild and domestic</p>
   <p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
 
+  <!-- ===== Vocabulary ===== -->
   <section>
-    <h3>🧠 Vocabulary — Seasons and Weather <span class="round-label">Vocabulary</span></h3>
+    <h3>🧠 Vocabulary — Animals <span class="round-label">Vocabulary</span></h3>
     <p><b>Choose the correct translation.</b></p>
 
-    <p>1) <b>Spring</b></p>
-    <label><input type="radio" name="v1" value="1"> весна</label><br>
-    <label><input type="radio" name="v1" value="0"> зима</label><br>
+    <p>1) <b>Bear</b></p>
+    <label><input type="radio" name="v1" value="1"> медведь</label><br>
+    <label><input type="radio" name="v1" value="0"> заяц</label><br>
 
-    <p>2) <b>Winter</b></p>
-    <label><input type="radio" name="v2" value="1"> зима</label><br>
-    <label><input type="radio" name="v2" value="0"> лето</label><br>
+    <p>2) <b>Bird</b></p>
+    <label><input type="radio" name="v2" value="1"> птица</label><br>
+    <label><input type="radio" name="v2" value="0"> кошка</label><br>
 
-    <p>3) <b>Sunny</b></p>
-    <label><input type="radio" name="v3" value="1"> солнечный</label><br>
-    <label><input type="radio" name="v3" value="0"> дождливый</label><br>
+    <p>3) <b>Rabbit</b></p>
+    <label><input type="radio" name="v3" value="1"> кролик</label><br>
+    <label><input type="radio" name="v3" value="0"> тигр</label><br>
 
     <button class="btn" onclick="checkVocab()">Check vocabulary ✅</button>
     <div id="vocabStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
+  <!-- ===== Grammar ===== -->
   <section>
-    <h3>📘 Grammar — Talking about weather <span class="round-label">Grammar</span></h3>
+    <h3>📘 Grammar — Is / Are / Can <span class="round-label">Grammar</span></h3>
     <p>Choose the correct answer:</p>
 
-    <p>1) It ___ hot today.</p>
+    <p>1) The lion ___ big and strong.</p>
     <label><input type="radio" name="g1" value="is"> is</label><br>
     <label><input type="radio" name="g1" value="are"> are</label><br>
 
-    <p>2) In winter it often ___.</p>
-    <label><input type="radio" name="g2" value="snows"> snows</label><br>
-    <label><input type="radio" name="g2" value="rains"> rains</label><br>
+    <p>2) Birds ___ fly.</p>
+    <label><input type="radio" name="g2" value="can"> can</label><br>
+    <label><input type="radio" name="g2" value="is"> is</label><br>
 
     <button class="btn" onclick="checkGrammar()">Check grammar ✅</button>
     <div id="grammarStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
+  <!-- ===== Lesson Complete ===== -->
   <section style="text-align:center;margin-top:25px;">
     <h3>🎯 Lesson Complete!</h3>
     <p>You have earned <b><span id="finalStars">0</span> ⭐</b> in this lesson.</p>
-    <p id="finalTotalText" style="margin-top:6px;color:#004d40;font-weight:bold;">
+    <p id="finalTotalText" style="margin-top:6px;color:#1b5e20;font-weight:bold;">
       🌟 You earned a total of 0 stars in this lesson!
     </p>
   </section>
@@ -182,7 +185,7 @@ function checkGrammar(){
   const g1=document.querySelector('input[name="g1"]:checked');
   if(g1){const ok=g1.value==='is';markAnswer(g1,ok);if(ok){c++;if(!scored.g1){scored.g1=true;addStar();}}}
   const g2=document.querySelector('input[name="g2"]:checked');
-  if(g2){const ok=g2.value==='snows';markAnswer(g2,ok);if(ok){c++;if(!scored.g2){scored.g2=true;addStar();}}}
+  if(g2){const ok=g2.value==='can';markAnswer(g2,ok);if(ok){c++;if(!scored.g2){scored.g2=true;addStar();}}}
   const box=document.getElementById('grammarStars');
   box.innerHTML=c>0?"⭐".repeat(c)+" You got "+c+" correct answers.":"No correct answers yet.";
 }
@@ -190,4 +193,6 @@ function checkGrammar(){
 </body>
 </html>
 
- 
+  
+
+  
