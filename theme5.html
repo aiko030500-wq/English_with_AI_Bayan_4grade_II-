@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theme 5 — Food and Drinks</title>
+  <title>Theme 4 — Seasons and Weather</title>
   <style>
     body {
       font-family: Verdana, sans-serif;
-      background: linear-gradient(180deg,#fff7eb 0%,#ffe0b8 100%);
+      background: radial-gradient(circle at top, #e0f7fa 0%, #b2ebf2 40%, #80deea 100%);
       margin: 0;
-      color: #402000;
+      color: #25215a;
       text-align: center;
     }
     header {
-      background: linear-gradient(90deg,#8b2c00,#d96a00);
+      background: linear-gradient(90deg,#0288d1,#26c6da);
       color: white;
       padding: 0.6rem 1rem;
-      border-bottom: 5px solid #ffcc66;
+      border-bottom: 5px solid #ffd54f;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -24,27 +24,27 @@
     .logo {
       width: 55px; height: 55px;
       border-radius: 50%;
-      border: 3px solid #ffcc66;
+      border: 3px solid #ffd54f;
       object-fit: cover;
       background: white;
     }
-    h2 {color:#8b2c00;}
+    h2 {color:#01579b;}
     section {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.98);
+      border-radius: 18px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.12);
       padding: 15px;
-      max-width: 800px;
+      max-width: 860px;
       margin: 15px auto;
       text-align: left;
       line-height: 1.5;
       font-size: 0.95rem;
     }
     h3 {
-      background: #8b2c00;
+      background: linear-gradient(90deg,#0288d1,#26c6da);
       color: white;
       padding: 6px 10px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 1rem;
     }
     .btn {
@@ -53,27 +53,18 @@
       padding:8px 14px;
       border:none;
       border-radius:10px;
-      background:#8b2c00;
+      background:#0288d1;
       color:white;
       font-weight:bold;
       cursor:pointer;
       font-size:0.9rem;
     }
-    .btn:hover {background:#ffcc66; color:#8b2c00;}
-    textarea {
+    .btn:hover {background:#ffd54f; color:#004d40;}
+    textarea, input[type="text"] {
       width:100%;
       border-radius:10px;
       border:1px solid #ccc;
       padding:6px;
-      font-family:inherit;
-      font-size:0.9rem;
-    }
-    input[type="text"] {
-      width:100%;
-      max-width:380px;
-      border-radius:8px;
-      border:1px solid #ccc;
-      padding:4px 6px;
       font-family:inherit;
       font-size:0.9rem;
     }
@@ -82,6 +73,19 @@
       padding:2px 4px;
       font-size:0.9rem;
     }
+    .round-label {
+      display:inline-block;
+      background:#ffd54f;
+      color:#004d40;
+      padding:2px 8px;
+      border-radius:999px;
+      font-size:0.75rem;
+      font-weight:bold;
+      margin-left:6px;
+    }
+    .mark-icon {margin-left:8px;font-size:1.2rem;font-weight:bold;}
+    .correctMark{color:#00c853;}
+    .wrongMark{color:#ff1744;}
   </style>
 </head>
 <body>
@@ -89,630 +93,101 @@
   <div style="display:flex;align-items:center;gap:10px;">
     <img src="logo.png" class="logo" alt="AI Bayan logo">
     <div>
-      <h1 style="margin:0;font-size:1rem;">Theme 5 — Food and Drinks</h1>
-      <p style="margin:0;color:#ffe9b5;">English with AI Bayan</p>
+      <h1 style="margin:0;font-size:1rem;">Theme 4 — Seasons and Weather</h1>
+      <p style="margin:0;color:#e0f2f1;">English with AI Bayan — Seasons and Weather</p>
     </div>
   </div>
 </header>
 
 <main>
-  <h2>🍎 Food and Drinks</h2>
-  <p style="font-style:italic;">There is / There are, some / any, meals and Kazakh food</p>
+  <h2>🌊 Seasons and Weather</h2>
+  <p style="font-style:italic;color:#004d40;">Talking about the four seasons and the weather</p>
   <p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
 
-  <!-- ========== VOCABULARY (food & drinks) ========== -->
   <section>
-    <h3>🧠 VOCABULARY — Food and drinks</h3>
+    <h3>🧠 Vocabulary — Seasons and Weather <span class="round-label">Vocabulary</span></h3>
+    <p><b>Choose the correct translation.</b></p>
 
-    <p><b>AI Bayan говорит предложение. Ребёнок выбирает правильный перевод на русский.</b></p>
+    <p>1) <b>Spring</b></p>
+    <label><input type="radio" name="v1" value="1"> весна</label><br>
+    <label><input type="radio" name="v1" value="0"> зима</label><br>
 
-    <!-- Q1 -->
-    <p>1) AI Bayan:
-      <button class="btn" onclick="speakVocab('I like eating apples for breakfast.')">▶ Play</button>
-      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-    </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v1" value="1"> Я люблю есть яблоки на завтрак.</label><br>
-    <label><input type="radio" name="v1" value="0"> Я не ем яблоки на завтрак.</label><br>
-    <label><input type="radio" name="v1" value="0"> Я люблю пить яблочный сок на ужин.</label><br>
+    <p>2) <b>Winter</b></p>
+    <label><input type="radio" name="v2" value="1"> зима</label><br>
+    <label><input type="radio" name="v2" value="0"> лето</label><br>
 
-    <!-- Q2 -->
-    <p>2) AI Bayan:
-      <button class="btn" onclick="speakVocab('There is some milk in the fridge.')">▶ Play</button>
-      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-    </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v2" value="1"> В холодильнике есть немного молока.</label><br>
-    <label><input type="radio" name="v2" value="0"> В холодильнике нет молока.</label><br>
-    <label><input type="radio" name="v2" value="0"> На столе есть молоко.</label><br>
+    <p>3) <b>Sunny</b></p>
+    <label><input type="radio" name="v3" value="1"> солнечный</label><br>
+    <label><input type="radio" name="v3" value="0"> дождливый</label><br>
 
-    <!-- Q3 -->
-    <p>3) AI Bayan:
-      <button class="btn" onclick="speakVocab('There are some bananas on the table.')">▶ Play</button>
-      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-    </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v3" value="1"> На столе есть несколько бананов.</label><br>
-    <label><input type="radio" name="v3" value="0"> В холодильнике есть несколько бананов.</label><br>
-    <label><input type="radio" name="v3" value="0"> На столе нет бананов.</label><br>
-
-    <!-- Q4 -->
-    <p>4) AI Bayan:
-      <button class="btn" onclick="speakVocab('He has got a sandwich and some juice for lunch.')">▶ Play</button>
-      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-    </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v4" value="1"> У него на обед бутерброд и немного сока.</label><br>
-    <label><input type="radio" name="v4" value="0"> У него на ужин суп и чай.</label><br>
-    <label><input type="radio" name="v4" value="0"> У него только вода на обед.</label><br>
-
-    <!-- Q5 -->
-    <p>5) AI Bayan:
-      <button class="btn" onclick="speakVocab('Is there any tea in the cup?')">▶ Play</button>
-      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-    </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v5" value="1"> В чашке есть чай?</label><br>
-    <label><input type="radio" name="v5" value="0"> В чашке есть молоко?</label><br>
-    <label><input type="radio" name="v5" value="0"> В чашке нет чая.</label><br>
-
-    <!-- Q6 -->
-    <p>6) AI Bayan:
-      <button class="btn" onclick="speakVocab('Kumis is a traditional Kazakh drink.')">▶ Play</button>
-      <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-    </p>
-    <p>Choose the correct translation:</p>
-    <label><input type="radio" name="v6" value="1"> Кумыс — традиционный казахский напиток.</label><br>
-    <label><input type="radio" name="v6" value="0"> Кумыс — традиционное казахское блюдо.</label><br>
-    <label><input type="radio" name="v6" value="0"> Кумыс — фруктовый сок.</label><br>
-
-    <button class="btn" onclick="checkVocab()">Check ✅</button>
+    <button class="btn" onclick="checkVocab()">Check vocabulary ✅</button>
     <div id="vocabStars" style="font-size:1.1rem;margin-top:8px;"></div>
   </section>
 
-  <!-- ========== GRAMMAR (There is/are, some/any, have got, this/that, comparatives) ========== -->
   <section>
-    <h3>📘 GRAMMAR — There is / are & food</h3>
+    <h3>📘 Grammar — Talking about weather <span class="round-label">Grammar</span></h3>
+    <p>Choose the correct answer:</p>
 
-    <p><b>1. There is / There are + some / any:</b></p>
-    <p>
-      <b>There is</b> + ед. число / неисчисляемое: There is some milk. <br>
-      <b>There are</b> + мн. число: There are some apples. <br>
-      Вопросы и отрицания: Is there…? / Are there…? / There isn’t… / There aren’t…
-    </p>
+    <p>1) It ___ hot today.</p>
+    <label><input type="radio" name="g1" value="is"> is</label><br>
+    <label><input type="radio" name="g1" value="are"> are</label><br>
 
-    <p><b>Choose the correct form:</b></p>
+    <p>2) In winter it often ___.</p>
+    <label><input type="radio" name="g2" value="snows"> snows</label><br>
+    <label><input type="radio" name="g2" value="rains"> rains</label><br>
 
-    <p>1) ___ some juice on the table.</p>
-    <label><input type="radio" name="q1" value="there is"> There is</label><br>
-    <label><input type="radio" name="q1" value="there are"> There are</label><br>
-
-    <p>2) ___ any apples in the fridge?</p>
-    <label><input type="radio" name="q2" value="is there"> Is there</label><br>
-    <label><input type="radio" name="q2" value="are there"> Are there</label><br>
-
-    <hr>
-
-    <p><b>2. Have got:</b></p>
-    <p>
-      I / you / we / they <b>have got</b> …<br>
-      He / she / it <b>has got</b> …
-    </p>
-
-    <p>3) We ___ got some milk and bread.</p>
-    <label><input type="radio" name="q3" value="have"> have</label><br>
-    <label><input type="radio" name="q3" value="has"> has</label><br>
-
-    <hr>
-
-    <p><b>3. This / That & comparatives:</b></p>
-
-    <p>4) “___ sandwich is bigger than that sandwich.”</p>
-    <label><input type="radio" name="q4" value="this"> This</label><br>
-    <label><input type="radio" name="q4" value="these"> These</label><br>
-
-    <p>5) This cake is ___ than that cake.</p>
-    <label><input type="radio" name="q5" value="bigger"> bigger</label><br>
-    <label><input type="radio" name="q5" value="biggest"> biggest</label><br>
-
-    <button class="btn" onclick="checkGrammar()">Check ✅</button>
+    <button class="btn" onclick="checkGrammar()">Check grammar ✅</button>
     <div id="grammarStars" style="font-size:1.1rem;margin-top:8px;"></div>
-
-    <p><b>4. Write your own sentence:</b> (practice)</p>
-    <p>Example: There is some cheese on the plate.</p>
-    <input id="writeGrammar" type="text" placeholder="Type your sentence here...">
   </section>
 
-  <!-- ========== LISTENING (Traditional food in Kazakhstan) ========== -->
-  <section>
-    <h3>🎧 LISTENING — Traditional food in Kazakhstan</h3>
-
-    <p><b>1. Listen to AI Bayan:</b></p>
-    <button class="btn" onclick="bayanListening()">▶ Play</button>
-    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-
-    <p style="margin-top:8px;font-size:0.9rem;color:#444;">
-      (Teacher note: текст по мотивам темы о традиционных блюдах.)
-    </p>
-
-    <p><b>2. True or False?</b></p>
-
-    <p>1) The traditional dish of Kazakhstan is beshbarmak.</p>
-    <select id="t1">
-      <option>—</option><option>True</option><option>False</option>
-    </select>
-
-    <p>2) People eat beshbarmak with a fork.</p>
-    <select id="t2">
-      <option>—</option><option>True</option><option>False</option>
-    </select>
-
-    <p>3) Kumis is a drink made from milk.</p>
-    <select id="t3">
-      <option>—</option><option>True</option><option>False</option>
-    </select>
-
-    <button class="btn" onclick="checkListening()">Check ✅</button>
-    <div id="listenStars" style="font-size:1.1rem;margin-top:8px;"></div>
-  </section>
-
-  <!-- ========== READING (short text about meals) ========== -->
-  <section>
-    <h3>📖 READING — My meals</h3>
-
-    <p><b>1. Read or listen:</b></p>
-    <button class="btn" onclick="bayanReading()">▶ Play</button>
-    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-
-    <div style="margin-top:10px; background:#fff4d6; border-radius:10px; padding:10px;">
-      <p>
-        I like healthy food. For breakfast, I eat bread and cheese and I drink tea.  
-        At school, I have lunch with my friends. We eat soup and rice, and we drink juice or water.  
-        For dinner, my family eats meat and salad, and sometimes we have fruit for dessert.
-      </p>
-    </div>
-
-    <p><b>2. Answer the questions:</b></p>
-    <ol>
-      <li>What do I eat and drink for breakfast?<br>
-        <input id="r1" type="text" placeholder="Your answer..."></li><br>
-      <li>What do we have for lunch at school?<br>
-        <input id="r2" type="text" placeholder="Your answer..."></li><br>
-      <li>What does my family eat for dinner?<br>
-        <input id="r3" type="text" placeholder="Your answer..."></li>
-    </ol>
-
-    <button class="btn" onclick="checkReading()">Check ✅</button>
-    <div id="readStars" style="font-size:1.1rem;margin-top:8px;"></div>
-  </section>
-
-  <!-- ========== SPEAKING ========== -->
-  <section>
-    <h3>🗣️ SPEAKING — Talk about food</h3>
-
-    <p><b>1. Listen to questions:</b></p>
-    <button class="btn" onclick="bayanSpeaking()">▶ Play</button>
-    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-
-    <p style="margin-top:8px;"><b>Questions:</b></p>
-    <ul>
-      <li>What do you like to eat for breakfast?</li>
-      <li>What is your favourite Kazakh dish?</li>
-      <li>Do you like drinking tea or juice?</li>
-    </ul>
-
-    <p><b>2. Answer into the microphone:</b></p>
-    <button class="btn" onclick="startSpeak()">🎙 Start recording</button>
-    <button class="btn" onclick="stopSpeak()">⏹ Stop</button>
-
-    <div id="speakStars" style="font-size:1.1rem;margin-top:10px;"></div>
-  </section>
-
-  <!-- ========== WRITING (translation + My favourite meal) ========== -->
-  <section>
-    <h3>✍️ WRITING — Translation & My favourite meal</h3>
-
-    <p><b>A. Translate into English:</b></p>
-    <p>1) На столе есть немного хлеба и сыра.</p>
-    <textarea id="w1" rows="2" placeholder="Your translation..."></textarea>
-
-    <p>2) В холодильнике нет сока.</p>
-    <textarea id="w2" rows="2" placeholder="Your translation..."></textarea>
-
-    <p>3) Какое твоё любимое блюдо?</p>
-    <textarea id="w3" rows="2" placeholder="Your translation..."></textarea>
-
-    <button class="btn" onclick="checkWritingTranslate()">Check translation ✅</button>
-    <div id="writeTransStars" style="font-size:1.1rem;margin-top:6px;"></div>
-
-    <hr>
-
-    <p><b>B. My favourite meal:</b></p>
-    <p>Write 3–4 sentences about your favourite meal.</p>
-    <button class="btn" onclick="bayanDictation()">▶ Example</button>
-    <button class="btn" onclick="stopBayan()">⏹ Stop</button>
-
-    <textarea id="writeBox" rows="5" placeholder="Write your text here..."></textarea><br>
-    <button class="btn" onclick="checkDictation()">Check my text ✅</button>
-    <div id="dictStars" style="font-size:1.1rem;margin-top:6px;"></div>
-  </section>
-
-  <!-- ========== LESSON RESULT ========== -->
   <section style="text-align:center;margin-top:25px;">
     <h3>🎯 Lesson Complete!</h3>
     <p>You have earned <b><span id="finalStars">0</span> ⭐</b> in this lesson.</p>
-
-    <button class="btn" onclick="finishLesson()">Save & Show Result ✅</button>
-
-    <div id="finalMessage" style="margin-top:10px;font-size:1.1rem;color:#8b2c00;"></div>
-
-    <div style="margin-top:18px;">
-      <button class="btn" onclick="goBack()">⬅ Back</button>
-      <button class="btn" onclick="goMenu()">🏠 Main Menu</button>
-      <button class="btn" onclick="goNext()">Next ➡️</button>
-    </div>
+    <p id="finalTotalText" style="margin-top:6px;color:#004d40;font-weight:bold;">
+      🌟 You earned a total of 0 stars in this lesson!
+    </p>
   </section>
-
-  <p style="font-size:0.8rem;color:#444;margin-top:10px;text-align:center;">
-    Created by Bayan team
-  </p>
 </main>
 
 <script>
-  // ОБЩИЙ СЧЁТ ЗВЁЗД (без лимита)
-  let totalStars = 0;
-  function addStar() {
-    totalStars++;
-    updateStarsText();
-  }
-  function updateStarsText(){
-    document.getElementById('lessonStarsLine').innerText =
-      "You have " + totalStars + " ⭐ in this lesson.";
-    const fs = document.getElementById('finalStars');
-    if(fs) fs.innerText = totalStars;
-  }
-
-  // Флаги, чтобы не давать 2 звезды за один и тот же ответ
-  const scored = {
-    v1:false, v2:false, v3:false, v4:false, v5:false, v6:false,
-    g1:false, g2:false, g3:false, g4:false, g5:false,
-    l1:false, l2:false, l3:false,
-    r1:false, r2:false, r3:false,
-    w1:false, w2:false, w3:false,
-    dict:false
-  };
-
-  // ---------- TTS (AI Bayan voice) ----------
-  function speakBayanText(text){
-    if(!('speechSynthesis' in window)){
-      alert("Ваш браузер не поддерживает озвучку 😔");
-      return;
-    }
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = "en-US";
-    utter.rate = 0.9;
-    utter.pitch = 1.05;
-    utter.volume = 1;
-    const voices = speechSynthesis.getVoices();
-    const femaleEn = voices.find(v => v.lang.includes("en") && v.name.toLowerCase().includes("female"));
-    if(femaleEn) utter.voice = femaleEn;
-    speechSynthesis.speak(utter);
-  }
-
-  function stopBayan(){
-    window.speechSynthesis.cancel();
-  }
-
-  // ---------- VOCABULARY ----------
-  function speakVocab(text){
-    speakBayanText(text);
-  }
-
-  function checkVocab(){
-    let starsHere = 0;
-    const q1 = document.querySelector('input[name="v1"]:checked');
-    if(q1 && q1.value === "1" && !scored.v1){ scored.v1=true; addStar(); starsHere++; }
-    const q2 = document.querySelector('input[name="v2"]:checked');
-    if(q2 && q2.value === "1" && !scored.v2){ scored.v2=true; addStar(); starsHere++; }
-    const q3 = document.querySelector('input[name="v3"]:checked');
-    if(q3 && q3.value === "1" && !scored.v3){ scored.v3=true; addStar(); starsHere++; }
-    const q4 = document.querySelector('input[name="v4"]:checked');
-    if(q4 && q4.value === "1" && !scored.v4){ scored.v4=true; addStar(); starsHere++; }
-    const q5 = document.querySelector('input[name="v5"]:checked');
-    if(q5 && q5.value === "1" && !scored.v5){ scored.v5=true; addStar(); starsHere++; }
-    const q6 = document.querySelector('input[name="v6"]:checked');
-    if(q6 && q6.value === "1" && !scored.v6){ scored.v6=true; addStar(); starsHere++; }
-
-    const box = document.getElementById('vocabStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " vocabulary stars!";
-    } else {
-      box.innerHTML = "No new stars. Check answers or you already got them.";
-    }
-  }
-
-  // ---------- GRAMMAR ----------
-  function checkGrammar(){
-    let starsHere = 0;
-
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    if(q1 && q1.value === "there is" && !scored.g1){ scored.g1=true; addStar(); starsHere++; }
-
-    const q2 = document.querySelector('input[name="q2"]:checked');
-    if(q2 && q2.value === "are there" && !scored.g2){ scored.g2=true; addStar(); starsHere++; }
-
-    const q3 = document.querySelector('input[name="q3"]:checked');
-    if(q3 && q3.value === "have" && !scored.g3){ scored.g3=true; addStar(); starsHere++; }
-
-    const q4 = document.querySelector('input[name="q4"]:checked');
-    if(q4 && q4.value === "this" && !scored.g4){ scored.g4=true; addStar(); starsHere++; }
-
-    const q5 = document.querySelector('input[name="q5"]:checked');
-    if(q5 && q5.value === "bigger" && !scored.g5){ scored.g5=true; addStar(); starsHere++; }
-
-    const box = document.getElementById('grammarStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " grammar stars!";
-    } else {
-      box.innerHTML = "No new stars. Check again or you already got them.";
-    }
-  }
-
-  // ---------- LISTENING ----------
-  function bayanListening(){
-    const t = "In Kazakhstan, people often eat beshbarmak. " +
-              "They eat it with their hands, not with a fork. " +
-              "Kumis is a traditional Kazakh drink made from milk. " +
-              "Many families also drink tea with bread and jam.";
-    speakBayanText(t);
-  }
-
-  function checkListening(){
-    let starsHere = 0;
-
-    if(document.getElementById('t1').value === 'True' && !scored.l1){
-      scored.l1 = true; addStar(); starsHere++;
-    }
-    if(document.getElementById('t2').value === 'False' && !scored.l2){
-      scored.l2 = true; addStar(); starsHere++;
-    }
-    if(document.getElementById('t3').value === 'True' && !scored.l3){
-      scored.l3 = true; addStar(); starsHere++;
-    }
-
-    const box = document.getElementById('listenStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " listening stars!";
-    } else {
-      box.innerHTML = "No new stars. Check your answers.";
-    }
-  }
-
-  // ---------- READING ----------
-  function bayanReading(){
-    const t =
-      "I like healthy food. " +
-      "For breakfast, I eat bread and cheese and I drink tea. " +
-      "At school, I have lunch with my friends. We eat soup and rice, and we drink juice or water. " +
-      "For dinner, my family eats meat and salad, and sometimes we have fruit for dessert.";
-    speakBayanText(t);
-  }
-
-  function checkReading(){
-    let starsHere = 0;
-    const a1 = document.getElementById('r1').value.toLowerCase();
-    const a2 = document.getElementById('r2').value.toLowerCase();
-    const a3 = document.getElementById('r3').value.toLowerCase();
-
-    if(!scored.r1 &&
-       a1.includes("bread") && a1.includes("cheese") &&
-       (a1.includes("tea") || a1.includes("drink"))){
-      scored.r1 = true; addStar(); starsHere++;
-    }
-    if(!scored.r2 &&
-       (a2.includes("soup") || a2.includes("rice"))){
-      scored.r2 = true; addStar(); starsHere++;
-    }
-    if(!scored.r3 &&
-       (a3.includes("meat") || a3.includes("salad"))){
-      scored.r3 = true; addStar(); starsHere++;
-    }
-
-    const box = document.getElementById('readStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " reading stars!";
-    } else {
-      box.innerHTML = "No new stars. Check answers or you already got them.";
-    }
-  }
-
-  // ---------- SPEAKING ----------
-  let recognition;
-  function bayanSpeaking(){
-    const t = "Now let's talk about food and drinks. " +
-              "What do you like to eat for breakfast? " +
-              "What is your favourite Kazakh dish? " +
-              "Do you like drinking tea or juice?";
-    speakBayanText(t);
-  }
-
-  function startSpeak(){
-    if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)){
-      alert("Speech recognition is not supported in this browser.");
-      return;
-    }
-    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    recognition = new SR();
-    recognition.lang = "en-US";
-    recognition.onresult = function(event){
-      const speech = event.results[0][0].transcript.toLowerCase();
-      let starsHere = 0;
-      if(
-        speech.includes("bread") || speech.includes("cheese") || speech.includes("meat") ||
-        speech.includes("rice") || speech.includes("soup") || speech.includes("tea") ||
-        speech.includes("juice") || speech.includes("beshbarmak") || speech.includes("kumis") ||
-        speech.includes("breakfast") || speech.includes("lunch") || speech.includes("dinner")
-      ){
-        addStar();
-        starsHere++;
-      }
-      const box = document.getElementById('speakStars');
-      if(starsHere > 0){
-        box.innerHTML = "⭐ +" + starsHere + " speaking star!<br>You said: " + speech;
-      } else {
-        box.innerHTML = "You said: " + speech +
-          "<br>Try to use words like: bread, cheese, tea, juice, beshbarmak, breakfast...";
-      }
-    };
-    recognition.start();
-  }
-
-  function stopSpeak(){
-    if(recognition) recognition.stop();
-  }
-
-  // ---------- WRITING: TRANSLATION ----------
-  function checkWritingTranslate(){
-    let starsHere = 0;
-    const a1 = document.getElementById('w1').value.toLowerCase();
-    const a2 = document.getElementById('w2').value.toLowerCase();
-    const a3 = document.getElementById('w3').value.toLowerCase();
-
-    if(!scored.w1 &&
-       a1.includes("there is") &&
-       a1.includes("some") &&
-       a1.includes("bread") &&
-       a1.includes("cheese") &&
-       a1.includes("on the table")){
-      scored.w1 = true; addStar(); starsHere++;
-    }
-
-    if(!scored.w2 &&
-       (a2.includes("there is no juice") ||
-        (a2.includes("there is not") && a2.includes("juice")) ||
-        (a2.includes("there isn't") && a2.includes("juice"))) &&
-       a2.includes("fridge")){
-      scored.w2 = true; addStar(); starsHere++;
-    }
-
-    if(!scored.w3 &&
-       a3.includes("what") &&
-       (a3.includes("your favourite dish") ||
-        a3.includes("your favorite dish") ||
-        a3.includes("your favourite food") ||
-        a3.includes("your favorite food") ||
-        a3.includes("your favourite meal") ||
-        a3.includes("your favorite meal"))){
-      scored.w3 = true; addStar(); starsHere++;
-    }
-
-    const box = document.getElementById('writeTransStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " translation stars!";
-    } else {
-      box.innerHTML = "No new stars. Check your sentences or you already got them.";
-    }
-  }
-
-  // ---------- WRITING: MY FAVOURITE MEAL ----------
-  function bayanDictation(){
-    const t = "My favourite meal is dinner. " +
-              "We eat meat and salad and we drink tea. " +
-              "Sometimes we also have fruit for dessert.";
-    speakBayanText(t);
-  }
-
-  function checkDictation(){
-    const text = document.getElementById("writeBox").value.toLowerCase();
-    const keywords = ["favourite meal","favorite meal","breakfast","lunch","dinner",
-                      "bread","cheese","meat","salad","tea","juice","fruit"];
-    let found = 0;
-    for(const w of keywords){
-      if(text.includes(w)) found++;
-    }
-    let starsHere = 0;
-    if(!scored.dict && found >= 3){
-      scored.dict = true;
-      addStar();
-      starsHere++;
-    }
-
-    const box = document.getElementById('dictStars');
-    if(starsHere > 0){
-      box.innerHTML = "⭐ +" + starsHere + " writing star!";
-    } else {
-      box.innerHTML = "Try to write 3–4 sentences and use words like breakfast, lunch, dinner, meat, salad, tea.";
-    }
-  }
-
-  // ---------- FINISH + NAVIGATION ----------
-  function finishLesson(){
-    document.getElementById("finalStars").innerText = totalStars;
-    let msg = "";
-    if(totalStars >= 20){
-      msg = "🌟🌟🌟 Amazing! Food expert!";
-    } else if(totalStars >= 12){
-      msg = "🌟🌟 Great job! Very tasty English!";
-    } else if(totalStars >= 6){
-      msg = "🌟 Good start! Keep practicing!";
-    } else {
-      msg = "Keep going! Every star is progress!";
-    }
-    document.getElementById("finalMessage").innerText = msg;
-
-    const studentName = localStorage.getItem("studentName") || "Unknown Student";
-    const allResults = JSON.parse(localStorage.getItem("teacherJournal") || "{}");
-    allResults[studentName] = allResults[studentName] || {};
-    allResults[studentName]["Lesson 5"] = totalStars;
-    localStorage.setItem("teacherJournal", JSON.stringify(allResults));
-    localStorage.setItem("lesson5Stars", totalStars);
-
-    alert("Lesson 5 saved! " + studentName + " got " + totalStars + "⭐.");
-  }
-
-  function goBack(){ window.location.href = "index.html"; }
-  function goMenu(){ window.location.href = "index.html"; }
-  function goNext(){ window.location.href = "theme6.html"; }
-
-  // init
-  updateStarsText();
-</script>
- <!-- === Animation & Voice System === -->
-<script>
-// ====== ✅ CORRECT / ❌ WRONG ANIMATION ======
-function showResultAnimation(isCorrect, elementId){
-  const el=document.getElementById(elementId);
-  if(isCorrect){
-    el.innerHTML="✅ Correct! ⭐";
-    el.style.background="rgba(144,238,144,0.6)";
-    el.style.border="2px solid green";
-    el.style.transition="0.4s";
-    setTimeout(()=>{ el.style.background=""; el.style.border=""; el.innerHTML=""; },1500);
-  } else {
-    el.innerHTML="❌ Try again!";
-    el.style.background="rgba(255,182,193,0.6)";
-    el.style.border="2px solid red";
-    el.style.transition="0.4s";
-    navigator.vibrate?.(250);
-    setTimeout(()=>{ el.style.background=""; el.style.border=""; el.innerHTML=""; },1500);
-  }
+let totalStars=0;
+function addStar(){totalStars++;updateStarsText();}
+function updateStarsText(){
+  document.getElementById('lessonStarsLine').innerText="You have "+totalStars+" ⭐ in this lesson.";
+  document.getElementById('finalStars').innerText=totalStars;
+  document.getElementById('finalTotalText').textContent="🌟 You earned a total of "+totalStars+" stars in this lesson!";
 }
-
-// ====== 🗣️ AI Bayan Adaptive Voice ======
-function bayanSpeak(text){
-  const voices=speechSynthesis.getVoices();
-  let voice=voices.find(v=>v.lang.includes("en-GB")||v.name.includes("Google UK English Female"));
-  if(!voice){ voice=voices[0]; }
-  const utter=new SpeechSynthesisUtterance(text);
-  utter.voice=voice;
-  utter.lang="en-GB";
-  utter.rate=0.88;
-  utter.pitch=1.0;
-  speechSynthesis.speak(utter);
+const scored={v1:false,v2:false,v3:false,g1:false,g2:false};
+function markAnswer(el,ok){
+  const p=el.closest('label');
+  let m=p.querySelector('.mark-icon');
+  if(!m){m=document.createElement('span');m.className='mark-icon';p.appendChild(m);}
+  if(ok){m.textContent=' ✅';m.className='mark-icon correctMark';}
+  else{m.textContent=' ❌';m.className='mark-icon wrongMark';}
+}
+function checkVocab(){
+  let c=0;
+  ['v1','v2','v3'].forEach(n=>{
+    const q=document.querySelector('input[name="'+n+'"]:checked');
+    if(q){
+      const ok=q.value==='1';markAnswer(q,ok);
+      if(ok){c++;if(!scored[n]){scored[n]=true;addStar();}}
+    }
+  });
+  const box=document.getElementById('vocabStars');
+  box.innerHTML=c>0?"⭐".repeat(c)+" You got "+c+" correct answers.":"No correct answers yet.";
+}
+function checkGrammar(){
+  let c=0;
+  const g1=document.querySelector('input[name="g1"]:checked');
+  if(g1){const ok=g1.value==='is';markAnswer(g1,ok);if(ok){c++;if(!scored.g1){scored.g1=true;addStar();}}}
+  const g2=document.querySelector('input[name="g2"]:checked');
+  if(g2){const ok=g2.value==='snows';markAnswer(g2,ok);if(ok){c++;if(!scored.g2){scored.g2=true;addStar();}}}
+  const box=document.getElementById('grammarStars');
+  box.innerHTML=c>0?"⭐".repeat(c)+" You got "+c+" correct answers.":"No correct answers yet.";
 }
 </script>
-  <script src="animations.js"></script>
 </body>
 </html>
- 
 
+ 
