@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>English with AI Bayan 4grade II (Online)</title>
+<title>Theme 1 — Let’s Have Fun!</title>
 <style>
   body {
     font-family: Verdana, sans-serif;
@@ -25,168 +25,60 @@
     cursor:pointer;font-size:0.9rem;
   }
   .btn:hover {background:gold;color:#003366;}
-  .overlay {
-    position:fixed;inset:0;background:rgba(0,0,0,0.55);
-    display:flex;align-items:center;justify-content:center;z-index:999;
+  .task-box {
+    background:#fff;
+    border:2px solid gold;
+    border-radius:14px;
+    max-width:600px;
+    margin:15px auto;
+    padding:15px;
+    box-shadow:0 0 8px rgba(0,0,0,0.15);
   }
-  .overlay-card {
-    background:white;padding:20px;border-radius:16px;width:90%;max-width:400px;
-    box-shadow:0 0 15px rgba(0,0,0,0.3);border:4px solid gold;
+  .star {
+    color:gold;
+    font-size:1.3rem;
   }
-  .overlay-card input {
-    width:100%;padding:8px;margin:6px 0;border-radius:8px;
-    border:1px solid #ccc;font-size:1rem;
-  }
-  .logo-main {
-    width:120px;height:120px;object-fit:cover;border-radius:50%;
-    border:3px solid gold;margin-bottom:6px;
-  }
-  .topics-grid {
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:10px;max-width:900px;margin:0 auto 15px;
-  }
-  .topic-card {
-    background:#fff;border-radius:16px;padding:12px;
-    box-shadow:0 0 8px rgba(0,0,0,0.08);cursor:pointer;
-    border:2px solid #dde6ff;font-size:0.95rem;
-  }
-  .topic-card:hover {border-color:gold;transform:translateY(-1px);}
-  #welcomeBox {
-    background:linear-gradient(180deg,#fff9ec 0%,#f8e4ba 100%);
-    border:3px solid gold;border-radius:20px;padding:16px;width:90%;
-    max-width:600px;margin:16px auto 20px;
-    box-shadow:0 0 15px rgba(255,215,0,0.4);
-  }
-  #welcomeBox h2{margin:4px 0;font-size:1.4rem;}
-  #totalStars{font-weight:bold;color:#d48a00;}
-  table{font-size:0.85rem;border-collapse:collapse;margin:auto;}
-  th,td{padding:4px 6px;border:1px solid #ccc;}
 </style>
 </head>
 <body>
 
-<!-- 🔐 LOGIN -->
-<div class="overlay" id="loginOverlay">
-  <div class="overlay-card">
-    <h1>English with AI Bayan</h1>
-    <input type="text" id="nameInput" placeholder="Enter your name">
-    <input type="password" id="pinInput" placeholder="Enter PIN" maxlength="4">
-    <button class="btn" onclick="checkLogin()">Enter</button>
-  </div>
-</div>
-
-<header><h1>English with AI Bayan 4grade II (ONLINE)</h1></header>
+<header>
+  <h1>🎨 Theme 1 — Let’s Have Fun!</h1>
+</header>
 
 <main>
-  <div id="welcomeBox" style="display:none;">
-    <img src="logo.png" alt="AI Bayan Logo" class="logo-main">
-    <h2 id="welcomeText"></h2>
-    <p>You have <span id="totalStars">0</span> ⭐ total stars!</p>
+  <div class="task-box">
+    <p><b>Task 1:</b> Choose the correct word.</p>
+    <p>Children like to ______ games in the park.</p>
+    <button class="btn" onclick="checkAnswer(true)">play</button>
+    <button class="btn" onclick="checkAnswer(false)">doing</button>
+    <p id="feedback"></p>
   </div>
 
-  <!-- 👩‍🎓 STUDENT MENU -->
-  <div id="studentMenu" style="display:none;">
-    <div class="topics-grid">
-      <div class="topic-card" onclick="openLesson(1)">1. 🎨 Let’s Have Fun!</div>
-      <div class="topic-card" onclick="openLesson(2)">2. 🏃 Sports and Exercises</div>
-      <div class="topic-card" onclick="openLesson(3)">3. 🌍 Sports Around the World</div>
-      <div class="topic-card" onclick="openLesson(4)">4. 🎵 Arts and Music</div>
-      <div class="topic-card" onclick="openLesson(5)">5. ⚽ Popular Team Sports</div>
-      <div class="topic-card" onclick="openLesson(6)">6. 🎻 Museum of Kazakh Musical Instruments</div>
-      <div class="topic-card" onclick="openLesson(7)">7. 📜 Children’s Rights & Responsibilities</div>
-      <div class="topic-card" onclick="openLesson(8)">8. 🧰 Different Jobs</div>
-      <div class="topic-card" onclick="openLesson(9)">9. 👩‍⚕️ Professions</div>
-      <div class="topic-card" onclick="openLesson(10)">10. 🏢 People at Work</div>
-      <div class="topic-card" onclick="openLesson(11)">11. 💬 What Do You Do?</div>
-      <div class="topic-card" onclick="openLesson(12)">12. ❤️ You Can Help!</div>
-      <div class="topic-card" onclick="openLesson(13)">13. 🎯 Final Challenge</div>
-    </div>
-    <button class="btn" onclick="openTeacherJournal()">🏫 Teacher Journal</button>
-  </div>
-
-  <!-- 🧾 TEACHER JOURNAL -->
-  <div id="teacherJournal" style="display:none;">
-    <h2>🏫 Teacher Journal</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Student</th>
-          <th>L1</th><th>L2</th><th>L3</th><th>L4</th><th>L5</th><th>L6</th>
-          <th>L7</th><th>L8</th><th>L9</th><th>L10</th><th>L11</th><th>L12</th><th>L13</th>
-          <th>Total ⭐</th>
-        </tr>
-      </thead>
-      <tbody id="journalBody"></tbody>
-    </table>
-    <button class="btn" onclick="logout()">Logout</button>
-  </div>
+  <button class="btn" onclick="goToMainMenu()">🏠 Главное меню</button>
 </main>
 
 <script>
-const allowedNames = [
-  "Aylin2","Aitach2","Zhakhangir2","Alvi2","Narmin2","Balman2",
-  "Dima2","Ilyas2","Kirill2","Irada2","Shyngys2","Sultan2",
-  "Kira2","Damir2","Arai2","Bayan2","Jury2","Jury3"
-];
-
-function checkLogin(){
-  const name=document.getElementById("nameInput").value.trim();
-  const pin=document.getElementById("pinInput").value.trim();
-  if(allowedNames.includes(name)&&pin==="6856"){
-    localStorage.setItem("currentStudent",name);
-    document.getElementById("loginOverlay").style.display="none";
-    document.getElementById("studentMenu").style.display="block";
-    document.getElementById("welcomeBox").style.display="block";
-    document.getElementById("welcomeText").innerText="Hello, "+name+"!";
-    updateStars();
-  } else if(name.toLowerCase()==="teacher"&&pin==="9995"){
-    document.getElementById("loginOverlay").style.display="none";
-    document.getElementById("teacherJournal").style.display="block";
-    buildJournal();
-  } else {
-    alert("❌ Access denied. Check your name or PIN.");
-  }
-}
-
-function openLesson(n){window.location.href="theme"+n+".html";}
-
-function updateStars(){
+// ✅ Проверка ответа
+function checkAnswer(isCorrect){
+  const feedback=document.getElementById("feedback");
   const name=localStorage.getItem("currentStudent");
-  if(!name) return;
-  let total=0;
-  for(let i=1;i<=13;i++){
-    total+=Number(localStorage.getItem(name+"_lesson"+i+"Stars"))||0;
+  if(!name){ feedback.textContent="Please log in first."; return; }
+
+  if(isCorrect){
+    feedback.innerHTML="✅ Correct! <span class='star'>⭐</span>";
+    localStorage.setItem(name+"_lesson1Stars",1);
+  } else {
+    feedback.innerHTML="❌ Try again!";
   }
-  document.getElementById("totalStars").innerText=total;
-  localStorage.setItem(name+"_totalStars",total);
 }
 
-function openTeacherJournal(){
-  document.getElementById("studentMenu").style.display="none";
-  document.getElementById("teacherJournal").style.display="block";
-  buildJournal();
-}
-
-function buildJournal(){
-  const body=document.getElementById("journalBody");
-  body.innerHTML="";
-  allowedNames.forEach(name=>{
-    let row="<tr><td>"+name+"</td>";
-    let total=0;
-    for(let i=1;i<=13;i++){
-      const stars=Number(localStorage.getItem(name+"_lesson"+i+"Stars"))||0;
-      total+=stars;
-      row+="<td>"+stars+"</td>";
-    }
-    row+="<td>"+total+"</td></tr>";
-    body.innerHTML+=row;
-  });
-}
-
-function logout(){
+// ✅ Кнопка «Главное меню» — сброс и возврат к PIN
+function goToMainMenu(){
   localStorage.removeItem("currentStudent");
   window.location.href="index.html";
 }
 </script>
+
 </body>
 </html>
