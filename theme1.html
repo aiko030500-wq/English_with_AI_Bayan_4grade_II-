@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Theme 1 — Let’s Have Fun!</title>
   <style>
     body {
       font-family: Verdana, sans-serif;
-      background: radial-gradient(circle at top,#fff7ff 0%,#ffe9ff 35%,#d7ecff 100%);
+      background: radial-gradient(circle at top, #fff7ff 0%, #ffe9ff 35%, #d7ecff 100%);
       margin: 0;
       color: #25215a;
       text-align: center;
     }
     header {
-      background: linear-gradient(90deg,#5a2ea6,#f06292);
+      background: linear-gradient(90deg, #5a2ea6, #f06292);
       color: white;
       padding: 0.6rem 1rem;
       border-bottom: 5px solid #ffd54f;
@@ -22,160 +22,133 @@
       justify-content: space-between;
     }
     .logo {
-      width: 55px; height: 55px;
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
       border: 3px solid #ffd54f;
       object-fit: cover;
       background: white;
     }
-    h2 {color:#5a2ea6;}
-    section {
-      background: rgba(255,255,255,0.98);
-      border-radius: 18px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.12);
+    h1, h2 { margin: 0.6rem 0; }
+    main {
+      padding: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .task {
+      background: #ffffffcc;
+      border-radius: 15px;
       padding: 15px;
-      max-width: 860px;
-      margin: 15px auto;
-      text-align: left;
-      line-height: 1.5;
-      font-size: 0.95rem;
+      margin: 15px 0;
+      box-shadow: 0 0 10px #d1c4e9;
     }
-    h3 {
-      background: linear-gradient(90deg,#5a2ea6,#f06292);
+    button {
+      background: #5a2ea6;
       color: white;
-      padding: 6px 10px;
+      border: none;
       border-radius: 10px;
-      font-size: 1rem;
+      padding: 8px 14px;
+      margin: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
     }
-    .btn {
-      display:inline-block;
-      margin:6px;
-      padding:8px 14px;
-      border:none;
-      border-radius:10px;
-      background:#5a2ea6;
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-      font-size:0.9rem;
+    button:hover {
+      background: #ffd54f;
+      color: #25215a;
     }
-    .btn:hover {background:#ffd54f; color:#45215a;}
-    textarea, input[type="text"], select {
-      border-radius:8px;
-      border:1px solid #ccc;
-      padding:6px;
-      font-family:inherit;
-      font-size:0.9rem;
-    }
-    textarea { width:100%; }
-    input[type="text"] { width:100%; max-width:380px; }
-    select { padding:2px 4px; }
-
-    .round-label {
-      display:inline-block;
-      background:#ffd54f;
-      color:#5a2ea6;
-      padding:2px 8px;
-      border-radius:999px;
-      font-size:0.75rem;
-      font-weight:bold;
-      margin-left:6px;
-    }
-
-    /* центральная ✔ ✖ */
-    .result-icon {
-      font-size: 3rem;
-      opacity: 0;
-      transform: scale(0.5);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      position: fixed;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.5);
-      z-index: 9999;
-      pointer-events: none;
-    }
-    .result-icon.show {
-      opacity:1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    .correct { color:#00c853; text-shadow:0 0 15px #7fff8c; }
-    .wrong { color:#ff1744; text-shadow:0 0 15px #ff7f7f; }
-
-    /* ✅ / ❌ возле ответа */
-    .mark-icon {
-      margin-left: 8px;
-      font-size: 1.2rem;
+    #starsBadge {
+      background: #ffd54f;
+      color: #25215a;
+      padding: 6px 12px;
+      border-radius: 15px;
       font-weight: bold;
     }
-    .correctMark { color:#00c853; }
-    .wrongMark { color:#ff1744; }
   </style>
 </head>
-
 <body>
-<header>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <img src="logo.png" class="logo" alt="AI Bayan logo">
-    <div>
-      <h1 style="margin:0;font-size:1rem;">Theme 1 — Let’s Have Fun!</h1>
-      <p style="margin:0;color:#ffe9c4;">English with AI Bayan — Games and Fun</p>
+  <header>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="ai_bayan_logo.png" alt="AI Bayan" class="logo">
+      <div>
+        <h1>Theme 1 — Let’s Have Fun!</h1>
+        <small>English with AI Bayan — Games and Fun 🎨</small>
+      </div>
     </div>
-  </div>
-</header>
+    <div id="starsBadge">⭐ 0</div>
+  </header>
 
-<main>
-  <h2>🎨 Let’s Have Fun!</h2>
-  <p style="font-style:italic;color:#4b2e91;">Children at the park — games and free time</p>
-  <p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
+  <main>
+    <p>🎈 Children at the park — games and free time</p>
 
-  <!-- сюда вставь свои секции (Vocabulary, Grammar, Reading и т.д.) — они не изменены -->
-  <!-- всё ниже останется тем же, только добавлены исправленные функции -->
+    <div class="task">
+      <h2>Task 1 — Choose the correct word</h2>
+      <p>What are the children doing?</p>
+      <button onclick="checkAnswer(this, true)">They are playing games</button>
+      <button onclick="checkAnswer(this, false)">They are sleeping</button>
+    </div>
 
-  <div id="feedbackIcon" class="result-icon"></div>
-</main>
+    <div class="task">
+      <h2>Task 2 — Find the correct word</h2>
+      <p>They play with a ______.</p>
+      <button onclick="checkAnswer(this, false)">book</button>
+      <button onclick="checkAnswer(this, true)">ball</button>
+      <button onclick="checkAnswer(this, false)">plate</button>
+    </div>
 
-<script>
-  // ====== TOTAL STARS ======
-  let totalStars = 0;
-  function addStar(){ totalStars++; updateStarsText(); }
-  function updateStarsText(){
-    document.getElementById('lessonStarsLine').innerText =
-      "You have " + totalStars + " ⭐ in this lesson.";
-  }
+    <div class="task">
+      <h2>Task 3 — Choose the correct picture word</h2>
+      <p>Children jump and run in the ______.</p>
+      <button onclick="checkAnswer(this, true)">park</button>
+      <button onclick="checkAnswer(this, false)">classroom</button>
+      <button onclick="checkAnswer(this, false)">kitchen</button>
+    </div>
 
-  // ====== ЦЕНТРАЛЬНАЯ АНІМАЦИЯ ✔ ✖ ======
-  function showResult(isCorrect) {
-    const icon = document.getElementById("feedbackIcon");
-    if (!icon) return;
-    icon.textContent = isCorrect ? "✔" : "✖";
-    icon.className = isCorrect ? "result-icon correct show" : "result-icon wrong show";
-    setTimeout(() => icon.classList.remove("show"), 900);
-  }
+    <div class="task">
+      <h2>Task 4 — Select the right sentence</h2>
+      <p>What do they like to do on Sunday?</p>
+      <button onclick="checkAnswer(this, false)">They like to study maths.</button>
+      <button onclick="checkAnswer(this, true)">They like to ride a bike.</button>
+      <button onclick="checkAnswer(this, false)">They like to sleep all day.</button>
+    </div>
 
-  // ====== ЛОКАЛЬНЫЕ ГАЛОЧКИ / КРЕСТИКИ ======
-  function markAnswer(element, isCorrect) {
-    if (!element) return;
-    let parent = element.closest('label') || element.parentElement;
-    if (!parent) return;
-    let mark = parent.querySelector('.mark-icon');
-    if (!mark) {
-      mark = document.createElement('span');
-      mark.classList.add('mark-icon');
-      parent.appendChild(mark);
+    <div class="task">
+      <h2>Task 5 — Choose the correct answer</h2>
+      <p>Who is playing football?</p>
+      <button onclick="checkAnswer(this, false)">The girls</button>
+      <button onclick="checkAnswer(this, true)">The boys</button>
+      <button onclick="checkAnswer(this, false)">The teacher</button>
+    </div>
+
+    <div class="task">
+      <h2>Task 6 — Match the meaning</h2>
+      <p>“Have fun” means …</p>
+      <button onclick="checkAnswer(this, true)">Enjoy your time</button>
+      <button onclick="checkAnswer(this, false)">Do homework</button>
+      <button onclick="checkAnswer(this, false)">Clean the house</button>
+    </div>
+  </main>
+
+  <script>
+    let stars = 0;
+    function checkAnswer(btn, correct) {
+      if (btn.classList.contains("checked")) return;
+      btn.classList.add("checked");
+      if (correct) {
+        btn.innerHTML = "✅ " + btn.innerHTML;
+        btn.style.background = "#c8e6c9";
+        stars++;
+      } else {
+        btn.innerHTML = "❌ " + btn.innerHTML;
+        btn.style.background = "#ffcdd2";
+      }
+      document.getElementById("starsBadge").textContent = "⭐ " + stars;
     }
-    mark.textContent = isCorrect ? ' ✅' : ' ❌';
-    mark.className = isCorrect ? 'mark-icon correctMark' : 'mark-icon wrongMark';
-  }
-
-  // пример проверки для радиокнопок
-  function checkExample(){
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    if(!q1){ alert("Выберите ответ"); return; }
-    const correct = q1.value === "1";
-    markAnswer(q1, correct);
-    showResult(correct);
-  }
-</script>
+  </script>
 </body>
 </html>
+
+     
+  
+     
+   
