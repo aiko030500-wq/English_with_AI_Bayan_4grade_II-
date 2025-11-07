@@ -907,6 +907,139 @@
   // init
   updateStarsText();
 </script>
+  <!-- ===================== 🤖 AI BAYAN TRAINER CHAT (OFFLINE WITH MEMORY) ===================== -->
+<section id="aiChatSection" style="max-width:700px;margin:40px auto;background:#ffffff;border:2px solid #ffd54f;border-radius:16px;padding:12px;box-shadow:0 0 12px rgba(0,0,0,0.15);">
+  <h3 style="text-align:center;background:linear-gradient(90deg,#5a2ea6,#f06292);color:white;padding:6px 10px;border-radius:10px;">
+    🤖 AI Bayan Trainer Chat
+  </h3>
+
+  <div id="chatBox" style="height:260px;overflow-y:auto;border:1px solid #ccc;border-radius:10px;padding:8px;background:#faf8ff;text-align:left;font-size:0.9rem;">
+    <div class="msg ai" style="margin:6px 0;background:#efe5ff;padding:8px 12px;border-radius:12px;display:inline-block;">
+      Hello! I’m <b>AI Bayan</b> 🌟 — your English friend.  
+      What’s your name?
+    </div>
+  </div>
+
+  <div style="margin-top:8px;display:flex;gap:6px;">
+    <input id="userInput" type="text" placeholder="Type your message..." style="flex:1;padding:8px;border-radius:10px;border:1px solid #ccc;font-family:inherit;">
+    <button class="btn" onclick="sendOffline()">Send</button>
+  </div>
+</section>
+
+<script>
+// ====== MEMORY: сохраняем имя из PIN-входа ======
+let studentName = localStorage.getItem("currentStudent") || "";
+if(!studentName) studentName = "friend";
+
+// ====== OFFLINE УМНЫЕ ОТВЕТЫ ======
+const bayanReplies = [
+  { key:["hello","hi","hey","привет"], 
+    ans:["Hi there, "+studentName+"! 👋","Hello, "+studentName+"! 🌟 How are you?","Hey "+studentName+"! Let’s have fun!"] },
+  { key:["my name","я","меня"], ans:["Nice to meet you, "+studentName+"! 😊","Cool name, "+studentName+"! I like it! 💛"] },
+  { key:["your name","who are you"], ans:["I’m AI Bayan, your English helper! 🤖","My name is AI Bayan — I teach English with fun! 🎨"] },
+  { key:["how are you","как дела"], ans:["I’m fine, thank you! And you, "+studentName+"?","Feeling great today, "+studentName+"! ☀️"] },
+  { key:["game","play","fun","игра","игры"], ans:[
+      "I love playing tag and hide-and-seek! 🏃‍♂️",
+      "Let’s play together, "+studentName+"! 🎈",
+      "Games make learning fun! 🌟"
+  ]},
+  { key:["grammar","rule","грамматика"], ans:[
+      "Remember: am/is/are + verb + -ing → Present Continuous 💡",
+      "Example: They’re playing football right now ⚽"
+  ]},
+  { key:["word","vocabulary","слово"], ans:[
+      "New words today: kite 🪁, tag 🏃, skip, bike 🚲",
+      "Let’s repeat: kite – змей, tag – догонялки."
+  ]},
+  { key:["let","let’s"], ans:["Let’s fly a kite! 🪁","Let’s play hide-and-seek, "+studentName+"! 🌳"] },
+  { key:["favourite","love","like"], ans:[
+      "My favourite game is hide-and-seek. What’s yours, "+studentName+"? 😊",
+      "I love playing tag with my friends!"
+  ]},
+  { key:["help","не понимаю","помоги"], ans:[
+      "No worries, "+studentName+" — I’ll help you! 💪",
+      "Let’s read it together slowly 🧩"
+  ]},
+  { key:["thank","спасибо"], ans:["You’re welcome, "+studentName+"! 🌸","Anytime, "+studentName+"! 😊"] },
+  { key:["bye","goodbye","see you","пока"], ans:[
+      "Bye-bye, "+studentName+"! 👋 See you next lesson!",
+      "Goodbye, "+studentName+"! Keep learning and smiling 💛"
+  ]}
+];
+
+// ====== ПОЛУЧЕНИЕ ОТВЕТА ======
+function sendOffline(){
+  const input=document.getElementById("userInput");
+  const chat=document.getElementById("chatBox");
+  const msg=input.value.trim();
+  if(!msg) return;
+  appendMsg("user",msg);
+  input.value="";
+
+  // если ученик пишет своё имя
+  if(msg.toLowerCase().startsWith("my name is") || msg.toLowerCase().startsWith("i am ")){
+    const possible=msg.replace(/my name is|i am|меня зовут/gi,"").trim();
+    if(possible) {
+      studentName=possible.charAt(0).toUpperCase()+possible.slice(1);
+      localStorage.setItem("currentStudent",studentName);
+      const reply="Nice to meet you, "+studentName+"! 😊";
+      setTimeout(()=>{appendMsg("ai",reply);speakBayanText(reply);},600);
+      return;
+    }
+  }
+
+  const lower=msg.toLowerCase();
+  let reply=null;
+  for(const r of bayanReplies){
+    if(r.key.some(k=>lower.includes(k))){
+      reply=r.ans[Math.floor(Math.random()*r.ans.length)];
+      break;
+    }
+  }
+
+  if(!reply){
+    const generic=[
+      "Interesting, "+studentName+"! Tell me more 🤔",
+      "Hmm… maybe ask me about games or grammar? 💬",
+      "Good thought, "+studentName+"! 🌟",
+      "That’s nice! I like talking with you, "+studentName+"!"
+    ];
+    reply=generic[Math.floor(Math.random()*generic.length)];
+  }
+
+  setTimeout(()=>{
+    appendMsg("ai",reply);
+    speakBayanText(reply);
+  },600);
+}
+
+// ====== ВЫВОД СООБЩЕНИЙ ======
+function appendMsg(role,text){
+  const chat=document.getElementById("chatBox");
+  const div=document.createElement("div");
+  div.className="msg "+role;
+  div.style.margin="6px 0";
+  div.style.padding="8px 12px";
+  div.style.borderRadius="12px";
+  div.style.display="inline-block";
+  div.style.maxWidth="85%";
+  div.style.animation="fadeIn 0.4s ease";
+  if(role==="user"){
+    div.style.background="#d7ecff";
+    div.style.textAlign="right";
+  }else{
+    div.style.background="#efe5ff";
+  }
+  div.textContent=text;
+  chat.appendChild(div);
+  chat.scrollTop=chat.scrollHeight;
+}
+
+const style=document.createElement("style");
+style.textContent=`@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}`;
+document.head.appendChild(style);
+</script>
+<!-- =================== END OFFLINE AI BAYAN TRAINER CHAT (WITH MEMORY) =================== -->
 </body>
 </html>
 
