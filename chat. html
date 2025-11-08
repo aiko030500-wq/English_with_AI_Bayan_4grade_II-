@@ -61,7 +61,7 @@ async function askBayan(){
   const question=input.value.trim();
   if(!question){alert("Type your question first.");return;}
   addMsg("user",question);
-  addMsg("ai","<i>AI Bayan is thinking...</i>",true);
+  addMsg("ai","<i>AI Bayan is thinking...</i>");
 
   try{
     const controller=new AbortController();
@@ -75,3 +75,161 @@ async function askBayan(){
           {role:"user",content:question}
         ]
       })
+    });
+    clearTimeout(timeoutId);
+    if(!response.ok)throw new Error("Server error");
+    const data=await response.json();
+    const answer=data.choices?.[0]?.message?.content||"";
+    removeThinking();
+    if(answer){addMsg("ai",answer);bayanSpeak(answer);}
+    else throw new Error("Empty");
+  }catch{
+    removeThinking();
+    const offlineAnswer=getOfflineAnswer(question);
+    addMsg("ai","<b>(Offline)</b> "+offlineAnswer);
+    bayanSpeak(offlineAnswer);
+  }
+}
+
+function addMsg(role,text){
+  const box=document.getElementById('chatBox');
+  box.innerHTML+=`<p class="msg ${role}"><b>${role==="user"?"You":"AI Bayan"}:</b> ${text}</p>`;
+  box.scrollTop=box.scrollHeight;
+}
+function removeThinking(){
+  const box=document.getElementById('chatBox');
+  box.innerHTML=box.innerHTML.replace(/<i>AI Bayan is thinking\.\.\.<\/i>/,"");
+}
+function clearChat(){document.getElementById('chatBox').innerHTML="";}
+
+/* === SPEECH SYNTHESIS === */
+function bayanSpeak(text){
+  const speakNow=()=>{
+    const v=speechSynthesis.getVoices();
+    let voice=v.find(x=>x.name.includes("Google UK English Female")||x.lang==="en-GB");
+    if(!voice)voice=v[0];
+    const u=new SpeechSynthesisUtterance(text);
+    u.voice=voice;u.lang="en-GB";u.rate=0.9;u.pitch=1;u.volume=1;
+    speechSynthesis.speak(u);
+  };
+  if(speechSynthesis.getVoices().length===0){
+    speechSynthesis.onvoiceschanged=speakNow;
+  }else{speakNow();}
+}
+
+/* === OFFLINE AI Bayan — расширенный интеллект === */
+function getOfflineAnswer(q){
+  q=q.toLowerCase().trim();
+
+  // Greetings
+  if(q.includes("hello")||q.includes("hi"))return "Hello, nice to see you again!";
+  if(q.includes("how are you"))return "I'm great, thank you! How are you?";
+  if(q.includes("thank"))return "You're welcome!";
+  if(q.includes("bye"))return "Goodbye, see you next time!";
+
+  // Grammar
+  if(q.includes("noun"))return "A noun names a person, place or thing. Example: cat, teacher, school.";
+  if(q.includes("verb"))return "A verb shows an action or state. Example: run, sleep, is.";
+  if(q.includes("adjective"))return "An adjective describes a noun. Example: big, kind, happy.";
+  if(q.includes("adverb"))return "An adverb describes a verb. Example: quickly, well.";
+  if(q.includes("pronoun"))return "A pronoun replaces a noun: he, she, it.";
+  if(q.includes("preposition"))return "A preposition shows relation: in, on, under.";
+  if(q.includes("article"))return "Articles: a, an, the — used before nouns.";
+  if(q.includes("sentence"))return "A sentence is a group of words expressing a complete thought.";
+  if(q.includes("plural"))return "Plural means more than one: book → books, apple → apples.";
+  if(q.includes("subject"))return "Subject tells who or what does the action.";
+  if(q.includes("object"))return "Object receives the action.";
+
+  // Tenses
+  if(q.includes("present simple"))return "Present Simple: I play, you play, he plays — for daily routines.";
+  if(q.includes("past simple"))return "Past Simple: I played, she went — for finished past actions.";
+  if(q.includes("future simple"))return "Future Simple: I will go — for future actions.";
+  if(q.includes("present continuous")||q.includes("present progressive"))
+    return "Present Continuous: am/is/are + V-ing. Example: I am reading now.";
+  if(q.includes("past continuous"))
+    return "Past Continuous: was/were + V-ing. Example: I was playing yesterday at 5.";
+  if(q.includes("future continuous"))
+    return "Future Continuous: will be + V-ing. Example: I will be studying at 8 o’clock.";
+  if(q.includes("present perfect"))
+    return "Present Perfect: have/has + V3. Example: I have done my homework.";
+  if(q.includes("past perfect"))
+    return "Past Perfect: had + V3. Example: She had gone before I arrived.";
+  if(q.includes("future perfect"))
+    return "Future Perfect: will have + V3. Example: I will have finished by 7.";
+
+  // Vocabulary
+  if(q.includes("book"))return "A book is something you read to learn or enjoy stories.";
+  if(q.includes("school"))return "A school is a place where children learn.";
+  if(q.includes("dictionary"))return "A dictionary shows meanings and spellings of words.";
+  if(q.includes("teacher"))return "A teacher helps students learn.";
+  if(q.includes("student"))return "A student studies at school.";
+  if(q.includes("friend"))return "A friend is someone you like and spend time with.";
+  if(q.includes("family"))return "A family has parents and children.";
+  if(q.includes("game"))return "A game is something fun we play.";
+  if(q.includes("food"))return "Food gives us energy.";
+  if(q.includes("color"))return "Colors make the world bright: red, blue, yellow.";
+
+  // RU → EN translation
+  const tmap={
+    "привет":"Hello","как дела":"How are you?","спасибо":"Thank you",
+    "до свидания":"Goodbye","доброе утро":"Good morning","добрый вечер":"Good evening",
+    "спокойной ночи":"Good night","учитель":"Teacher","друзья":"Friends","моя семья":"My family"
+  };
+  for(const k in tmap){if(q.includes(k))return `‘${k}’ means ‘${tmap[k]}’.`; }
+
+  // Mini dictionary
+  if(q.startsWith("translate")){
+    const w=q.replace("translate","").trim();
+    const dict={
+      apple:"яблоко",book:"книга",dog:"собака",cat:"кошка",school:"школа",
+      friend:"друг",teacher:"учитель",family:"семья",sun:"солнце",love:"любовь",
+      music:"музыка",sport:"спорт",game:"игра",dream:"мечта",work:"работа"
+    };
+    if(dict[w])return `'${w}' = ${dict[w]}`;
+    return "I don’t know that word yet, try another one.";
+  }
+
+  // Themes
+  if(q.includes("fun"))return "Let's have fun! Play, smile and speak English!";
+  if(q.includes("sport"))return "Sports keep us healthy. Run, swim, jump!";
+  if(q.includes("music"))return "Music makes people happy 🎵.";
+  if(q.includes("help"))return "You can help others and our planet 🌍.";
+  if(q.includes("dream"))return "Dream big and never give up!";
+
+  return "I'm your Offline AI Bayan 🤖 Ask me about English grammar, vocabulary, or translations!";
+}
+
+/* === MICROPHONE === */
+let recognizing=false;let recognition;
+function startSpeech(){
+  const status=document.getElementById("micStatus");
+  if(!('webkitSpeechRecognition'in window||'SpeechRecognition'in window)){
+    alert("Speech recognition not supported.");return;
+  }
+  const beep=t=>{
+    const ctx=new AudioContext(),osc=ctx.createOscillator(),g=ctx.createGain();
+    osc.connect(g);g.connect(ctx.destination);
+    osc.frequency.value=t==="start"?700:400;
+    g.gain.setValueAtTime(0.15,ctx.currentTime);
+    osc.start();osc.stop(ctx.currentTime+0.15);
+  };
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!recognition){
+    recognition=new SR();recognition.lang="en-US";
+    recognition.interimResults=false;recognition.maxAlternatives=1;
+    recognition.onstart=()=>{recognizing=true;status.innerHTML='<span class="pulse"></span> 🎙️ Listening...';beep("start");};
+    recognition.onend=()=>{recognizing=false;status.innerText="✅ Done listening.";beep("end");setTimeout(()=>status.innerText="",1500);};
+    recognition.onerror=()=>{status.innerText="⚠️ Mic error.";};
+    recognition.onresult=e=>{
+      const spoken=e.results[0][0].transcript;
+      addMsg("user",spoken);
+      const a=getOfflineAnswer(spoken);
+      addMsg("ai","<b>(Offline)</b> "+a);
+      bayanSpeak(a);
+    };
+  }
+  if(!recognizing)recognition.start();
+}
+</script>
+</body>
+</html>
