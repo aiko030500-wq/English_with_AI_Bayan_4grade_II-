@@ -1,48 +1,49 @@
-// ✅ AI Bayan Service Worker (offline mode)
 const CACHE_NAME = "ai-bayan-v1";
-const FILES_TO_CACHE = [
+const ASSETS = [
+  "./",
   "index.html",
+  "manifest.json",
   "logo.png",
   "ornament-bg.png",
-  "manifest.json"
+  "theme1.html",
+  "theme2.html",
+  "theme3.html",
+  "theme4.html",
+  "theme5.html",
+  "theme6.html",
+  "theme7.html",
+  "theme8.html",
+  "theme9.html",
+  "theme10.html",
+  "theme11.html",
+  "theme12.html",
+  "theme13.html"
 ];
 
-// Установка service worker
-self.addEventListener("install", (event) => {
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(FILES_TO_CACHE);
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(ASSETS);
     })
   );
-  self.skipWaiting();
 });
 
-// Активация и очистка старых кэшей
-self.addEventListener("activate", (event) => {
+self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then((keyList) => {
-      return Promise.all(
-        keyList.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      );
-    })
+    caches.keys().then(keys =>
+      Promise.all(
+        keys
+          .filter(k => k !== CACHE_NAME)
+          .map(k => caches.delete(k))
+      )
+    )
   );
-  self.clients.claim();
 });
 
-// Обработка запросов
-self.addEventListener("fetch", (event) => {
+self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return (
-        response ||
-        fetch(event.request).catch(() =>
-          new Response("⚠️ You are offline. Try again later.")
-        )
-      );
+    caches.match(event.request).then(resp => {
+      return resp || fetch(event.request);
     })
   );
 });
