@@ -21,7 +21,6 @@
     color: white;
     padding: 1rem;
     border-bottom: 5px solid gold;
-    transition: background 0.6s;
   }
   body.teacher-mode header {
     background: gold;
@@ -211,31 +210,39 @@ const allowedNames=[
   "Aziza2","Emir2","Monya2","Aeka2","Bayan2","Arai2","Jury2","Jury1","Meyirim2"
 ];
 
-function checkLogin(){
-  const name=document.getElementById("nameInput").value.trim();
-  const pin=document.getElementById("pinInput").value.trim();
-  const lower=name.toLowerCase();
-  const allowedLower=allowedNames.map(n=>n.toLowerCase());
+let isTeacher = false; // 👩‍🏫 переменная сразу объявлена
 
-  if(allowedLower.includes(lower)&&pin==="6856"){
-    localStorage.setItem("currentStudent",name);
+function checkLogin() {
+  const name = document.getElementById("nameInput").value.trim();
+  const pin = document.getElementById("pinInput").value.trim();
+  const lower = name.toLowerCase();
+  const allowedLower = allowedNames.map(n => n.toLowerCase());
+
+  // 👩‍🎓 Ученик
+  if (allowedLower.includes(lower) && pin === "6856") {
+    localStorage.setItem("currentStudent", name);
     localStorage.removeItem("isTeacher");
-    document.getElementById("loginOverlay").style.display="none";
-    document.getElementById("mainMenu").style.display="block";
-    document.getElementById("welcomeBox").style.display="block";
-    document.getElementById("welcomeText").innerText="Hello, "+name+"!";
-  } 
-  else if(lower==="teacher"&&pin==="1402"){
-    localStorage.setItem("isTeacher","true");
-    isTeacher=true;
+    document.getElementById("loginOverlay").style.display = "none";
+    document.getElementById("mainMenu").style.display = "block";
+    document.getElementById("welcomeBox").style.display = "block";
+    document.getElementById("welcomeText").innerText = "Hello, " + name + "!";
+  }
+
+  // 👩‍🏫 Учитель
+  else if (lower === "teacher" && pin === "1402") {
+    localStorage.setItem("isTeacher", "true");
+    isTeacher = true;
     document.body.classList.add("teacher-mode");
-    document.getElementById("loginOverlay").style.display="none";
-    document.getElementById("teacherBanner").style.display="block";
-    document.getElementById("mainMenu").style.display="block";
+    document.getElementById("loginOverlay").style.display = "none";
+    document.getElementById("teacherBanner").style.display = "block";
+    document.getElementById("mainMenu").style.display = "block";
     showTeacherWelcome();
     playDing();
-  } 
-  else alert("❌ Wrong name or PIN");
+  }
+
+  else {
+    alert("❌ Wrong name or PIN. Try again!");
+  }
 }
 
 function showTeacherWelcome(){
@@ -289,7 +296,7 @@ let DAILY_LIMIT=3;
 let usedToday=Number(localStorage.getItem("usedToday"))||0;
 let lastDate=localStorage.getItem("lastDate");
 const today=new Date().toDateString();
-let isTeacher=localStorage.getItem("isTeacher")==="true";
+isTeacher=localStorage.getItem("isTeacher")==="true";
 if(lastDate!==today){usedToday=0;localStorage.setItem("lastDate",today);localStorage.setItem("usedToday",0);}
 
 function updateCounter(){
