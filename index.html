@@ -16,23 +16,32 @@
   header {
     background:#3b3b3b;
     color:white;
-    padding:1rem;
-    border-bottom:5px solid gold;
+    padding:0.8rem;
+    border-bottom:4px solid gold;
   }
 
   .logo-circle {
     background: radial-gradient(circle at 30% 30%, gold 0%, #f4c542 40%, #003366 85%);
     color:white;
     font-weight:bold;
-    font-size:2.4rem;
+    font-size:1.8rem;
     border-radius:50%;
-    width:80px; height:80px;
+    width:65px; height:65px;
     display:flex;
     align-items:center;
     justify-content:center;
     border:3px solid gold;
-    box-shadow:0 0 15px rgba(255,215,0,0.8);
-    margin:0 auto 10px auto;
+    box-shadow:0 0 12px rgba(255,215,0,0.8);
+    margin:0 auto 6px auto;
+  }
+
+  header h1 {
+    font-size:1.4rem;
+    margin:0.4rem 0 0 0;
+  }
+  header p {
+    font-size:1rem;
+    margin:0;
   }
 
   .overlay {
@@ -131,12 +140,13 @@
 
 <header>
   <div class="logo-circle">B</div>
-  <h1>English with AI Bayan 4grade II (ONLINE)</h1>
+  <h1>English with AI Bayan</h1>
+  <p>4grade II (ONLINE)</p>
 </header>
 
 <main>
   <div class="welcome-box">
-    <h2 id="welcomeName">Hello!</h2>
+    <h2 id="welcomeName" style="margin-bottom:0.5rem;">Bayan2!</h2>
     <p>You have 0 ⭐ total stars!</p>
   </div>
 
@@ -164,23 +174,23 @@ function login() {
   const name = document.getElementById("userName").value.trim();
   const pin  = document.getElementById("userPin").value.trim();
 
-  // список разрешённых учеников
-  const students = [
+  // 🔹 Разрешённые имена (только по журналу)
+  const allowedStudents = [
     "Aytach2","Aylin2","Alvi2","Zhakhangir2","Narmin2","Balman2",
     "Damr2","Dima2","Kiril2","Irada2","Shyngys2","Ilyas2","Sultan2",
     "Kira2","Meyirim2","Aray2","Monya2","Aeka2","Bayan2","Aziza2",
     "Emir2","Jury1","Jury2"
   ];
 
-  // ✅ вход ученика
-  if (students.includes(name) && pin === "6856") {
+  // === вход ученика ===
+  if (allowedStudents.includes(name) && pin === "6856") {
     localStorage.setItem("aiBayanStudent", name);
     document.getElementById("loginScreen").style.display = "none";
-    document.getElementById("welcomeName").textContent = `Hello, ${name}!`;
+    document.getElementById("welcomeName").textContent = `${name}!`;
     return;
   }
 
-  // ✅ вход учителя
+  // === вход учителя ===
   if (pin === "9997") {
     window.location.href = "teacher.html";
     return;
@@ -189,12 +199,12 @@ function login() {
   alert("❌ Wrong name or PIN. Try again.");
 }
 
-// при загрузке
+// === при загрузке ===
 window.onload = () => {
   const saved = localStorage.getItem("aiBayanStudent");
   if (saved) {
     document.getElementById("loginScreen").style.display = "none";
-    document.getElementById("welcomeName").textContent = `Hello, ${saved}!`;
+    document.getElementById("welcomeName").textContent = `${saved}!`;
   }
 };
 </script>
