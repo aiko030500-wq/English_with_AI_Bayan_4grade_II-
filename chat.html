@@ -145,6 +145,65 @@ function clearChat() {
 function goMenu() {
   window.location.href = "index.html";
 }
+// === Daily Request Limit & Teacher Mode ===
+const DAILY_LIMIT = 4;             // 💡 4 запроса в день
+const TEACHER_PIN = "9997";        // 👩‍🏫 PIN учителя
+let isTeacher = false;
+
+// Уникальный ключ для каждого дня
+const USER_KEY = "ai_bayan_requests_" + new Date().toDateString();
+
+// Инициализация счётчика, если ещё нет
+if (!localStorage.getItem(USER_KEY)) {
+  localStorage.setItem(USER_KEY, "0");
+}
+
+// Сколько осталось сегодня
+function remainingRequests() {
+  return DAILY_LIMIT - parseInt(localStorage.getItem(USER_KEY) || "0");
+}
+
+// Проверка перед отправкой
+function canSendRequest() {
+  if (isTeacher) return true; // учителю лимит не нужен
+
+  const count = parseInt(localStorage.getItem(USER_KEY) || "0");
+  if (count >= DAILY_LIMIT) {
+    alert("⚠️ You've reached your daily limit of 4 questions. Try again tomorrow!");
+    return false;
+  }
+  localStorage.setItem(USER_KEY, count + 1);
+  updateCounter();
+  return true;
+}
+
+// Обновить счётчик в интерфейсе
+function updateCounter() {
+  const counter = document.getElementById("limitCounter");
+  if (!counter) return;
+  if (isTeacher) {
+    counter.textContent = "👩‍🏫 Teacher mode — unlimited questions";
+    counter.style.color = "green";
+  } else {
+    counter.textContent = `⭐ ${remainingRequests()} of ${DAILY_LIMIT} questions left today`;
+    counter.style.color = "#003366";
+  }
+}
+
+// Вход учителя по PIN
+function teacherLogin() {
+  const pin = prompt("Enter teacher PIN:");
+  if (pin === TEACHER_PIN) {
+    isTeacher = true;
+    alert("✅ Teacher mode activated!");
+    updateCounter();
+  } else {
+    alert("❌ Wrong PIN");
+  }
+}
+
+// При загрузке страницы обновляем счётчик
+document.addEventListener("DOMContentLoaded", updateCounter);
 </script>
 </body>
 </html>
