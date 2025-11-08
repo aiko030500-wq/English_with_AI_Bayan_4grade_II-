@@ -21,6 +21,7 @@
     color: white;
     padding: 1rem;
     border-bottom: 5px solid gold;
+    transition: background 0.6s;
   }
   body.teacher-mode header {
     background: gold;
@@ -99,7 +100,6 @@
     text-align:left;
   }
 
-  /* Всплывающее приветствие */
   #teacherWelcome {
     display:none;
     position:fixed;
@@ -205,7 +205,7 @@
 </main>
 
 <script>
-const allowedNames = [
+const allowedNames=[
   "Aytach2","Aylin2","Alvi2","Zhahangir2","Narmin2","Balman2","Ilyas2",
   "Dmitry2","Irada2","Shyngys2","Kiril2","Sultan2","Kira2","Allahverdy2",
   "Aziza2","Emir2","Monya2","Aeka2","Bayan2","Arai2","Jury2","Jury1","Meyirim2"
@@ -227,6 +227,7 @@ function checkLogin(){
   } 
   else if(lower==="teacher"&&pin==="1402"){
     localStorage.setItem("isTeacher","true");
+    isTeacher=true;
     document.body.classList.add("teacher-mode");
     document.getElementById("loginOverlay").style.display="none";
     document.getElementById("teacherBanner").style.display="block";
@@ -236,44 +237,29 @@ function checkLogin(){
   } 
   else alert("❌ Wrong name or PIN");
 }
-// === 👩‍🏫 TEACHER MODE ===
-  else if (name.toLowerCase() === "teacher" && pin === "1402") {
-    localStorage.setItem("isTeacher", "true");
-    isTeacher = true;
 
-    document.body.classList.add("teacher-mode");
-    document.getElementById("teacherBanner").style.display = "block";
-    document.getElementById("loginOverlay").style.display = "none";
-    document.getElementById("teacherJournal").style.display = "block";
-
-    alert("👩‍🏫 Welcome, Teacher! Unlimited access activated.");
-    playDing();
-    buildJournal();
-  }
 function showTeacherWelcome(){
   const msg=document.getElementById("teacherWelcome");
   msg.style.display="block";
-  setTimeout(()=>{ msg.style.display="none"; },4000);
+  setTimeout(()=>{msg.style.display="none";},4000);
 }
 
-// 🔔 Звук при входе учителя
+// 🔔 звук
 function playDing(){
-  try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const o = ctx.createOscillator();
-    const g = ctx.createGain();
-    o.type = "sine";
-    o.frequency.value = 880;
-    g.gain.setValueAtTime(0.1, ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1);
-    o.connect(g);
-    g.connect(ctx.destination);
-    o.start();
-    o.stop(ctx.currentTime + 1);
-  } catch(e){ console.warn("Sound error:", e); }
+  try{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const o=ctx.createOscillator();
+    const g=ctx.createGain();
+    o.type="sine";
+    o.frequency.value=880;
+    g.gain.setValueAtTime(0.1,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+1);
+    o.connect(g);g.connect(ctx.destination);
+    o.start();o.stop(ctx.currentTime+1);
+  }catch(e){console.warn("Sound error:",e);}
 }
 
-function openTheme(n){ window.location.href = "theme"+n+".html"; }
+function openTheme(n){window.location.href="theme"+n+".html";}
 
 function openTeacherJournal(){
   document.getElementById("mainMenu").style.display="none";
@@ -287,9 +273,9 @@ function buildJournal(){
   allowedNames.forEach(name=>{
     let total=0;
     for(let i=1;i<=13;i++) total += Number(localStorage.getItem(name+"_lesson"+i+"Stars"))||0;
-    const chat = Number(localStorage.getItem(name+"_chatStars"))||0;
-    total += chat;
-    body.innerHTML += `<tr><td>${name}</td><td>${total - chat}</td><td>${chat}</td><td>${total}</td></tr>`;
+    const chat=Number(localStorage.getItem(name+"_chatStars"))||0;
+    total+=chat;
+    body.innerHTML+=`<tr><td>${name}</td><td>${total-chat}</td><td>${chat}</td><td>${total}</td></tr>`;
   });
 }
 
@@ -356,22 +342,6 @@ async function askBayan(){
   }catch{b.innerHTML+=`<p><b>AI Bayan:</b> ❌ Connection error.</p>`;}
 }
 function clearChat(){document.getElementById("chatBox").innerHTML="";}
-  function playDing() {
-  try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = "sine";
-    osc.frequency.value = 880;
-    gain.gain.setValueAtTime(0.1, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1);
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + 1);
-  } catch(e) {
-    console.warn("Sound error:", e);
-  }
 </script>
 </body>
 </html>
