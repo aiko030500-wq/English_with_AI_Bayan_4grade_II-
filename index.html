@@ -22,7 +22,6 @@
     color: white;
     padding: 1rem;
     border-bottom: 5px solid gold;
-    transition: background 0.6s;
   }
   body.teacher-mode header {
     background: gold;
@@ -64,15 +63,23 @@
     font-size:1rem;
   }
 
-  .section { display:none;margin-top:16px; }
-
-  @keyframes chatPop {
-    from { transform: translateY(40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+  .topics-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:10px;max-width:900px;margin:20px auto;
   }
-  #chatSection {
-    animation: chatPop 0.6s ease forwards;
-    position: relative;
+  .topic-card {
+    background:#ffffff;border-radius:16px;padding:12px;
+    box-shadow:0 0 8px rgba(0,0,0,0.08);
+    cursor:pointer;border:2px solid #dde6ff;font-size:0.95rem;
+  }
+  .topic-card:hover { border-color:gold;transform:translateY(-2px); }
+
+  #chatSection { display:none; margin-top:20px; }
+  #chatBox {
+    max-height:320px; overflow-y:auto;
+    border:1px solid #ccc; padding:10px; border-radius:10px;
+    background:#fff; text-align:left; font-size:0.9rem;
   }
 </style>
 </head>
@@ -80,7 +87,7 @@
 
 <div id="teacherBanner">👩‍🏫 TEACHER MODE ACTIVE</div>
 
-<!-- 🔐 Вход -->
+<!-- 🔐 Login -->
 <div class="overlay" id="loginOverlay">
   <div class="overlay-card">
     <h1>English with AI Bayan</h1>
@@ -97,31 +104,43 @@
 <main>
   <div id="welcomeBox" style="display:none;">
     <h2 id="welcomeText"></h2>
+    <p>You have <span id="totalStars">0</span> ⭐ total stars!</p>
   </div>
 
   <div id="studentMenu" style="display:none;">
-    <button class="btn" onclick="openChatSection()">💬 AI Bayan Chat — Ask the Teacher 🤖</button>
+    <div class="topics-grid">
+      <div class="topic-card" onclick="openLesson(1)">1. 🎨 Let’s Have Fun!</div>
+      <div class="topic-card" onclick="openLesson(2)">2. 🏃 Sports and Exercises</div>
+      <div class="topic-card" onclick="openLesson(3)">3. 🌍 Sports Around the World</div>
+      <div class="topic-card" onclick="openLesson(4)">4. 🎵 Arts and Music</div>
+      <div class="topic-card" onclick="openLesson(5)">5. ⚽ Popular Team Sports</div>
+      <div class="topic-card" onclick="openLesson(6)">6. 🎻 Museum of Kazakh Musical Instruments</div>
+      <div class="topic-card" onclick="openLesson(7)">7. 📜 Children’s Rights & Responsibilities</div>
+      <div class="topic-card" onclick="openLesson(8)">8. 🧰 Different Jobs</div>
+      <div class="topic-card" onclick="openLesson(9)">9. 👩‍⚕️ Professions</div>
+      <div class="topic-card" onclick="openLesson(10)">10. 🏢 People at Work</div>
+      <div class="topic-card" onclick="openLesson(11)">11. 💬 What Do You Do?</div>
+      <div class="topic-card" onclick="openLesson(12)">12. ❤️ You Can Help!</div>
+      <div class="topic-card" onclick="openLesson(13)">13. 🎯 Final Challenge</div>
+      <div class="topic-card" onclick="openChatSection()">💬 AI Bayan Chat 🤖</div>
+    </div>
   </div>
 
-  <!-- 💬 Чат AI Bayan -->
-  <section id="chatSection" class="section" style="display:none; max-width:900px; margin:0 auto;">
-    <h2>💬 AI Bayan — Online Chat</h2>
+  <!-- 💬 Chat -->
+  <section id="chatSection">
+    <h2>💬 AI Bayan — Chat</h2>
     <p>Ask or <b>speak</b> about grammar, vocabulary, or homework 🎤</p>
 
-    <div id="chatBox"
-         style="max-height:320px; overflow-y:auto; border:1px solid #ccc;
-                padding:10px; border-radius:10px; background:#fff;
-                text-align:left; font-size:0.9rem;"></div>
+    <div id="chatBox"></div>
 
-    <textarea id="chatInput"
-              placeholder="Type your question here..."
-              style="width:100%; border-radius:8px; margin-top:8px; min-height:60px;"></textarea><br>
+    <textarea id="chatInput" placeholder="Type your question here..."
+              style="width:100%;border-radius:8px;margin-top:8px;min-height:60px;"></textarea><br>
 
     <button class="btn" onclick="askBayan()">Ask AI Bayan</button>
     <button class="btn" onclick="clearChat()">Clear</button>
     <button class="btn" onclick="backToMenu()">🏠 Back to Menu</button>
 
-    <p id="limitCounter" style="font-weight:bold; color:#003366;">
+    <p id="limitCounter" style="font-weight:bold;color:#003366;">
       ⭐ 3 of 3 questions left today
     </p>
   </section>
@@ -135,44 +154,37 @@ const allowedNames = [
 ];
 
 function checkLogin(){
-  const name = document.getElementById("nameInput").value.trim();
-  const pin  = document.getElementById("pinInput").value.trim();
+  const name=document.getElementById("nameInput").value.trim();
+  const pin=document.getElementById("pinInput").value.trim();
+  const lower=name.toLowerCase();
+  const allowedLower=allowedNames.map(n=>n.toLowerCase());
 
-  const lowerName = name.toLowerCase();
-  const allowedLower = allowedNames.map(n => n.toLowerCase());
-
-  if (allowedLower.includes(lowerName) && pin === "6856") {
-    // Ученик
-    localStorage.setItem("currentStudent", name);
+  if(allowedLower.includes(lower)&&pin==="6856"){
+    localStorage.setItem("currentStudent",name);
     localStorage.removeItem("isTeacher");
-    document.getElementById("loginOverlay").style.display = "none";
-    document.getElementById("studentMenu").style.display = "block";
-    document.getElementById("welcomeBox").style.display = "block";
-    document.getElementById("welcomeText").innerText = "Hello, " + name + "!";
+    document.getElementById("loginOverlay").style.display="none";
+    document.getElementById("studentMenu").style.display="block";
+    document.getElementById("welcomeBox").style.display="block";
+    document.getElementById("welcomeText").innerText="Hello, "+name+"!";
   } 
-  else if (lowerName === "teacher" && pin === "1402") {
-    // Учитель
-    localStorage.setItem("isTeacher", "true");
+  else if(lower==="teacher"&&pin==="1402"){
+    localStorage.setItem("isTeacher","true");
     document.body.classList.add("teacher-mode");
-    document.getElementById("loginOverlay").style.display = "none";
-    document.getElementById("teacherBanner").style.display = "block";
-    document.getElementById("studentMenu").style.display = "block";
+    document.getElementById("loginOverlay").style.display="none";
+    document.getElementById("teacherBanner").style.display="block";
+    document.getElementById("studentMenu").style.display="block";
   } 
-  else {
-    alert("❌ Access denied. Check your name or PIN.");
-  }
+  else alert("❌ Access denied. Check your name or PIN.");
 }
+
+function openLesson(n){ window.location.href="theme"+n+".html"; }
 
 let DAILY_LIMIT=3;
 let usedToday=Number(localStorage.getItem("usedToday"))||0;
 let lastDate=localStorage.getItem("lastDate");
 const today=new Date().toDateString();
 let isTeacher=localStorage.getItem("isTeacher")==="true";
-if(lastDate!==today){
-  usedToday=0;
-  localStorage.setItem("lastDate",today);
-  localStorage.setItem("usedToday",0);
-}
+if(lastDate!==today){usedToday=0;localStorage.setItem("lastDate",today);localStorage.setItem("usedToday",0);}
 
 function updateCounter(){
   const c=document.getElementById("limitCounter");
@@ -191,61 +203,44 @@ function backToMenu(){
   document.getElementById("studentMenu").style.display="block";
 }
 
-// 🎙️ Озвучка AI Bayan
 function bayanSpeak(text){
   if(!('speechSynthesis'in window))return;
   const speakNow=()=>{
     const v=speechSynthesis.getVoices();
-    let voice=v.find(x=>x.name.includes("Google UK English Female")||x.lang==="en-GB"||x.lang==="en-US");
+    let voice=v.find(x=>x.name.includes("Google UK English Female")||x.lang==="en-GB");
     if(!voice)voice=v[0];
     const u=new SpeechSynthesisUtterance(text);
     u.voice=voice;u.lang="en-GB";u.rate=0.9;u.pitch=1.1;u.volume=1;
-    setTimeout(()=>speechSynthesis.speak(u),200);
+    speechSynthesis.speak(u);
   };
   if(speechSynthesis.getVoices().length===0){
     speechSynthesis.onvoiceschanged=speakNow;
   } else speakNow();
 }
 
-// 🤖 AI Chat
 async function askBayan(){
   const i=document.getElementById('chatInput');
   const b=document.getElementById('chatBox');
   const q=i.value.trim();
   if(!q){alert("Type your question first!");return;}
-  if(!isTeacher&&usedToday>=DAILY_LIMIT){
-    alert("⚠️ You reached today’s limit of 3 questions.");return;
-  }
-
+  if(!isTeacher&&usedToday>=DAILY_LIMIT){alert("⚠️ Limit reached.");return;}
   b.innerHTML+=`<p><b>You:</b> ${q}</p>`;
   i.value="";
   b.innerHTML+=`<p><i>AI Bayan is thinking...</i></p>`;
   b.scrollTop=b.scrollHeight;
-
   try{
     const r=await fetch("https://shiny-tree-f78c.aiko030500.workers.dev",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
+      method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({messages:[{role:"user",content:q}]})
     });
     const d=await r.json();
     const reply=d.reply||"Sorry, I can’t answer now.";
     b.innerHTML+=`<p><b>AI Bayan:</b> ${reply}</p>`;
-    b.scrollTop=b.scrollHeight;
     bayanSpeak(reply);
-    if(!isTeacher){
-      usedToday++;
-      localStorage.setItem("usedToday",usedToday);
-      updateCounter();
-    }
-  }catch(err){
-    b.innerHTML+=`<p><b>AI Bayan:</b> ❌ Connection error.</p>`;
-  }
+    if(!isTeacher){usedToday++;localStorage.setItem("usedToday",usedToday);updateCounter();}
+  }catch{b.innerHTML+=`<p><b>AI Bayan:</b> ❌ Connection error.</p>`;}
 }
-
-function clearChat(){
-  document.getElementById("chatBox").innerHTML="";
-}
+function clearChat(){document.getElementById("chatBox").innerHTML="";}
 </script>
 </body>
 </html>
