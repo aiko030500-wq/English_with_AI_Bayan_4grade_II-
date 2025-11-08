@@ -146,11 +146,12 @@ function goMenu() {
   window.location.href = "index.html";
 }
 <script>
+<script>
 let DAILY_LIMIT = 3;
 let usedToday = Number(localStorage.getItem("usedToday")) || 0;
 let lastDate = localStorage.getItem("lastDate");
 const today = new Date().toDateString();
-let isTeacher = localStorage.getItem("isTeacher") === "true"; // запомним роль учителя
+let isTeacher = localStorage.getItem("isTeacher") === "true"; // сохраняем роль учителя
 
 if (lastDate !== today) {
   usedToday = 0;
@@ -161,6 +162,7 @@ if (lastDate !== today) {
 // === Обновляем счётчик ===
 function updateCounter() {
   const counter = document.getElementById("limitCounter");
+  if (!counter) return;
   if (isTeacher) {
     counter.innerHTML = "👩‍🏫 Teacher mode: unlimited questions";
   } else {
@@ -169,7 +171,20 @@ function updateCounter() {
   }
 }
 
-// === Проверяем лимит ===
+// === Вход учителя ===
+function teacherLogin() {
+  const pin = prompt("Enter teacher PIN:");
+  if (pin === "9997") {
+    isTeacher = true;
+    localStorage.setItem("isTeacher", "true");
+    alert("👩‍🏫 Teacher mode activated — unlimited questions.");
+  } else {
+    alert("❌ Wrong PIN.");
+  }
+  updateCounter();
+}
+
+// === Отправка сообщений ===
 async function askBayan() {
   if (!isTeacher && usedToday >= DAILY_LIMIT) {
     const chatBox = document.getElementById("chatBox");
@@ -215,22 +230,7 @@ async function askBayan() {
   }
 }
 
-// === Вход учителя ===
-function teacherLogin() {
-  const pin = prompt("Enter teacher PIN:");
-  if (pin === "9997") {
-    isTeacher = true;
-    localStorage.setItem("isTeacher", "true");
-    alert("👩‍🏫 Teacher mode activated — unlimited questions.");
-  } else {
-    alert("❌ Wrong PIN.");
-  }
-  updateCounter();
-}
-
 updateCounter();
-</script>
-
 </script>
 </body>
 </html>
