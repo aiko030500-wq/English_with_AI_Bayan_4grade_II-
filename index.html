@@ -212,7 +212,6 @@ function checkLogin(){
     document.getElementById("teacherBanner").style.display="block";
     document.getElementById("mainMenu").style.display="block";
     showTeacherWelcome();
-    playDing();
   } 
   else alert("❌ Wrong name or PIN");
 }
@@ -221,23 +220,6 @@ function showTeacherWelcome(){
   const msg=document.getElementById("teacherWelcome");
   msg.style.display="block";
   setTimeout(()=>{ msg.style.display="none"; },4000);
-}
-
-// 🔔 Звук при входе учителя
-function playDing(){
-  try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const o = ctx.createOscillator();
-    const g = ctx.createGain();
-    o.type = "sine";
-    o.frequency.value = 880; // тон
-    g.gain.setValueAtTime(0.1, ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1);
-    o.connect(g);
-    g.connect(ctx.destination);
-    o.start();
-    o.stop(ctx.currentTime + 1);
-  } catch(e){ console.warn("Sound error:", e); }
 }
 
 function openTheme(n){ window.location.href = "theme"+n+".html"; }
