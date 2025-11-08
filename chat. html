@@ -138,12 +138,17 @@ async function askAIbayan(messageText) {
     const response = await fetch("https://shiny-tree-f78c.aiko030500.workers.dev", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       },
       body: JSON.stringify({
-        model: "gpt-4.1-mini",
+        model: "gpt-4o-mini",
+        userName: localStorage.getItem("aiBayanStudent") || "Guest",
         messages: [
-          { role: "system", content: "You are AI Bayan, a friendly English tutor for 4th grade students. Answer shortly and clearly in English." },
+          {
+            role: "system",
+            content: "You are AI Bayan, a friendly and clear English tutor for Grade 4 students. Answer briefly and helpfully in English."
+          },
           { role: "user", content: messageText }
         ]
       })
@@ -151,10 +156,16 @@ async function askAIbayan(messageText) {
 
     if (!response.ok) throw new Error("Server error " + response.status);
     const data = await response.json();
-    return data.choices?.[0]?.message?.content || "⚠️ No reply received from AI Bayan.";
+
+    const reply =
+      data?.choices?.[0]?.message?.content ||
+      data?.result ||
+      data?.response ||
+      "⚠️ No reply received from AI Bayan.";
+    return reply;
   } catch (err) {
-    console.error(err);
-    return "❌ Connection error or invalid response.";
+    console.error("❌ Chat error:", err);
+    return "⚠️ Connection error with AI Bayan server. Try again later.";
   }
 }
 
