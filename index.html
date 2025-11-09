@@ -253,5 +253,50 @@ installBtn.addEventListener("click", async ()=>{
   deferredPrompt=null;
 });
 </script>
+  <!-- 🌟 Service Worker регистрация -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(() => console.log('✅ Service Worker активен'))
+    .catch(err => console.log('❌ Ошибка SW:', err));
+}
+</script>
+
+<!-- 📲 Кнопка установки приложения -->
+<button id="installBtn" style="
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg,#FFD54F,#FFF176);
+  color: #003366;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  cursor: pointer;
+  z-index: 999;
+  display: none;
+">📲 Install AI Bayan App</button>
+
+<script>
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = "block";
+});
+
+installBtn.addEventListener("click", async () => {
+  installBtn.style.display = "none";
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+});
+</script>
 </body>
 </html>
