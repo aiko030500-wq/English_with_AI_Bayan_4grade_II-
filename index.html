@@ -43,25 +43,22 @@
     gap: 12px;
   }
 
-  /* 💠 Девочка справа */
-  .girl-circle {
-    width: 85px;
-    height: 85px;
-    border-radius: 50%;
-    border: 4px solid gold;
-    object-fit: cover;
-    background: url("girl-logo.png") center/cover no-repeat;
-    box-shadow: 0 0 10px rgba(0,0,0,0.25);
-  }
-
   .logo-circle {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     border: 4px solid gold;
-    object-fit: cover;
     background: url("logo.png") center/cover no-repeat;
-    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    box-shadow: 0 0 8px rgba(0,0,0,0.25);
+  }
+
+  .girl-circle {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 4px solid gold;
+    background: url("girl-logo.png") center/cover no-repeat;
+    box-shadow: 0 0 8px rgba(0,0,0,0.25);
   }
 
   .header-title h1 {
@@ -95,21 +92,23 @@
   }
   .btn:hover { background:gold; color:#003366; }
 
-  .download-btn {
+  .install-btn {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
     background: gold;
     color: #003366;
+    font-weight: bold;
+    border: none;
     border-radius: 25px;
     padding: 10px 18px;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 10px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-size: 0.95rem;
+    z-index: 1000;
   }
-  .download-btn:hover {
-    background: white;
-    color: #003366;
-  }
+  .install-btn:hover { background:white; }
 
   .overlay {
     position:fixed; inset:0;
@@ -188,16 +187,13 @@
       <p>Fun English with AI Teacher Bayan</p>
     </div>
   </div>
-  <div class="header-right">
-    <div class="girl-circle"></div>
-  </div>
+  <div class="girl-circle"></div>
 </header>
 
 <main>
   <div id="welcomeBox" style="display:none;">
     <h2 id="welcomeText">Hello!</h2>
     <p>Total stars in all lessons: <b><span id="totalStars">0</span> ⭐</b></p>
-    <a href="English_with_AI_Bayan_4grade_II.zip" class="download-btn" download>⬇️ Скачать приложение</a>
   </div>
 
   <div id="mainMenu" style="display:none;">
@@ -219,9 +215,49 @@
       <div class="card" onclick="openTeacherJournal()">🏫 Teacher Journal</div>
     </div>
   </div>
+
+  <div id="chatSection" style="display:none;">
+    <h2>💬 AI Bayan — Chat</h2>
+    <div id="chatBox"></div>
+    <textarea id="chatInput" placeholder="Type your message..."></textarea><br>
+    <button class="btn" onclick="askBayan()">Ask AI Bayan</button>
+    <button class="btn" onclick="clearChat()">Clear</button>
+    <button class="btn" onclick="backMenu()">🏠 Menu</button>
+    <p id="limitCounter" style="font-weight:bold;color:#003366;">⭐ 3 of 3 questions left today</p>
+  </div>
+
+  <div id="teacherJournal" style="display:none;">
+    <h2>🏫 Teacher Journal</h2>
+    <table>
+      <thead>
+        <tr><th>Student</th><th>L1–L13</th><th>Chat</th><th>Total ⭐</th></tr>
+      </thead>
+      <tbody id="journalBody"></tbody>
+    </table>
+    <button class="btn" onclick="backMenu()">🏠 Menu</button>
+  </div>
 </main>
 
-<!-- 🔧 SCRIPT -->
+<!-- ⬇️ INSTALL -->
+<button class="install-btn" id="installButton">⬇️ Установить приложение</button>
+
+<script>
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installButton').style.display = 'block';
+});
+
+document.getElementById('installButton').addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+  }
+});
+</script>
+
 <script>
 const allowedNames=["Aytach2","Aylin2","Alvi2","Zhahangir2","Narmin2","Balman2","Ilyas2","Dmitry2","Irada2","Shyngys2","Kiril2","Sultan2","Kira2","Allahverdy2","Aziza2","Emir2","Monya2","Aeka2","Bayan2","Arai2","Jury2","Jury1","Meyirim2"];
 const WORKER_URL="https://shiny-tree-f78c.aiko030500.workers.dev";
