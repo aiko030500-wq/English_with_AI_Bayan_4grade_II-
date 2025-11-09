@@ -200,10 +200,11 @@ main{padding:12px 8px 90px;}
 <button id="installBtn" class="install-btn">📲 Install AI Bayan App</button>
 
 <script>
-// 🌟 Регистрация service worker (если есть файл service-worker.js)
+// 🌟 Регистрация service worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
-    .catch(err => console.log('SW error:', err));
+    .then(() => console.log('✅ Service Worker активен'))
+    .catch(err => console.log('❌ Ошибка SW:', err));
 }
 
 const allowedNames=[
@@ -232,70 +233,26 @@ function openTheme(n){window.location.href="theme"+n+".html";}
 function openChat(){alert("Chat soon...");}
 function openTeacherJournal(){alert("Journal soon...");}
 
-/* 🌟 ONLINE INSTALLATION BUTTON */
-let deferredPrompt=null;
-const installBtn=document.getElementById("installBtn");
+/* 🌟 Кнопка установки приложения */
+let deferredPrompt = null;
+const installBtn = document.getElementById("installBtn");
 
-window.addEventListener("beforeinstallprompt",(e)=>{
+window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
-  deferredPrompt=e;
-  installBtn.style.display="inline-flex";
+  deferredPrompt = e;
+  installBtn.style.display = "inline-flex";
 });
 
-installBtn.addEventListener("click", async ()=>{
-  if(!deferredPrompt){
+installBtn.addEventListener("click", async () => {
+  if (!deferredPrompt) {
     alert("Открой меню браузера → «Добавить на главный экран».");
     return;
   }
   deferredPrompt.prompt();
   const { outcome } = await deferredPrompt.userChoice;
-  console.log("User response:", outcome);
-  deferredPrompt=null;
-});
-</script>
-  <!-- 🌟 Service Worker регистрация -->
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-    .then(() => console.log('✅ Service Worker активен'))
-    .catch(err => console.log('❌ Ошибка SW:', err));
-}
-</script>
-
-<!-- 📲 Кнопка установки приложения -->
-<button id="installBtn" style="
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg,#FFD54F,#FFF176);
-  color: #003366;
-  border: none;
-  border-radius: 999px;
-  padding: 14px 28px;
-  font-weight: bold;
-  font-size: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  cursor: pointer;
-  z-index: 999;
-  display: none;
-">📲 Install AI Bayan App</button>
-
-<script>
-let deferredPrompt;
-const installBtn = document.getElementById("installBtn");
-
-window.addEventListener("beforeinstallprompt", e => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installBtn.style.display = "block";
-});
-
-installBtn.addEventListener("click", async () => {
-  installBtn.style.display = "none";
-  deferredPrompt.prompt();
-  await deferredPrompt.userChoice;
+  console.log("Реакция пользователя:", outcome);
   deferredPrompt = null;
+  installBtn.style.display = "none";
 });
 </script>
 </body>
