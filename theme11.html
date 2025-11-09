@@ -19,12 +19,13 @@ header {
   border-bottom:5px solid #ffcdd2;
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:center;
+  gap:18px;
 }
 .logo {
-  width:55px;height:55px;
+  width:150px;height:150px;
   border-radius:50%;
-  border:3px solid #ffcdd2;
+  border:4px solid #ffcdd2;
   background:white;
   object-fit:cover;
 }
@@ -86,13 +87,8 @@ textarea{width:100%;}
 </head>
 <body>
 <header>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <img src="logo.png" class="logo" alt="AI Bayan logo">
-    <div>
-      <h1 style="margin:0;font-size:1rem;">Theme 11 — What do you do?</h1>
-      <p style="margin:0;color:#ffebee;">English with AI Bayan — Talking about jobs</p>
-    </div>
-  </div>
+  <h1 style="margin:0;font-size:1.2rem;">Theme 11 — What do you do?</h1>
+  <img src="logo.png" class="logo" alt="AI Bayan logo">
 </header>
 
 <main>
@@ -143,8 +139,7 @@ textarea{width:100%;}
 <section>
 <h3>📘 Grammar — What do you do? / What does he do? <span class="round-label">Grammar</span></h3>
 <p><b>We use “do” and “does” to ask about jobs.</b></p>
-<p>Example: What do you do? — I am a teacher.  
-What does he do? — He is a driver.</p>
+<p>Example: What do you do? — I am a teacher.<br>What does he do? — He is a driver.</p>
 
 <p>1) What ___ you do?</p>
 <label><input type="radio" name="g1" value="do"> do</label><br>
@@ -251,7 +246,3 @@ function goBack(){location.href='index.html';}function goMenu(){location.href='i
 </script>
 </body>
 </html>
-
-   
-
-        
