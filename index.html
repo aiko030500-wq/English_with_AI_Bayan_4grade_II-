@@ -6,7 +6,7 @@
 <title>English with AI Bayan 4grade II</title>
 
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#002D72">
+<meta name="theme-color" content="#005B73">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" href="logo.png">
@@ -17,15 +17,15 @@ body{
   font-family:Verdana,sans-serif;
   text-align:center;
   color:#002D72;
-  background:linear-gradient(180deg,#E8F1FF 0%,#ffffff 100%);
+  background:#007D99;
 }
 
 /* HEADER */
 header{
-  background:linear-gradient(180deg,#002D72 0%,#004AAD 100%);
+  background:#005B73;
   border-bottom:4px solid #FFD54F;
   box-shadow:0 4px 10px rgba(0,0,0,0.25);
-  padding:14px 6px 0;
+  padding:14px 6px 10px;
 }
 header h1{
   color:#FFD54F;
@@ -38,18 +38,6 @@ header h2{
   font-weight:bold;
   font-size:1rem;
   margin-bottom:6px;
-}
-.ornament{
-  width:100%;
-  height:36px;
-  margin-top:4px;
-}
-.ornament svg path{
-  fill:none;
-  stroke:url(#goldGrad);
-  stroke-width:3;
-  stroke-linecap:round;
-  filter:drop-shadow(0 0 5px rgba(255,255,180,0.9));
 }
 
 /* LOGIN */
@@ -73,7 +61,7 @@ header h2{
   border:1px solid #ccc;margin:6px 0;font-size:1rem;
 }
 .btn{
-  background:#002D72;color:#fff;border:none;
+  background:#005B73;color:#fff;border:none;
   border-radius:10px;padding:8px 14px;font-weight:bold;
   cursor:pointer;margin:6px;font-size:0.9rem;
 }
@@ -86,39 +74,41 @@ main{padding:12px 8px 90px;}
 /* GRID */
 .topics-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:14px;
   max-width:780px;
   margin:20px auto 15px;
 }
 
-/* Кнопки тем — все одинаковые */
+/* Темы — белые карточки */
 .topic-btn{
   background:white;
   border:2px solid #004AAD;
   border-radius:16px;
-  padding:16px 8px;
+  padding:12px;
   font-size:0.9rem;
   font-weight:bold;
   color:#002D72;
   cursor:pointer;
   transition:0.25s all;
   box-shadow:0 3px 6px rgba(0,0,0,0.15);
-  height:120px;
+  height:70px;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
-}
-.topic-btn span.icon{
-  font-size:1.7rem;
-  margin-bottom:6px;
+  gap:8px;
 }
 .topic-btn:hover{
-  background:#002D72;
+  background:#004AAD;
   color:#fff;
   transform:translateY(-3px);
   box-shadow:0 4px 12px rgba(0,0,0,0.3);
+}
+.topic-btn .num{
+  font-weight:bold;
+}
+.topic-btn .icon{
+  font-size:1.3rem;
 }
 
 /* Доп. кнопки */
@@ -137,41 +127,16 @@ main{padding:12px 8px 90px;}
 
 /* Welcome Box */
 #welcomeBox{
-  margin:16px auto 0;background:white;
+  margin:16px auto 0;
+  background:white;
   border:2px solid #FFD54F;
-  border-radius:10px;max-width:680px;
-  padding:10px;color:#002D72;font-weight:bold;
+  border-radius:10px;
+  max-width:680px;
+  padding:10px;
+  color:#002D72;
+  font-weight:bold;
   box-shadow:0 3px 6px rgba(0,0,0,0.1);
 }
-
-/* Chat & Journal */
-#chatSection,#teacherJournal{
-  display:none;
-  max-width:900px;margin:12px auto;
-  background:#fff;border:2px solid #FFD54F;
-  border-radius:12px;padding:10px;
-  box-shadow:0 3px 6px rgba(0,0,0,0.15);
-}
-#chatBox{
-  background:#E8F1FF;
-  border-radius:8px;padding:8px;
-  max-height:260px;overflow-y:auto;
-  text-align:left;color:#002D72;border:1px solid #ccc;
-}
-textarea{
-  width:95%;border-radius:8px;border:1px solid #ccc;
-  padding:6px;font-family:inherit;min-height:60px;margin-top:6px;
-}
-.install-btn{
-  position:fixed;bottom:10px;left:50%;
-  transform:translateX(-50%);
-  background:#FFD54F;color:#002D72;border:none;
-  border-radius:50%;width:50px;height:50px;
-  font-size:0.8rem;
-  box-shadow:0 3px 8px rgba(0,0,0,0.35);
-  cursor:pointer;z-index:50;
-}
-.install-btn:hover{background:#002D72;color:#fff;}
 </style>
 </head>
 
@@ -192,51 +157,37 @@ textarea{
 <header>
   <h1>ENGLISH WITH AI BAYAN</h1>
   <h2>4 GRADE II</h2>
-  <div class="ornament">
-    <svg viewBox="0 0 800 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="goldGrad" x1="0" y1="0" x2="800" y2="0">
-          <stop offset="0%" stop-color="#FFD700"/>
-          <stop offset="50%" stop-color="#FFF8C0"/>
-          <stop offset="100%" stop-color="#FFD700"/>
-        </linearGradient>
-      </defs>
-      <path d="M0 20 q30 -20 60 0 t60 0 q30 -20 60 0 t60 0 q30 -20 60 0 t60 0 q30 -20 60 0 t60 0"/>
-    </svg>
-  </div>
 </header>
 
 <main>
   <div id="mainMenu">
+    <div id="welcomeBox">
+      <div id="welcomeText">Hello, Student!</div>
+      <div>Total stars in all lessons: <b><span id="totalStars">0</span> ⭐</b></div>
+    </div>
+
     <div class="topics-grid">
-      <button class="topic-btn" onclick="openTheme(1)"><span class="icon">🎨</span>1. Let’s Have Fun!</button>
-      <button class="topic-btn" onclick="openTheme(2)"><span class="icon">🏃‍♂️</span>2. Sports & Exercises</button>
-      <button class="topic-btn" onclick="openTheme(3)"><span class="icon">🌍</span>3. Sports Around World</button>
-      <button class="topic-btn" onclick="openTheme(4)"><span class="icon">🎵</span>4. Arts & Music</button>
-      <button class="topic-btn" onclick="openTheme(5)"><span class="icon">⚽</span>5. Team Sports</button>
-      <button class="topic-btn" onclick="openTheme(6)"><span class="icon">🎻</span>6. Kazakh Instruments</button>
-      <button class="topic-btn" onclick="openTheme(7)"><span class="icon">📜</span>7. Children’s Rights</button>
-      <button class="topic-btn" onclick="openTheme(8)"><span class="icon">🧰</span>8. Different Jobs</button>
-      <button class="topic-btn" onclick="openTheme(9)"><span class="icon">👩‍⚕️</span>9. Professions</button>
-      <button class="topic-btn" onclick="openTheme(10)"><span class="icon">🏢</span>10. People at Work</button>
-      <button class="topic-btn" onclick="openTheme(11)"><span class="icon">💬</span>11. What Do You Do?</button>
-      <button class="topic-btn" onclick="openTheme(12)"><span class="icon">❤️</span>12. You Can Help!</button>
-      <button class="topic-btn" onclick="openTheme(13)"><span class="icon">🎯</span>13. Final Challenge</button>
+      <button class="topic-btn" onclick="openTheme(1)"><span class="num">1.</span><span class="icon">🎨</span>Let’s Have Fun!</button>
+      <button class="topic-btn" onclick="openTheme(2)"><span class="num">2.</span><span class="icon">🏃‍♂️</span>Sports and Exercises</button>
+      <button class="topic-btn" onclick="openTheme(3)"><span class="num">3.</span><span class="icon">🌍</span>Sports Around the World</button>
+      <button class="topic-btn" onclick="openTheme(4)"><span class="num">4.</span><span class="icon">🎵</span>Arts and Music</button>
+      <button class="topic-btn" onclick="openTheme(5)"><span class="num">5.</span><span class="icon">⚽</span>Popular Team Sports</button>
+      <button class="topic-btn" onclick="openTheme(6)"><span class="num">6.</span><span class="icon">🎻</span>Museum of Kazakh Instruments</button>
+      <button class="topic-btn" onclick="openTheme(7)"><span class="num">7.</span><span class="icon">📜</span>Children’s Rights</button>
+      <button class="topic-btn" onclick="openTheme(8)"><span class="num">8.</span><span class="icon">🧰</span>Different Jobs</button>
+      <button class="topic-btn" onclick="openTheme(9)"><span class="num">9.</span><span class="icon">👩‍⚕️</span>Professions</button>
+      <button class="topic-btn" onclick="openTheme(10)"><span class="num">10.</span><span class="icon">🏢</span>People at Work</button>
+      <button class="topic-btn" onclick="openTheme(11)"><span class="num">11.</span><span class="icon">💬</span>What Do You Do?</button>
+      <button class="topic-btn" onclick="openTheme(12)"><span class="num">12.</span><span class="icon">❤️</span>You Can Help!</button>
+      <button class="topic-btn" onclick="openTheme(13)"><span class="num">13.</span><span class="icon">🎯</span>Final Challenge</button>
     </div>
 
     <div id="extraBtns">
       <button class="extra-btn" onclick="openChat()">💬 AI Bayan Chat</button>
       <button class="extra-btn" onclick="openTeacherJournal()">🏫 Teacher’s Journal</button>
     </div>
-
-    <div id="welcomeBox">
-      <div id="welcomeText">Hello, Student!</div>
-      <div>Total stars: <b><span id="totalStars">0</span> ⭐</b></div>
-    </div>
   </div>
 </main>
-
-<button class="install-btn" id="installButton">⬇️</button>
 
 <script>
 const allowedNames=[
@@ -245,41 +196,23 @@ const allowedNames=[
   "Kira2","Allahverdy2","Aziza2","Emir2","Monya2","Aeka2",
   "Bayan2","Arai2","Jury2","Jury1","Meyirim2"
 ];
-const WORKER_URL="https://shiny-tree-f78c.aiko030500.workers.dev";
-let DAILY_LIMIT=3;
-let usedToday=Number(localStorage.getItem("usedToday"))||0;
-let lastDate=localStorage.getItem("lastDate");
-let today=new Date().toDateString();
-let isTeacher=localStorage.getItem("isTeacher")==="true";
-
-if(lastDate!==today){usedToday=0;localStorage.setItem("lastDate",today);localStorage.setItem("usedToday",0);}
-function updateCounter(){
-  const c=document.getElementById("limitCounter");
-  if(!c)return;
-  c.innerHTML=isTeacher?"👩‍🏫 Teacher mode: unlimited questions":`⭐ ${DAILY_LIMIT-usedToday} of ${DAILY_LIMIT} questions left today`;
-}
-
-/* LOGIN */
 function checkLogin(){
   const n=document.getElementById("nameInput").value.trim().toLowerCase();
   const p=document.getElementById("pinInput").value.trim();
   const a=allowedNames.map(x=>x.toLowerCase());
   if(a.includes(n)&&p==="6856"){
-    localStorage.setItem("currentStudent",n);
-    localStorage.removeItem("isTeacher");isTeacher=false;
     document.getElementById("loginOverlay").style.display="none";
     document.getElementById("mainMenu").style.display="block";
-    const nice=n.charAt(0).toUpperCase()+n.slice(1);
-    document.getElementById("welcomeText").innerText="Hello, "+nice+"!";
-    updateCounter();
+    document.getElementById("welcomeText").innerText="Hello, "+n+"!";
   }else if(n==="teacher"&&p==="1402"){
-    isTeacher=true;localStorage.setItem("isTeacher","true");
     document.getElementById("loginOverlay").style.display="none";
     document.getElementById("mainMenu").style.display="block";
     document.getElementById("welcomeText").innerText="Hello, Teacher!";
-    updateCounter();
   }else alert("❌ Wrong name or PIN");
 }
+function openTheme(n){window.location.href="theme"+n+".html";}
+function openChat(){alert("Chat soon...");}
+function openTeacherJournal(){alert("Journal soon...");}
 </script>
 </body>
 </html>
