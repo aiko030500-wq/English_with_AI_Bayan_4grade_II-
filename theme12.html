@@ -19,12 +19,14 @@ header {
   border-bottom:5px solid #c8e6c9;
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:center;
+  gap:18px;
 }
 .logo {
-  width:55px;height:55px;
+  width:150px;
+  height:150px;
   border-radius:50%;
-  border:3px solid #c8e6c9;
+  border:4px solid #c8e6c9;
   background:white;
   object-fit:cover;
 }
@@ -86,13 +88,8 @@ textarea{width:100%;}
 </head>
 <body>
 <header>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <img src="logo.png" class="logo" alt="AI Bayan logo">
-    <div>
-      <h1 style="margin:0;font-size:1rem;">Theme 12 — You Can Help!</h1>
-      <p style="margin:0;color:#e8f5e9;">English with AI Bayan — Helping others and nature</p>
-    </div>
-  </div>
+  <h1 style="margin:0;font-size:1.2rem;">Theme 12 — You Can Help!</h1>
+  <img src="logo.png" class="logo" alt="AI Bayan logo">
 </header>
 
 <main>
@@ -143,8 +140,7 @@ textarea{width:100%;}
 <section>
 <h3>📘 Grammar — You can / You can’t <span class="round-label">Grammar</span></h3>
 <p><b>We use “can” to talk about things we are able to do, and “can’t” for things we must not do.</b></p>
-<p>Example: You can help at home.  
-You can’t throw rubbish on the ground.</p>
+<p>Example: You can help at home.<br>You can’t throw rubbish on the ground.</p>
 
 <p>1) You ___ help your parents in the kitchen.</p>
 <label><input type="radio" name="g1" value="can"> can</label><br>
@@ -241,8 +237,6 @@ function addStar(){
     "You have " + totalStars + " ⭐ in this lesson.";
   document.getElementById('finalStars').innerText = totalStars;
 }
-
-// TTS
 function speakBayanText(t){
   if(!('speechSynthesis' in window)) return;
   const u = new SpeechSynthesisUtterance(t);
@@ -253,8 +247,6 @@ function speakBayanText(t){
 }
 function stopBayan(){ speechSynthesis.cancel(); }
 function speakVocab(t){ speakBayanText(t); }
-
-// mark ✓ / ✗
 function markAnswer(el, ok){
   let m = el.parentElement.querySelector('.mark-icon');
   if(!m){
@@ -264,8 +256,6 @@ function markAnswer(el, ok){
   m.textContent = ok ? '✅' : '❌';
   m.className = 'mark-icon ' + (ok ? 'correctMark' : 'wrongMark');
 }
-
-/* ===== VOCABULARY ===== */
 function checkVocab(){
   let c = 0;
   ['v1','v2','v3','v4','v5'].forEach(id=>{
@@ -278,13 +268,9 @@ function checkVocab(){
   });
   if(c>0){
     addStar();
-    document.getElementById('vocabStars').innerText = '⭐ ' + c + ' correct!';
-  } else {
-    document.getElementById('vocabStars').innerText = 'No correct answers yet. Try again!';
+    vocabStars.innerText = '⭐ '+c+' correct!';
   }
 }
-
-/* ===== GRAMMAR ===== */
 function checkGrammar(){
   let c = 0;
   [['g1','can'],['g2','cant'],['g3','can']].forEach(([id,ans])=>{
@@ -295,106 +281,42 @@ function checkGrammar(){
       if(ok) c++;
     }
   });
-  if(c>0){
-    addStar();
-    document.getElementById('grammarStars').innerText = '⭐ ' + c + ' correct!';
-  } else {
-    document.getElementById('grammarStars').innerText = 'No correct answers yet. Try again!';
-  }
+  if(c>0){addStar();grammarStars.innerText='⭐ '+c+' correct!';}
 }
-
-/* ===== LISTENING ===== */
 function bayanListening(){
-  const t =
-    "Today is helping day at school. " +
-    "The children help the teacher in the classroom. " +
-    "They tidy the desks and pick up litter from the floor. " +
-    "They do not throw rubbish. " +
-    "They help each other and feel happy.";
-  speakBayanText(t);
+  speakBayanText("Today is helping day at school. The children help the teacher in the classroom. They tidy the desks and pick up litter from the floor. They do not throw rubbish. They help each other and feel happy.");
 }
 function checkListening(){
-  let c = 0;
-  if(document.getElementById('t1').value === 'True') c++;
-  if(document.getElementById('t2').value === 'False') c++;
-  if(document.getElementById('t3').value === 'True') c++;
-  if(c>0){
-    addStar();
-    document.getElementById('listenStars').innerText = '⭐ ' + c + ' correct!';
-  } else {
-    document.getElementById('listenStars').innerText = 'No correct answers yet. Try again!';
-  }
+  let c=0;
+  if(t1.value==='True')c++;
+  if(t2.value==='False')c++;
+  if(t3.value==='True')c++;
+  if(c>0){addStar();listenStars.innerText='⭐ '+c+' correct!';}
 }
-
-/* ===== READING ===== */
 function bayanReading(){
-  const t =
-    "My name is Ali. I am eleven years old. " +
-    "At home I can help my family. I tidy my room and wash the dishes. " +
-    "At school I can help my friends. I share my pens and explain homework. " +
-    "In the park I can help nature. I pick up litter and throw it in the bin.";
-  speakBayanText(t);
+  speakBayanText("My name is Ali. I am eleven years old. At home I can help my family. I tidy my room and wash the dishes. At school I can help my friends. I share my pens and explain homework. In the park I can help nature. I pick up litter and throw it in the bin.");
 }
 function checkReading(){
-  let c = 0;
-  const v1 = document.getElementById('r1').value.toLowerCase();
-  const v2 = document.getElementById('r2').value.toLowerCase();
-  const v3 = document.getElementById('r3').value.toLowerCase();
-  if(v1.includes('tidy') || v1.includes('room') || v1.includes('dishes')) c++;
-  if(v2.includes('share') || v2.includes('pens') || v2.includes('homework')) c++;
-  if(v3.includes('litter') || v3.includes('bin') || v3.includes('park')) c++;
-  if(c>0){
-    addStar();
-    document.getElementById('readStars').innerText = '⭐ ' + c + ' correct!';
-  } else {
-    document.getElementById('readStars').innerText = 'No correct answers yet. Try again!';
-  }
+  let c=0;
+  if(r1.value.toLowerCase().includes('tidy')||r1.value.toLowerCase().includes('room')||r1.value.toLowerCase().includes('dishes'))c++;
+  if(r2.value.toLowerCase().includes('share')||r2.value.toLowerCase().includes('pens')||r2.value.toLowerCase().includes('homework'))c++;
+  if(r3.value.toLowerCase().includes('litter')||r3.value.toLowerCase().includes('bin')||r3.value.toLowerCase().includes('park'))c++;
+  if(c>0){addStar();readStars.innerText='⭐ '+c+' correct!';}
 }
-
-/* ===== WRITING ===== */
 function checkWriting(){
-  let c = 0;
-  ['w1','w2','w3'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(el.value.trim() !== '') c++;
-  });
-  if(c>0){
-    addStar();
-    document.getElementById('writeStars').innerText = '⭐ ' + c + ' good sentences!';
-  } else {
-    document.getElementById('writeStars').innerText = 'Try to write how you can help.';
-  }
+  let c=0;[w1,w2,w3].forEach(x=>{if(x.value.trim()!=='')c++;});
+  if(c>0){addStar();writeStars.innerText='⭐ '+c+' good sentences!';}
 }
-
-/* ===== FINISH + NAV ===== */
 function finishLesson(){
-  document.getElementById('finalStars').innerText = totalStars;
-  let msg = '';
-  if(totalStars >= 10){
-    msg = '🌟 Wonderful! You know many ways to help!';
-  } else if(totalStars >= 5){
-    msg = 'Good work! Keep helping at home, school and outside.';
-  } else {
-    msg = 'You finished the lesson! Small help is still help.';
-  }
-  document.getElementById('finalMessage').innerText = msg;
-
-  const studentName = localStorage.getItem('studentName') || 'Unknown Student';
-  const allResults = JSON.parse(localStorage.getItem('teacherJournal') || '{}');
-  allResults[studentName] = allResults[studentName] || {};
-  allResults[studentName]['Lesson 12'] = totalStars;
-  localStorage.setItem('teacherJournal', JSON.stringify(allResults));
-  localStorage.setItem('lesson12Stars', totalStars);
-  alert('Lesson 12 saved! ' + studentName + ' got ' + totalStars + '⭐.');
+  finalStars.innerText=totalStars;
+  let msg=totalStars>=10?'🌟 Wonderful! You know many ways to help!':totalStars>=5?'Good work! Keep helping at home, school and outside.':'You finished the lesson! Small help is still help.';
+  finalMessage.innerText=msg;
+  localStorage.setItem('lesson12Stars',totalStars);
+  alert('Lesson 12 saved! '+totalStars+'⭐');
 }
-function goBack(){ location.href = 'index.html'; }
-function goMenu(){ location.href = 'index.html'; }
-function goNext(){ location.href = 'theme13.html'; }
+function goBack(){location.href='index.html';}
+function goMenu(){location.href='index.html';}
+function goNext(){location.href='theme13.html';}
 </script>
 </body>
 </html>
-
-    
- 
-     
-   
