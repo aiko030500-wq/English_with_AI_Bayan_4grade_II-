@@ -120,6 +120,7 @@ main{padding:12px 8px 90px;}
   box-shadow:0 3px 6px rgba(0,0,0,0.18);
 }
 .extra-btn:hover{background:#002D72;color:#fff;}
+
 /* 🔹 Кнопка установки */
 .install-btn{
   position:fixed;
@@ -194,12 +195,19 @@ main{padding:12px 8px 90px;}
 <button id="installBtn" class="install-btn">📲 Установить приложение</button>
 
 <script>
+// 🌟 Регистрация service worker (если есть файл service-worker.js)
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .catch(err => console.log('SW error:', err));
+}
+
 const allowedNames=[
   "Aytach2","Aylin2","Alvi2","Zhahangir2","Narmin2","Balman2",
   "Ilyas2","Dmitry2","Irada2","Shyngys2","Kiril2","Sultan2",
   "Kira2","Allahverdy2","Aziza2","Emir2","Monya2","Aeka2",
   "Bayan2","Arai2","Jury2","Jury1","Meyirim2"
 ];
+
 function checkLogin(){
   const n=document.getElementById("nameInput").value.trim().toLowerCase();
   const p=document.getElementById("pinInput").value.trim();
@@ -214,6 +222,7 @@ function checkLogin(){
     document.getElementById("welcomeText").innerText="Hello, Teacher!";
   }else alert("❌ Wrong name or PIN");
 }
+
 function openTheme(n){window.location.href="theme"+n+".html";}
 function openChat(){alert("Chat soon...");}
 function openTeacherJournal(){alert("Journal soon...");}
@@ -221,11 +230,13 @@ function openTeacherJournal(){alert("Journal soon...");}
 /* 🌟 ONLINE INSTALLATION BUTTON */
 let deferredPrompt=null;
 const installBtn=document.getElementById("installBtn");
+
 window.addEventListener("beforeinstallprompt",(e)=>{
   e.preventDefault();
   deferredPrompt=e;
   installBtn.style.display="inline-flex";
 });
+
 installBtn.addEventListener("click", async ()=>{
   if(!deferredPrompt){
     alert("Открой меню браузера → «Добавить на главный экран».");
@@ -237,43 +248,6 @@ installBtn.addEventListener("click", async ()=>{
   deferredPrompt=null;
 });
 </script>
-  <!-- 🌟 Установка приложения -->
-<button id="installBtn" style="
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg,#FFD54F,#FFF176);
-  color: #003366;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 22px;
-  font-weight: bold;
-  font-size: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-  cursor: pointer;
-  display: none;
-  z-index: 999;
-">
-⬇️ Установить English with AI Bayan
-</button>
 
-<script>
-let deferredPrompt;
-const installBtn = document.getElementById('installBtn');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installBtn.style.display = 'block';
-});
-
-installBtn.addEventListener('click', async () => {
-  installBtn.style.display = 'none';
-  deferredPrompt.prompt();
-  const { outcome } = await deferredPrompt.userChoice;
-  deferredPrompt = null;
-});
-</script>
 </body>
 </html>
