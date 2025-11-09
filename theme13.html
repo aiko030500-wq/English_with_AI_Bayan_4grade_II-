@@ -87,13 +87,14 @@ textarea{width:100%;}
 </head>
 <body>
 <header>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <img src="logo.png" class="logo" alt="AI Bayan logo">
-    <div>
-      <h1 style="margin:0;font-size:1rem;">Theme 13 — Final Challenge</h1>
-      <p style="margin:0;color:#f3e5f5;">English with AI Bayan — Final Olympiad Review</p>
-    </div>
+  <!-- Левая часть с текстом -->
+  <div style="text-align:left;">
+    <h1 style="margin:0;font-size:1rem;">Theme 13 — Final Challenge</h1>
+    <p style="margin:0;color:#f3e5f5;">English with AI Bayan — Final Olympiad Review</p>
   </div>
+
+  <!-- Правая часть — логотип -->
+  <img src="logo.png" class="logo" alt="AI Bayan logo">
 </header>
 
 <main>
@@ -101,60 +102,71 @@ textarea{width:100%;}
 <p style="font-style:italic;color:#6a1b9a;">Let’s see how much you remember from all themes!</p>
 <p id="lessonStarsLine"><b>You have 0 ⭐ in this lesson.</b></p>
 
-<!-- Vocabulary -->
+<!-- ===== Vocabulary ===== -->
 <section>
 <h3>🧠 Vocabulary — Mixed Review <span class="round-label">Vocabulary</span></h3>
 <p><b>Choose the correct translation (на русский).</b></p>
+
 <p>1) ride a bike  <button class="btn" onclick="speak('To ride a bike means to go somewhere on a bicycle.')">▶ Play</button> <button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
 <label><input type="radio" name="v1" value="1"> ездить на велосипеде</label><br>
 <label><input type="radio" name="v1" value="0"> летать на самолёте</label><br>
+
 <p>2) play the guitar  <button class="btn" onclick="speak('To play the guitar means to make music with a guitar.')">▶ Play</button></p>
 <label><input type="radio" name="v2" value="1"> играть на гитаре</label><br>
 <label><input type="radio" name="v2" value="0"> рисовать картину</label><br>
+
 <p>3) help my friends  <button class="btn" onclick="speak('To help friends means to be kind and support them.')">▶ Play</button></p>
 <label><input type="radio" name="v3" value="1"> помогать друзьям</label><br>
 <label><input type="radio" name="v3" value="0"> смеяться над друзьями</label><br>
+
 <p>4) fly a kite  <button class="btn" onclick="speak('To fly a kite means to play with a kite in the sky.')">▶ Play</button></p>
 <label><input type="radio" name="v4" value="1"> запускать воздушного змея</label><br>
 <label><input type="radio" name="v4" value="0"> играть в догонялки</label><br>
+
 <button class="btn" onclick="checkVocab()">Check vocabulary ✅</button>
 <div id="vocabStars" style="font-size:1.1rem;margin-top:8px;"></div>
 </section>
 
-<!-- Grammar -->
+<!-- ===== Grammar ===== -->
 <section>
 <h3>📘 Grammar — Mixed Practice <span class="round-label">Grammar</span></h3>
 <p><b>Choose the correct form.</b></p>
+
 <p>1) They ___ playing football now.</p>
 <label><input type="radio" name="g1" value="are"> are</label><br>
 <label><input type="radio" name="g1" value="is"> is</label><br>
+
 <p>2) He ___ the guitar every day.</p>
 <label><input type="radio" name="g2" value="plays"> plays</label><br>
 <label><input type="radio" name="g2" value="play"> play</label><br>
+
 <p>3) You ___ help your parents at home.</p>
 <label><input type="radio" name="g3" value="can"> can</label><br>
 <label><input type="radio" name="g3" value="cant"> can’t</label><br>
+
 <button class="btn" onclick="checkGrammar()">Check grammar ✅</button>
 <div id="grammarStars" style="font-size:1.1rem;margin-top:8px;"></div>
 </section>
 
-<!-- Listening -->
+<!-- ===== Listening ===== -->
 <section>
 <h3>🎧 Listening — My Weekend <span class="round-label">Listening</span></h3>
 <p><b>Listen and choose True or False.</b></p>
 <button class="btn" onclick="bayanListening()">▶ Play</button>
 <button class="btn" onclick="stopBayan()">⏹ Stop</button>
+
 <p>1) Ben is playing football now.</p>
 <select id="t1"><option>—</option><option>True</option><option>False</option></select>
 <p>2) He likes playing the guitar.</p>
 <select id="t2"><option>—</option><option>True</option><option>False</option></select>
 <p>3) He helps his mother in the garden.</p>
 <select id="t3"><option>—</option><option>True</option><option>False</option></select>
+
 <button class="btn" onclick="checkListening()">Check listening ✅</button>
 <div id="listenStars" style="font-size:1.1rem;margin-top:8px;"></div>
 </section>
 
-<!-- Reading -->
+<!-- ===== Reading ===== -->
 <section>
 <h3>📖 Reading — My English Year <span class="round-label">Reading</span></h3>
 <p><b>Read or listen:</b></p>
@@ -178,7 +190,7 @@ English is fun and I want to learn more!
 <div id="readStars" style="font-size:1.1rem;margin-top:8px;"></div>
 </section>
 
-<!-- Writing -->
+<!-- ===== Writing ===== -->
 <section>
 <h3>✍ Writing — Why I Love English <span class="round-label">Writing</span></h3>
 <p>Write 3 sentences about why you like learning English.</p>
@@ -189,7 +201,7 @@ English is fun and I want to learn more!
 <div id="writeStars" style="font-size:1.1rem;margin-top:8px;"></div>
 </section>
 
-<!-- Final -->
+<!-- ===== Lesson Complete ===== -->
 <section style="text-align:center;margin-top:25px;">
 <h3>🏆 Final Result!</h3>
 <p>You have earned <b><span id="finalStars">0</span> ⭐</b> in this final challenge.</p>
