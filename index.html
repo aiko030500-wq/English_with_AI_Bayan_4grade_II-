@@ -7,7 +7,7 @@
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#3FA9F5">
+<meta name="theme-color" content="#FFC8A2">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" href="logo.png">
@@ -15,15 +15,15 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{
-  font-family:Verdana, sans-serif;
-  background:#F7EEDC;
+  font-family:Verdana,sans-serif;
+  background:#FFF9F2; /* кремово-молочный фон */
   text-align:center;
   color:#000;
 }
 
-/* HEADER – небесно-синий + орнамент */
+/* HEADER – нежный розово-персиковый + золотой орнамент */
 header{
-  background:linear-gradient(180deg,#50B4FF 0%,#1E88E5 100%);
+  background:linear-gradient(180deg,#FFD6D9 0%,#FFC8A2 100%);
   border-bottom:4px solid #FFD54F;
   box-shadow:0 4px 10px rgba(0,0,0,0.25);
   padding:10px 6px 0;
@@ -32,17 +32,17 @@ header h1{
   margin:4px 0 0;
   font-size:1.6rem;
   font-weight:bold;
-  color:#FFFDE7;
-  text-shadow:0 0 8px rgba(0,0,0,0.35);
+  color:#4A2C2C;
+  text-shadow:0 0 8px rgba(255,255,255,0.6);
 }
 header h2{
   margin:0 0 4px;
   font-size:1rem;
-  color:#E3F2FD;
+  color:#5C3B3B;
 }
 .ornament{
   width:100%;
-  height:32px;
+  height:30px;
 }
 .ornament svg path{
   fill:none;
@@ -72,7 +72,7 @@ header h2{
   max-width:380px;
   color:#5B4A33;
 }
-.overlay-card h2{margin-top:0;margin-bottom:8px;}
+.overlay-card h2{margin-top:0;margin-bottom:6px;}
 .overlay-card p{margin:0 0 8px;}
 .overlay-card input{
   width:100%;
@@ -100,91 +100,82 @@ header h2{
 
 /* MAIN */
 main{
-  padding:12px 8px 80px;
+  padding:12px 8px 90px;
 }
 
-/* GRID С ТЕМАМИ */
+/* ГЛАВНОЕ МЕНЮ */
 #mainMenu{display:none;}
 .topics-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
-  max-width:720px;
+  gap:8px;
+  max-width:680px;
   margin:14px auto 10px;
 }
 
-/* Кнопки тем – чуть меньше, аккуратные */
+/* Кнопки тем – яркие, но аккуратные */
 .topic-btn{
   border:none;
-  border-radius:12px;
-  padding:10px 8px;
-  font-size:0.95rem;
+  border-radius:10px;
+  padding:9px 6px;
+  font-size:0.9rem;
   font-weight:bold;
   color:#fff;
   cursor:pointer;
-  box-shadow:0 3px 7px rgba(0,0,0,0.18);
+  box-shadow:0 2px 6px rgba(0,0,0,0.22);
   transition:0.2s transform,0.2s box-shadow,0.2s filter;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
   line-height:1.25;
-}
-.topic-btn span{
-  display:inline-block;
 }
 .topic-btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 5px 12px rgba(0,0,0,0.28);
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
   filter:brightness(1.05);
 }
 
-/* Цвета кнопок (как на твоих темах) */
-.t1{background:#A48CD9;}   /* фиолетовый */
-.t2{background:#9C6B3C;}   /* коричневый */
-.t3{background:#4FAF73;}   /* зелёный */
-.t4{background:#E58B2A;}   /* оранжевый */
-.t5{background:#4A9EB7;}   /* бирюзовый/голубой */
-.t6{background:#82644C;}   /* кофейный */
-.t7{background:#5B82CF;}   /* синий */
-.t8{background:#F29233;}   /* оранжево-жёлтый */
-.t9{background:#A33B5D;}   /* бордовый/малиновый */
-.t10{background:#E88DB2;}  /* розовый */
-.t11{background:#E04B46;}  /* красный */
-.t12{background:#5FAF63;}  /* зелёный */
-.t13{background:#7C4FCF;}  /* фиолетовый финал */
+/* Цвета кнопок (ярче, но в логике твоих тем) */
+.t1{ background:#8C5BDE; }   /* фиолетовый – Let’s Have Fun */
+.t2{ background:#B86A33; }   /* тёплый коричнево-оранжевый – Sports & Exercises */
+.t3{ background:#1A9A5E; }   /* насыщенный зелёный – Sports Around the World */
+.t4{ background:#E67829; }   /* оранжевый – Arts and Music */
+.t5{ background:#1889B6; }   /* яркий бирюзово-синий – Popular Team Sports */
+.t6{ background:#7A5334; }   /* глубокий кофейный – Kazakh Instruments */
+.t7{ background:#2F63C9; }   /* васильковый синий – Children’s Rights */
+.t8{ background:#F08A1F; }   /* оранжево-медовый – Different Jobs */
+.t9{ background:#B73655; }   /* малиново-бордовый – Professions */
+.t10{ background:#D95C8D; }  /* ярко-розовый – People at Work */
+.t11{ background:#D63232; }  /* красный – What Do You Do? */
+.t12{ background:#2F9A4C; }  /* насыщенный зелёный – You Can Help */
+.t13{ background:#6B3ACF; }  /* фиолетовый финальный – Final Challenge */
 
-/* Кнопки ЧАТ и ЖУРНАЛ */
+/* Кнопки ЧАТ / ЖУРНАЛ */
 #extraBtns{
   margin-top:10px;
   display:flex;
-  flex-wrap:wrap;
   justify-content:center;
-  gap:10px;
+  gap:8px;
+  flex-wrap:wrap;
 }
 .extra-btn{
   background:#DCC7A1;
   border:none;
-  border-radius:12px;
-  padding:10px 18px;
+  border-radius:10px;
+  padding:8px 16px;
   font-weight:bold;
   color:#3C2F1E;
   cursor:pointer;
-  box-shadow:0 3px 7px rgba(0,0,0,0.18);
+  box-shadow:0 3px 6px rgba(0,0,0,0.18);
   transition:0.2s;
 }
-.extra-btn:hover{
-  background:#EBDAB5;
-}
+.extra-btn:hover{background:#EBDAB5;}
 
 /* ПРИВЕТСТВИЕ */
 #welcomeBox{
   margin:16px auto 0;
-  background:#EFE4CE;
+  background:#F2E4CC;
   border:2px solid #C5AF84;
-  border-radius:12px;
-  max-width:720px;
-  padding:10px;
+  border-radius:10px;
+  max-width:680px;
+  padding:8px;
   color:#3C2F1E;
   font-weight:bold;
 }
@@ -249,25 +240,24 @@ th{
 /* INSTALL */
 .install-btn{
   position:fixed;
-  bottom:14px;
+  bottom:10px;
   left:50%;
   transform:translateX(-50%);
   background:#C5AF84;
   color:#fff;
   border:none;
   border-radius:50%;
-  width:56px;
-  height:56px;
+  width:50px;
+  height:50px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   font-size:0.8rem;
-  box-shadow:0 4px 10px rgba(0,0,0,0.35);
+  box-shadow:0 3px 8px rgba(0,0,0,0.35);
   cursor:pointer;
   z-index:50;
 }
-.install-btn .icon{font-size:1.2rem;margin-bottom:1px;}
 .install-btn:hover{background:#E8D2A4;}
 
 @media (max-width:700px){
@@ -303,15 +293,7 @@ th{
           <stop offset="100%" stop-color="#FFD700"/>
         </linearGradient>
       </defs>
-      <path d="
-        M0 20
-        q20 -18 40 0 t40 0
-        q20 -18 40 0 t40 0
-        q20 -18 40 0 t40 0
-        q20 -18 40 0 t40 0
-        q20 -18 40 0 t40 0
-        q20 -18 40 0 t40 0
-        q20 -18 40 0 t40 0"/>
+      <path d="M0 20 q20 -18 40 0 t40 0 q20 -18 40 0 t40 0 q20 -18 40 0 t40 0 q20 -18 40 0 t40 0 q20 -18 40 0 t40 0"/>
     </svg>
   </div>
 </header>
@@ -320,45 +302,19 @@ th{
   <!-- ГЛАВНОЕ МЕНЮ -->
   <div id="mainMenu">
     <div class="topics-grid">
-      <button class="topic-btn t1" onclick="openTheme(1)">
-        <span>1. 🎨 Let’s Have Fun!</span>
-      </button>
-      <button class="topic-btn t2" onclick="openTheme(2)">
-        <span>2. 🏃 Sports and Exercises</span>
-      </button>
-      <button class="topic-btn t3" onclick="openTheme(3)">
-        <span>3. 🌍 Sports Around the World</span>
-      </button>
-      <button class="topic-btn t4" onclick="openTheme(4)">
-        <span>4. 🎵 Arts and Music</span>
-      </button>
-      <button class="topic-btn t5" onclick="openTheme(5)">
-        <span>5. ⚽ Popular Team Sports</span>
-      </button>
-      <button class="topic-btn t6" onclick="openTheme(6)">
-        <span>6. 🎻 Museum of Kazakh Musical Instruments</span>
-      </button>
-      <button class="topic-btn t7" onclick="openTheme(7)">
-        <span>7. 📜 Children’s Rights & Responsibilities</span>
-      </button>
-      <button class="topic-btn t8" onclick="openTheme(8)">
-        <span>8. 🧰 Different Jobs</span>
-      </button>
-      <button class="topic-btn t9" onclick="openTheme(9)">
-        <span>9. 👩‍⚕️ Professions</span>
-      </button>
-      <button class="topic-btn t10" onclick="openTheme(10)">
-        <span>10. 🏢 People at Work</span>
-      </button>
-      <button class="topic-btn t11" onclick="openTheme(11)">
-        <span>11. 💬 What Do You Do?</span>
-      </button>
-      <button class="topic-btn t12" onclick="openTheme(12)">
-        <span>12. ❤️ You Can Help!</span>
-      </button>
-      <button class="topic-btn t13" onclick="openTheme(13)">
-        <span>13. 🎯 Final Challenge</span>
-      </button>
+      <button class="topic-btn t1" onclick="openTheme(1)">1. 🎨 Let’s Have Fun!</button>
+      <button class="topic-btn t2" onclick="openTheme(2)">2. 🏃 Sports and Exercises</button>
+      <button class="topic-btn t3" onclick="openTheme(3)">3. 🌍 Sports Around the World</button>
+      <button class="topic-btn t4" onclick="openTheme(4)">4. 🎵 Arts and Music</button>
+      <button class="topic-btn t5" onclick="openTheme(5)">5. ⚽ Popular Team Sports</button>
+      <button class="topic-btn t6" onclick="openTheme(6)">6. 🎻 Museum of Kazakh Musical Instruments</button>
+      <button class="topic-btn t7" onclick="openTheme(7)">7. 📜 Children’s Rights & Responsibilities</button>
+      <button class="topic-btn t8" onclick="openTheme(8)">8. 🧰 Different Jobs</button>
+      <button class="topic-btn t9" onclick="openTheme(9)">9. 👩‍⚕️ Professions</button>
+      <button class="topic-btn t10" onclick="openTheme(10)">10. 🏢 People at Work</button>
+      <button class="topic-btn t11" onclick="openTheme(11)">11. 💬 What Do You Do?</button>
+      <button class="topic-btn t12" onclick="openTheme(12)">12. ❤️ You Can Help!</button>
+      <button class="topic-btn t13" onclick="openTheme(13)">13. 🎯 Final Challenge</button>
     </div>
 
     <div id="extraBtns">
@@ -399,10 +355,7 @@ th{
 </main>
 
 <!-- INSTALL -->
-<button class="install-btn" id="installButton">
-  <span class="icon">⬇️</span>
-  <span>Install</span>
-</button>
+<button class="install-btn" id="installButton">⬇️</button>
 
 <script>
 const allowedNames=[
@@ -411,7 +364,6 @@ const allowedNames=[
   "Kira2","Allahverdy2","Aziza2","Emir2","Monya2","Aeka2",
   "Bayan2","Arai2","Jury2","Jury1","Meyirim2"
 ];
-
 const WORKER_URL="https://shiny-tree-f78c.aiko030500.workers.dev";
 
 let DAILY_LIMIT=3;
@@ -429,7 +381,7 @@ if(lastDate!==today){
 function updateCounter(){
   const c=document.getElementById("limitCounter");
   if(!c) return;
-  c.innerHTML=isTeacher
+  c.innerHTML = isTeacher
     ? "👩‍🏫 Teacher mode: unlimited questions"
     : `⭐ ${DAILY_LIMIT-usedToday} of ${DAILY_LIMIT} questions left today`;
 }
@@ -455,7 +407,7 @@ function checkLogin(){
     localStorage.setItem("isTeacher","true");
     document.getElementById("loginOverlay").style.display="none";
     document.getElementById("mainMenu").style.display="block";
-    document.getElementById("welcomeText").innerText="Hello, teacher!";
+    document.getElementById("welcomeText").innerText="Hello, Teacher!";
     calcTotalStarsForAll();
     updateCounter();
   } else {
