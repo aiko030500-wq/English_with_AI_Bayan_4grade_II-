@@ -7,101 +7,87 @@
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#006b8f">
+<meta name="theme-color" content="#004C7A">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" href="logo.png">
 
 <style>
   :root {
-    --blue-main: #006b8f;
-    --blue-dark: #004566;
-    --blue-bg: #00bfff; /* ЯРКИЙ ГОЛУБОЙ */
+    --blue-main: #004C7A;       /* насыщенный синий фон */
+    --blue-dark: #002C4A;
+    --blue-bg: #004C7A;
     --gold: #ffd54f;
     --card-shadow: 0 3px 10px rgba(0,0,0,0.15);
   }
-
-  * { box-sizing: border-box; }
-
-  body {
-    font-family: Verdana, sans-serif;
-    margin: 0;
-    text-align: center;
-    color: #013044;
-    background: var(--blue-bg); /* весь фон ярко-голубой */
+  *{box-sizing:border-box;}
+  body{
+    font-family:Verdana,sans-serif;
+    margin:0;
+    text-align:center;
+    color:#fff;
+    background:var(--blue-bg);
   }
-
-  body.teacher-mode {
-    background: linear-gradient(180deg,#fff3b0 0%,#ffe27f 100%);
+  body.teacher-mode{
+    background:linear-gradient(180deg,#fff3b0 0%,#ffe27f 100%);
   }
-
-  #teacherBanner {
-    display: none;
-    background: var(--gold);
-    color: var(--blue-dark);
-    padding: 8px 10px;
-    font-weight: bold;
-    border-bottom: 3px solid var(--blue-dark);
+  #teacherBanner{
+    display:none;
+    background:var(--gold);
+    color:var(--blue-dark);
+    padding:8px 10px;
+    font-weight:bold;
+    border-bottom:3px solid var(--blue-dark);
   }
-  body.teacher-mode #teacherBanner { display:block; }
+  body.teacher-mode #teacherBanner{display:block;}
 
-  /* HEADER */
-  header {
-    max-width: 900px;
-    margin: 8px auto 0;
-    padding: 10px 10px 16px;
-    border-radius: 20px;
-    border: 3px solid var(--gold);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-    position: relative;
-    background: #f7fbff;
-    overflow: hidden;
+  /* === HEADER === */
+  header{
+    max-width:900px;
+    margin:8px auto 0;
+    padding:10px 10px 16px;
+    border-radius:20px;
+    border:3px solid var(--gold);
+    box-shadow:0 6px 14px rgba(0,0,0,0.3);
+    position:relative;
+    background:linear-gradient(180deg,#00588f 0%,#003a63 100%);
+    overflow:hidden;
   }
-
-  /* Орнамент – яркая золотая узорная полоска наверху шапки */
-  .ornament-strip {
-    width: 120%;
-    height: 32px;
-    margin: -10px -25px 10px;
-    border-radius: 18px 18px 10px 10px;
+  .ornament-strip{
+    width:130%;
+    height:34px;
+    margin:-12px -30px 12px;
+    border-radius:18px 18px 10px 10px;
     background:
-      /* “волны” и завитки */
-      radial-gradient(circle at 8% 50%, rgba(255,244,196,0.95) 0, transparent 40%),
-      radial-gradient(circle at 20% 30%, rgba(253,216,53,0.9) 0, transparent 42%),
-      radial-gradient(circle at 34% 70%, rgba(255,241,118,0.9) 0, transparent 42%),
-      radial-gradient(circle at 50% 35%, rgba(251,192,45,0.92) 0, transparent 40%),
-      radial-gradient(circle at 66% 65%, rgba(255,244,196,0.95) 0, transparent 40%),
-      radial-gradient(circle at 80% 30%, rgba(253,216,53,0.9) 0, transparent 42%),
-      radial-gradient(circle at 94% 60%, rgba(251,192,45,0.9) 0, transparent 40%),
-      /* золотая лента */
-      linear-gradient(90deg,#fbc02d,#fff9c4,#fdd835,#ffecb3,#fbc02d);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+      repeating-linear-gradient(
+        45deg,
+        rgba(255,215,0,0.9) 0,
+        rgba(255,255,255,0.7) 2px,
+        rgba(255,215,0,0.9) 4px,
+        rgba(240,180,0,0.9) 8px
+      ),
+      linear-gradient(90deg,#ffeb99,#ffd54f,#fbc02d,#ffeb99);
+    box-shadow:0 3px 8px rgba(0,0,0,0.4);
+  }
+  .header-inner{position:relative;z-index:1;}
+  header h1{
+    margin:0 0 4px;
+    font-size:1.4rem;
+    letter-spacing:0.04em;
+    color:#fffbea;
+    text-shadow:0 0 8px rgba(0,0,0,0.6);
+  }
+  header h2{
+    margin:0;
+    font-size:1rem;
+    color:#e6f7ff;
+    text-shadow:0 0 5px rgba(0,0,0,0.4);
   }
 
-  .header-inner {
-    position: relative;
-    z-index: 1;
-  }
-
-  header h1 {
-    margin: 0 0 4px;
-    font-size: 1.3rem;
-    letter-spacing: 0.03em;
-    color: #013a5c;
-  }
-
-  header h2 {
-    margin: 0;
-    font-size: 1rem;
-    color: #014f7a;
-  }
-
-  main {
-    padding: 0.8rem 0.5rem 4.5rem;
-  }
+  main{padding:0.8rem 0.5rem 4.5rem;}
 
   /* LOGIN OVERLAY */
-  .overlay {
+  .overlay{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,0.55);
@@ -110,7 +96,7 @@
     justify-content:center;
     z-index:999;
   }
-  .overlay-card {
+  .overlay-card{
     background:white;
     border:4px solid var(--gold);
     padding:20px;
@@ -119,8 +105,7 @@
     width:90%;
     max-width:380px;
   }
-  .overlay-card h2 { margin-top:0; }
-  .overlay-card input {
+  .overlay-card input{
     width:100%;
     padding:8px;
     border-radius:8px;
@@ -128,8 +113,7 @@
     margin:6px 0;
     font-size:1rem;
   }
-
-  .btn {
+  .btn{
     background:var(--blue-dark);
     color:#fff;
     border:none;
@@ -141,65 +125,54 @@
     transition:0.2s;
     font-size:0.9rem;
   }
-  .btn:hover { background:var(--gold); color:var(--blue-dark); }
+  .btn:hover{background:var(--gold);color:var(--blue-dark);}
 
-  /* HELLO BOX – голубой блок внизу */
-  #welcomeBox {
-    background: linear-gradient(135deg,#d9f5ff,#bde6ff);
+  #welcomeBox{
+    background:linear-gradient(135deg,#d9f5ff,#bde6ff);
     border-radius:16px;
     padding:10px 12px;
     max-width:900px;
     margin:12px auto 4px;
     border:2px solid var(--gold);
-    box-shadow: var(--card-shadow);
+    box-shadow:var(--card-shadow);
   }
-  #welcomeBox h2 {
-    margin: 4px 0 4px;
-    color:#013a5c;
-  }
-  #welcomeBox p {
-    margin: 2px 0;
-  }
+  #welcomeBox h2{margin:4px 0;color:#013a5c;}
 
-  /* ТЕМЫ – прямоугольные карточки */
-  .topics-grid {
-    max-width: 900px;
-    margin: 8px auto 6px;
+  .topics-grid{
+    max-width:900px;
+    margin:8px auto 6px;
     display:grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns:repeat(3,minmax(0,1fr));
     gap:8px;
   }
-
-  .topic-btn {
-    background: rgba(255,255,255,0.96);
-    border: 2px solid #dde6ff;
+  .topic-btn{
+    background:rgba(255,255,255,0.96);
+    border:2px solid #dde6ff;
     border-radius:14px;
     padding:10px 6px;
     font-size:0.85rem;
     line-height:1.25;
     cursor:pointer;
     box-shadow:0 2px 8px rgba(0,0,0,0.08);
-    transition:0.15s transform, 0.15s border-color, 0.15s box-shadow;
+    transition:0.15s transform,0.15s border-color,0.15s box-shadow;
   }
-  .topic-btn span.num {
+  .topic-btn span.num{
     display:block;
     font-weight:bold;
-    margin-bottom: 3px;
+    margin-bottom:3px;
     color:#013a5c;
   }
-  .topic-btn:hover {
-    border-color: var(--gold);
-    transform: translateY(-2px);
-    box-shadow: var(--card-shadow);
+  .topic-btn:hover{
+    border-color:var(--gold);
+    transform:translateY(-2px);
+    box-shadow:var(--card-shadow);
   }
 
-  /* CHAT & JOURNAL */
-  #chatSection, #teacherJournal {
-    max-width: 900px;
-    margin: 12px auto;
+  #chatSection,#teacherJournal{
+    max-width:900px;
+    margin:12px auto;
   }
-
-  #chatBox {
+  #chatBox{
     background:#fff;
     border:2px solid var(--gold);
     border-radius:10px;
@@ -208,8 +181,7 @@
     overflow-y:auto;
     text-align:left;
   }
-
-  textarea {
+  textarea{
     width:90%;
     border-radius:8px;
     border:1px solid #ccc;
@@ -217,21 +189,19 @@
     font-family:inherit;
     min-height:60px;
   }
+  table{border-collapse:collapse;margin:auto;font-size:0.85rem;}
+  th,td{border:1px solid #ccc;padding:5px 8px;}
+  th{background:var(--blue-dark);color:white;}
 
-  table { border-collapse:collapse; margin:auto; font-size:0.85rem; }
-  th, td { border:1px solid #ccc; padding:5px 8px; }
-  th { background:var(--blue-dark); color:white; }
-
-  /* INSTALL APP BUTTON – круглая синяя */
-  .install-btn {
-    position: fixed;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--blue-dark);
-    color: #fff;
+  .install-btn{
+    position:fixed;
+    bottom:14px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--blue-dark);
+    color:#fff;
     border:none;
-    border-radius: 50%;
+    border-radius:50%;
     width:64px;
     height:64px;
     display:flex;
@@ -239,27 +209,16 @@
     align-items:center;
     justify-content:center;
     font-size:0.75rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
-    cursor: pointer;
-    z-index: 1000;
+    box-shadow:0 4px 10px rgba(0,0,0,0.35);
+    cursor:pointer;
+    z-index:1000;
   }
-  .install-btn .icon {
-    font-size:1.3rem;
-    line-height:1;
-    margin-bottom:2px;
-  }
-  .install-btn .txt {
-    font-size:0.7rem;
-  }
-  .install-btn:hover {
-    background:#01527a;
-  }
+  .install-btn .icon{font-size:1.3rem;margin-bottom:2px;}
+  .install-btn:hover{background:#01527a;}
 
-  @media (max-width: 700px) {
-    header { margin:6px 8px 0; }
-    .topics-grid {
-      grid-template-columns: repeat(2, minmax(0,1fr));
-    }
+  @media(max-width:700px){
+    header{margin:6px 8px 0;}
+    .topics-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   }
 </style>
 </head>
@@ -287,79 +246,31 @@
 </header>
 
 <main>
-  <!-- MAIN MENU -->
   <div id="mainMenu" style="display:none;">
     <div class="topics-grid">
-      <button class="topic-btn" onclick="openTheme(1)">
-        <span class="num">1. 🎨</span>
-        Let’s Have Fun!
-      </button>
-      <button class="topic-btn" onclick="openTheme(2)">
-        <span class="num">2. 🏃</span>
-        Sports and Exercises
-      </button>
-      <button class="topic-btn" onclick="openTheme(3)">
-        <span class="num">3. 🌍</span>
-        Sports Around the World
-      </button>
-      <button class="topic-btn" onclick="openTheme(4)">
-        <span class="num">4. 🎵</span>
-        Arts and Music
-      </button>
-      <button class="topic-btn" onclick="openTheme(5)">
-        <span class="num">5. ⚽</span>
-        Popular Team Sports
-      </button>
-      <button class="topic-btn" onclick="openTheme(6)">
-        <span class="num">6. 🎻</span>
-        Museum of Kazakh Musical Instruments
-      </button>
-      <button class="topic-btn" onclick="openTheme(7)">
-        <span class="num">7. 📜</span>
-        Children’s Rights & Responsibilities
-      </button>
-      <button class="topic-btn" onclick="openTheme(8)">
-        <span class="num">8. 🧰</span>
-        Different Jobs
-      </button>
-      <button class="topic-btn" onclick="openTheme(9)">
-        <span class="num">9. 👩‍⚕️</span>
-        Professions
-      </button>
-      <button class="topic-btn" onclick="openTheme(10)">
-        <span class="num">10. 🏢</span>
-        People at Work
-      </button>
-      <button class="topic-btn" onclick="openTheme(11)">
-        <span class="num">11. 💬</span>
-        What Do You Do?
-      </button>
-      <button class="topic-btn" onclick="openTheme(12)">
-        <span class="num">12. ❤️</span>
-        You Can Help!
-      </button>
-      <button class="topic-btn" onclick="openTheme(13)">
-        <span class="num">13. 🎯</span>
-        Final Challenge
-      </button>
-      <button class="topic-btn" onclick="openChat()">
-        <span class="num">💬</span>
-        AI Bayan Chat
-      </button>
-      <button class="topic-btn" onclick="openTeacherJournal()">
-        <span class="num">🏫</span>
-        Teacher’s Journal
-      </button>
+      <button class="topic-btn" onclick="openTheme(1)"><span class="num">1. 🎨</span>Let’s Have Fun!</button>
+      <button class="topic-btn" onclick="openTheme(2)"><span class="num">2. 🏃</span>Sports and Exercises</button>
+      <button class="topic-btn" onclick="openTheme(3)"><span class="num">3. 🌍</span>Sports Around the World</button>
+      <button class="topic-btn" onclick="openTheme(4)"><span class="num">4. 🎵</span>Arts and Music</button>
+      <button class="topic-btn" onclick="openTheme(5)"><span class="num">5. ⚽</span>Popular Team Sports</button>
+      <button class="topic-btn" onclick="openTheme(6)"><span class="num">6. 🎻</span>Museum of Kazakh Musical Instruments</button>
+      <button class="topic-btn" onclick="openTheme(7)"><span class="num">7. 📜</span>Children’s Rights & Responsibilities</button>
+      <button class="topic-btn" onclick="openTheme(8)"><span class="num">8. 🧰</span>Different Jobs</button>
+      <button class="topic-btn" onclick="openTheme(9)"><span class="num">9. 👩‍⚕️</span>Professions</button>
+      <button class="topic-btn" onclick="openTheme(10)"><span class="num">10. 🏢</span>People at Work</button>
+      <button class="topic-btn" onclick="openTheme(11)"><span class="num">11. 💬</span>What Do You Do?</button>
+      <button class="topic-btn" onclick="openTheme(12)"><span class="num">12. ❤️</span>You Can Help!</button>
+      <button class="topic-btn" onclick="openTheme(13)"><span class="num">13. 🎯</span>Final Challenge</button>
+      <button class="topic-btn" onclick="openChat()"><span class="num">💬</span>AI Bayan Chat</button>
+      <button class="topic-btn" onclick="openTeacherJournal()"><span class="num">🏫</span>Teacher’s Journal</button>
     </div>
 
-    <!-- HELLO BOX ВНИЗУ -->
     <div id="welcomeBox" style="display:none;">
       <h2 id="welcomeText">Hello!</h2>
       <p>Total stars in all lessons: <b><span id="totalStars">0</span> ⭐</b></p>
     </div>
   </div>
 
-  <!-- CHAT -->
   <div id="chatSection" style="display:none;">
     <h2>💬 AI Bayan — Chat</h2>
     <div id="chatBox"></div>
@@ -367,19 +278,14 @@
     <button class="btn" onclick="askBayan()">Ask AI Bayan</button>
     <button class="btn" onclick="clearChat()">Clear</button>
     <button class="btn" onclick="backMenu()">🏠 Menu</button>
-    <p id="limitCounter" style="font-weight:bold;color:#003366;">
-      ⭐ 3 of 3 questions left today
-    </p>
+    <p id="limitCounter" style="font-weight:bold;color:#fff;">⭐ 3 of 3 questions left today</p>
   </div>
 
-  <!-- JOURNAL -->
   <div id="teacherJournal" style="display:none;">
     <h2>🏫 Teacher Journal</h2>
     <table>
       <thead>
-        <tr>
-          <th>Student</th><th>L1–L13</th><th>Chat</th><th>Total ⭐</th>
-        </tr>
+        <tr><th>Student</th><th>L1–L13</th><th>Chat</th><th>Total ⭐</th></tr>
       </thead>
       <tbody id="journalBody"></tbody>
     </table>
@@ -387,81 +293,80 @@
   </div>
 </main>
 
-<!-- INSTALL APP BUTTON – круглая синяя -->
 <button class="install-btn" id="installButton">
   <span class="icon">⬇️</span>
   <span class="txt">Install</span>
 </button>
 
 <script>
+/* INSTALL PWA */
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
 });
-
 document.getElementById('installButton').addEventListener('click', async () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
     await deferredPrompt.userChoice;
     deferredPrompt = null;
   } else {
-    alert("To install the app, open the browser menu and choose \"Add to Home screen\".");
+    alert("To install, open browser menu → Add to Home screen.");
   }
 });
 
-const allowedNames=[
+/* STUDENT LIST */
+const allowedNames = [
   "Aytach2","Aylin2","Alvi2","Zhahangir2","Narmin2","Balman2",
   "Ilyas2","Dmitry2","Irada2","Shyngys2","Kiril2","Sultan2",
   "Kira2","Allahverdy2","Aziza2","Emir2","Monya2","Aeka2",
   "Bayan2","Arai2","Jury2","Jury1","Meyirim2"
 ];
 
-const WORKER_URL="https://shiny-tree-f78c.aiko030500.workers.dev";
-
-let DAILY_LIMIT=3;
+const WORKER_URL = "https://shiny-tree-f78c.aiko030500.workers.dev";
+let DAILY_LIMIT = 3;
 let usedToday = Number(localStorage.getItem("usedToday")) || 0;
 let lastDate = localStorage.getItem("lastDate");
 let today = new Date().toDateString();
-let isTeacher = localStorage.getItem("isTeacher")==="true";
+let isTeacher = localStorage.getItem("isTeacher") === "true";
 
-if(lastDate!==today){
-  usedToday=0;
-  localStorage.setItem("lastDate",today);
-  localStorage.setItem("usedToday",0);
+if (lastDate !== today) {
+  usedToday = 0;
+  localStorage.setItem("lastDate", today);
+  localStorage.setItem("usedToday", 0);
 }
 
-function updateCounter(){
-  const c=document.getElementById("limitCounter");
-  if(!c) return;
+function updateCounter() {
+  const c = document.getElementById("limitCounter");
+  if (!c) return;
   c.innerHTML = isTeacher
     ? "👩‍🏫 Teacher mode: unlimited questions"
-    : `⭐ ${DAILY_LIMIT-usedToday} of ${DAILY_LIMIT} questions left today`;
+    : `⭐ ${DAILY_LIMIT - usedToday} of ${DAILY_LIMIT} questions left today`;
 }
 
 /* LOGIN */
-function checkLogin(){
-  const n=document.getElementById("nameInput").value.trim().toLowerCase();
-  const p=document.getElementById("pinInput").value.trim();
-  const a=allowedNames.map(x=>x.toLowerCase());
+function checkLogin() {
+  const n = document.getElementById("nameInput").value.trim().toLowerCase();
+  const p = document.getElementById("pinInput").value.trim();
+  const a = allowedNames.map(x => x.toLowerCase());
 
-  if (a.includes(n) && p==="6856") {
-    localStorage.setItem("currentStudent",n);
+  if (a.includes(n) && p === "6856") {
+    localStorage.setItem("currentStudent", n);
     localStorage.removeItem("isTeacher");
-    document.getElementById("loginOverlay").style.display="none";
-    document.getElementById("mainMenu").style.display="block";
-    document.getElementById("welcomeBox").style.display="block";
-    document.getElementById("welcomeText").innerText="Hello, "+n+"!";
+    document.getElementById("loginOverlay").style.display = "none";
+    document.getElementById("mainMenu").style.display = "block";
+    document.getElementById("welcomeBox").style.display = "block";
+    document.getElementById("welcomeText").innerText = "Hello, " + n + "!";
     updateCounter();
-  } else if (n==="teacher" && p==="1402") {
-    localStorage.setItem("isTeacher","true");
-    isTeacher=true;
+  } else if (n === "teacher" && p === "1402") {
+    localStorage.setItem("isTeacher", "true");
+    isTeacher = true;
     document.body.classList.add("teacher-mode");
-    document.getElementById("teacherBanner").style.display="block";
-    document.getElementById("loginOverlay").style.display="none";
-    document.getElementById("mainMenu").style.display="block";
-    document.getElementById("welcomeBox").style.display="block";
-    document.getElementById("welcomeText").innerText="Hello, teacher!";
+    document.getElementById("teacherBanner").style.display = "block";
+    document.getElementById("loginOverlay").style.display = "none";
+    document.getElementById("mainMenu").style.display = "block";
+    document.getElementById("welcomeBox").style.display = "block";
+    document.getElementById("welcomeText").innerText = "Hello, teacher!";
     updateCounter();
   } else {
     alert("❌ Wrong name or PIN");
@@ -469,38 +374,35 @@ function checkLogin(){
 }
 
 /* NAVIGATION */
-function openTheme(n){ window.location.href="theme"+n+".html"; }
-
+function openTheme(n){ window.location.href = "theme" + n + ".html"; }
 function openChat(){
-  document.getElementById("mainMenu").style.display="none";
-  document.getElementById("chatSection").style.display="block";
+  document.getElementById("mainMenu").style.display = "none";
+  document.getElementById("chatSection").style.display = "block";
   updateCounter();
 }
-
 function openTeacherJournal(){
-  document.getElementById("mainMenu").style.display="none";
-  document.getElementById("teacherJournal").style.display="block";
+  document.getElementById("mainMenu").style.display = "none";
+  document.getElementById("teacherJournal").style.display = "block";
   buildJournal();
 }
-
 function backMenu(){
-  document.getElementById("teacherJournal").style.display="none";
-  document.getElementById("chatSection").style.display="none";
-  document.getElementById("mainMenu").style.display="block";
+  document.getElementById("teacherJournal").style.display = "none";
+  document.getElementById("chatSection").style.display = "none";
+  document.getElementById("mainMenu").style.display = "block";
 }
 
 /* JOURNAL */
 function buildJournal(){
-  const b=document.getElementById("journalBody");
-  b.innerHTML="";
-  allowedNames.forEach(n=>{
-    let lessonsStars=0;
-    for(let i=1;i<=13;i++){
-      lessonsStars+=Number(localStorage.getItem(n+"_lesson"+i+"Stars"))||0;
+  const b = document.getElementById("journalBody");
+  b.innerHTML = "";
+  allowedNames.forEach(n => {
+    let lessonsStars = 0;
+    for (let i = 1; i <= 13; i++) {
+      lessonsStars += Number(localStorage.getItem(n + "_lesson" + i + "Stars")) || 0;
     }
-    const chatStars=Number(localStorage.getItem(n+"_chatStars"))||0;
-    const total=lessonsStars+chatStars;
-    b.innerHTML+=`<tr>
+    const chatStars = Number(localStorage.getItem(n + "_chatStars")) || 0;
+    const total = lessonsStars + chatStars;
+    b.innerHTML += `<tr>
       <td>${n}</td>
       <td>${lessonsStars}</td>
       <td>${chatStars}</td>
@@ -509,13 +411,13 @@ function buildJournal(){
   });
 }
 
-/* TTS */
+/* VOICE */
 function bayanSpeak(text){
-  if(!("speechSynthesis" in window)) return;
+  if (!("speechSynthesis" in window)) return;
   const talk = () => {
     const voices = speechSynthesis.getVoices();
-    let voice = voices.find(v=>v.name.includes("Google UK English Female") || v.lang==="en-GB");
-    if(!voice) voice = voices[0];
+    let voice = voices.find(v => v.name.includes("Google UK English Female") || v.lang === "en-GB");
+    if (!voice) voice = voices[0];
     const u = new SpeechSynthesisUtterance(text);
     u.voice = voice;
     u.lang = "en-GB";
@@ -524,51 +426,51 @@ function bayanSpeak(text){
     u.volume = 1;
     speechSynthesis.speak(u);
   };
-  if (speechSynthesis.getVoices().length===0) {
+  if (speechSynthesis.getVoices().length === 0) {
     speechSynthesis.onvoiceschanged = talk;
   } else talk();
 }
 
 /* CHAT */
 async function askBayan(){
-  const input=document.getElementById("chatInput");
-  const box=document.getElementById("chatBox");
-  const q=input.value.trim();
-  if(!q){ alert("Type your question first!"); return; }
+  const input = document.getElementById("chatInput");
+  const box = document.getElementById("chatBox");
+  const q = input.value.trim();
+  if (!q) { alert("Type your question first!"); return; }
 
-  if(!isTeacher && usedToday>=DAILY_LIMIT){
+  if (!isTeacher && usedToday >= DAILY_LIMIT) {
     alert("⚠️ Daily limit reached.");
     return;
   }
 
-  box.innerHTML+=`<p><b>You:</b> ${q}</p>`;
-  input.value="";
-  box.innerHTML+=`<p><i>AI Bayan is thinking...</i></p>`;
+  box.innerHTML += `<p><b>You:</b> ${q}</p>`;
+  input.value = "";
+  box.innerHTML += `<p><i>AI Bayan is thinking...</i></p>`;
   box.scrollTop = box.scrollHeight;
 
-  try{
-    const r=await fetch(WORKER_URL,{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({messages:[{role:"user",content:q}]})
+  try {
+    const r = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({messages:[{role:"user",content:q}]})
     });
-    const d=await r.json();
+    const d = await r.json();
     const reply = d.reply || "Sorry, I can’t answer now.";
-    box.innerHTML+=`<p><b>AI Bayan:</b> ${reply}</p>`;
+    box.innerHTML += `<p><b>AI Bayan:</b> ${reply}</p>`;
     bayanSpeak(reply);
-    if(!isTeacher){
+    if (!isTeacher) {
       usedToday++;
-      localStorage.setItem("usedToday",usedToday);
+      localStorage.setItem("usedToday", usedToday);
       updateCounter();
     }
-  }catch(e){
-    box.innerHTML+=`<p><b>AI Bayan:</b> ❌ Connection error.</p>`;
+  } catch (e) {
+    box.innerHTML += `<p><b>AI Bayan:</b> ❌ Connection error.</p>`;
   }
 }
 
-function clearChat(){ document.getElementById("chatBox").innerHTML=""; }
-
-updateCounter();
+function clearChat(){
+  document.getElementById("chatBox").innerHTML = "";
+}
 
 /* SERVICE WORKER */
 if ("serviceWorker" in navigator) {
@@ -577,6 +479,10 @@ if ("serviceWorker" in navigator) {
       .catch(err => console.log("SW registration failed:", err));
   });
 }
+
+/* INIT */
+updateCounter();
 </script>
+
 </body>
 </html>
