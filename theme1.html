@@ -24,7 +24,7 @@ header {
   justify-content: space-between;
 }
 
-/* 🔹 Круглый логотип — чуть поднята голова */
+/* 🔹 Обновлённый логотип с отступом сверху */
 .logo {
   width: 120px;
   height: 120px;
@@ -32,7 +32,7 @@ header {
   border: 4px solid #ffd54f;
   object-fit: cover;
   background: white;
-  object-position: 50% 48%; /* ✅ немного выше — есть отступ сверху */
+  object-position: 50% 65%; /* ✅ смещение вниз, появляется воздух сверху */
   box-shadow: 0 0 8px rgba(255,213,79,0.9);
 }
 
@@ -138,12 +138,12 @@ select {
 
 <body>
 <header>
-  <div style="display:flex;align-items:center;gap:10px;flex:1;justify-content:center;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img src="logo.png" class="logo" alt="AI Bayan logo">
     <div>
       <h1 style="margin:0;font-size:1rem;">Theme 1 — Let’s Have Fun!</h1>
       <p style="margin:0;color:#ffe9c4;">English with AI Bayan — Games and Fun</p>
     </div>
-    <img src="logo.png" class="logo" alt="AI Bayan logo" style="margin-left:12px;">
   </div>
 </header>
 
