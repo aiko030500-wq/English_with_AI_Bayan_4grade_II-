@@ -7,93 +7,104 @@
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#002B5C">
+<meta name="theme-color" content="#FF6F91">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" href="logo.png">
 
 <style>
 :root{
-  --blue-dark:#002B5C;
-  --blue-mid:#004C8F;
+  --pink-bg:#FF6F91;
   --gold:#FFD54F;
-  --gold-light:#FFEB99;
-  --card-shadow:0 3px 10px rgba(0,0,0,0.3);
+  --gold-light:#FFF8C0;
 }
 *{box-sizing:border-box;}
 body{
   font-family:Verdana,sans-serif;
   margin:0;
   text-align:center;
-  background:var(--blue-dark);
+  background:var(--pink-bg);
   color:#fff;
 }
-body.teacher-mode{
-  background:linear-gradient(180deg,#fff3b0 0%,#ffe27f 100%);
-}
 
-/* баннер учителя */
-#teacherBanner{
-  display:none;
-  background:var(--gold);
-  color:var(--blue-dark);
-  padding:8px 10px;
-  font-weight:bold;
-  border-bottom:3px solid var(--blue-dark);
-}
-body.teacher-mode #teacherBanner{display:block;}
-
-/* ====== ШАПКА С УЗОРОМ ====== */
+/* HEADER */
 header{
-  max-width:900px;
-  margin:8px auto 0;
-  padding:10px 10px 20px;
-  border-radius:20px;
-  border:3px solid var(--gold);
-  box-shadow:0 6px 14px rgba(0,0,0,0.45);
-  background:linear-gradient(180deg,#005499 0%,#002B5C 100%);
+  background:linear-gradient(180deg,#FF7AA3 0%,#FF5C8D 100%);
+  border-bottom:4px solid var(--gold);
+  box-shadow:0 5px 15px rgba(0,0,0,0.4);
+  padding-top:1rem;
+  padding-bottom:0.6rem;
   position:relative;
-  overflow:hidden;
 }
-header::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-5%;
-  width:110%;
-  height:34px;
-  background-image:
-    repeating-linear-gradient(135deg,
-      rgba(255,215,0,0.95) 0px,
-      rgba(255,255,255,0.7) 4px,
-      rgba(255,215,0,0.95) 8px,
-      rgba(240,180,0,0.9) 12px);
-  border-bottom:2px solid #fff9c4;
-  box-shadow:0 3px 8px rgba(0,0,0,0.5);
-}
-.header-inner{position:relative;z-index:1;margin-top:30px;}
-header h1{
-  margin:0 0 4px;
-  font-size:1.6rem;
-  letter-spacing:0.05em;
+h1{
+  margin:0.4rem 0 0;
+  font-size:1.7rem;
   color:var(--gold-light);
-  text-shadow:0 0 8px rgba(0,0,0,0.7);
+  text-shadow:0 0 10px rgba(255,255,255,0.4);
 }
-header h2{
+h2{
   margin:0;
+  color:#fffbea;
   font-size:1rem;
-  color:#EAF6FF;
-  text-shadow:0 0 5px rgba(0,0,0,0.5);
 }
 
-/* ====== OVERLAY LOGIN ====== */
+/* ORNAMENT */
+.ornament{width:100%;height:35px;margin-top:8px;}
+svg path{
+  fill:none;
+  stroke:url(#goldGrad);
+  stroke-width:2.5;
+  stroke-linecap:round;
+  filter:drop-shadow(0 0 5px rgba(255,255,180,0.6));
+}
+
+/* MAIN */
+main{padding:1rem 0 4rem;}
+.topics-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  max-width:700px;
+  margin:1rem auto;
+}
+.topic-btn{
+  background:rgba(255,255,255,0.15);
+  border:2px solid var(--gold);
+  border-radius:14px;
+  padding:10px 8px;
+  font-size:0.95rem;
+  font-weight:bold;
+  color:var(--gold);
+  text-shadow:0 0 6px rgba(255,255,100,0.5);
+  cursor:pointer;
+  box-shadow:0 3px 10px rgba(0,0,0,0.25);
+  transition:0.25s;
+}
+.topic-btn:hover{
+  background:var(--gold);
+  color:#8B0035;
+  text-shadow:none;
+  transform:scale(1.03);
+}
+
+/* WELCOME */
+#welcomeBox{
+  background:rgba(255,255,255,0.15);
+  border:2px solid var(--gold);
+  border-radius:12px;
+  max-width:700px;
+  margin:15px auto;
+  padding:10px;
+  color:var(--gold);
+  text-shadow:0 0 8px rgba(255,255,150,0.5);
+}
+#welcomeText{text-transform:capitalize;}
+
+/* OVERLAY LOGIN */
 .overlay{
-  position:fixed;
-  inset:0;
+  position:fixed;inset:0;
   background:rgba(0,0,0,0.55);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex;align-items:center;justify-content:center;
   z-index:999;
 }
 .overlay-card{
@@ -101,145 +112,58 @@ header h2{
   border:4px solid var(--gold);
   padding:20px;
   border-radius:16px;
-  box-shadow:0 0 15px rgba(0,0,0,0.4);
-  width:90%;
-  max-width:380px;
-  color:#002b5c;
+  box-shadow:0 0 15px rgba(0,0,0,0.3);
+  width:90%;max-width:380px;
+  color:#8B0035;
 }
-.overlay-card h2{margin-top:0;}
 .overlay-card input{
-  width:100%;
-  padding:8px;
-  border-radius:8px;
-  border:1px solid #ccc;
-  margin:6px 0;
-  font-size:1rem;
+  width:100%;padding:8px;border-radius:8px;
+  border:1px solid #ccc;margin:6px 0;font-size:1rem;
 }
 .btn{
-  background:var(--blue-mid);
-  color:#fff;
-  border:none;
-  border-radius:10px;
-  padding:8px 14px;
-  font-weight:bold;
-  cursor:pointer;
-  margin:6px;
-  transition:0.2s;
-  font-size:0.9rem;
+  background:#8B0035;color:#fff;border:none;
+  border-radius:10px;padding:8px 14px;font-weight:bold;
+  cursor:pointer;margin:6px;font-size:0.9rem;
 }
-.btn:hover{background:var(--gold);color:var(--blue-dark);}
-
-/* ====== MAIN ====== */
-main{padding:0.8rem 0.5rem 4.5rem;}
-
-/* блок приветствия */
-#welcomeBox{
-  display:none;
-  background:rgba(255,255,255,0.08);
-  border:2px solid var(--gold);
-  border-radius:12px;
-  max-width:900px;
-  margin:12px auto 8px;
-  padding:8px 10px;
-  color:var(--gold-light);
-  box-shadow:var(--card-shadow);
-}
-#welcomeBox h2{margin:4px 0;}
-
-/* сетка тем */
-.topics-grid{
-  max-width:900px;
-  margin:8px auto 6px;
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
-}
-.topic-btn{
-  background:rgba(255,255,255,0.08);
-  border:2px solid var(--gold);
-  border-radius:14px;
-  padding:10px 8px;
-  font-size:0.95rem;
-  font-weight:bold;
-  color:var(--gold-light);
-  cursor:pointer;
-  box-shadow:0 3px 10px rgba(0,0,0,0.3);
-  transition:0.2s transform,0.2s box-shadow,0.2s background,0.2s color;
-}
-.topic-btn:hover{
-  background:var(--gold);
-  color:var(--blue-dark);
-  transform:translateY(-2px);
-  box-shadow:0 5px 14px rgba(0,0,0,0.5);
-}
+.btn:hover{background:var(--gold);color:#8B0035;}
 
 /* CHAT & JOURNAL */
 #chatSection,#teacherJournal{
-  max-width:900px;
-  margin:12px auto;
   display:none;
+  max-width:900px;
+  margin:1rem auto;
+  background:rgba(255,255,255,0.15);
+  border:2px solid var(--gold);
+  border-radius:12px;
+  padding:10px;
 }
 #chatBox{
-  background:#fff;
-  border:2px solid var(--gold);
-  border-radius:10px;
-  padding:10px;
-  max-height:300px;
-  overflow-y:auto;
-  text-align:left;
-  color:#002b5c;
+  background:white;border-radius:10px;
+  padding:10px;max-height:300px;overflow-y:auto;
+  text-align:left;color:#000;
 }
-textarea{
-  width:90%;
-  border-radius:8px;
-  border:1px solid #ccc;
-  padding:6px;
-  font-family:inherit;
-  min-height:60px;
-}
-table{border-collapse:collapse;margin:auto;font-size:0.85rem;background:white;color:#002b5c;}
-th,td{border:1px solid #ccc;padding:5px 8px;}
-th{background:var(--blue-mid);color:white;}
+textarea{width:90%;border-radius:8px;border:1px solid #ccc;padding:6px;min-height:60px;}
 
-/* кнопка Install */
+/* INSTALL BUTTON */
 .install-btn{
-  position:fixed;
-  bottom:14px;
-  left:50%;
+  position:fixed;bottom:14px;left:50%;
   transform:translateX(-50%);
-  background:var(--gold);
-  color:var(--blue-dark);
-  border:none;
-  border-radius:50%;
-  width:64px;
-  height:64px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  font-size:0.75rem;
-  box-shadow:0 4px 10px rgba(0,0,0,0.4);
-  cursor:pointer;
-  z-index:1000;
+  background:var(--gold);color:#8B0035;
+  border:none;border-radius:50%;
+  width:64px;height:64px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:0.75rem;box-shadow:0 4px 10px rgba(0,0,0,0.4);cursor:pointer;
 }
 .install-btn .icon{font-size:1.3rem;margin-bottom:2px;}
-.install-btn:hover{background:#ffec8b;}
-
-@media(max-width:700px){
-  header{margin:6px 8px 0;}
-  .topics-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-}
+.install-btn:hover{background:#fff59d;}
 </style>
 </head>
 
 <body>
-<div id="teacherBanner">👩‍🏫 TEACHER MODE ACTIVE — unlimited questions</div>
-
-<!-- ====== LOGIN OVERLAY ====== -->
 <div class="overlay" id="loginOverlay">
   <div class="overlay-card">
-    <h2>English with AI Bayan 4grade II</h2>
-    <p style="font-size:0.9rem;">Enter your name and PIN:</p>
+    <h2>English with AI Bayan</h2>
+    <p>Enter your name and PIN:</p>
     <input type="text" id="nameInput" placeholder="Name">
     <input type="password" id="pinInput" placeholder="PIN" maxlength="4">
     <button class="btn" onclick="checkLogin()">Enter</button>
@@ -247,56 +171,67 @@ th{background:var(--blue-mid);color:white;}
 </div>
 
 <header>
-  <div class="header-inner">
-    <h1>ENGLISH WITH AI BAYAN</h1>
-    <h2>4 GRADE II</h2>
+  <h1>ENGLISH WITH AI BAYAN</h1>
+  <h2>4 GRADE II</h2>
+  <div class="ornament">
+    <svg viewBox="0 0 800 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="goldGrad" x1="0" y1="0" x2="800" y2="0">
+          <stop offset="0%" stop-color="#FFD700"/>
+          <stop offset="50%" stop-color="#FFF8C0"/>
+          <stop offset="100%" stop-color="#FFD700"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 20 q20 -18 40 0 t40 0 q20 -18 40 0 t40 0 q20 -18 40 0 t40 0 q20 -18 40 0 t40 0 q20 -18 40 0 t40 0 q20 -18 40 0 t40 0"/>
+    </svg>
   </div>
 </header>
 
 <main>
-  <!-- ГЛАВНОЕ МЕНЮ -->
   <div id="mainMenu" style="display:none;">
     <div class="topics-grid">
-      <button class="topic-btn" onclick="openTheme(1)">1. Let’s Have Fun!</button>
-      <button class="topic-btn" onclick="openTheme(2)">2. Sports and Exercises</button>
-      <button class="topic-btn" onclick="openTheme(3)">3. Sports Around the World</button>
-      <button class="topic-btn" onclick="openTheme(4)">4. Arts and Music</button>
-      <button class="topic-btn" onclick="openTheme(5)">5. Popular Team Sports</button>
-      <button class="topic-btn" onclick="openTheme(6)">6. Museum of Kazakh Musical Instruments</button>
-      <button class="topic-btn" onclick="openTheme(7)">7. Children’s Rights & Responsibilities</button>
-      <button class="topic-btn" onclick="openTheme(8)">8. Different Jobs</button>
-      <button class="topic-btn" onclick="openTheme(9)">9. Professions</button>
-      <button class="topic-btn" onclick="openTheme(10)">10. People at Work</button>
-      <button class="topic-btn" onclick="openTheme(11)">11. What Do You Do?</button>
-      <button class="topic-btn" onclick="openTheme(12)">12. You Can Help!</button>
-      <button class="topic-btn" onclick="openTheme(13)">13. Final Challenge</button>
+      <button class="topic-btn" onclick="openTheme(1)">1. 🎨 Let’s Have Fun!</button>
+      <button class="topic-btn" onclick="openTheme(2)">2. 🏃 Sports and Exercises</button>
+      <button class="topic-btn" onclick="openTheme(3)">3. 🌍 Sports Around the World</button>
+      <button class="topic-btn" onclick="openTheme(4)">4. 🎵 Arts and Music</button>
+      <button class="topic-btn" onclick="openTheme(5)">5. ⚽ Popular Team Sports</button>
+      <button class="topic-btn" onclick="openTheme(6)">6. 🎻 Museum of Kazakh Musical Instruments</button>
+      <button class="topic-btn" onclick="openTheme(7)">7. 📜 Children’s Rights & Responsibilities</button>
+      <button class="topic-btn" onclick="openTheme(8)">8. 🧰 Different Jobs</button>
+      <button class="topic-btn" onclick="openTheme(9)">9. 👩‍⚕️ Professions</button>
+      <button class="topic-btn" onclick="openTheme(10)">10. 🏢 People at Work</button>
+      <button class="topic-btn" onclick="openTheme(11)">11. 💬 What Do You Do?</button>
+      <button class="topic-btn" onclick="openTheme(12)">12. ❤️ You Can Help!</button>
+      <button class="topic-btn" onclick="openTheme(13)">13. 🎯 Final Challenge</button>
       <button class="topic-btn" onclick="openChat()">💬 AI Bayan Chat</button>
       <button class="topic-btn" onclick="openTeacherJournal()">🏫 Teacher’s Journal</button>
     </div>
 
     <div id="welcomeBox">
-      <h2 id="welcomeText">Hello!</h2>
+      <h3 id="welcomeText">Hello, Student!</h3>
       <p>Total stars in all lessons: <b><span id="totalStars">0</span> ⭐</b></p>
     </div>
   </div>
 
-  <!-- ЧАТ -->
+  <!-- CHAT -->
   <div id="chatSection">
     <h2>💬 AI Bayan — Chat</h2>
     <div id="chatBox"></div>
-    <textarea id="chatInput" placeholder="Type your message..."></textarea><br>
-    <button class="btn" onclick="askBayan()">Ask AI Bayan</button>
+    <textarea id="chatInput" placeholder="Type your question..."></textarea><br>
+    <button class="btn" onclick="askBayan()">Ask</button>
     <button class="btn" onclick="clearChat()">Clear</button>
     <button class="btn" onclick="backMenu()">🏠 Menu</button>
     <p id="limitCounter" style="font-weight:bold;">⭐ 3 of 3 questions left today</p>
   </div>
 
-  <!-- ЖУРНАЛ -->
+  <!-- JOURNAL -->
   <div id="teacherJournal">
     <h2>🏫 Teacher Journal</h2>
-    <table>
+    <table style="width:100%;border-collapse:collapse;color:#fff;text-align:center;">
       <thead>
-        <tr><th>Student</th><th>L1–L13</th><th>Chat</th><th>Total ⭐</th></tr>
+        <tr style="background:#8B0035;">
+          <th>Student</th><th>L1–L13</th><th>Chat</th><th>Total ⭐</th>
+        </tr>
       </thead>
       <tbody id="journalBody"></tbody>
     </table>
@@ -310,21 +245,9 @@ th{background:var(--blue-mid);color:white;}
 </button>
 
 <script>
-/* ===== INSTALL PWA ===== */
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;});
-document.getElementById('installButton').addEventListener('click',async()=>{
-  if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;}
-  else alert("To install, open browser menu → Add to Home screen.");
-});
-
-/* ===== СТУДЕНТЫ ===== */
-const allowedNames=[
-  "Aytach2","Aylin2","Alvi2","Zhahangir2","Narmin2","Balman2",
-  "Ilyas2","Dmitry2","Irada2","Shyngys2","Kiril2","Sultan2",
-  "Kira2","Allahverdy2","Aziza2","Emir2","Monya2","Aeka2",
-  "Bayan2","Arai2","Jury2","Jury1","Meyirim2"
-];
+const allowedNames=["Aytach2","Aylin2","Alvi2","Zhahangir2","Narmin2","Balman2",
+"Ilyas2","Dmitry2","Irada2","Shyngys2","Kiril2","Sultan2","Kira2","Allahverdy2",
+"Aziza2","Emir2","Monya2","Aeka2","Bayan2","Arai2","Jury2","Jury1","Meyirim2"];
 
 const WORKER_URL="https://shiny-tree-f78c.aiko030500.workers.dev";
 let DAILY_LIMIT=3;
@@ -332,65 +255,34 @@ let usedToday=Number(localStorage.getItem("usedToday"))||0;
 let lastDate=localStorage.getItem("lastDate");
 let today=new Date().toDateString();
 let isTeacher=localStorage.getItem("isTeacher")==="true";
-
-if(lastDate!==today){
-  usedToday=0;
-  localStorage.setItem("lastDate",today);
-  localStorage.setItem("usedToday",0);
-}
-
+if(lastDate!==today){usedToday=0;localStorage.setItem("lastDate",today);localStorage.setItem("usedToday",0);}
 function updateCounter(){
   const c=document.getElementById("limitCounter");
   if(!c)return;
-  c.innerHTML=isTeacher
-    ?"👩‍🏫 Teacher mode: unlimited questions"
-    :`⭐ ${DAILY_LIMIT-usedToday} of ${DAILY_LIMIT} questions left today`;
+  c.innerHTML=isTeacher?"👩‍🏫 Teacher mode: unlimited questions":`⭐ ${DAILY_LIMIT-usedToday} of ${DAILY_LIMIT} left`;
 }
-
-/* ===== LOGIN ===== */
 function checkLogin(){
   const n=document.getElementById("nameInput").value.trim().toLowerCase();
   const p=document.getElementById("pinInput").value.trim();
   const a=allowedNames.map(x=>x.toLowerCase());
-
   if(a.includes(n)&&p==="6856"){
     localStorage.setItem("currentStudent",n);
-    localStorage.removeItem("isTeacher");
     document.getElementById("loginOverlay").style.display="none";
     document.getElementById("mainMenu").style.display="block";
-    document.getElementById("chatSection").style.display="none";
-    document.getElementById("teacherJournal").style.display="none";
-    document.getElementById("welcomeBox").style.display="block";
-    document.getElementById("welcomeText").innerText="Hello, "+n+"!";
-    updateCounter();
   }else if(n==="teacher"&&p==="1402"){
-    localStorage.setItem("isTeacher","true");
-    isTeacher=true;
-    document.body.classList.add("teacher-mode");
-    document.getElementById("teacherBanner").style.display="block";
+    isTeacher=true;localStorage.setItem("isTeacher","true");
     document.getElementById("loginOverlay").style.display="none";
     document.getElementById("mainMenu").style.display="block";
-    document.getElementById("chatSection").style.display="none";
-    document.getElementById("teacherJournal").style.display="none";
-    document.getElementById("welcomeBox").style.display="block";
-    document.getElementById("welcomeText").innerText="Hello, teacher!";
-    updateCounter();
-  }else{
-    alert("❌ Wrong name or PIN");
-  }
+  }else alert("❌ Wrong name or PIN");
 }
-
-/* ===== НАВИГАЦИЯ ВНУТРИ INDEX ===== */
 function openTheme(n){window.location.href="theme"+n+".html";}
 function openChat(){
   document.getElementById("mainMenu").style.display="none";
   document.getElementById("chatSection").style.display="block";
-  document.getElementById("teacherJournal").style.display="none";
   updateCounter();
 }
 function openTeacherJournal(){
   document.getElementById("mainMenu").style.display="none";
-  document.getElementById("chatSection").style.display="none";
   document.getElementById("teacherJournal").style.display="block";
   buildJournal();
 }
@@ -399,91 +291,33 @@ function backMenu(){
   document.getElementById("teacherJournal").style.display="none";
   document.getElementById("mainMenu").style.display="block";
 }
-
-/* ===== ЖУРНАЛ ===== */
 function buildJournal(){
-  const b=document.getElementById("journalBody");
-  b.innerHTML="";
+  const b=document.getElementById("journalBody");b.innerHTML="";
   allowedNames.forEach(n=>{
-    let lessonsStars=0;
-    for(let i=1;i<=13;i++){
-      lessonsStars+=Number(localStorage.getItem(n+"_lesson"+i+"Stars"))||0;
-    }
+    let lessons=0;
+    for(let i=1;i<=13;i++){lessons+=Number(localStorage.getItem(n+"_lesson"+i+"Stars"))||0;}
     const chatStars=Number(localStorage.getItem(n+"_chatStars"))||0;
-    const total=lessonsStars+chatStars;
-    b.innerHTML+=`<tr>
-      <td>${n}</td>
-      <td>${lessonsStars}</td>
-      <td>${chatStars}</td>
-      <td>${total}</td>
-    </tr>`;
+    const total=lessons+chatStars;
+    b.innerHTML+=`<tr><td>${n}</td><td>${lessons}</td><td>${chatStars}</td><td>${total}</td></tr>`;
   });
 }
-
-/* ===== ГОЛОС Баян ===== */
-function bayanSpeak(text){
-  if(!("speechSynthesis"in window))return;
-  const talk=()=>{
-    const voices=speechSynthesis.getVoices();
-    let voice=voices.find(v=>v.name.includes("Google UK English Female")||v.lang==="en-GB");
-    if(!voice)voice=voices[0];
-    const u=new SpeechSynthesisUtterance(text);
-    u.voice=voice;u.lang="en-GB";u.rate=0.9;u.pitch=1.1;u.volume=1;
-    speechSynthesis.speak(u);
-  };
-  if(speechSynthesis.getVoices().length===0){
-    speechSynthesis.onvoiceschanged=talk;
-  }else talk();
-}
-
-/* ===== ЧАТ ===== */
 async function askBayan(){
   const input=document.getElementById("chatInput");
   const box=document.getElementById("chatBox");
-  const q=input.value.trim();
-  if(!q){alert("Type your question first!");return;}
-
-  if(!isTeacher&&usedToday>=DAILY_LIMIT){
-    alert("⚠️ Daily limit reached.");return;
-  }
-
-  box.innerHTML+=`<p><b>You:</b> ${q}</p>`;
-  input.value="";
-  box.innerHTML+=`<p><i>AI Bayan is thinking...</i></p>`;
-  box.scrollTop=box.scrollHeight;
-
+  const q=input.value.trim();if(!q)return alert("Type your question!");
+  if(!isTeacher&&usedToday>=DAILY_LIMIT){alert("⚠️ Daily limit reached.");return;}
+  box.innerHTML+=`<p><b>You:</b> ${q}</p><p><i>AI Bayan is thinking...</i></p>`;box.scrollTop=box.scrollHeight;
   try{
-    const r=await fetch(WORKER_URL,{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({messages:[{role:"user",content:q}]})
-    });
+    const r=await fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({messages:[{role:"user",content:q}]})});
     const d=await r.json();
     const reply=d.reply||"Sorry, I can’t answer now.";
     box.innerHTML+=`<p><b>AI Bayan:</b> ${reply}</p>`;
-    bayanSpeak(reply);
-    if(!isTeacher){
-      usedToday++;
-      localStorage.setItem("usedToday",usedToday);
-      updateCounter();
-    }
-  }catch(e){
-    box.innerHTML+=`<p><b>AI Bayan:</b> ❌ Connection error.</p>`;
-  }
+    if(!isTeacher){usedToday++;localStorage.setItem("usedToday",usedToday);updateCounter();}
+  }catch(e){box.innerHTML+=`<p><b>AI Bayan:</b> ❌ Connection error.</p>`;}
 }
 function clearChat(){document.getElementById("chatBox").innerHTML="";}
-
-/* ===== SERVICE WORKER ===== */
-if("serviceWorker"in navigator){
-  window.addEventListener("load",()=>{
-    navigator.serviceWorker.register("sw.js")
-      .catch(err=>console.log("SW registration failed:",err));
-  });
-}
-
-/* INIT */
 updateCounter();
 </script>
-
 </body>
 </html>
