@@ -5,112 +5,158 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English with AI Bayan 4grade II</title>
 
+<!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#EADFCB">
+<meta name="theme-color" content="#3FA9F5">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" href="logo.png">
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0;}
 body{
-  font-family: Verdana, sans-serif;
-  background-color:#F7EEDC;
-  margin:0;
+  font-family:Verdana, sans-serif;
+  background:#F7EEDC;
   text-align:center;
   color:#000;
 }
 
-/* HEADER */
+/* HEADER – небесно-синий + орнамент */
 header{
-  background:linear-gradient(180deg,#F3E9CF 0%,#E9D9B9 100%);
-  border-bottom:4px solid #CBAE7C;
-  padding:1rem;
+  background:linear-gradient(180deg,#50B4FF 0%,#1E88E5 100%);
+  border-bottom:4px solid #FFD54F;
+  box-shadow:0 4px 10px rgba(0,0,0,0.25);
+  padding:10px 6px 0;
 }
-h1{
-  margin:0;
-  color:#5B4A33;
+header h1{
+  margin:4px 0 0;
   font-size:1.6rem;
   font-weight:bold;
+  color:#FFFDE7;
+  text-shadow:0 0 8px rgba(0,0,0,0.35);
 }
-h2{
-  margin:0;
-  color:#6B5B3F;
+header h2{
+  margin:0 0 4px;
   font-size:1rem;
-  letter-spacing:1px;
+  color:#E3F2FD;
+}
+.ornament{
+  width:100%;
+  height:32px;
+}
+.ornament svg path{
+  fill:none;
+  stroke:url(#goldGrad);
+  stroke-width:2.5;
+  stroke-linecap:round;
+  filter:drop-shadow(0 0 4px rgba(255,255,180,0.7));
 }
 
 /* LOGIN OVERLAY */
 .overlay{
-  position:fixed;inset:0;
+  position:fixed;
+  inset:0;
   background:rgba(0,0,0,0.55);
-  display:flex;align-items:center;justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   z-index:999;
 }
 .overlay-card{
-  background:white;
+  background:#fff;
   border:4px solid #CBAE7C;
   padding:20px;
   border-radius:16px;
-  box-shadow:0 0 15px rgba(0,0,0,0.3);
-  width:90%;max-width:380px;
+  box-shadow:0 0 15px rgba(0,0,0,0.35);
+  width:90%;
+  max-width:380px;
   color:#5B4A33;
 }
+.overlay-card h2{margin-top:0;margin-bottom:8px;}
+.overlay-card p{margin:0 0 8px;}
 .overlay-card input{
-  width:100%;padding:8px;border-radius:8px;
-  border:1px solid #ccc;margin:6px 0;font-size:1rem;
+  width:100%;
+  padding:8px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  margin:6px 0;
+  font-size:1rem;
 }
 .btn{
-  background:#5B4A33;color:#fff;border:none;
-  border-radius:10px;padding:8px 14px;font-weight:bold;
-  cursor:pointer;margin:6px;font-size:0.9rem;
+  background:#5B4A33;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:8px 14px;
+  font-weight:bold;
+  cursor:pointer;
+  margin:6px;
+  font-size:0.9rem;
 }
-.btn:hover{background:#CBAE7C;color:#000;}
+.btn:hover{
+  background:#CBAE7C;
+  color:#000;
+}
 
-/* MAIN GRID */
+/* MAIN */
 main{
-  padding:1rem 0 6rem;
-  display:none;
+  padding:12px 8px 80px;
 }
+
+/* GRID С ТЕМАМИ */
+#mainMenu{display:none;}
 .topics-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-  max-width:700px;
-  margin:1.5rem auto;
+  gap:10px;
+  max-width:720px;
+  margin:14px auto 10px;
 }
 
-/* BUTTONS COLORS */
+/* Кнопки тем – чуть меньше, аккуратные */
 .topic-btn{
   border:none;
-  border-radius:14px;
-  padding:16px 10px;
-  font-size:1rem;
+  border-radius:12px;
+  padding:10px 8px;
+  font-size:0.95rem;
   font-weight:bold;
-  color:#000;
+  color:#fff;
   cursor:pointer;
-  box-shadow:0 3px 8px rgba(0,0,0,0.15);
-  transition:0.25s;
+  box-shadow:0 3px 7px rgba(0,0,0,0.18);
+  transition:0.2s transform,0.2s box-shadow,0.2s filter;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1.25;
 }
-.topic-btn:hover{transform:scale(1.04);}
+.topic-btn span{
+  display:inline-block;
+}
+.topic-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 5px 12px rgba(0,0,0,0.28);
+  filter:brightness(1.05);
+}
 
-/* INDIVIDUAL COLORS */
-.t1{background:#A48CD9;}
-.t2{background:#9C6B3C;}
-.t3{background:#4FAF73;}
-.t4{background:#E58B2A;}
-.t5{background:#4A9EB7;}
-.t6{background:#82644C;}
-.t7{background:#5B82CF;}
-.t8{background:#F29233;}
-.t9{background:#A33B5D;}
-.t10{background:#E88DB2;}
-.t11{background:#E04B46;}
-.t12{background:#5FAF63;}
-.t13{background:#7C4FCF;}
+/* Цвета кнопок (как на твоих темах) */
+.t1{background:#A48CD9;}   /* фиолетовый */
+.t2{background:#9C6B3C;}   /* коричневый */
+.t3{background:#4FAF73;}   /* зелёный */
+.t4{background:#E58B2A;}   /* оранжевый */
+.t5{background:#4A9EB7;}   /* бирюзовый/голубой */
+.t6{background:#82644C;}   /* кофейный */
+.t7{background:#5B82CF;}   /* синий */
+.t8{background:#F29233;}   /* оранжево-жёлтый */
+.t9{background:#A33B5D;}   /* бордовый/малиновый */
+.t10{background:#E88DB2;}  /* розовый */
+.t11{background:#E04B46;}  /* красный */
+.t12{background:#5FAF63;}  /* зелёный */
+.t13{background:#7C4FCF;}  /* фиолетовый финал */
 
-/* EXTRA BUTTONS */
+/* Кнопки ЧАТ и ЖУРНАЛ */
 #extraBtns{
-  margin-top:1.5rem;
+  margin-top:10px;
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
@@ -119,49 +165,115 @@ main{
 .extra-btn{
   background:#DCC7A1;
   border:none;
-  border-radius:14px;
-  padding:12px 20px;
+  border-radius:12px;
+  padding:10px 18px;
   font-weight:bold;
-  color:#000;
+  color:#3C2F1E;
   cursor:pointer;
-  transition:0.25s;
+  box-shadow:0 3px 7px rgba(0,0,0,0.18);
+  transition:0.2s;
 }
-.extra-btn:hover{background:#EBDAB5;}
+.extra-btn:hover{
+  background:#EBDAB5;
+}
 
-/* WELCOME */
+/* ПРИВЕТСТВИЕ */
 #welcomeBox{
-  margin:2rem auto;
+  margin:16px auto 0;
   background:#EFE4CE;
   border:2px solid #C5AF84;
   border-radius:12px;
-  max-width:700px;
-  padding:12px;
+  max-width:720px;
+  padding:10px;
   color:#3C2F1E;
   font-weight:bold;
+}
+#welcomeText{
+  margin-bottom:4px;
+  text-transform:capitalize;
+}
+
+/* CHAT & JOURNAL */
+#chatSection,#teacherJournal{
+  display:none;
+  max-width:900px;
+  margin:12px auto;
+  background:#F3E9CF;
+  border:2px solid #CBAE7C;
+  border-radius:12px;
+  padding:10px;
+}
+#chatSection h2,#teacherJournal h2{
+  margin-bottom:8px;
+  color:#5B4A33;
+}
+#chatBox{
+  background:#fff;
+  border-radius:8px;
+  padding:8px;
+  max-height:260px;
+  overflow-y:auto;
+  text-align:left;
+  color:#000;
+  border:1px solid #ddd;
+}
+textarea{
+  width:95%;
+  border-radius:8px;
+  border:1px solid #ccc;
+  padding:6px;
+  font-family:inherit;
+  min-height:60px;
+  margin-top:6px;
+}
+#limitCounter{
+  margin-top:4px;
+  font-size:0.9rem;
+  color:#5B4A33;
+  font-weight:bold;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.85rem;
+}
+th,td{
+  border:1px solid #CBAE7C;
+  padding:4px 6px;
+}
+th{
+  background:#5B4A33;
+  color:#fff;
 }
 
 /* INSTALL */
 .install-btn{
   position:fixed;
-  bottom:15px;
+  bottom:14px;
   left:50%;
   transform:translateX(-50%);
   background:#C5AF84;
   color:#fff;
   border:none;
   border-radius:50%;
-  width:64px;
-  height:64px;
+  width:56px;
+  height:56px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   font-size:0.8rem;
-  box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  box-shadow:0 4px 10px rgba(0,0,0,0.35);
   cursor:pointer;
+  z-index:50;
 }
+.install-btn .icon{font-size:1.2rem;margin-bottom:1px;}
 .install-btn:hover{background:#E8D2A4;}
-.install-btn .icon{font-size:1.3rem;margin-bottom:2px;}
+
+@media (max-width:700px){
+  .topics-grid{max-width:95%;}
+  header h1{font-size:1.4rem;}
+}
 </style>
 </head>
 
@@ -182,32 +294,107 @@ main{
 <header>
   <h1>ENGLISH WITH AI BAYAN</h1>
   <h2>4 GRADE II</h2>
+  <div class="ornament">
+    <svg viewBox="0 0 800 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="goldGrad" x1="0" y1="0" x2="800" y2="0">
+          <stop offset="0%" stop-color="#FFD700"/>
+          <stop offset="50%" stop-color="#FFF8C0"/>
+          <stop offset="100%" stop-color="#FFD700"/>
+        </linearGradient>
+      </defs>
+      <path d="
+        M0 20
+        q20 -18 40 0 t40 0
+        q20 -18 40 0 t40 0
+        q20 -18 40 0 t40 0
+        q20 -18 40 0 t40 0
+        q20 -18 40 0 t40 0
+        q20 -18 40 0 t40 0
+        q20 -18 40 0 t40 0"/>
+    </svg>
+  </div>
 </header>
 
-<main id="mainMenu">
-  <div class="topics-grid">
-    <button class="topic-btn t1">1. 🎨 Let’s Have Fun!</button>
-    <button class="topic-btn t2">2. 🏃 Sports and Exercises</button>
-    <button class="topic-btn t3">3. 🌍 Sports Around the World</button>
-    <button class="topic-btn t4">4. 🎵 Arts and Music</button>
-    <button class="topic-btn t5">5. ⚽ Popular Team Sports</button>
-    <button class="topic-btn t6">6. 🎻 Museum of Kazakh Musical Instruments</button>
-    <button class="topic-btn t7">7. 📜 Children’s Rights & Responsibilities</button>
-    <button class="topic-btn t8">8. 🧰 Different Jobs</button>
-    <button class="topic-btn t9">9. 👩‍⚕️ Professions</button>
-    <button class="topic-btn t10">10. 🏢 People at Work</button>
-    <button class="topic-btn t11">11. 💬 What Do You Do?</button>
-    <button class="topic-btn t12">12. ❤️ You Can Help!</button>
-    <button class="topic-btn t13">13. 🎯 Final Challenge</button>
+<main>
+  <!-- ГЛАВНОЕ МЕНЮ -->
+  <div id="mainMenu">
+    <div class="topics-grid">
+      <button class="topic-btn t1" onclick="openTheme(1)">
+        <span>1. 🎨 Let’s Have Fun!</span>
+      </button>
+      <button class="topic-btn t2" onclick="openTheme(2)">
+        <span>2. 🏃 Sports and Exercises</span>
+      </button>
+      <button class="topic-btn t3" onclick="openTheme(3)">
+        <span>3. 🌍 Sports Around the World</span>
+      </button>
+      <button class="topic-btn t4" onclick="openTheme(4)">
+        <span>4. 🎵 Arts and Music</span>
+      </button>
+      <button class="topic-btn t5" onclick="openTheme(5)">
+        <span>5. ⚽ Popular Team Sports</span>
+      </button>
+      <button class="topic-btn t6" onclick="openTheme(6)">
+        <span>6. 🎻 Museum of Kazakh Musical Instruments</span>
+      </button>
+      <button class="topic-btn t7" onclick="openTheme(7)">
+        <span>7. 📜 Children’s Rights & Responsibilities</span>
+      </button>
+      <button class="topic-btn t8" onclick="openTheme(8)">
+        <span>8. 🧰 Different Jobs</span>
+      </button>
+      <button class="topic-btn t9" onclick="openTheme(9)">
+        <span>9. 👩‍⚕️ Professions</span>
+      </button>
+      <button class="topic-btn t10" onclick="openTheme(10)">
+        <span>10. 🏢 People at Work</span>
+      </button>
+      <button class="topic-btn t11" onclick="openTheme(11)">
+        <span>11. 💬 What Do You Do?</span>
+      </button>
+      <button class="topic-btn t12" onclick="openTheme(12)">
+        <span>12. ❤️ You Can Help!</span>
+      </button>
+      <button class="topic-btn t13" onclick="openTheme(13)">
+        <span>13. 🎯 Final Challenge</span>
+      </button>
+    </div>
+
+    <div id="extraBtns">
+      <button class="extra-btn" onclick="openChat()">💬 AI Bayan Chat</button>
+      <button class="extra-btn" onclick="openTeacherJournal()">🏫 Teacher’s Journal</button>
+    </div>
+
+    <div id="welcomeBox">
+      <div id="welcomeText">Hello, Student!</div>
+      <div>Total stars in all lessons: <b><span id="totalStars">0</span> ⭐</b></div>
+    </div>
   </div>
 
-  <div id="extraBtns">
-    <button class="extra-btn">💬 AI Bayan Chat</button>
-    <button class="extra-btn">🏫 Teacher’s Journal</button>
+  <!-- CHAT -->
+  <div id="chatSection">
+    <h2>💬 AI Bayan — Chat</h2>
+    <div id="chatBox"></div>
+    <textarea id="chatInput" placeholder="Type your question..."></textarea><br>
+    <button class="btn" onclick="askBayan()">Ask</button>
+    <button class="btn" onclick="clearChat()">Clear</button>
+    <button class="btn" onclick="backMenu()">🏠 Menu</button>
+    <p id="limitCounter">⭐ 3 of 3 questions left today</p>
   </div>
 
-  <div id="welcomeBox">
-    Hello, <span id="studentName">Student</span>! 🌟 Welcome to your English Olympiad App.
+  <!-- JOURNAL -->
+  <div id="teacherJournal">
+    <h2>🏫 Teacher Journal</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th><th>L1–L13</th><th>Chat</th><th>Total ⭐</th>
+        </tr>
+      </thead>
+      <tbody id="journalBody"></tbody>
+    </table>
+    <button class="btn" onclick="backMenu()">🏠 Menu</button>
   </div>
 </main>
 
@@ -218,29 +405,185 @@ main{
 </button>
 
 <script>
-const allowedNames=["Aytach2","Aylin2","Alvi2","Zhahangir2","Narmin2","Balman2",
-"Ilyas2","Dmitry2","Irada2","Shyngys2","Kiril2","Sultan2","Kira2","Allahverdy2",
-"Aziza2","Emir2","Monya2","Aeka2","Bayan2","Arai2","Jury2","Meyirim2"];
-let isTeacher=false;
+const allowedNames=[
+  "Aytach2","Aylin2","Alvi2","Zhahangir2","Narmin2","Balman2",
+  "Ilyas2","Dmitry2","Irada2","Shyngys2","Kiril2","Sultan2",
+  "Kira2","Allahverdy2","Aziza2","Emir2","Monya2","Aeka2",
+  "Bayan2","Arai2","Jury2","Jury1","Meyirim2"
+];
 
+const WORKER_URL="https://shiny-tree-f78c.aiko030500.workers.dev";
+
+let DAILY_LIMIT=3;
+let usedToday=Number(localStorage.getItem("usedToday"))||0;
+let lastDate=localStorage.getItem("lastDate");
+let today=new Date().toDateString();
+let isTeacher=localStorage.getItem("isTeacher")==="true";
+
+if(lastDate!==today){
+  usedToday=0;
+  localStorage.setItem("lastDate",today);
+  localStorage.setItem("usedToday",0);
+}
+
+function updateCounter(){
+  const c=document.getElementById("limitCounter");
+  if(!c) return;
+  c.innerHTML=isTeacher
+    ? "👩‍🏫 Teacher mode: unlimited questions"
+    : `⭐ ${DAILY_LIMIT-usedToday} of ${DAILY_LIMIT} questions left today`;
+}
+
+/* LOGIN */
 function checkLogin(){
-  const name=document.getElementById("nameInput").value.trim().toLowerCase();
-  const pin=document.getElementById("pinInput").value.trim();
-  const a=allowedNames.map(n=>n.toLowerCase());
-  if(a.includes(name)&&pin==="6856"){
-    localStorage.setItem("currentStudent",name);
+  const n=document.getElementById("nameInput").value.trim().toLowerCase();
+  const p=document.getElementById("pinInput").value.trim();
+  const a=allowedNames.map(x=>x.toLowerCase());
+
+  if(a.includes(n) && p==="6856"){
+    localStorage.setItem("currentStudent",n);
+    localStorage.removeItem("isTeacher");
+    isTeacher=false;
     document.getElementById("loginOverlay").style.display="none";
     document.getElementById("mainMenu").style.display="block";
-    document.getElementById("studentName").textContent=name.charAt(0).toUpperCase()+name.slice(1);
-  } else if(name==="teacher"&&pin==="1402"){
+    const niceName=n.charAt(0).toUpperCase()+n.slice(1);
+    document.getElementById("welcomeText").innerText="Hello, "+niceName+"!";
+    calcTotalStars(n);
+    updateCounter();
+  } else if(n==="teacher" && p==="1402"){
     isTeacher=true;
+    localStorage.setItem("isTeacher","true");
     document.getElementById("loginOverlay").style.display="none";
     document.getElementById("mainMenu").style.display="block";
-    document.getElementById("studentName").textContent="Teacher";
+    document.getElementById("welcomeText").innerText="Hello, teacher!";
+    calcTotalStarsForAll();
+    updateCounter();
   } else {
     alert("❌ Wrong name or PIN");
   }
 }
+
+/* STARS */
+function calcTotalStars(studentKey){
+  let total=0;
+  for(let i=1;i<=13;i++){
+    total+=Number(localStorage.getItem(studentKey+"_lesson"+i+"Stars"))||0;
+  }
+  total+=Number(localStorage.getItem(studentKey+"_chatStars"))||0;
+  document.getElementById("totalStars").innerText=total;
+}
+function calcTotalStarsForAll(){
+  let total=0;
+  allowedNames.forEach(n=>{
+    for(let i=1;i<=13;i++){
+      total+=Number(localStorage.getItem(n+"_lesson"+i+"Stars"))||0;
+    }
+    total+=Number(localStorage.getItem(n+"_chatStars"))||0;
+  });
+  document.getElementById("totalStars").innerText=total;
+}
+
+/* NAVIGATION */
+function openTheme(n){
+  window.location.href="theme"+n+".html";
+}
+function openChat(){
+  document.getElementById("mainMenu").style.display="none";
+  document.getElementById("chatSection").style.display="block";
+  document.getElementById("teacherJournal").style.display="none";
+  updateCounter();
+}
+function openTeacherJournal(){
+  document.getElementById("mainMenu").style.display="none";
+  document.getElementById("chatSection").style.display="none";
+  document.getElementById("teacherJournal").style.display="block";
+  buildJournal();
+}
+function backMenu(){
+  document.getElementById("chatSection").style.display="none";
+  document.getElementById("teacherJournal").style.display="none";
+  document.getElementById("mainMenu").style.display="block";
+}
+
+/* JOURNAL */
+function buildJournal(){
+  const b=document.getElementById("journalBody");
+  b.innerHTML="";
+  allowedNames.forEach(n=>{
+    let lessonsStars=0;
+    for(let i=1;i<=13;i++){
+      lessonsStars+=Number(localStorage.getItem(n+"_lesson"+i+"Stars"))||0;
+    }
+    const chatStars=Number(localStorage.getItem(n+"_chatStars"))||0;
+    const total=lessonsStars+chatStars;
+    b.innerHTML+=`<tr>
+      <td>${n}</td>
+      <td>${lessonsStars}</td>
+      <td>${chatStars}</td>
+      <td>${total}</td>
+    </tr>`;
+  });
+}
+
+/* CHAT */
+async function askBayan(){
+  const input=document.getElementById("chatInput");
+  const box=document.getElementById("chatBox");
+  const q=input.value.trim();
+  if(!q){
+    alert("Type your question first!");
+    return;
+  }
+  if(!isTeacher && usedToday>=DAILY_LIMIT){
+    alert("⚠️ Daily limit reached.");
+    return;
+  }
+  box.innerHTML+=`<p><b>You:</b> ${q}</p>`;
+  box.innerHTML+=`<p><i>AI Bayan is thinking...</i></p>`;
+  box.scrollTop=box.scrollHeight;
+  input.value="";
+
+  try{
+    const r=await fetch(WORKER_URL,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({messages:[{role:"user",content:q}]})
+    });
+    const d=await r.json();
+    const reply=d.reply || "Sorry, I can’t answer now.";
+    box.innerHTML+=`<p><b>AI Bayan:</b> ${reply}</p>`;
+    box.scrollTop=box.scrollHeight;
+
+    if(!isTeacher){
+      usedToday++;
+      localStorage.setItem("usedToday",usedToday);
+      updateCounter();
+    }
+  }catch(e){
+    box.innerHTML+=`<p><b>AI Bayan:</b> ❌ Connection error.</p>`;
+  }
+}
+function clearChat(){
+  document.getElementById("chatBox").innerHTML="";
+}
+
+/* INSTALL PWA */
+let deferredPrompt=null;
+window.addEventListener("beforeinstallprompt",(e)=>{
+  e.preventDefault();
+  deferredPrompt=e;
+});
+document.getElementById("installButton").addEventListener("click",async ()=>{
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt=null;
+  }else{
+    alert('To install the app, open the browser menu and choose "Add to Home screen".');
+  }
+});
+
+updateCounter();
 </script>
 
 </body>
