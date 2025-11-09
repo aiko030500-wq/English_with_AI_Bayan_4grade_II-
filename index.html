@@ -277,7 +277,12 @@ let lastDate=localStorage.getItem("lastDate");
 let today=new Date().toDateString();
 let isTeacher=localStorage.getItem("isTeacher")==="true";
 
-if(lastDate!==today){usedToday=0;localStorage.setItem("lastDate",today);localStorage.setItem("usedToday",0);}
+if(lastDate!==today){
+  usedToday=0;
+  localStorage.setItem("lastDate",today);
+  localStorage.setItem("usedToday",0);
+}
+
 function updateCounter(){
   const c=document.getElementById("limitCounter");
   if(!c)return;
@@ -291,18 +296,22 @@ function checkLogin(){
   const a=allowedNames.map(x=>x.toLowerCase());
   if(a.includes(n)&&p==="6856"){
     localStorage.setItem("currentStudent",n);
-    localStorage.removeItem("isTeacher");isTeacher=false;
+    localStorage.removeItem("isTeacher");
+    isTeacher=false;
     document.getElementById("loginOverlay").style.display="none";
     document.getElementById("mainMenu").style.display="block";
     const nice=n.charAt(0).toUpperCase()+n.slice(1);
     document.getElementById("welcomeText").innerText="Hello, "+nice+"!";
-    calcTotalStars(n);updateCounter();
+    calcTotalStars(n);
+    updateCounter();
   }else if(n==="teacher"&&p==="1402"){
-    isTeacher=true;localStorage.setItem("isTeacher","true");
+    isTeacher=true;
+    localStorage.setItem("isTeacher","true");
     document.getElementById("loginOverlay").style.display="none";
     document.getElementById("mainMenu").style.display="block";
     document.getElementById("welcomeText").innerText="Hello, Teacher!";
-    calcTotalStarsForAll();updateCounter();
+    calcTotalStarsForAll();
+    updateCounter();
   }else alert("❌ Wrong name or PIN");
 }
 
@@ -374,8 +383,13 @@ let deferredPrompt=null;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;});
 document.getElementById("installButton").addEventListener("click",async()=>{
   if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;}
-  else alert('To install the app, open the browser menu and choose "Add
-             else {
+  else {
+    alert('To install the app, open the browser menu and choose "Add to Home screen".');
+  }
+});
+
+updateCounter();
+  else {
     alert('To install the app, open the browser menu and choose "Add to Home screen".');
   }
 });
