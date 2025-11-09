@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English with AI Bayan 4grade II</title>
 
-<!-- 🌟 PWA -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#003366">
 <meta name="mobile-web-app-capable" content="yes">
@@ -18,11 +17,7 @@
     margin: 0;
     text-align: center;
     color: #002b5c;
-    background: #e3f2fd url("main-bg.png") center/cover fixed no-repeat;
-    transition: background 0.6s;
-  }
-  body.teacher-mode {
-    background: linear-gradient(180deg,#fff3b0 0%,#ffe27f 100%);
+    background: url("main-bg.png") center/cover fixed no-repeat;
   }
 
   header {
@@ -34,22 +29,15 @@
     align-items: center;
     justify-content: space-between;
   }
-  .header-title {
-    text-align: left;
-  }
+
   .header-title h1 {
     margin: 0;
-    font-size: 1.2rem;
-  }
-  .header-title p {
-    margin: 2px 0 0;
-    font-size: 0.85rem;
-    color: #ffecb3;
+    font-size: 1.3rem;
   }
 
   .girl-img {
-    width: 95px;
-    height: 95px;
+    width: 90px;
+    height: 90px;
     background: url("girl.png") center/cover no-repeat;
   }
 
@@ -92,23 +80,6 @@
   }
   .blue-install:hover { background: gold; color: #003366; }
 
-  .overlay {
-    position:fixed; inset:0;
-    background:rgba(0,0,0,0.55);
-    display:flex; align-items:center; justify-content:center;
-    z-index:999;
-  }
-  .overlay-card {
-    background:white; border:4px solid gold;
-    padding:20px; border-radius:16px;
-    box-shadow:0 0 15px rgba(0,0,0,0.3);
-    width:90%; max-width:380px;
-  }
-  .overlay-card input {
-    width:100%; padding:8px; border-radius:8px;
-    border:1px solid #ccc; margin:6px 0; font-size:1rem;
-  }
-
   #welcomeBox {
     background:rgba(255,255,255,0.9);
     border-radius:16px;
@@ -120,25 +91,26 @@
 
   .grid {
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:10px; max-width:900px; margin:20px auto;
+    grid-template-columns:repeat(4, 1fr);
+    gap:8px;
+    max-width:700px;
+    margin:15px auto;
   }
   .card {
-    background:white; border:2px solid #dde6ff;
-    border-radius:16px; padding:14px; cursor:pointer;
+    background:white;
+    border:2px solid #dde6ff;
+    border-radius:12px;
+    padding:12px 5px;
+    font-size:0.85rem;
     box-shadow:0 0 10px rgba(0,0,0,0.05);
-    font-size:0.9rem;
+    cursor:pointer;
   }
-  .card:hover { border-color:gold; transform:translateY(-2px); }
+  .card:hover { border-color:gold; transform:scale(1.05); }
 
   #chatBox {
     background:#fff; border:2px solid gold;
     border-radius:10px; padding:10px;
     max-height:300px; overflow-y:auto; text-align:left;
-  }
-  textarea {
-    width:90%; border-radius:8px; border:1px solid #ccc;
-    padding:6px; font-family:inherit; min-height:60px;
   }
 
   table { border-collapse:collapse; margin:auto; font-size:0.85rem; }
@@ -164,7 +136,6 @@
 <header>
   <div class="header-title">
     <h1>English with AI Bayan 4 grade II</h1>
-    <p>Fun English with AI Teacher Bayan</p>
   </div>
   <div class="girl-img"></div>
 </header>
@@ -177,47 +148,26 @@
 
   <div id="mainMenu" style="display:none;">
     <div class="grid">
-      <div class="card" onclick="openTheme(1)">1. 🎨 Let’s Have Fun!</div>
-      <div class="card" onclick="openTheme(2)">2. 🏃 Sports and Exercises</div>
-      <div class="card" onclick="openTheme(3)">3. 🌍 Sports Around the World</div>
-      <div class="card" onclick="openTheme(4)">4. 🎵 Arts and Music</div>
-      <div class="card" onclick="openTheme(5)">5. ⚽ Popular Team Sports</div>
-      <div class="card" onclick="openTheme(6)">6. 🎻 Museum of Kazakh Musical Instruments</div>
-      <div class="card" onclick="openTheme(7)">7. 📜 Children’s Rights & Responsibilities</div>
-      <div class="card" onclick="openTheme(8)">8. 🧰 Different Jobs</div>
-      <div class="card" onclick="openTheme(9)">9. 👩‍⚕️ Professions</div>
-      <div class="card" onclick="openTheme(10)">10. 🏢 People at Work</div>
-      <div class="card" onclick="openTheme(11)">11. 💬 What Do You Do?</div>
-      <div class="card" onclick="openTheme(12)">12. ❤️ You Can Help!</div>
-      <div class="card" onclick="openTheme(13)">13. 🎯 Final Challenge</div>
-      <div class="card" onclick="openChat()">💬 AI Bayan Chat</div>
-      <div class="card" onclick="openTeacherJournal()">🏫 Teacher Journal</div>
+      <div class="card" onclick="openTheme(1)">🎨<br>Let’s Have Fun!</div>
+      <div class="card" onclick="openTheme(2)">🏃<br>Sports</div>
+      <div class="card" onclick="openTheme(3)">🌍<br>Around the World</div>
+      <div class="card" onclick="openTheme(4)">🎵<br>Arts & Music</div>
+      <div class="card" onclick="openTheme(5)">⚽<br>Team Sports</div>
+      <div class="card" onclick="openTheme(6)">🎻<br>Kazakh Museum</div>
+      <div class="card" onclick="openTheme(7)">📜<br>Rights</div>
+      <div class="card" onclick="openTheme(8)">🧰<br>Jobs</div>
+      <div class="card" onclick="openTheme(9)">👩‍⚕️<br>Professions</div>
+      <div class="card" onclick="openTheme(10)">🏢<br>At Work</div>
+      <div class="card" onclick="openTheme(11)">💬<br>Dialogues</div>
+      <div class="card" onclick="openTheme(12)">❤️<br>You Can Help!</div>
+      <div class="card" onclick="openTheme(13)">🎯<br>Final</div>
+      <div class="card" onclick="openChat()">💬<br>AI Bayan</div>
+      <div class="card" onclick="openTeacherJournal()">🏫<br>Journal</div>
     </div>
-  </div>
-
-  <div id="chatSection" style="display:none;">
-    <h2>💬 AI Bayan — Chat</h2>
-    <div id="chatBox"></div>
-    <textarea id="chatInput" placeholder="Type your message..."></textarea><br>
-    <button class="btn" onclick="askBayan()">Ask AI Bayan</button>
-    <button class="btn" onclick="clearChat()">Clear</button>
-    <button class="btn" onclick="backMenu()">🏠 Menu</button>
-    <p id="limitCounter" style="font-weight:bold;color:#003366;">⭐ 3 of 3 questions left today</p>
-  </div>
-
-  <div id="teacherJournal" style="display:none;">
-    <h2>🏫 Teacher Journal</h2>
-    <table>
-      <thead>
-        <tr><th>Student</th><th>L1–L13</th><th>Chat</th><th>Total ⭐</th></tr>
-      </thead>
-      <tbody id="journalBody"></tbody>
-    </table>
-    <button class="btn" onclick="backMenu()">🏠 Menu</button>
   </div>
 </main>
 
-<!-- 🔵 СИНЯЯ КНОПКА ДЛЯ СКАЧИВАНИЯ -->
+<!-- 🔵 СИНЯЯ КНОПКА -->
 <button class="blue-install" id="installButton">⬇️</button>
 
 <script>
