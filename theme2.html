@@ -107,32 +107,27 @@ textarea{width:100%;}
 <p><b>Choose the correct translation (на русский).</b></p>
 
 <p>1) to run  
-<button class="btn" onclick="speakVocab('I like to run every morning.')">▶ Play</button>
-<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<button class="btn" onclick="speakVocab('I like to run every morning.')">▶ Play</button></p>
 <label><input type="radio" name="v1" value="1"> бегать</label><br>
 <label><input type="radio" name="v1" value="0"> плавать</label><br>
 
 <p>2) to swim  
-<button class="btn" onclick="speakVocab('We swim in the pool on weekends.')">▶ Play</button>
-<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<button class="btn" onclick="speakVocab('We swim in the pool on weekends.')">▶ Play</button></p>
 <label><input type="radio" name="v2" value="1"> плавать</label><br>
 <label><input type="radio" name="v2" value="0"> прыгать</label><br>
 
 <p>3) to play football  
-<button class="btn" onclick="speakVocab('Boys and girls play football together.')">▶ Play</button>
-<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<button class="btn" onclick="speakVocab('Boys and girls play football together.')">▶ Play</button></p>
 <label><input type="radio" name="v3" value="1"> играть в футбол</label><br>
 <label><input type="radio" name="v3" value="0"> кататься на коньках</label><br>
 
 <p>4) to do exercises  
-<button class="btn" onclick="speakVocab('We do morning exercises every day.')">▶ Play</button>
-<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<button class="btn" onclick="speakVocab('We do morning exercises every day.')">▶ Play</button></p>
 <label><input type="radio" name="v4" value="1"> делать упражнения</label><br>
 <label><input type="radio" name="v4" value="0"> спать</label><br>
 
 <p>5) healthy food  
-<button class="btn" onclick="speakVocab('Healthy food helps you stay strong.')">▶ Play</button>
-<button class="btn" onclick="stopBayan()">⏹ Stop</button></p>
+<button class="btn" onclick="speakVocab('Healthy food helps you stay strong.')">▶ Play</button></p>
 <label><input type="radio" name="v5" value="1"> полезная еда</label><br>
 <label><input type="radio" name="v5" value="0"> фастфуд</label><br>
 
@@ -166,7 +161,6 @@ textarea{width:100%;}
 <h3>🎧 Listening — A Healthy Morning <span class="round-label">Listening</span></h3>
 <p><b>Listen and choose True or False.</b></p>
 <button class="btn" onclick="bayanListening()">▶ Play</button>
-<button class="btn" onclick="stopBayan()">⏹ Stop</button>
 
 <p>1) Ali runs every morning.</p>
 <select id="t1"><option>—</option><option>True</option><option>False</option></select>
@@ -184,16 +178,9 @@ textarea{width:100%;}
 <h3>📖 Reading — Healthy Life <span class="round-label">Reading</span></h3>
 <p><b>Read or listen:</b></p>
 <button class="btn" onclick="bayanReading()">▶ Play</button>
-<button class="btn" onclick="stopBayan()">⏹ Stop</button>
 
 <div style="margin-top:10px;background:#fff8e1;border-radius:10px;padding:10px;">
-  <p>
-    I get up early and do exercises every morning.  
-    Then I eat healthy food for breakfast.  
-    I like fruits and milk.  
-    After school, I play football with my friends.  
-    I am strong and happy!
-  </p>
+  <p>I get up early and do exercises every morning. Then I eat healthy food for breakfast. I like fruits and milk. After school, I play football with my friends. I am strong and happy!</p>
 </div>
 
 <ol>
@@ -232,6 +219,16 @@ textarea{width:100%;}
 </main>
 
 <script>
+// 🔐 Проверка входа
+window.addEventListener("load", () => {
+  const user = localStorage.getItem("aiBayanUser");
+  const pin = localStorage.getItem("aiBayanPin");
+  if (!user || pin !== "6856") {
+    alert("Please log in again to continue.");
+    location.href = "index.html";
+  }
+});
+
 let totalStars=0;
 function addStar(){totalStars++;lessonStarsLine.innerText="You have "+totalStars+" ⭐ in this lesson.";finalStars.innerText=totalStars;}
 function speakBayanText(t){if(!('speechSynthesis'in window))return;const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.9;u.pitch=1.05;speechSynthesis.speak(u);}
@@ -246,38 +243,29 @@ function bayanReading(){speakBayanText('I get up early and do exercises every mo
 function checkReading(){let c=0;if(r1.value.toLowerCase().includes('exercise'))c++;if(r2.value.toLowerCase().includes('fruit')||r2.value.toLowerCase().includes('milk'))c++;if(r3.value.toLowerCase().includes('after'))c++;if(c>0){addStar();readStars.innerText='⭐ '+c+' correct!';}}
 function checkWriting(){let c=0;[w1,w2,w3].forEach(x=>{if(x.value.trim()!=='')c++;});if(c>0){addStar();writeStars.innerText='⭐ '+c+' good sentences!';}}
 function finishLesson(){finalStars.innerText=totalStars;let msg=totalStars>=10?'🌟 You are a real sports star!':'Keep training and learning!';finalMessage.innerText=msg;localStorage.setItem('lesson2Stars',totalStars);alert('Lesson 2 saved! '+totalStars+'⭐');}
+
 // 🔹 Универсальная навигация между страницами AI Bayan
 function goBack() {
-  // если ученик пришёл со страницы темы — возвращает назад
   if (document.referrer && document.referrer.includes("theme")) {
     history.back();
   } else {
-    // если открыл напрямую — в главное меню
     location.href = "./index.html";
   }
 }
-
 function goMenu() {
-  // всегда возвращает в корень, где лежит index.html
   const base = window.location.origin + window.location.pathname.split("/").slice(0, -1).join("/");
   location.href = base + "/index.html";
 }
 function goNext() {
-  // определяем текущий номер темы
   const current = window.location.pathname.match(/theme(\d+)/);
   if (current && current[1]) {
     const nextNum = parseInt(current[1]) + 1;
     const nextFile = "theme" + nextNum + ".html";
     location.href = nextFile;
   } else {
-    // если не удалось определить — возвращаемся в меню
     goMenu();
   }
 }
-
 </script>
 </body>
 </html>
-
-
-
