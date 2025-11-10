@@ -21,28 +21,24 @@ header {
   border-bottom: 5px solid #ffd54f;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
+header h1 { margin: 0; }
 
-header h1 {
-  font-size: 1.2rem;
-  margin: 0;
-}
-
-main {
-  padding: 1rem;
-}
-
-/* 🔹 Buttons / Tasks */
+/* 🔹 Контейнер заданий */
+main { padding: 1rem; }
 .task {
-  background: white;
+  background: #fff;
   border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  margin: 10px auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 15px auto;
   padding: 15px;
-  max-width: 400px;
+  max-width: 420px;
+  text-align: left;
 }
+.task h3 { text-align: center; color: #f57c00; }
 
+/* 🔹 Кнопки */
 button {
   background: #ff9800;
   color: white;
@@ -51,53 +47,126 @@ button {
   padding: 8px 14px;
   font-weight: bold;
   cursor: pointer;
+  margin-top: 8px;
 }
+button:hover { background: #f57c00; }
 
-button:hover {
-  background: #f57c00;
-}
-
-/* Footer link */
 footer {
-  margin-top: 20px;
+  margin: 20px 0;
+  text-align: center;
   font-size: 0.9rem;
-  color: #5d4037;
+}
+
+.correct { color: green; font-weight: bold; }
+.incorrect { color: red; font-weight: bold; }
+.star {
+  color: gold;
+  font-size: 1.3rem;
+  display: inline-block;
+  margin-left: 5px;
 }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Theme 2 — Sports and Exercises</h1>
+  <h1>Theme 2 — Sports and Exercises 🏃‍♀️</h1>
 </header>
 
 <main>
-  <h2>🏃‍♀️ Sports Around Us</h2>
-  <p>Let's learn about sports and exercises!</p>
-
-  <div class="task">
-    <p><b>Task 1:</b> Match the sport with the correct equipment.</p>
-    <button onclick="alert('✅ Correct!')">Check Answers</button>
+  <!-- 🏅 Task 1 -->
+  <div class="task" id="task1">
+    <h3>Task 1: Match the sport with the correct equipment.</h3>
+    <p>1. Football — <select id="q1">
+      <option value="">Select</option>
+      <option>Racket</option>
+      <option>Ball</option>
+      <option>Skis</option>
+    </select></p>
+    <p>2. Tennis — <select id="q2">
+      <option value="">Select</option>
+      <option>Skis</option>
+      <option>Racket</option>
+      <option>Helmet</option>
+    </select></p>
+    <p>3. Skiing — <select id="q3">
+      <option value="">Select</option>
+      <option>Racket</option>
+      <option>Ball</option>
+      <option>Skis</option>
+    </select></p>
+    <button onclick="checkTask1()">Check Answers</button>
+    <p id="result1"></p>
   </div>
 
-  <div class="task">
-    <p><b>Task 2:</b> What sports do you like?</p>
-    <button onclick="alert('🎯 Great choice!')">Submit</button>
+  <!-- 💬 Task 2 -->
+  <div class="task" id="task2">
+    <h3>Task 2: What sports do you like?</h3>
+    <textarea id="answer2" rows="3" style="width:100%;border-radius:8px;border:1px solid #ccc;padding:6px;"></textarea>
+    <button onclick="submitTask2()">Submit</button>
+    <p id="result2"></p>
   </div>
 
-  <div class="task">
-    <p><b>Task 3:</b> Listen and repeat the names of sports.</p>
-    <button onclick="alert('🎧 Coming soon!')">Play Audio</button>
+  <!-- 🎧 Task 3 -->
+  <div class="task" id="task3">
+    <h3>Task 3: Listen and repeat the names of sports.</h3>
+    <button onclick="playAudio()">🔊 Play Audio</button>
+    <p id="result3"></p>
+    <audio id="sportsAudio" src="sports.mp3"></audio>
   </div>
 
   <footer>
+    <p>You earned: <span id="stars">0</span> ⭐</p>
     <a href="index.html">⬅ Back to Main Menu</a>
   </footer>
 </main>
 
 <script>
-// 🔸 Убрана проверка "Please log in again"
-// Страница теперь не требует входа и не перезагружается
+let stars = 0;
+
+// ✅ Task 1
+function checkTask1() {
+  const a1 = document.getElementById("q1").value;
+  const a2 = document.getElementById("q2").value;
+  const a3 = document.getElementById("q3").value;
+  let score = 0;
+
+  if (a1 === "Ball") score++;
+  if (a2 === "Racket") score++;
+  if (a3 === "Skis") score++;
+
+  if (score === 3) {
+    document.getElementById("result1").innerHTML = "<span class='correct'>Excellent! All correct!</span> ⭐";
+    addStar();
+  } else {
+    document.getElementById("result1").innerHTML = "<span class='incorrect'>Check again! (" + score + "/3 correct)</span>";
+  }
+}
+
+// 💬 Task 2
+function submitTask2() {
+  const ans = document.getElementById("answer2").value.trim();
+  if (ans.length < 3) {
+    document.getElementById("result2").innerHTML = "<span class='incorrect'>Please write a bit more!</span>";
+  } else {
+    document.getElementById("result2").innerHTML = "<span class='correct'>Nice! Great answer!</span> ⭐";
+    addStar();
+  }
+}
+
+// 🎧 Task 3
+function playAudio() {
+  const audio = document.getElementById("sportsAudio");
+  audio.play();
+  document.getElementById("result3").innerHTML = "<span class='correct'>Good job! Repeat after the speaker!</span> ⭐";
+  addStar();
+}
+
+// ⭐ Add Star
+function addStar() {
+  stars++;
+  document.getElementById("stars").textContent = stars;
+}
 </script>
 
 </body>
