@@ -161,7 +161,7 @@ main{padding:12px 8px 90px;}
     </div>
 
     <div class="topics-grid">
-      <button class="topic-btn" onclick="openTheme(1)"><span>🎨</span>Let’s Have Fun!</button>
+      <button class="topic-btn" onclick="openTheme(1)">🎨 Let’s Have Fun!</button>
       <button class="topic-btn" onclick="openTheme(2)">🏃‍♂️ Sports and Exercises</button>
       <button class="topic-btn" onclick="openTheme(3)">🌍 Sports Around the World</button>
       <button class="topic-btn" onclick="openTheme(4)">🎵 Arts and Music</button>
@@ -184,7 +184,7 @@ main{padding:12px 8px 90px;}
 </main>
 
 <script>
-// 🌟 Проверка PIN и вход
+// 🌟 Разрешённые имена
 const allowedNames = [
   "Aytach2","Aylin2","Alvi2","Zhahangir2","Narmin2","Balman2",
   "Ilyas2","Dmitry2","Irada2","Shyngys2","Kiril2","Sultan2",
@@ -192,19 +192,28 @@ const allowedNames = [
   "Bayan2","Arai2","Jury2","Jury1","Meyirim2"
 ];
 
+// 🌟 Проверка имени и PIN
 function checkLogin(){
-  const n=document.getElementById("nameInput").value.trim().toLowerCase();
-  const p=document.getElementById("pinInput").value.trim();
-  const a=allowedNames.map(x=>x.toLowerCase());
-  if(a.includes(n)&&p==="6856"){
-    document.getElementById("loginOverlay").style.display="none";
-    document.getElementById("mainMenu").style.display="block";
-    document.getElementById("welcomeText").innerText="Hello, "+n+"!";
-  }else if(n==="teacher"&&p==="1402"){
-    document.getElementById("loginOverlay").style.display="none";
-    document.getElementById("mainMenu").style.display="block";
-    document.getElementById("welcomeText").innerText="Hello, Teacher!";
-  }else alert("❌ Wrong name or PIN");
+  const nameInput = document.getElementById("nameInput").value.trim();
+  const pinInput = document.getElementById("pinInput").value.trim();
+  const nameLower = nameInput.toLowerCase();
+  const allowedLower = allowedNames.map(n => n.toLowerCase());
+
+  if (allowedLower.includes(nameLower) && pinInput === "6856") {
+    document.getElementById("loginOverlay").style.display = "none";
+    document.getElementById("mainMenu").style.display = "block";
+    document.getElementById("welcomeText").innerText = "Hello, " + nameInput + "!";
+    localStorage.setItem("studentName", nameInput);
+  }
+  else if (nameLower === "teacher" && pinInput === "1402") {
+    document.getElementById("loginOverlay").style.display = "none";
+    document.getElementById("mainMenu").style.display = "block";
+    document.getElementById("welcomeText").innerText = "Hello, Teacher!";
+    localStorage.setItem("studentName", "Teacher");
+  }
+  else {
+    alert("❌ Wrong name or PIN. Please try again!");
+  }
 }
 
 // 🌟 Переходы
