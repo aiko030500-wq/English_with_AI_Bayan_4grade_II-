@@ -252,9 +252,28 @@ function stopSpeak(){if(recognition)recognition.stop();}
 function checkWritingSentences(){let c=0;if(w1.value.toLowerCase().includes('favourite'))c++;if(w2.value.toLowerCase().includes('are playing'))c++;if(w3.value.toLowerCase().includes("let"))c++;if(c>0){addStar();writeSentStars.innerText='⭐ '+c+' correct!';showResult(true);}else showResult(false);}
 function checkDictation(){const t=writeBox.value.toLowerCase();let c=0;if(t.includes('game')||t.includes('park'))c++;if(c>0){addStar();dictStars.innerText='⭐ Good text!';showResult(true);}else showResult(false);}
 function finishLesson(){alert('Lesson saved! '+totalStars+'⭐');}
-function goBack(){location.href='index.html';}
-function goMenu(){location.href='index.html';}
-function goNext(){location.href='theme2.html';}
+// 🔹 Безопасная навигация между страницами AI Bayan
+function goBack() {
+  // возвращает в предыдущее окно, если пользователь переходил по ссылке
+  if (document.referrer && document.referrer.includes("theme")) {
+    history.back();
+  } else {
+    location.href = "./index.html";
+  }
+}
+
+function goMenu() {
+  // защищённый переход в главное меню, всегда в корень приложения
+  const base = window.location.origin + window.location.pathname.split("/").slice(0, -1).join("/");
+  location.href = base + "/index.html";
+}
+
+function goNext() {
+  // переходит к следующей теме, если файл существует
+  const next = "theme2.html";
+  location.href = next;
+}
+
 updateStarsText();
 </script>
 </body>
