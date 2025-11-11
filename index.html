@@ -189,7 +189,7 @@ const allowedNames = [
   "Aytach2","Aylin2","Alvi2","Zhahangir2","Narmin2","Balman2",
   "Ilyas2","Dmitry2","Irada2","Shyngys2","Kiril2","Sultan2",
   "Kira2","Allahverdy2","Aziza2","Emir2","Monya2","Aeka2",
-  "Bayan2","Arai2","Jury2","Jury1","Meyirim2"
+  "B4","Arai2","Jury2","Jury1","Meyirim2"
 ];
 
 // 🌟 Проверка имени и PIN
@@ -199,7 +199,7 @@ function checkLogin(){
   const nameLower = nameInput.toLowerCase();
   const allowedLower = allowedNames.map(n => n.toLowerCase());
 
-  if (allowedLower.includes(nameLower) && pinInput === "6856") {
+  if (allowedLower.includes(nameLower) && pinInput === "1484") {
     document.getElementById("loginOverlay").style.display = "none";
     document.getElementById("mainMenu").style.display = "block";
     document.getElementById("welcomeText").innerText = "Hello, " + nameInput + "!";
